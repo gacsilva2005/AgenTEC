@@ -1,0 +1,96 @@
+body {
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.login-container {
+    display: flex;
+    max-width: 900px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.logo-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo-section img {
+    max-width: 100%;
+    height: auto;
+    margin: 15px 0;
+}
+
+.form-section {
+    flex: 1;
+    background-color: #b20000;
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.home-link {
+    color: white;
+    text-decoration: none;
+    align-self: flex-end;
+    margin-bottom: 20px;
+}
+
+.form-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2c4887;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #1e3565;
+}
+
+.forgot-password {
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
