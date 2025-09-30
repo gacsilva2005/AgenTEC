@@ -6,6 +6,11 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f0f2f5;
+    background-image: url('Assets/sua-imagem-de-fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .login-container {
@@ -14,7 +19,7 @@ body {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    overflow: hidden;   
 }
 
 .logo-section {
@@ -23,11 +28,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 0px;
 }
 
 .logo-section img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
     margin: 15px 0;
 }
@@ -36,7 +41,7 @@ body {
     flex: 1;
     background-color: #b20000;
     color: white;
-    padding: 40px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,21 +49,32 @@ body {
     text-align: center;
 }
 
+.form-section h2 {
+    font-size: 2.5rem;
+    margin-top: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
 .home-link {
     color: white;
     text-decoration: none;
     align-self: flex-end;
-    margin-bottom: 20px;
-}
-
-.form-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .input-group {
+    position: relative;
     width: 100%;
     margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: -30px; 
+    top: 50%;
+    transform: translateY(-50%); 
+    color: #ffffff; 
+    font-size: 23px;
 }
 
 .input-group input {
@@ -68,7 +84,7 @@ body {
     border-radius: 5px;
     font-size: 1rem;
     background-color: rgba(255, 255, 255, 0.8);
-    color: #333;
+    color: #ffffff;
 }
 
 .btn-login {
