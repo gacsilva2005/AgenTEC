@@ -1,0 +1,189 @@
+/* CSS Reset e Estilos Globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Barra Superior do Governo SP */
+.govsp-topo {
+    background-color: #f1f1f1;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+.govsp-topo .govsp-portal img {
+    height: 25px;
+}
+.govsp-topo .govsp-navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.govsp-topo .govsp-navbar img {
+    height: 16px;
+}
+.govsp-topo .govsp-social {
+    display: inline-block;
+}
+
+/* Cabeçalho Principal */
+#cps-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+.cps-header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cps-header__logo img {
+    max-height: 50px;
+}
+.form-pesquisa {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-grow: 1;
+    max-width: 400px;
+}
+.form-pesquisa .campo-de-busca {
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+.form-pesquisa .busca-submit {
+    border: none;
+    background-color: #e0e0e0;
+    padding: 0 15px;
+    cursor: pointer;
+}
+.form-pesquisa .busca-submit:hover {
+    background-color: #d0d0d0;
+}
+
+/* Menu de Navegação */
+.main-menu-container {
+    background-color: #c41e15; /* Vermelho institucional */
+    padding: 0 20px;
+}
+.main-menu-container .menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main-menu-container .menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    /* IMPORTANTE: Isso cria a animação suave */
+    transition: background-color 0.3s;
+}
+
+/* ESTA É A REGRA NOVA: Escurece o fundo ao passar o mouse */
+.main-menu-container .menu li a:hover {
+    background-color: #831c16ef; /* Um tom de vermelho mais escuro */
+}
+
+#breadcrumb {
+    background-color: #f8f9fa;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #6c757d;
+}
+.breadcrumb-container a {
+    color: #c41e15;
+    text-decoration: none;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.title-underline {
+    width: 100px;
+    height: 4px;
+    background-color: #c41e15;
+    margin-bottom: 40px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 280px;
+    padding: 40px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+    font-size: 4rem;
+    color: #008B8B; /* Cor azul-petróleo, similar à da imagem */
+    margin-bottom: 25px;
+}
+
+.card-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    min-height: 50px;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .cps-header__container {
+        flex-direction: column;
+    }
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+    }
+}
