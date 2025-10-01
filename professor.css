@@ -7,31 +7,43 @@ body, html {
     color: #333;
 }
 
-/* Barra Superior do Governo SP */
 .govsp-topo {
-    background-color: #f1f1f1;
-    padding: 5px 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #e9e9e9;
+    border-bottom: 1px solid #ddd; 
 }
+
+.govsp-portal img {
+    height: 30px;  
+    width: auto;   
+    display: block; 
+}
+
+.govsp-portal {
+    background-color: #000; 
+    padding: 8px 25px 8px 15px; 
+    border-radius: 0 50px 50px 0; 
+}
+
 .govsp-topo .govsp-portal img {
-    height: 25px;
+    height: 60px;
 }
+
 .govsp-topo .govsp-navbar {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 .govsp-topo .govsp-navbar img {
-    height: 16px;
+    height: 23px;;
 }
+
 .govsp-topo .govsp-social {
     display: inline-block;
 }
 
-/* Cabeçalho Principal */
 #cps-header {
     padding: 20px;
     border-bottom: 1px solid #eee;
@@ -48,33 +60,52 @@ body, html {
 .cps-header__logo img {
     max-height: 50px;
 }
+
 .form-pesquisa {
-    display: flex;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    overflow: hidden;
-    flex-grow: 1;
-    max-width: 400px;
-}
-.form-pesquisa .campo-de-busca {
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    width: 100%;
-}
-.form-pesquisa .busca-submit {
-    border: none;
-    background-color: #e0e0e0;
-    padding: 0 15px;
-    cursor: pointer;
-}
-.form-pesquisa .busca-submit:hover {
-    background-color: #d0d0d0;
+    display: flex; 
+    align-items: center; 
+    border: 1px solid #ccc; 
+    border-radius: 50px; 
+    overflow: hidden; 
+    max-width: 400px; 
+    background-color: white;
 }
 
-/* Menu de Navegação */
+.campo-de-busca {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    padding: 10px 20px; 
+    font-size: 1rem; 
+    background-color: transparent; 
+}
+
+.campo-de-busca::placeholder {
+    color: #999; 
+}
+
+.busca-submit {
+    border: none; 
+    border-left: 1px solid #ccc; 
+    background-color: transparent; 
+    padding: 10px 18px; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.busca-submit .fa-search {
+    color: #b20000; 
+    font-size: 1.1rem; 
+}
+
+.busca-submit:hover {
+    background-color: #f5f5f5; 
+}
+
 .main-menu-container {
-    background-color: #c41e15; /* Vermelho institucional */
+    background-color: #c41e15; 
     padding: 0 20px;
 }
 .main-menu-container .menu {
@@ -91,13 +122,11 @@ body, html {
     color: white;
     text-decoration: none;
     font-weight: 500;
-    /* IMPORTANTE: Isso cria a animação suave */
     transition: background-color 0.3s;
 }
 
-/* ESTA É A REGRA NOVA: Escurece o fundo ao passar o mouse */
 .main-menu-container .menu li a:hover {
-    background-color: #831c16ef; /* Um tom de vermelho mais escuro */
+    background-color: #831c16ef; 
 }
 
 #breadcrumb {
@@ -164,7 +193,7 @@ body, html {
 
 .card-icon {
     font-size: 4rem;
-    color: #008B8B; /* Cor azul-petróleo, similar à da imagem */
+    color: #008B8B; 
     margin-bottom: 25px;
 }
 
@@ -174,7 +203,7 @@ body, html {
     min-height: 50px;
 }
 
-/* Media Queries para Responsividade */
+
 @media (max-width: 768px) {
     .cps-header__container {
         flex-direction: column;
@@ -186,4 +215,61 @@ body, html {
     .card {
         width: 90%;
     }
+}
+
+.logo-container {
+    display: flex;          
+    align-items: center;    
+    gap: 40 px;              
+}
+
+.logo-container img {
+    height: 80px; 
+    width: auto;     
+}
+
+.logo-cps {
+    height: 70px; 
+}
+
+/* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
+
+/* Contêiner principal da navegação */
+.govsp-navbar {
+    display: flex; /* Alinha todos os itens na horizontal */
+    align-items: center; /* Centraliza os itens verticalmente */
+    padding: 10px;
+}
+
+/* Estilo para todos os links (que servem como 'caixa' para os ícones) */
+.govsp-navbar a {
+    display: inline-flex; /* Permite centralizar o ícone dentro do link */
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Largura da caixa */
+    height: 28px; /* Altura da caixa */
+    background-color: #7c7c7c; /* Fundo cinza claro */
+    margin: -3px; /* Espaçamento entre os ícones */
+    border-radius: 3px; /* Bordas levemente arredondadas */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+/* Estilo para os ícones (<i>) dentro dos links */
+.govsp-navbar a i {
+    color: #ffffff; /* Cor cinza escura para o ícone */
+    font-size: 1.2rem; /* Tamanho do ícone */
+}
+
+/* Estilo para o texto "/governosp" */
+.govsp-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0px; /* Espaçamento antes e depois do texto */
+}
+
+/* Estilo para a linha separadora */
+.separator {
+    height: 25px; /* Altura da linha */
+    border-left: 1px solid #ccc; /* Cria a linha vertical */
+    margin: 0 10px; /* Espaçamento antes e depois da linha */
 }

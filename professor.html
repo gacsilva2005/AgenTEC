@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professores - Agendamento</title>
-    
+
     <link rel="stylesheet" href="professor.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
     <section class="govsp-topo">
         <div class="govsp-portal">
             <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
-                <img src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-governo-do-estado-sp.png" alt="Governo do Estado de São Paulo">
+                <img src="Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
             </a>
         </div>
         <nav class="govsp-navbar">
-            <a class="govsp-social" href="#"><img src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-flickr.png" alt="Flickr"></a>
-            <a class="govsp-social" href="#"><img src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-linkedin.png" alt="LinkedIn"></a>
-            <a class="govsp-social" href="#"><img src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-youtube.png" alt="YouTube"></a>
-            <a class="govsp-social" href="#"><img src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-twitter.png" alt="Twitter"></a>
-            <a class="govsp-social" href="#"><img src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-insta.png" alt="Instagram"></a>
-            <a class="govsp-social" href="#"><img src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-facebook.png" alt="Facebook"></a>
+            <a href="https://www.linkedin.com/company/governosp" target="_blank" title="LinkedIn"><i
+                    class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/governosp" target="_blank" title="YouTube"><i
+                    class="fa-brands fa-youtube"></i></a>
+            <a href="https://x.com/governosp" target="_blank" title="X (Twitter)"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/governosp" target="_blank" title="Instagram"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/governosp" target="_blank" title="Facebook"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+
+            <p class="govsp-text">/governosp</p>
+
+            <div class="separator"></div>
+
+            <a href="#" title="Aumentar Fonte"><i class="fa-solid fa-text-height"></i></a>
+            <a href="#" title="Contraste"><i class="fa-solid fa-circle-half-stroke"></i></a>
+            <a href="https://www.sp.gov.br/sp" title="Comunicar Erros"><i class="fa-solid fa-triangle-exclamation"></i></a>
         </nav>
     </section>
 
     <header id="cps-header">
         <div class="cps-header__container">
-            <a class="cps-header__logo" href="#">
-                <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/04/etec_santo_andre.png" alt="Logo Etec Júlio de Mesquita e Centro Paula Souza">
-            </a>
+
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                </a>
+                <a href="https://www.cps.sp.gov.br/" target="_blank">
+                    <img src="Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                </a>
+            </div>
             <form action="#" class="form-pesquisa" method="get" role="search">
                 <input class="campo-de-busca" name="s" placeholder="O que deseja localizar?" type="search">
                 <button class="busca-submit" type="submit"><i class="fas fa-search"></i></button>
@@ -48,50 +68,51 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="#">Institucional</a></li>
             <li><a href="#">Inst. Auxiliares</a></li>
-            <li><a href="#">Cursos</a></li>
+            <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/cursos">Cursos</a></li>
             <li><a href="#">Alunos</a></li>
             <li><a href="#">Professores</a></li>
             <li><a href="#">Biblioteca</a></li>
-            <li><a href="#">Contatos</a></li>
-            <li><a href="#">Agendamentos</a></li>
+            <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
+            <li><a href="login.html">Agendamentos</a></li>
         </ul>
     </nav>
-    
+
     <div id="breadcrumb">
         <div class="breadcrumb-container">
             <span><a href="#">Home</a> / Agendamento</span>
         </div>
     </div>
-    
+
     <main class="main-content">
         <h1 class="page-title">Professores</h1>
         <div class="title-underline"></div>
-        
+
         <div class="cards-container">
-            
+
             <a href="#" class="card">
                 <div class="card-icon">
                     <i class="fas fa-calendar-alt"></i>
                 </div>
                 <p class="card-text">Data, horário e laboratório</p>
             </a>
-            
+
             <a href="#" class="card">
                 <div class="card-icon">
                     <i class="fas fa-copy"></i>
                 </div>
                 <p class="card-text">Materiais e reagentes solicitados</p>
             </a>
-            
+
             <a href="#" class="card">
                 <div class="card-icon">
                     <i class="fas fa-box-open"></i>
                 </div>
                 <p class="card-text">Criar e reutilizar de "kits"</p>
             </a>
-            
+
         </div>
     </main>
 
 </body>
+
 </html>
