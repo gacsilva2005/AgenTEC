@@ -141,3 +141,43 @@ input:valid~label{
     font-size: 0.9rem;
     text-align: center;
 }
+
+
+
+
+@media (min-width: 375px) and (max-width: 767px) {
+    .logo-section img {
+        display: none;
+    }
+
+    .login-container {
+        display: block; 
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: transparent;
+        border-radius: 40px;
+        box-shadow: none;
+        overflow: visible;
+        padding: 0  
+    }
+
+    .form-section {
+        position: relative;
+        top: 50px;
+        right: auto;
+        margin: 50px auto;
+        flex: 1;
+        background-color: #b20000;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        color: white;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 45px;
+        width: 300px;
+    }
+}
