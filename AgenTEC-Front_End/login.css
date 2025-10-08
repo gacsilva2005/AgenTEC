@@ -1,0 +1,183 @@
+body {
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+    background-image: url('Assets/fundo-Login.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.login-container {
+    display: flex;
+    max-width: 900px;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 30px;   
+}
+
+.logo-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
+.logo-section img {
+    max-width: 50%;
+    height: auto;
+    margin: 15px 0;
+}
+
+.form-section {
+    flex: 1;
+    background-color: #b20000;
+    box-shadow: -8px 0 15px rgba(0, 0, 0, 0.399);
+    color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: -40px -30px -40px 0px;
+    border-top-left-radius: 45px;
+    border-bottom-left-radius: 45px;
+}
+
+.form-section h2 {
+    font-size: 2.5rem;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-link {
+    color: white;
+    text-decoration: none;
+    align-self: flex-end;
+    margin: 0px 10px 40px 0px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+label{
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 1em;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.input-group i {
+    position: absolute;
+    left: -30px; 
+    top: 50%;
+    transform: translateY(-50%); 
+    color: #ffffff; 
+    font-size: 23px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    border: solid 1px rgb(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0);
+    color: #ffffff;
+    outline: none;
+}
+
+input:focus~label,
+input:valid~label{
+    top: 0;
+    background-color: #b20000;
+    font-size: 0.7rem;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2c4887;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-4px);
+}
+
+.btn-login:active {
+    transform: translateY(2px);
+    background-color: #1e3565;
+}
+
+.forgot-password {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+
+
+
+@media (min-width: 375px) and (max-width: 767px) {
+    .logo-section img {
+        display: none;
+    }
+
+    .login-container {
+        display: block; 
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: transparent;
+        border-radius: 40px;
+        box-shadow: none;
+        overflow: visible;
+        padding: 0  
+    }
+
+    .form-section {
+        position: relative;
+        top: 50px;
+        right: auto;
+        margin: 50px auto;
+        flex: 1;
+        background-color: #b20000;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        color: white;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 45px;
+        width: 300px;
+    }
+}

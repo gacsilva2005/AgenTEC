@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professores - Agendamento</title>
+    
+    <link rel="stylesheet" href="reserva_horario.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/vanilla-calendar-js@2.1.1/build/vanilla-calendar.min.css" rel="stylesheet">
+
+    
+</head>
+
+<body>
+
+    <section class="govsp-topo">
+        <div class="govsp-portal">
+            <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
+                <img src="Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
+            </a>
+        </div>
+        <nav class="govsp-navbar">
+            <a href="https://www.flickr.com/photos/governosp/" target="_blank" title="Flickr"><i
+                    class="fa-brands fa-flickr"></i></a>
+            <a href="https://www.linkedin.com/company/governosp" target="_blank" title="LinkedIn"><i
+                    class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.tiktok.com/@governosp" target="_blank" title="TikTok"><i
+                    class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/governosp" target="_blank" title="YouTube"><i
+                    class="fa-brands fa-youtube"></i></a>
+            <a href="https://x.com/governosp" target="_blank" title="X (Twitter)"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/governosp" target="_blank" title="Instagram"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/governosp" target="_blank" title="Facebook"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <p class="govsp-text">/governosp</p>
+            <div class="separator"></div>
+            <a href="#" title="Aumentar Fonte"><i class="fa-solid fa-text-height"></i></a>
+            <a href="#" title="Contraste"><i class="fa-solid fa-circle-half-stroke"></i></a>
+            <a href="https://www.sp.gov.br/sp" title="Comunicar Erros"><i
+                    class="fa-solid fa-triangle-exclamation"></i></a>
+        </nav>
+    </section>
+
+    <header id="cps-header">
+        <div class="cps-header__container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                </a>
+                <a href="https://www.cps.sp.gov.br/" target="_blank">
+                    <img src="Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                </a>
+            </div>
+            <form action="#" class="form-pesquisa" method="get" role="search">
+                <input id="campo-busca" class="campo-de-busca" name="s" placeholder="O que deseja localizar?"
+                    type="search">
+                <button class="busca-submit" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+
+    <nav class="main-menu-container" role="navigation">
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            
+            <li class="dropdown">
+                <a >Institucional <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/conselho-de-escola/">Conselho de escola</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/planos/">Planos de curso</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/quem-somos/">Quem Somos</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Inst. Auxiliares <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/apm/">APM</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/gremio-estudantil/">Grêmio Estudantil</a></li>
+                </ul>
+            </li>
+
+            <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/cursos">Cursos</a></li>
+            
+            <li class="dropdown">
+                <a href="#">Alunos <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/acesso-ao-microsoft-teams/">Acesso ao Microsoft Teams</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/acesso-ao-nsa-sistema-academico/">Acesso ao NSA (Sistema Acadêmico)</a></li>
+                    <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2025/01/Calendario2025.pdf" target="_blank">Calendário Escolar</a></li>
+                    <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/09/Cartilha-COPAMS.pdf" target="_blank">Cartilha: Assédio moral, virtual e sexual</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/e-mail-institucional-sysmail-projeto-office-365/">E-mail institucional – Sysmail</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/estagio/">Estágio e Aprendizagem</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/horario-das-aulas/">Horário das aulas</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/passe-escolar/">Passe Escolar</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/primeiros-passos/">Primeiros Passos</a></li>
+                    <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/10/Regimento_Comum_Deliberacao_CEETEPS-85_2022-07-23.pdf" target="_blank">Regimento Comum</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/secretaria-academica/">Secretaria acadêmica</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/soe/">SOE</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Professores <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/08/copams.pdf" target="_blank">Cartilha: Assédio Moral, Virtual e Sexual</a></li>
+                    <li><a href="#">CPS – Cetec Capacitações</a></li>
+                    <li><a href="https://www.e-folha.prodesp.sp.gov.br/desc_dempagto/Entrada.asp?cliente=092" target="_blank">E-folha – Prodesp</a></li>
+                    <li><a href="https://nsa.cps.sp.gov.br/frmesenha.aspx" target="_blank">Esqueci a senha – NSA</a></li>
+                    <li><a href="https://recad.sp.gov.br/" target="_blank">Recadastramento Anual</a></li>
+                    <li><a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBa3k4ejZYOS1GWTRnUllDaFhEbzNSM1I4alRk&cid=3856F8FDA5CFBC4C&id=3856F8FDA5CFBC4C%21150&parId=3856F8FDA5CFBC4C%21129&o=OneUp" target="_blank">Regimento Disciplinar</a></li>
+                    <li><a href="https://sigurh.cps.sp.gov.br/" target="_blank">SIGURH – CPS</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Biblioteca <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="https://biblioteca-laura-dias-de-camargo-etec-julio-de-mesquita.webnode.page/" target="_blank">Nossa Biblioteca</a></li>
+                    <li><a href="https://biblio.cps.sp.gov.br/" target="_blank">BiblioCPS</a></li>
+                    <li><a href="https://onedrive.live.com/edit.aspx?resid=3856F8FDA5CFBC4C!507&embed=1&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3QvYy8zODU2RjhGREE1Q0ZCQzRDL1VBUk12TS1sX2ZoV0lJQTQtd0VBQUFBQUFGZTdYcGxkbEhqdUlMOA&redeemstatus=true&authkey=!AFe7XpldlHjuIL8" target="_blank">Lista de Gibis</a></li>
+                    <li><a href="https://onedrive.live.com/edit.aspx?resid=3856F8FDA5CFBC4C!508&embed=1&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3QvYy8zODU2RjhGREE1Q0ZCQzRDL1VBUk12TS1sX2ZoV0lJQTRfQUVBQUFBQUFHZ2plTVVvZHFqcl9NOA&redeemstatus=true&authkey=!AGgjeMUodqjr_M8" target="_blank">Lista de Mídias</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/lista-de-revistas/">Lista de Revistas</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/orientacoes-tcc/">Orientações para TCC</a></li>
+                    <li><a href="https://onedrive.live.com/embed?cid=3856F8FDA5CFBC4C&resid=3856F8FDA5CFBC4C%211231&authkey=AMI0IF64eKLGYCs&em=2" target="_blank">Estatística de uso do acervo da biblioteca</a></li>
+                    <li><a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBa3k4ejZYOS1GWTRnMnBBN0NyUG95S1dHZF94&cid=3856F8FDA5CFBC4C&id=3856F8FDA5CFBC4C%21490&parId=3856F8FDA5CFBC4C%21485&o=OneUp" target="_blank">Política de Desenvolvimento de Acervo</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
+            <li><a href="login.html">Agendamentos</a></li>
+        </ul>
+    </nav>
+
+    <div id="breadcrumb">
+        <div class="breadcrumb-container">
+            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/
+                <a href="professor.html">Professores</a>/ <a href="calendario.html">Calendario</a>/ Reservas</span>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="agendamento-container">
+            <h1 class="page-title">Professores</h1>
+            <div class="title-underline"></div>
+    
+            <div class="selection-grid">
+    
+                <div class="selection-column">
+                    <label for="date-input">Data</label>
+                    <div class="option-box" style="cursor: default; background-color: #f9f9f9;">21/12</div>
+                </div>
+    
+                <div class="selection-column">
+                    <label>Escolha o Período</label>
+                    <button class="option-box">Manhã</button>
+                    <button class="option-box">Tarde</button>
+                </div>
+    
+                <div class="selection-column">
+                    <label>Escolha o horário</label>
+                    <button class="option-box">1ª aula</button>
+                    <button class="option-box">2ª aula</button>
+                    <button class="option-box">3ª aula</button>
+                    <button class="option-box">4ª aula</button>
+                    <button class="option-box">5ª aula</button>
+                    <button class="option-box">6ª aula</button>
+                </div>
+    
+                <div class="selection-column">
+                    <label>Escolha qual laboratório</label>
+                    <button class="option-box">lab 1</button>
+                    <button class="option-box">lab 2</button>
+                    <button class="option-box">lab 3</button>
+                </div>
+    
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

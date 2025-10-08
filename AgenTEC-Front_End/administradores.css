@@ -1,0 +1,342 @@
+/* CSS Reset e Estilos Globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.govsp-topo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #e9e9e9;
+    border-bottom: 1px solid #ddd; 
+}
+
+.govsp-portal img {
+    height: 30px;  
+    width: auto;   
+    display: block; 
+}
+
+.govsp-portal {
+    background-color: #000; 
+    padding: 8px 25px 8px 15px; 
+    border-radius: 0 50px 50px 0; 
+}
+
+.govsp-topo .govsp-portal img {
+    height: 60px;
+}
+
+.govsp-topo .govsp-navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.govsp-navbar :hover {
+    transform: translate(0.2px, 0.2px);
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}       
+
+
+.govsp-topo .govsp-navbar img {
+    height: 23px;;
+}
+
+.govsp-topo .govsp-social {
+    display: inline-block;
+}
+
+#cps-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+.cps-header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cps-header__logo img {
+    max-height: 50px;
+}
+
+.form-pesquisa {
+    display: flex; 
+    align-items: center; 
+    border: 1px solid #ccc; 
+    border-radius: 50px; 
+    overflow: hidden; 
+    max-width: 400px; 
+    background-color: white;
+}
+
+.campo-de-busca {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    padding: 15px 50px; 
+    font-size: 1rem; 
+    background-color: transparent; 
+}
+
+.campo-de-busca::placeholder {
+    color: #999; 
+}
+
+.busca-submit {
+    border: none; 
+    border-left: 1px solid #ccc; 
+    background-color: transparent; 
+    padding: 10px 18px; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.busca-submit .fa-search {
+    color: #b20000; 
+    font-size: 1.1rem; 
+}
+
+.busca-submit:hover {
+    background-color: #f5f5f5; 
+}
+
+.main-menu-container {
+    background-color: #c41e15; 
+    padding: 0 20px;
+}
+.main-menu-container .menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main-menu-container .menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.main-menu-container .menu li a:hover {
+    background-color: #831c16ef; 
+}
+
+#breadcrumb {
+    background-color: #f8f9fa;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #6c757d;
+}
+.breadcrumb-container a {
+    color: #c41e15;
+    text-decoration: none;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.title-underline {
+    width: 310px;
+    height: 4px;
+    padding: 0.2px;
+    border-radius: 5px;
+    background-color: #c41e15;
+    margin-bottom: 40px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 230px;
+    padding: 40px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+    font-size: 4rem;
+    color: #008B8B; 
+    margin-bottom: 25px;
+}
+
+.card-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    min-height: 50px;
+}
+
+
+@media (max-width: 768px) {
+    .cps-header__container {
+        flex-direction: column;
+    }
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+    }
+}
+
+.logo-container {
+    display: flex;          
+    align-items: center;    
+    gap: 40 px;              
+}
+
+.logo-container img {
+    height: 80px; 
+    width: auto;     
+}
+
+.logo-cps {
+    height: 70px; 
+}
+
+/* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
+
+/* Contêiner principal da navegação */
+.govsp-navbar {
+    display: flex; /* Alinha todos os itens na horizontal */
+    align-items: center; /* Centraliza os itens verticalmente */
+    padding: 10px;
+}
+
+/* Estilo para todos os links (que servem como 'caixa' para os ícones) */
+.govsp-navbar a {
+    display: inline-flex; /* Permite centralizar o ícone dentro do link */
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Largura da caixa */
+    height: 28px; /* Altura da caixa */
+    background-color: #7c7c7c; /* Fundo cinza claro */
+    margin: -3px; /* Espaçamento entre os ícones */
+    border-radius: 3px; /* Bordas levemente arredondadas */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+/* Estilo para os ícones (<i>) dentro dos links */
+.govsp-navbar a i {
+    color: #ffffff; /* Cor cinza escura para o ícone */
+    font-size: 1.2rem; /* Tamanho do ícone */
+}
+
+/* Estilo para o texto "/governosp" */
+.govsp-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0px; /* Espaçamento antes e depois do texto */
+}
+
+/* Estilo para a linha separadora */
+.separator {
+    height: 25px; /* Altura da linha */
+    border-left: 1px solid #ccc; /* Cria a linha vertical */
+    margin: 0 10px; /* Espaçamento antes e depois da linha */
+}
+
+/* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
+
+/* Garante que o item principal do menu seja posicionado corretamente */
+.menu li.dropdown {
+    position: relative;
+}
+
+/* Esconde o submenu por padrão */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    /* margin-top: 10px; FOI REMOVIDO PARA CORRIGIR O PROBLEMA DE FECHAMENTO */
+    border-top: 3px solid #b20000;
+}
+
+/* Estilo dos links dentro do submenu */
+/* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
+.main-menu-container .menu .dropdown-content li a {
+    color: #555; /* Define a cor escura para o texto */
+    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
+    padding: 12px 16px;
+    text-align: left;
+    /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
+    background-color: transparent; 
+}
+
+/* Efeito de hover nos links do submenu */
+.main-menu-container .menu .dropdown-content li a:hover {
+    background-color: #f1f1f1;
+    color: #b20000;
+}
+
+/* Mostra o submenu quando o mouse passa por cima do item principal */
+.menu li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para a setinha */
+.dropdown a .fa-chevron-down {
+    font-size: 0.7em;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Gira a setinha para cima quando o menu está aberto */
+.menu li.dropdown:hover a .fa-chevron-down {
+    transform: rotate(180deg);
+}
