@@ -5,13 +5,17 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Configura o calendário
     const myCalendar = jsCalendar.new("#calendar", new Date(), {
-        language: "pt", // Importante para ter a formatação PT-BR
-        navigator: true, // Habilita a navegação com setas no cabeçalho
+        // CHAVE: Define o idioma como Português (pt).
+        language: "pt", 
+        // Habilita a navegação com setas no cabeçalho
+        navigator: true, 
         zeroFill: true,
         monthFormat: "month",
-        firstDayOfWeek: 0, // 0 = Domingo (Sunday)
+        // 0 = Domingo (para corresponder à sua estrutura S, M, T...)
+        firstDayOfWeek: 0, 
         showOtherMonths: false,
-        count: 1 // Garante que apenas 1 mês seja exibido
+        // Garante que apenas 1 mês seja exibido
+        count: 1 
     });
 
     // Evento ao clicar em uma data
@@ -21,10 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const mm = String(date.getMonth() + 1).padStart(2, '0');
         const dd = String(date.getDate()).padStart(2, '0');
         selectedDate = `${yyyy}-${mm}-${dd}`;
+        
+        // Habilita o botão e atualiza o texto com a data formatada
         confirmBtn.disabled = false;
         confirmBtn.textContent = `Confirmar ${dd}/${mm}/${yyyy}`;
     });
 
+    // Evento ao clicar no botão de confirmação
     confirmBtn.addEventListener('click', function() {
         if (selectedDate) {
             window.location.href = `reserva_horario.html?data=${selectedDate}`;

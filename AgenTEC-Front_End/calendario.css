@@ -85,655 +85,6 @@ html {
     flex-wrap: wrap;
 }
 
-/* SELETOR CORRIGIDO: de .cps-header__logo para .logo-container */
-.logo-container img {
-    max-height: 50px;
-    margin: 0 5px;
-}
-
-.form-pesquisa {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    overflow: hidden;
-    max-width: 400px;
-    background-color: white;
-}
-
-.campo-de-busca {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 15px 20px;
-    font-size: 1rem;
-    background-color: transparent;
-}
-
-.busca-submit {
-    border: none;
-    border-left: 1px solid #ccc;
-    background-color: transparent;
-    padding: 10px 18px;
-    cursor: pointer;
-}
-
-.busca-submit .fa-search {
-    color: #b20000;
-    font-size: 1.1rem;
-}
-
-/* --- Menu Principal --- */
-.main-menu-container {
-    background-color: #c41e15;
-    padding: 0 20px;
-}
-
-.main-menu-container .menu {
-    max-width: 1200px;
-    margin: 0 auto;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.main-menu-container .menu li a {
-    display: block;
-    padding: 15px 20px;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s;
-}
-
-.main-menu-container .menu li a:hover {
-    background-color: #831c16ef;
-}
-
-/* --- Menu Dropdown --- */
-.menu li.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    list-style: none;
-    padding: 0;
-    border-top: 3px solid #b20000;
-}
-
-.main-menu-container .menu .dropdown-content li a {
-    color: #555;
-    font-weight: normal;
-    padding: 12px 16px;
-    background-color: transparent;
-}
-
-.main-menu-container .menu .dropdown-content li a:hover {
-    background-color: #f1f1f1;
-    color: #b20000;
-}
-
-.menu li.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown a .fa-chevron-down {
-    font-size: 0.7em;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-}
-
-.menu li.dropdown:hover a .fa-chevron-down {
-    transform: rotate(180deg);
-}
-
-/* --- Breadcrumb --- */
-#breadcrumb {
-    background-color: #f8f9fa;
-    padding: 12px 20px;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.breadcrumb-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    font-size: 14px;
-    color: #6c757d;
-}
-
-.breadcrumb-container a {
-    color: #c41e15;
-    text-decoration: none;
-}
-
-body,
-html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;
-    color: #333;
-}
-
-/* --- Topo Governo SP --- */
-.govsp-topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #e9e9e9;
-    border-bottom: 1px solid #ddd;
-}
-
-.govsp-portal {
-    background-color: #000;
-    padding: 8px 25px 8px 15px;
-    border-radius: 0 50px 50px 0;
-}
-
-.govsp-portal img {
-    height: 60px;
-    width: auto;
-    display: block;
-}
-
-.govsp-navbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-right: 20px;
-}
-
-.govsp-navbar a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    background-color: #7c7c7c;
-    margin: -3px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-}
-
-.govsp-navbar a:hover {
-    transform: scale(1.1);
-}
-
-.govsp-navbar a i {
-    color: #ffffff;
-    font-size: 1.2rem;
-}
-
-.govsp-text {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0px;
-}
-
-.separator {
-    height: 25px;
-    border-left: 1px solid #ccc;
-    margin: 0 10px;
-}
-
-/* --- Cabeçalho CPS --- */
-#cps-header {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.cps-header__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.logo-container img {
-    max-height: 50px;
-    margin: 0 5px;
-}
-
-.form-pesquisa {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    overflow: hidden;
-    max-width: 400px;
-    background-color: white;
-}
-
-.campo-de-busca {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 15px 20px;
-    font-size: 1rem;
-    background-color: transparent;
-}
-
-.busca-submit {
-    border: none;
-    border-left: 1px solid #ccc;
-    background-color: transparent;
-    padding: 10px 18px;
-    cursor: pointer;
-}
-
-.busca-submit .fa-search {
-    color: #b20000;
-    font-size: 1.1rem;
-}
-
-/* --- Menu Principal --- */
-.main-menu-container {
-    background-color: #c41e15;
-    padding: 0 20px;
-}
-
-.main-menu-container .menu {
-    max-width: 1200px;
-    margin: 0 auto;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.main-menu-container .menu li a {
-    display: block;
-    padding: 15px 20px;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s;
-}
-
-.main-menu-container .menu li a:hover {
-    background-color: #831c16ef;
-}
-
-/* --- Menu Dropdown --- */
-.menu li.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    list-style: none;
-    padding: 0;
-    border-top: 3px solid #b20000;
-}
-
-.main-menu-container .menu .dropdown-content li a {
-    color: #555;
-    font-weight: normal;
-    padding: 12px 16px;
-    background-color: transparent;
-}
-
-.main-menu-container .menu .dropdown-content li a:hover {
-    background-color: #f1f1f1;
-    color: #b20000;
-}
-
-.menu li.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown a .fa-chevron-down {
-    font-size: 0.7em;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-}
-
-.menu li.dropdown:hover a .fa-chevron-down {
-    transform: rotate(180deg);
-}
-
-/* --- Breadcrumb --- */
-#breadcrumb {
-    background-color: #f8f9fa;
-    padding: 12px 20px;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.breadcrumb-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    font-size: 14px;
-    color: #6c757d;
-}
-
-.breadcrumb-container a {
-    color: #c41e15;
-    text-decoration: none;
-}
-
-body,
-html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;
-    color: #333;
-}
-
-/* --- Topo Governo SP --- */
-.govsp-topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #e9e9e9;
-    border-bottom: 1px solid #ddd;
-}
-
-.govsp-portal {
-    background-color: #000;
-    padding: 8px 25px 8px 15px;
-    border-radius: 0 50px 50px 0;
-}
-
-.govsp-portal img {
-    height: 60px;
-    width: auto;
-    display: block;
-}
-
-.govsp-navbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-right: 20px;
-}
-
-.govsp-navbar a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    background-color: #7c7c7c;
-    margin: -3px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-}
-
-.govsp-navbar a:hover {
-    transform: scale(1.1);
-}
-
-.govsp-navbar a i {
-    color: #ffffff;
-    font-size: 1.2rem;
-}
-
-.govsp-text {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0px;
-}
-
-.separator {
-    height: 25px;
-    border-left: 1px solid #ccc;
-    margin: 0 10px;
-}
-
-/* --- Cabeçalho CPS --- */
-#cps-header {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.cps-header__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.logo-container img {
-    max-height: 50px;
-    margin: 0 5px;
-}
-
-.form-pesquisa {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    overflow: hidden;
-    max-width: 400px;
-    background-color: white;
-}
-
-.campo-de-busca {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 15px 20px;
-    font-size: 1rem;
-    background-color: transparent;
-}
-
-.busca-submit {
-    border: none;
-    border-left: 1px solid #ccc;
-    background-color: transparent;
-    padding: 10px 18px;
-    cursor: pointer;
-}
-
-.busca-submit .fa-search {
-    color: #b20000;
-    font-size: 1.1rem;
-}
-
-/* --- Menu Principal --- */
-.main-menu-container {
-    background-color: #c41e15;
-    padding: 0 20px;
-}
-
-.main-menu-container .menu {
-    max-width: 1200px;
-    margin: 0 auto;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.main-menu-container .menu li a {
-    display: block;
-    padding: 15px 20px;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s;
-}
-
-.main-menu-container .menu li a:hover {
-    background-color: #831c16ef;
-}
-
-/* --- Menu Dropdown --- */
-.menu li.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    list-style: none;
-    padding: 0;
-    border-top: 3px solid #b20000;
-}
-
-.main-menu-container .menu .dropdown-content li a {
-    color: #555;
-    font-weight: normal;
-    padding: 12px 16px;
-    background-color: transparent;
-}
-
-.main-menu-container .menu .dropdown-content li a:hover {
-    background-color: #f1f1f1;
-    color: #b20000;
-}
-
-.menu li.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown a .fa-chevron-down {
-    font-size: 0.7em;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-}
-
-.menu li.dropdown:hover a .fa-chevron-down {
-    transform: rotate(180deg);
-}
-
-/* --- Breadcrumb --- */
-#breadcrumb {
-    background-color: #f8f9fa;
-    padding: 12px 20px;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.breadcrumb-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    font-size: 14px;
-    color: #6c757d;
-}
-
-.breadcrumb-container a {
-    color: #c41e15;
-    text-decoration: none;
-}
-
-body,
-html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;
-    color: #333;
-}
-
-/* --- Topo Governo SP --- */
-.govsp-topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #e9e9e9;
-    border-bottom: 1px solid #ddd;
-}
-
-.govsp-portal {
-    background-color: #000;
-    padding: 8px 25px 8px 15px;
-    border-radius: 0 50px 50px 0;
-}
-
-.govsp-portal img {
-    height: 60px;
-    width: auto;
-    display: block;
-}
-
-.govsp-navbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-right: 20px;
-}
-
-.govsp-navbar a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    background-color: #7c7c7c;
-    margin: -3px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-}
-
-.govsp-navbar a:hover {
-    transform: scale(1.1);
-}
-
-.govsp-navbar a i {
-    color: #ffffff;
-    font-size: 1.2rem;
-}
-
-.govsp-text {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0px;
-}
-
-.separator {
-    height: 25px;
-    border-left: 1px solid #ccc;
-    margin: 0 10px;
-}
-
-/* --- Cabeçalho CPS --- */
-#cps-header {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.cps-header__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
 .logo-container img {
     max-height: 50px;
     margin: 0 5px;
@@ -875,9 +226,8 @@ html {
 
 
 .calendar-wrapper {
-    /* AJUSTE FINAL: Diminuição de altura */
     width: 600px; 
-    height: 400px; /* Reduzida de 420px para 400px */
+    height: 400px; 
     max-height: 550px;
     background: #fff;
     border-radius: 16px;
@@ -895,6 +245,7 @@ html {
     padding: 0;
     min-height: unset;
     padding-top: 5px; 
+    margin: 0;
 }
 
 
@@ -910,25 +261,32 @@ html {
     flex-grow: 1; 
     margin-top: 5px; 
     text-align: center; 
+    margin: 0; 
+    padding: 0 20px; 
+    box-sizing: border-box;
 }
 
+/* CHAVE: Aumenta o tamanho da fonte dos dias da semana */
 .jsCalendar-weekdays > * {
-    font-size: 1rem; 
+    font-size: 1.15rem; /* Aumentado de 1rem */
     font-weight: bold;
-    padding: 2px 0; 
+    padding: 5px 0; 
     text-align: center;
+    display: block; 
 }
 
 
 .jsCalendar-table td {
     width: 14.28%; 
-    padding: 1px 0; /* Ajuste fino do padding */
-    height: 25px; /* Reduzida a altura mínima */
+    padding: 10px 0; 
+    height: 25px;
+    text-align: center; 
     vertical-align: middle; 
 }
 
+/* CHAVE: Aumenta o tamanho da fonte do nome do mês */
 .jsCalendar-header {
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Aumentado de 1.2rem */
     font-weight: 500;
     text-align: center !important; 
     padding-bottom: 5px; 
@@ -939,10 +297,12 @@ html {
 }
 
 
+/* CHAVE: Aumenta o tamanho da fonte dos números da data */
 .jsCalendar-grid > * {
-    font-size: 1.1rem; 
+    font-size: 1.3rem; /* Aumentado de 1.2rem */
+    margin: 0 auto; 
     display: block; 
-    margin: 0 auto;
+    text-align: center; 
 }
 
 .vanilla-calendar-day_selected, .jsCalendar-day_selected {
@@ -950,7 +310,26 @@ html {
     color: #fff !important;
     border-radius: 50% !important;
 }
+.jsCalendar-header {
+    font-size: 1.4rem; 
+    font-weight: 500;
+    text-align: center !important; 
+    padding-bottom: 5px; 
+    /* Adicione estas propriedades caso o header esteja usando flex ou grid para garantir a visibilidade */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Garante que o header use toda a largura */
+}
 
+/* CHAVE 2: Torna as setas clicáveis e visíveis */
+.jsCalendar-nav-left, .jsCalendar-nav-right {
+    font-size: 1.5rem !important; 
+    color: #b20000; /* Use a cor da Etec para destacar */
+    cursor: pointer;
+    /* Adiciona um pequeno padding para que sejam fáceis de clicar */
+    padding: 0 10px; 
+}
 
 /* --- ESTILOS DO BOTÃO DE CONFIRMAÇÃO --- */
 
@@ -964,8 +343,9 @@ html {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s, opacity 0.3s;
-    width: 90%; 
+    width: 90%;
     text-align: center;
+    margin-bottom: 5px; 
 }
 
 .confirm-button:hover:not(:disabled) {
