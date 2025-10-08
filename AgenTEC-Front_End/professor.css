@@ -345,3 +345,35 @@ body, html {
 @media (min-width: 375px) and (max-width: 767px) {
     
 }
+
+/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
+
+.notification {
+    position: fixed; /* Fica fixo na tela mesmo com scroll */
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; /* Verde para sucesso */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+    z-index: 1000; /* Garante que fique por cima de outros elementos */
+
+    /* Animação */
+    transform: translateX(120%); /* Começa fora da tela */
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Classe que será adicionada via JS para mostrar a notificação */
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification i {
+    font-size: 1.4rem;
+}

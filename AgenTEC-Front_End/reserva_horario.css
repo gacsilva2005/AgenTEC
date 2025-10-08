@@ -332,35 +332,124 @@ html {
     max-width: 220px;        /* LARGURA MÁXIMA adicionada para controlar o tamanho */
 }
 
-/* Estilo para os rótulos (Ex: "Escolha a data") */
+
+/* Títulos das colunas (as labels) */
 .selection-column label {
-    font-weight: 100;
-    color: white;
-    margin-bottom: 10px;
-    background-color: #c41e15;
-    border: 1px solid #c41e15;
-    border-bottom: none;
-    padding: 8px;
-    width: 100%; /* Faz o label ocupar 100% da largura da coluna */
+    display: block;
+    background-color: #c41e15; /* Alterado de vermelho para branco */
+    color: #ffffff;           /* Alterado de branco para preto */
+    border: 1px solid #ddd;   /* Adicionada uma borda cinza claro */
+    padding: 12px;
+    border-radius: 5px;
     text-align: center;
-    box-sizing: border-box;
+    font-weight: 500;
+    margin-bottom: 8px;
+    width: 200px;
 }
 
 .option-box {
-    background-color: #ffffff;
-    border: 1px solid #ccc;
+    background-color: #707070; /* Alterado de branco para preto */
+    color: #000000;           /* Alterado de preto para branco */
+    border: 1px solid #000000; /* Borda cinza escura para combinar */
+    border-radius: 5px;
     padding: 12px;
-    width: 100%; /* Faz o botão ocupar 100% da largura da coluna */
-    text-align: center;
-    margin-top: 8px; /* Espaço entre os botões */
-    cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.2s;
-    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    display: block;
 }
 
-/* Efeito ao passar o mouse */
-.option-box:hover {
+
+/* --- Radio Buttons estilizados como caixas --- */
+.selection-column input[type="radio"] {
+    display: none;
+}
+input[type="radio"] + label.option-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 12px;
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    box-sizing: border-box;
+    color: black;
+}
+
+/* Hover */
+input[type="radio"] + label.option-box:hover {
     background-color: #ededed;
-    color: rgb(0, 0, 0);
+}
+
+/* Quando selecionado */
+
+.selection-column input[type="radio"]:checked + .option-box {
+    background-color: #b9b9b9;    /* Fundo cinza escuro para diferenciar */
+    border: 2px solid #ffffff;    /* Borda branca bem visível para destacar a seleção */
+    font-weight: 600;
+    padding: 11px; /* Ajuste no padding para compensar a borda mais grossa */
+}
+
+/* --- ESTILO DOS BOTÕES DE AÇÃO (VOLTAR E CONFIRMAR) --- */
+
+.action-buttons-container {
+    display: flex;              /* Ativa o Flexbox */
+    justify-content: space-between; /* Alinha um item no início e outro no fim */
+    align-items: center;        /* Alinha verticalmente */
+    max-width: 1200px;          /* Mantém o alinhamento com o resto do conteúdo */
+    margin: 50px auto 0;        /* Espaçamento superior e centralização */
+    padding: 40px 20px;         /* Espaçamento interno */
+    border-top: 1px solid #eee; /* Linha de separação */
+}
+
+/* Estilo do Botão de Voltar (pode manter o que você já tinha) */
+.back-button {
+    display: inline-block;
+    background-color: #7f7f80;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-button:hover {
+    background-color: #5a5a5a;
+    transform: translateY(-2px);
+}
+
+/* Estilo do Botão de Confirmar */
+.confirm-button {
+    display: inline-block;
+    background-color: #cf5b5b; /* Cor principal de confirmação */
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s, transform 0.2s;
+}
+
+.confirm-button:hover:not([disabled]) {
+    background-color: #7e3c3c;
+    transform: translateY(-2px);
+}
+
+/* CHAVE: Estilo do botão QUANDO estiver desativado */
+.confirm-button[disabled] {
+    background-color: #b8b8b8;
+    cursor: not-allowed;     /* Mostra o ícone de "proibido" */
+    opacity: 0.6;            /* Deixa o botão mais apagado */
+    pointer-events: none;    /* Impede que qualquer evento de clique funcione */
 }

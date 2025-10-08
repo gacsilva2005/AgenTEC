@@ -286,7 +286,7 @@ html {
 
 /* CHAVE: Aumenta o tamanho da fonte do nome do mês */
 .jsCalendar-header {
-    font-size: 1.4rem; /* Aumentado de 1.2rem */
+    font-size: 1.4rem; 
     font-weight: 500;
     text-align: center !important; 
     padding-bottom: 5px; 
@@ -299,7 +299,7 @@ html {
 
 /* CHAVE: Aumenta o tamanho da fonte dos números da data */
 .jsCalendar-grid > * {
-    font-size: 1.3rem; /* Aumentado de 1.2rem */
+    font-size: 1.3rem; 
     margin: 0 auto; 
     display: block; 
     text-align: center; 
