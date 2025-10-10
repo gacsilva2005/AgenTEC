@@ -220,100 +220,86 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px 20px; 
+    padding: 30px 20px;
     background-color: #f8f9fa;
 }
 
-
 .calendar-wrapper {
-    width: 600px; 
-    height: 400px; 
-    max-height: 550px;
+    width: 100%;
+    max-width: 600px;
+    height: 350px; /* Aumentei a altura para a distribuição ficar melhor */
     background: #fff;
     border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    box-sizing: border-box;
+    /* CHAVE: Transforma o wrapper em um contêiner flex vertical */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 15px 20px; 
-    box-sizing: border-box;
 }
 
 #calendar {
     width: 100%;
-    flex-grow: 1; 
-    padding: 0;
-    min-height: unset;
-    padding-top: 5px; 
-    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
-
 
 .jsCalendar {
     width: 100%;
     height: 100%;
-    display: flex; 
+    /* CHAVE: Também precisa ser um contêiner flex para gerenciar o header e a tabela */
+    display: flex;
     flex-direction: column;
 }
 
+/* ---- CORREÇÃO DO GRID DOS DIAS ---- */
+
+/* Garante que as linhas do calendário se alinhem igualmente */
 .jsCalendar-table {
     width: 100%;
-    flex-grow: 1; 
-    margin-top: 5px; 
-    text-align: center; 
-    margin: 0; 
-    padding: 0 20px; 
-    box-sizing: border-box;
+    height: 100%;
+    border-collapse: collapse;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr); /* até 6 linhas por mês */
 }
 
-/* CHAVE: Aumenta o tamanho da fonte dos dias da semana */
-.jsCalendar-weekdays > * {
-    font-size: 1.15rem; /* Aumentado de 1rem */
-    font-weight: bold;
-    padding: 5px 0; 
-    text-align: center;
-    display: block; 
+/* Cada linha de semana */
+.jsCalendar-table tr {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 dias por semana */
+    width: 100%;
 }
 
-
+/* Cada célula (dia) */
 .jsCalendar-table td {
-    width: 14.28%; 
-    padding: 10px 0; 
-    height: 25px;
-    text-align: center; 
-    vertical-align: middle; 
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1; /* deixa os dias quadrados */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-/* CHAVE: Aumenta o tamanho da fonte do nome do mês */
+/* Efeito ao passar o mouse */
+.jsCalendar-table td:hover {
+    background-color: #f8f8f8;
+    transform: scale(1.05);
+}
+
+/* Dia selecionado */
+.jsCalendar-day_selected {
+    background-color: #b20000 !important;
+    color: white !important;
+    border-radius: 8px;
+}
+
 .jsCalendar-header {
     font-size: 1.4rem; 
     font-weight: 500;
-    text-align: center !important; 
-    padding-bottom: 5px; 
-}
-
-.jsCalendar-nav-left, .jsCalendar-nav-right {
-    font-size: 1.5rem !important; 
-}
-
-
-/* CHAVE: Aumenta o tamanho da fonte dos números da data */
-.jsCalendar-grid > * {
-    font-size: 1.3rem; 
-    margin: 0 auto; 
-    display: block; 
     text-align: center; 
-}
-
-.vanilla-calendar-day_selected, .jsCalendar-day_selected {
-    background-color: #b20000 !important; 
-    color: #fff !important;
-    border-radius: 50% !important;
-}
-.jsCalendar-header {
-    font-size: 1.4rem; 
-    font-weight: 500;
-    text-align: center !important; 
     padding-bottom: 5px; 
     /* Adicione estas propriedades caso o header esteja usando flex ou grid para garantir a visibilidade */
     display: flex;
@@ -324,7 +310,7 @@ html {
 
 /* CHAVE 2: Torna as setas clicáveis e visíveis */
 .jsCalendar-nav-left, .jsCalendar-nav-right {
-    font-size: 1.5rem !important; 
+    font-size: 1.5rem; 
     color: #b20000; /* Use a cor da Etec para destacar */
     cursor: pointer;
     /* Adiciona um pequeno padding para que sejam fáceis de clicar */

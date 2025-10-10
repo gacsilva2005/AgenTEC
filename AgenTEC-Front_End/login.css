@@ -18,7 +18,7 @@ body {
     max-width: 900px;
     background-color: white;
     border-radius: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     overflow: hidden;
     padding: 30px;   
 }
@@ -103,12 +103,19 @@ label{
     outline: none;
 }
 
-input:focus~label,
-input:valid~label{
+input::-ms-reveal,
+input::-ms-clear {
+    filter: invert(100%); 
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label{
     top: 0;
     background-color: #b20000;
     font-size: 0.7rem;
+    padding: 0 4px;
 }
+
 
 .btn-login {
     width: 100%;
