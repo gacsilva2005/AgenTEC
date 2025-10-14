@@ -394,6 +394,11 @@ body, html {
     border-radius: 50px;
     font-size: 1rem;
     outline: none;
+    transition: all 0.3s;
+}
+
+.item-search-input:hover{
+    border-color: #b20000;
 }
 
 .search-icon {
@@ -425,6 +430,11 @@ body, html {
     border-radius: 8px;
     padding: 20px;
     background-color: #fdfdfd;
+    transition: all 0.3s;
+}
+
+.item-card:hover{
+    border-color: #b20000;
 }
 
 .item-card-title {
@@ -479,6 +489,11 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #a0a0a0;
 }
 
 .quantity-value {
@@ -499,6 +514,7 @@ body, html {
     border-radius: 5px;
     margin: 0 0 10px 0;
     font-size: 0.95rem;
+    display: none;
 }
 
 /* Container dos botões de ação na parte inferior */
@@ -523,12 +539,17 @@ body, html {
 }
 
 .action-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+}
+
+.action-btn:active {
+    transform: translateY(2px);
 }
 
 .btn-primary {
     background-color: #5d5d5d;
     color: white;
+    box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
 }
 .btn-primary:hover {
     background-color: #373737;
@@ -537,6 +558,7 @@ body, html {
 .btn-secondary {
     background-color: #5d5d5d;
      color: white;
+     box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
 }
 .btn-secondary:hover {
     background-color: #373737;
@@ -545,6 +567,7 @@ body, html {
 .btn-tertiary {
     background-color: #5d5d5d;
      color: white;
+     box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
 }
 .btn-tertiary:hover {
     background-color: #373737;
