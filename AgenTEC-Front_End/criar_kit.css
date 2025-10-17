@@ -1,0 +1,95 @@
+
+.kit-main-view .page-title {
+    display: none; 
+}
+
+.kit-manager-container {
+    display: flex; 
+    position: relative;
+}
+.kit-list-container {
+    display: flex;
+    flex-direction: column; 
+    width: 250px; 
+    padding-right: 30px;
+    gap: 15px; 
+}
+
+.kit-btn {
+    background-color: #c41e15; 
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    text-align: center; 
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    width: 100%; 
+}
+
+.kit-btn:hover {
+    background-color: #831c16ef;
+    transform: scale(1.02);
+}
+
+.kit-btn.active {
+    background-color: #e28e7e; 
+    color: #333;
+    font-weight: 700;
+    transform: none; 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.kit-active-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; 
+}
+.kit-active-block .kit-btn.active {
+    margin-bottom: 10px; 
+}
+.kit-actions-bar {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px;
+}
+
+.action-btn {
+    color: white;
+    border: none;
+    padding: 10px 18px; 
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-grow: 1; 
+    text-align: center;
+}
+
+.access-btn { background-color: #c41e15; }
+.access-btn:hover { background-color: #a01811; }
+
+.rename-btn { background-color: #c41e15; }
+.rename-btn:hover { background-color: #a01811; }
+
+.delete-btn { background-color: #c41e15; } 
+.delete-btn:hover { background-color: #a01811; }
+.vertical-separator {
+    position: absolute;
+    left: 278px; 
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #ddd;
+    z-index: 1; 
+    margin-top: 50px; 
+}
+
+.kit-main-view {
+    flex-grow: 1; 
+    padding-left: 10px;
+}
