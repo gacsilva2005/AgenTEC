@@ -206,8 +206,8 @@
 
         </div>
 
-        <div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-<div vw-access-button="" class="active" style="">
+<div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+<div vw-access-button="" class="active">
         <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
         <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
     </div>
@@ -220,7 +220,7 @@
 <script>
 new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
-
+</section>
     </main>
     <script>
 
@@ -242,22 +242,14 @@ new window.VLibras.Widget('https://vlibras.gov.br/app');
 
         });
 
-        window.addEventListener('DOMContentLoaded', () => {
-
-            // Pega os parâmetros da URL
+        window.addEventListener('DOMContentLoaded', () => { 
             const params = new URLSearchParams(window.location.search);
-
-            // Verifica se o parâmetro 'reserva' tem o valor 'sucesso'
             if (params.get('reserva') === 'sucesso') {
                 const notification = document.getElementById('notification');
-
-                // 1. Mostra a notificação adicionando a classe 'show'
                 notification.classList.add('show');
-
-                // 2. Esconde a notificação automaticamente após 5 segundos
                 setTimeout(() => {
                     notification.classList.remove('show');
-                }, 5000); // 5000 milissegundos = 5 segundos
+                }, 5000); 
             }
         });
     </script>
