@@ -4,16 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professores - Agendamento</title>
-    
-    <link rel="stylesheet" href="calendario.css">
+    <title>Técnicos - Agendamento</title>
+
+    <link rel="stylesheet" href="../CSS/tecnicos.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- CSS do vanilla-js-calendar -->
-    <link href="https://cdn.jsdelivr.net/npm/vanilla-js-calendar@1.1.0/dist/js-calendar.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
@@ -21,15 +20,15 @@
     <section class="govsp-topo">
         <div class="govsp-portal">
             <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
-                <img src="Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
+                <img src="../Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
             </a>
         </div>
         <nav class="govsp-navbar">
-            <a href="https://www.flickr.com/photos/governosp/" target="_blank" title="Flickr"><i
-                    class="fa-brands fa-flickr"></i></a>
+            <a href="https://www.flickr.com/photos/governosp/" target="_blank" title="Flickr"><i 
+                class="fa-brands fa-flickr"></i></a>
             <a href="https://www.linkedin.com/company/governosp" target="_blank" title="LinkedIn"><i
                     class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.tiktok.com/@governosp" target="_blank" title="TikTok"><i
+            <a href="https://www.tiktok.com/@governosp" target="_blank" title="TikTok"><i 
                     class="fa-brands fa-tiktok"></i></a>
             <a href="https://www.youtube.com/governosp" target="_blank" title="YouTube"><i
                     class="fa-brands fa-youtube"></i></a>
@@ -39,28 +38,31 @@
                     class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com/governosp" target="_blank" title="Facebook"><i
                     class="fa-brands fa-facebook-f"></i></a>
+            
+            
             <p class="govsp-text">/governosp</p>
+
             <div class="separator"></div>
+
             <a href="#" title="Aumentar Fonte"><i class="fa-solid fa-text-height"></i></a>
             <a href="#" title="Contraste"><i class="fa-solid fa-circle-half-stroke"></i></a>
-            <a href="https://www.sp.gov.br/sp" title="Comunicar Erros"><i
-                    class="fa-solid fa-triangle-exclamation"></i></a>
+            <a href="https://www.sp.gov.br/sp" title="Comunicar Erros"><i class="fa-solid fa-triangle-exclamation"></i></a>
         </nav>
     </section>
 
     <header id="cps-header">
         <div class="cps-header__container">
+
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                    <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                 </a>
                 <a href="https://www.cps.sp.gov.br/" target="_blank">
-                    <img src="Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                    <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
                 </a>
             </div>
             <form action="#" class="form-pesquisa" method="get" role="search">
-                <input id="campo-busca" class="campo-de-busca" name="s" placeholder="O que deseja localizar?"
-                    type="search">
+                <input id="campo-busca" class="campo-de-busca" name="s" placeholder="O que deseja localizar?" type="search">
                 <button class="busca-submit" type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
@@ -141,26 +143,48 @@
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="professor.html"> Professores </a>/ Calendario</span>
+            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ Técnicos</span>
         </div>
     </div>
 
     <main class="main-content">
-        <div class="calendar-wrapper">
-    <div id="calendar"></div>
-    <button id="confirmDateBtn" class="confirm-button" disabled>
-        Confirmar Data
-    </button>
+        <h1 class="page-title">Técnicos</h1>
+        <div class="title-underline"></div>
+
+        <div class="cards-container">
+
+        <a href="#" class="card">
+            <div class="card-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <p class="card-text">Agendamentos futuros e seus kits associados</p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="card-icon">
+                <i class="fas fa-copy"></i>
+            </div>
+            <p class="card-text">Lista de materiais por experimento</p>
+        </a>
+
+        <a href="#" class="card">
+            <div class="card-icon">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <p class="card-text">Ações de controle</p>
+        </a>
+
+        <a href="administradores.html" class="card">
+            <div class="card-icon">
+                <i class="fas fa-wrench"></i>
+            </div>
+            <p class="card-text">Corrigir estoque</p>
+        </a>
+
+    </div>
+    
     </main>
- <script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.5/source/jsCalendar.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/simple-jscalendar@1.4.5/source/jsCalendar.lang.pt.js"></script>
-
-    <script src="calendario.js"></script>
-    
-</div>
-
-<div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+    <div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
 <div vw-access-button="" class="active">
         <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
         <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
@@ -174,6 +198,26 @@
 <script>
 new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
+    <script>
+        
+    document.addEventListener('DOMContentLoaded', function() {
+        const campoBusca = document.getElementById('campo-busca');
+        const cardsContainer = document.querySelector('.cards-container');
+        const todosOsCards = cardsContainer.querySelectorAll('.card');
+        campoBusca.addEventListener('input', function() {
+            const termoBuscado = campoBusca.value.toLowerCase();
+            todosOsCards.forEach(function(card) {
+                const textoDoCard = card.textContent.toLowerCase();
+                if (textoDoCard.includes(termoBuscado)) {
+                    card.style.display = 'flex'; 
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
 
+    });
+    </script>
 </body>
+
 </html>

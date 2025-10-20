@@ -6,15 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professores - Agendamento</title>
 
-    <link rel="stylesheet" href="reserva_horario.css">
+    <link rel="stylesheet" href="../CSS/vidrarias.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/vanilla-calendar-js@2.1.1/build/vanilla-calendar.min.css" rel="stylesheet">
 
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">7
 </head>
 
 <body>
@@ -22,7 +20,7 @@
     <section class="govsp-topo">
         <div class="govsp-portal">
             <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
-                <img src="Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
+                <img src="../Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
             </a>
         </div>
         <nav class="govsp-navbar">
@@ -40,8 +38,12 @@
                     class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com/governosp" target="_blank" title="Facebook"><i
                     class="fa-brands fa-facebook-f"></i></a>
+
+
             <p class="govsp-text">/governosp</p>
+
             <div class="separator"></div>
+
             <a href="#" title="Aumentar Fonte"><i class="fa-solid fa-text-height"></i></a>
             <a href="#" title="Contraste"><i class="fa-solid fa-circle-half-stroke"></i></a>
             <a href="https://www.sp.gov.br/sp" title="Comunicar Erros"><i
@@ -51,12 +53,13 @@
 
     <header id="cps-header">
         <div class="cps-header__container">
+
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                    <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                 </a>
                 <a href="https://www.cps.sp.gov.br/" target="_blank">
-                    <img src="Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                    <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
                 </a>
             </div>
             <form action="#" class="form-pesquisa" method="get" role="search">
@@ -161,129 +164,171 @@
 
             <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
             <li><a href="login.html">Agendamentos</a></li>
+
+            <div id="search-mobile__btn" style="display:none;">
+                <i class="fas fa-search"></i>
+              </div>
+              <div id="menu-mobile__btn">
+                <i class="fas fa-bars"></i>
+              </div>
         </ul>
     </nav>
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/
-                <a href="professor.html">Professores</a>/ <a href="calendario.html">Calendario</a>/ Reservas</span>
+            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ 
+                <a href="professor.html"> Professores </a> / <a href="MR.html"> Materiais e reagentes </a> / Vidrarias</span>
         </div>
     </div>
 
     <main class="main-content">
-        <div class="agendamento-container">
-            <h1 class="page-title">Professores</h1>
-            <div class="title-underline"></div>
+        <h1 class="page-title">Lista de Vidrarias</h1>
+        <div class="title-underline"></div>
 
-            <div class="selection-grid">
+        <div class="search-container">
+            <input type="search" id="item-search" placeholder="Pesquisar vidraria..." class="item-search-input">
+            <i class="fas fa-search search-icon"></i>
+        </div>
 
-                <div class="selection-column">
-                    <label for="date-input">Data</label>
-                    <div class="option-box" style="cursor: default; background-color: #f9f9f9;">21/12</div>
+        <div class="selection-grid">
+            <div class="item-cards-container">
+                <div class="item-card">
+                    <h3 class="item-card-title">Tipo do Item</h3>
+                    <div class="item-row">
+                        <span>Item 1</span>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="quantity-value">0</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                        <span class="item-unit"> unidades</span>
+                    </div>
+                    <div class="item-row">
+                        <span>Item 2</span>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="quantity-value">0</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                        <span class="item-unit"> unidades</span>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <h3 class="item-card-title">Tipo do Item</h3>
+                    <div class="item-row">
+                        <span>Item 1</span>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="quantity-value">0</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                        <span class="item-unit"> unidades</span>
+                    </div>
+                     <div class="item-row">
+                        <span>Item 2</span>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="quantity-value">0</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                        <span class="item-unit"> unidades</span>
+                    </div>
+                </div>
                 </div>
 
-                <div class="selection-column">
-                    <label>Escolha o Período</label>
-
-                    <input type="radio" id="manha" name="periodo" value="manha">
-                    <label for="manha" class="option-box">Manhã</label>
-
-                    <input type="radio" id="tarde" name="periodo" value="tarde">
-                    <label for="tarde" class="option-box">Tarde</label>
-                </div>
-
-
-
-                <div class="selection-column">
-                    <label>Escolha o horário</label>
-
-                    <input type="radio" id="aula1" name="horario" value="1">
-                    <label for="aula1" class="option-box">1ª aula</label>
-
-                    <input type="radio" id="aula2" name="horario" value="2">
-                    <label for="aula2" class="option-box">2ª aula</label>
-
-                    <input type="radio" id="aula3" name="horario" value="3">
-                    <label for="aula3" class="option-box">3ª aula</label>
-
-                    <input type="radio" id="aula4" name="horario" value="4">
-                    <label for="aula4" class="option-box">4ª aula</label>
-
-                    <input type="radio" id="aula5" name="horario" value="5">
-                    <label for="aula5" class="option-box">5ª aula</label>
-
-                    <input type="radio" id="aula6" name="horario" value="6">
-                    <label for="aula6" class="option-box">6ª aula</label>
-                </div>
-
-                <div class="selection-column">
-                    <label>Escolha qual laboratório</label>
-
-                    <input type="radio" id="lab1" name="laboratorio" value="lab1">
-                    <label for="lab1" class="option-box">Laboratório 1</label>
-
-                    <input type="radio" id="lab2" name="laboratorio" value="lab2">
-                    <label for="lab2" class="option-box">Laboratório 2</label>
-
-                    <input type="radio" id="lab3" name="laboratorio" value="lab3">
-                    <label for="lab3" class="option-box">Laboratório 3</label>
-                </div>
-
+            <div class="selected-items-card">
+                <h3 class="item-card-title">Vidrarias selecionadas</h3>
+                <div class="selected-items-list">
+                    <p> itens 1</p>
+                    <p> itens 2</p>
+                    </div>
             </div>
         </div>
+
+        <div class="action-buttons-container">
+            <a href="MR.html"><button class="action-btn btn-primary">voltar</button></a>
+            <button class="action-btn btn-primary">Confirmar e ver lista de materiais</button>
+            <button class="action-btn btn-primary">escolher reagentes</button>
+        </div>
+
     </main>
-
-    <div class="action-buttons-container">
-        <button type="button" class="back-button" onclick="history.back()">
-            &larr; Voltar
-        </button>
-
-        <button type="button" id="confirmButton" class="confirm-button" disabled>
-            Confirmar
-        </button>
-    </div>
-
     <script>
-    // Espera o documento carregar para garantir que todos os elementos existam
-    document.addEventListener('DOMContentLoaded', () => {
-
-        const confirmButton = document.getElementById('confirmButton');
-        // Define os 'names' de todos os grupos de radio que são obrigatórios
-        const requiredGroups = ['periodo', 'horario', 'laboratorio'];
-
-        function checkSelections() {
-            // Verifica se CADA um dos grupos obrigatórios tem uma opção marcada
-            const allGroupsSelected = requiredGroups.every(groupName => {
-                // Procura por um input CHECADO com o 'name' do grupo atual
-                return document.querySelector(`input[name="${groupName}"]:checked`) !== null;
+        // Executa o código quando o conteúdo da página estiver totalmente carregado
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- LÓGICA ANTIGA PARA A BUSCA GERAL (MANTIDA) ---
+            const campoBuscaGeral = document.getElementById('campo-busca');
+            // Verifica se o campo de busca geral e o container de cards existem
+            if (campoBuscaGeral) {
+                const cardsContainer = document.querySelector('.cards-container');
+                if(cardsContainer){
+                    const todosOsCards = cardsContainer.querySelectorAll('.card');
+                    campoBuscaGeral.addEventListener('input', function () {
+                        const termoBuscado = campoBuscaGeral.value.toLowerCase();
+                        todosOsCards.forEach(function (card) {
+                            const textoDoCard = card.textContent.toLowerCase();
+                            if (textoDoCard.includes(termoBuscado)) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                }
+            }
+    
+            // --- NOVA LÓGICA PARA OS BOTÕES DE QUANTIDADE ---
+    
+            // 1. Seleciona todos os 'seletores de quantidade' da página
+            const quantitySelectors = document.querySelectorAll('.quantity-selector');
+    
+            // 2. Itera sobre cada um dos seletores encontrados
+            quantitySelectors.forEach(selector => {
+                // 3. Dentro de cada seletor, encontra os elementos específicos: o botão de menos, o de mais e o campo de valor
+                const minusButton = selector.querySelector('.minus-btn');
+                const plusButton = selector.querySelector('.plus-btn');
+                const quantitySpan = selector.querySelector('.quantity-value');
+    
+                // 4. Adiciona um "ouvinte" de evento de clique no botão de MAIS
+                plusButton.addEventListener('click', () => {
+                    // Converte o texto do span para um número inteiro
+                    let currentValue = parseInt(quantitySpan.textContent);
+                    // Incrementa o valor
+                    currentValue++;
+                    // Atualiza o texto do span com o novo valor
+                    quantitySpan.textContent = currentValue;
+                });
+    
+                // 5. Adiciona um "ouvinte" de evento de clique no botão de MENOS
+                minusButton.addEventListener('click', () => {
+                    // Converte o texto do span para um número inteiro
+                    let currentValue = parseInt(quantitySpan.textContent);
+                    // Verifica se o valor é maior que 0 para não ficar negativo
+                    if (currentValue > 0) {
+                        // Decrementa o valor
+                        currentValue--;
+                        // Atualiza o texto do span com o novo valor
+                        quantitySpan.textContent = currentValue;
+                    }
+                });
             });
-
-            // Se 'allGroupsSelected' for true, o botão é habilitado (disabled = false)
-            // Se for false, o botão é desabilitado (disabled = true)
-            confirmButton.disabled = !allGroupsSelected;
-        }
-
-        // Adiciona um "ouvinte" para QUALQUER mudança nos radio buttons da página
-        const allRadioInputs = document.querySelectorAll('input[type="radio"]');
-        allRadioInputs.forEach(radio => {
-            radio.addEventListener('change', checkSelections);
         });
-
-        // Adiciona o evento de clique para o botão de confirmar (para navegar)
-        confirmButton.addEventListener('click', () => {
-            // Esta função só roda se o botão não estiver desabilitado
-            window.location.href = 'professor.html?reserva=sucesso'; 
+    
+        // --- LÓGICA ANTIGA PARA NOTIFICAÇÃO (MANTIDA) ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('reserva') === 'sucesso') {
+                const notification = document.getElementById('notification');
+                if (notification) {
+                    notification.classList.add('show');
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 5000);
+                }
+            }
         });
-
-        // Roda a verificação uma vez quando a página carrega para garantir
-        // que o botão comece desabilitado.
-        checkSelections();
-
-    });
-</script>
-
-<div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+    </script>
+    <div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
 <div vw-access-button="" class="active">
         <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
         <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
@@ -297,7 +342,6 @@
 <script>
 new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
-
 </body>
 
 </html>

@@ -4,15 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Kits - Agendamento</title> 
-    <link rel="stylesheet" href="professor.css">
-    <link rel="stylesheet" href="criar_kits.css"> 
+    <title>Professores - Agendamento</title>
+
+    <link rel="stylesheet" href="../CSS/reserva_horario.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/vanilla-calendar-js@2.1.1/build/vanilla-calendar.min.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -20,7 +22,7 @@
     <section class="govsp-topo">
         <div class="govsp-portal">
             <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
-                <img src="Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
+                <img src="../Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
             </a>
         </div>
         <nav class="govsp-navbar">
@@ -38,12 +40,8 @@
                     class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com/governosp" target="_blank" title="Facebook"><i
                     class="fa-brands fa-facebook-f"></i></a>
-
-
             <p class="govsp-text">/governosp</p>
-
             <div class="separator"></div>
-
             <a href="#" title="Aumentar Fonte"><i class="fa-solid fa-text-height"></i></a>
             <a href="#" title="Contraste"><i class="fa-solid fa-circle-half-stroke"></i></a>
             <a href="https://www.sp.gov.br/sp" title="Comunicar Erros"><i
@@ -51,19 +49,14 @@
         </nav>
     </section>
 
-    <div id="notification" class="notification">
-        <i class="fas fa-check-circle"></i> Kit criado com sucesso!
-    </div>
-
     <header id="cps-header">
         <div class="cps-header__container">
-
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                    <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                 </a>
                 <a href="https://www.cps.sp.gov.br/" target="_blank">
-                    <img src="Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                    <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
                 </a>
             </div>
             <form action="#" class="form-pesquisa" method="get" role="search">
@@ -173,93 +166,138 @@
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> / <a href="login.html">Agendamentos</a> / <a
-                    href="professor.html">Professores</a> / Criar Kits</span>
+            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/
+                <a href="professor.html">Professores</a>/ <a href="calendario.html">Calendario</a>/ Reservas</span>
         </div>
     </div>
 
     <main class="main-content">
-        <h1 class="page-title">Criação de Kits</h1>
-        <div class="title-underline"></div>
+        <div class="agendamento-container">
+            <h1 class="page-title">Professores</h1>
+            <div class="title-underline"></div>
 
-        <div class="kit-manager-container">
+            <div class="selection-grid">
 
-          <div class="kit-list-container">
-                
-                <div class="kit-active-block">
-                    <button class="kit-btn active">Kit 1</button>
-
-                    <div class="kit-actions-bar">
-                        <button class="action-btn access-btn">Acessar</button>
-                        <button class="action-btn rename-btn">Renomear</button>
-                        <button class="action-btn delete-btn">Deletar</button>
-                    </div>
+                <div class="selection-column">
+                    <label for="date-input">Data</label>
+                    <div class="option-box" style="cursor: default; background-color: #f9f9f9;">21/12</div>
                 </div>
 
-                <button class="kit-btn">Kit 2</button>
-                <button class="kit-btn">Kit 3</button>
-                <button class="kit-btn">Kit 4</button>
-                <button class="kit-btn">Kit 5</button>
-                <button class="kit-btn">Kit 6</button>
-            </div>
+                <div class="selection-column">
+                    <label>Escolha o Período</label>
 
-            <div class="vertical-separator"></div>
-            
-            <div class="kit-main-view">
-                </div>
-            
-        </div>
+                    <input type="radio" id="manha" name="periodo" value="manha">
+                    <label for="manha" class="option-box">Manhã</label>
 
-        <div vw="" class="enabled"
-            style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-            <div vw-access-button="" class="active">
-                <img class="vp-access-button" data-src="assets/access_icon.svg"
-                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                    src="https://vlibras.gov.br/app//assets/access_icon.svg">
-                <img class="vp-pop-up" data-src="assets/access_popup.jpg"
-                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                    src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-            </div>
-            <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-                <div vp="">
+                    <input type="radio" id="tarde" name="periodo" value="tarde">
+                    <label for="tarde" class="option-box">Tarde</label>
                 </div>
+
+
+
+                <div class="selection-column">
+                    <label>Escolha o horário</label>
+
+                    <input type="radio" id="aula1" name="horario" value="1">
+                    <label for="aula1" class="option-box">1ª aula</label>
+
+                    <input type="radio" id="aula2" name="horario" value="2">
+                    <label for="aula2" class="option-box">2ª aula</label>
+
+                    <input type="radio" id="aula3" name="horario" value="3">
+                    <label for="aula3" class="option-box">3ª aula</label>
+
+                    <input type="radio" id="aula4" name="horario" value="4">
+                    <label for="aula4" class="option-box">4ª aula</label>
+
+                    <input type="radio" id="aula5" name="horario" value="5">
+                    <label for="aula5" class="option-box">5ª aula</label>
+
+                    <input type="radio" id="aula6" name="horario" value="6">
+                    <label for="aula6" class="option-box">6ª aula</label>
+                </div>
+
+                <div class="selection-column">
+                    <label>Escolha qual laboratório</label>
+
+                    <input type="radio" id="lab1" name="laboratorio" value="lab1">
+                    <label for="lab1" class="option-box">Laboratório 1</label>
+
+                    <input type="radio" id="lab2" name="laboratorio" value="lab2">
+                    <label for="lab2" class="option-box">Laboratório 2</label>
+
+                    <input type="radio" id="lab3" name="laboratorio" value="lab3">
+                    <label for="lab3" class="option-box">Laboratório 3</label>
+                </div>
+
             </div>
         </div>
     </main>
 
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
-    <script>
-        
-        window.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('kit') === 'sucesso') { 
-                const notification = document.getElementById('notification');
-                notification.innerHTML = '<i class="fas fa-check-circle"></i> Kit criado com sucesso!';
-                notification.classList.add('show');
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 5000);
-            }
-        });
-    </script>
+    <div class="action-buttons-container">
+        <button type="button" class="back-button" onclick="history.back()">
+            &larr; Voltar
+        </button>
+
+        <button type="button" id="confirmButton" class="confirm-button" disabled>
+            Confirmar
+        </button>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const kitButtons = document.querySelectorAll('.kit-btn');
-            kitButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    kitButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                });
+    // Espera o documento carregar para garantir que todos os elementos existam
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const confirmButton = document.getElementById('confirmButton');
+        // Define os 'names' de todos os grupos de radio que são obrigatórios
+        const requiredGroups = ['periodo', 'horario', 'laboratorio'];
+
+        function checkSelections() {
+            // Verifica se CADA um dos grupos obrigatórios tem uma opção marcada
+            const allGroupsSelected = requiredGroups.every(groupName => {
+                // Procura por um input CHECADO com o 'name' do grupo atual
+                return document.querySelector(`input[name="${groupName}"]:checked`) !== null;
             });
+
+            // Se 'allGroupsSelected' for true, o botão é habilitado (disabled = false)
+            // Se for false, o botão é desabilitado (disabled = true)
+            confirmButton.disabled = !allGroupsSelected;
+        }
+
+        // Adiciona um "ouvinte" para QUALQUER mudança nos radio buttons da página
+        const allRadioInputs = document.querySelectorAll('input[type="radio"]');
+        allRadioInputs.forEach(radio => {
+            radio.addEventListener('change', checkSelections);
         });
-    </script>
+
+        // Adiciona o evento de clique para o botão de confirmar (para navegar)
+        confirmButton.addEventListener('click', () => {
+            // Esta função só roda se o botão não estiver desabilitado
+            window.location.href = 'professor.html?reserva=sucesso'; 
+        });
+
+        // Roda a verificação uma vez quando a página carrega para garantir
+        // que o botão comece desabilitado.
+        checkSelections();
+
+    });
+</script>
+
+<div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+<div vw-access-button="" class="active">
+        <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
+        <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+    </div>
+<div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+        <div vp="">
+            </div>
+    </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
 </body>
-</html>
-</body>
+
 </html>

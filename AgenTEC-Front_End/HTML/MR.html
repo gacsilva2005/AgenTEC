@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professores - Agendamento</title>
 
-    <link rel="stylesheet" href="vidrarias.css">
+    <link rel="stylesheet" href="../CSS/MR.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">7
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <section class="govsp-topo">
         <div class="govsp-portal">
             <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
-                <img src="Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
+                <img src="../Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
             </a>
         </div>
         <nav class="govsp-navbar">
@@ -51,15 +51,19 @@
         </nav>
     </section>
 
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i> Reserva efetuada com sucesso!
+    </div>
+
     <header id="cps-header">
         <div class="cps-header__container">
 
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                    <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                 </a>
                 <a href="https://www.cps.sp.gov.br/" target="_blank">
-                    <img src="Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                    <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
                 </a>
             </div>
             <form action="#" class="form-pesquisa" method="get" role="search">
@@ -164,167 +168,88 @@
 
             <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
             <li><a href="login.html">Agendamentos</a></li>
-
-            <div id="search-mobile__btn" style="display:none;">
-                <i class="fas fa-search"></i>
-              </div>
-              <div id="menu-mobile__btn">
-                <i class="fas fa-bars"></i>
-              </div>
         </ul>
     </nav>
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ 
-                <a href="professor.html"> Professores </a> / <a href="MR.html"> Materiais e reagentes </a> / Vidrarias</span>
+            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="professor.html">Professor </a>
+                / Materiais e reagentes</span>
         </div>
     </div>
 
     <main class="main-content">
-        <h1 class="page-title">Lista de Vidrarias</h1>
+        <h1 class="page-title">Professores</h1>
         <div class="title-underline"></div>
 
-        <div class="search-container">
-            <input type="search" id="item-search" placeholder="Pesquisar vidraria..." class="item-search-input">
-            <i class="fas fa-search search-icon"></i>
-        </div>
+        <div class="cards-container">
 
-        <div class="selection-grid">
-            <div class="item-cards-container">
-                <div class="item-card">
-                    <h3 class="item-card-title">Tipo do Item</h3>
-                    <div class="item-row">
-                        <span>Item 1</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
-                    <div class="item-row">
-                        <span>Item 2</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
+            <a href="vidraria.html" class="card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-flask"></i>
                 </div>
-                <div class="item-card">
-                    <h3 class="item-card-title">Tipo do Item</h3>
-                    <div class="item-row">
-                        <span>Item 1</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
-                     <div class="item-row">
-                        <span>Item 2</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
+                <p class="card-text">Vidrarias</p>
+            </a>
+
+            <a href="MR.html" class="card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-vial"></i>
                 </div>
+                <p class="card-text">Reagentes</p>
+            </a>
+
+            <a href="tecnicos.html" class="card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-briefcase"></i>
                 </div>
+                <p class="card-text">Kits criados</p>
+            </a>
 
-            <div class="selected-items-card">
-                <h3 class="item-card-title">Vidrarias selecionadas</h3>
-                <div class="selected-items-list">
-                    <p> itens 1</p>
-                    <p> itens 2</p>
-                    </div>
-            </div>
+            <a href="tecnicos.html" class="card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <p class="card-text">Ver listas de itens</p>
+            </a>
+
         </div>
-
-        <div class="action-buttons-container">
-            <a href="MR.html"><button class="action-btn btn-primary">voltar</button></a>
-            <button class="action-btn btn-primary">Confirmar e ver lista de materiais</button>
-            <button class="action-btn btn-primary">escolher reagentes</button>
-        </div>
-
     </main>
     <script>
-        // Executa o código quando o conteúdo da página estiver totalmente carregado
+
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LÓGICA ANTIGA PARA A BUSCA GERAL (MANTIDA) ---
-            const campoBuscaGeral = document.getElementById('campo-busca');
-            // Verifica se o campo de busca geral e o container de cards existem
-            if (campoBuscaGeral) {
-                const cardsContainer = document.querySelector('.cards-container');
-                if(cardsContainer){
-                    const todosOsCards = cardsContainer.querySelectorAll('.card');
-                    campoBuscaGeral.addEventListener('input', function () {
-                        const termoBuscado = campoBuscaGeral.value.toLowerCase();
-                        todosOsCards.forEach(function (card) {
-                            const textoDoCard = card.textContent.toLowerCase();
-                            if (textoDoCard.includes(termoBuscado)) {
-                                card.style.display = 'flex';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                }
-            }
-    
-            // --- NOVA LÓGICA PARA OS BOTÕES DE QUANTIDADE ---
-    
-            // 1. Seleciona todos os 'seletores de quantidade' da página
-            const quantitySelectors = document.querySelectorAll('.quantity-selector');
-    
-            // 2. Itera sobre cada um dos seletores encontrados
-            quantitySelectors.forEach(selector => {
-                // 3. Dentro de cada seletor, encontra os elementos específicos: o botão de menos, o de mais e o campo de valor
-                const minusButton = selector.querySelector('.minus-btn');
-                const plusButton = selector.querySelector('.plus-btn');
-                const quantitySpan = selector.querySelector('.quantity-value');
-    
-                // 4. Adiciona um "ouvinte" de evento de clique no botão de MAIS
-                plusButton.addEventListener('click', () => {
-                    // Converte o texto do span para um número inteiro
-                    let currentValue = parseInt(quantitySpan.textContent);
-                    // Incrementa o valor
-                    currentValue++;
-                    // Atualiza o texto do span com o novo valor
-                    quantitySpan.textContent = currentValue;
-                });
-    
-                // 5. Adiciona um "ouvinte" de evento de clique no botão de MENOS
-                minusButton.addEventListener('click', () => {
-                    // Converte o texto do span para um número inteiro
-                    let currentValue = parseInt(quantitySpan.textContent);
-                    // Verifica se o valor é maior que 0 para não ficar negativo
-                    if (currentValue > 0) {
-                        // Decrementa o valor
-                        currentValue--;
-                        // Atualiza o texto do span com o novo valor
-                        quantitySpan.textContent = currentValue;
+            const campoBusca = document.getElementById('campo-busca');
+            const cardsContainer = document.querySelector('.cards-container');
+            const todosOsCards = cardsContainer.querySelectorAll('.card');
+            campoBusca.addEventListener('input', function () {
+                const termoBuscado = campoBusca.value.toLowerCase();
+                todosOsCards.forEach(function (card) {
+                    const textoDoCard = card.textContent.toLowerCase();
+                    if (textoDoCard.includes(termoBuscado)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
                     }
                 });
             });
+
         });
-    
-        // --- LÓGICA ANTIGA PARA NOTIFICAÇÃO (MANTIDA) ---
+
         window.addEventListener('DOMContentLoaded', () => {
+
+            // Pega os parâmetros da URL
             const params = new URLSearchParams(window.location.search);
+
+            // Verifica se o parâmetro 'reserva' tem o valor 'sucesso'
             if (params.get('reserva') === 'sucesso') {
                 const notification = document.getElementById('notification');
-                if (notification) {
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 5000);
-                }
+
+                // 1. Mostra a notificação adicionando a classe 'show'
+                notification.classList.add('show');
+
+                // 2. Esconde a notificação automaticamente após 5 segundos
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000); // 5000 milissegundos = 5 segundos
             }
         });
     </script>
@@ -342,6 +267,7 @@
 <script>
 new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
+
 </body>
 
 </html>
