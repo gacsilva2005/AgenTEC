@@ -168,36 +168,39 @@
                 </a>/ Calendario</span>
         </div>
     </div>
-
-    <div class="container">
-        <div class="calendar-container">
-            <div class="calendar-header">
-                <div class="nav-buttons">
-                    <button class="nav-btn" id="prev-month"><i class="fas fa-chevron-left"></i></button>
-                    <button class="nav-btn" id="next-month"><i class="fas fa-chevron-right"></i></button>
+    <div class="main-content">
+        <div class="container">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <div class="nav-buttons">
+                        <button class="nav-btn" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                        <button class="nav-btn" id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="month-year" id="month-year">Setembro 2025</div>
                 </div>
-                <div class="month-year" id="month-year">Setembro 2025</div>
-            </div>
-            <div class="weekdays">
-                <div class="weekday">Seg</div>
-                <div class="weekday">Ter</div>
-                <div class="weekday">Qua</div>
-                <div class="weekday">Qui</div>
-                <div class="weekday">Sex</div>
-                <div class="weekday">Sab</div>
-                <div class="weekday">Dom</div>
-            </div>
-
-            <div class="days" id="days"></div>
-            <div class="calendar-footer">
-                <button class="today-btn" id="today-btn"><i class="fas fa-calendar-day"></i> Hoje </button>
-                <div class="event-indicator">
-                    <i class="fas fa-circle" style="color: var(--acent); font-size: 0.6rem;"></i>
-                    <span>Possui eventos</span>
+                <div class="weekdays">
+                    <div class="weekday">Seg</div>
+                    <div class="weekday">Ter</div>
+                    <div class="weekday">Qua</div>
+                    <div class="weekday">Qui</div>
+                    <div class="weekday">Sex</div>
+                    <div class="weekday">Sab</div>
+                    <div class="weekday">Dom</div>
                 </div>
-            </div>
 
-            <!--Painel com os eventos do lado
+                <div class="days" id="days"></div>
+                <div class="calendar-footer">
+                    <button class="today-btn" id="today-btn"><i class="fas fa-calendar-day"></i> Hoje </button>
+                    <div class="event-indicator">
+                        <i class="fas fa-circle" style="color: var(--acent); font-size: 0.6rem;"></i>
+                        <span>Possui eventos</span>
+                    </div>
+                </div>
+
+               
+            
+
+            </div>
             <div class="event-panel" id="event-panel">
                 <div class="event-header">
                     <div class="event-date" id="event-date">Escolha uma data</div>
@@ -206,10 +209,10 @@
                 <div class="event-list" id="event-list">
                     <div class="no-events">Escolha uma data com evento para vê-lo aqui.</div>
                 </div>
-            </div> -->
-
+            </div>
         </div>
-
+        <script src="../../calendario.js"></script>
+    </div>
     <div vw="" class="enabled"
         style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
         <div vw-access-button="" class="active">
@@ -229,7 +232,6 @@
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
-
 </body>
 
 </html>
