@@ -253,3 +253,49 @@
     background-color: #7a0000;
     transform: scale(1.05);
 }
+
+/* Popup grande com lista */
+.popup.large {
+    width: 420px;
+    max-height: 500px;
+    overflow-y: auto;
+    text-align: left;
+    position: relative;
+}
+
+.materials-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    background: #fafafa;
+}
+
+.materials-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.materials-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #a00000;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.popup-close:hover {
+    color: #7a0000;
+}

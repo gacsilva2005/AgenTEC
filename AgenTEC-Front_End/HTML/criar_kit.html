@@ -368,53 +368,46 @@
             });
         }
 
-        function openHistoryPopup() {
-            const overlay = document.createElement('div');
-            overlay.classList.add('popup-overlay');
-            overlay.innerHTML = `
-                <div class="popup">
-                    <button class="close-btn" id="closeHistory">X</button> <h3>Últimos materiais utilizados</h3>
-                    <p style="font-size: 0.9rem; color:#444; margin-bottom: 15px;">
-                        (aqui futuramente podem aparecer os materiais mais usados)
-                    </p>
+        // Localize a função openHistoryPopup() e substitua por:
+function openHistoryPopup() {
+    const overlay = document.createElement('div');
+    overlay.classList.add('popup-overlay');
+    // REMOVIDO o botão de fechar com a classe 'popup-close'
+    overlay.innerHTML = `
+        <div class="popup large">
+            <h3>Último pedido</h3>
+            <div class="materials-list">
+                <ul>
+                    <li>Cabo Vinicius Tipo A</li>
+                    <li>Placa do Uno</li>
+                    <li>Cabo Vinicius Tipo B</li>
+                    <li>Cabo Vinicius Tipo C</li>
+                    <li>Cabo Vinicius Tipo D</li>
+                    <li>Cabo Vinicius Tipo gay</li>
+                    <li>Cabo Vinicius Tipo gay</li>
+                    <li>Cabo Vinicius Tipo gay</li>
+                    <li>Cabo Vinicius Tipo gay</li>
+                    <li>Cabo Vinicius Tipo gay</li>
+                    <li>Cabo Vinicius Tipo gay</li>
+                
+                </ul>
+            </div>
+            <div> 
+                <button id="salvarComo">Salvar como</button>
+                <button id="voltar">Voltar</button> 
+            </div>
+        </div>
+    `;
 
-                    <div class="historico-lista">
-                        <p class="historico-titulo">Reagentes</p>
-                        <ul>
-                            <li>Ácido Sulfúrico (250ml)</li>
-                            <li>Cloreto de Sódio (100g)</li>
-                        </ul>
-                        <p class="historico-titulo">Vidrarias</p>
-                        <ul>
-                            <li>Béquer 500ml (2 un)</li>
-                            <li>Pipeta volumétrica 10ml (1 un)</li>
-                        </ul>
-                    </div>
-                    
-                    <button id="salvarComo">Salvar como</button>
-                </div>
-            `;
-            document.body.appendChild(overlay);
-            overlay.style.display = 'flex';
+    overlay.querySelector('#voltar').addEventListener('click', () => overlay.remove());
+    document.body.appendChild(overlay);
+    overlay.style.display = 'flex';
+    overlay.querySelector('#salvarComo').addEventListener('click', () => {
+    overlay.remove();
 
-            const salvarComoBtn = overlay.querySelector('#salvarComo');
-            salvarComoBtn.addEventListener('click', () => {
-                overlay.remove();
-                openSalvarComoPopup();
-            });
-
-            // Lógica para fechar o popup (X ou clique no overlay)
-            const closeBtn = overlay.querySelector('#closeHistory');
-            closeBtn.addEventListener('click', () => {
-                overlay.remove();
-            });
-
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) {
-                    overlay.remove();
-                }
-            });
-        }
+        openSalvarComoPopup();
+    });
+}
 
         function openSalvarComoPopup() {
             const overlay = document.createElement('div');
@@ -468,6 +461,7 @@
         }
     });
 
+
     window.addEventListener('DOMContentLoaded', () => { 
         const params = new URLSearchParams(window.location.search);
         if (params.get('reserva') === 'sucesso') {
@@ -480,5 +474,18 @@
     });
 
     </script>
+
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+<script>
+
+    window.onload = function() {
+        if (window.VLibras) {
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        } else {
+            console.error('Erro: Objeto VLibras não encontrado. O script não foi carregado corretamente.');
+        }
+    };
+</script>
 </body>
 </html>
