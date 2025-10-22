@@ -1,104 +1,66 @@
 .kit-main-view .page-title {
-    display: none; 
-}
-
-.kit-manager-container {
-    display: flex; 
-    position: relative;
-}
-.kit-list-container {
-    display: flex;
-    flex-direction: column; 
-    width: 250px; 
-    padding-right: 30px;
-    gap: 15px; /* Espaço entre cada kit (incluindo a barra de ações, se visível) */
-}
-
-/* Contêiner para cada kit. Garante o layout vertical do botão e ações. */
-.kit-item-block {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Espaço entre o botão Kit X e sua barra de ações (quando visível) */
-}
-
-/* Por padrão, esconde a barra de ações */
-.kit-item-block .kit-actions-bar {
     display: none;
 }
 
-/* Mostra a barra de ações SOMENTE QUANDO o bloco pai está ativo */
-.kit-item-block.kit-active-block .kit-actions-bar {
-    display: flex; 
+.kit-manager-container {
+    display: flex;
+    position: relative;
 }
 
+.kit-list-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 250px;
+    padding-right: 30px;
+    gap: 15px !important;
+    align-items: center; /* centraliza os botões */
+}
+
+/* --- BOTÕES DE KIT --- */
 .kit-btn {
-    background-color: #c41e15; 
+    background-color: #a00000; /* vermelho protótipo */
     color: white;
     border: none;
-    padding: 12px 20px;
-    text-align: center; 
+    padding: 14px 0;
     font-size: 1.1rem;
     font-weight: 500;
-    border-radius: 50px; 
+    border-radius: 999px; /* formato circular */
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-    width: 100%; 
+    transition: all 0.2s ease;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .kit-btn:hover {
-    background-color: #831c16ef;
-    transform: scale(1.02);
+    background-color: #7a0000;
+    transform: scale(1.03);
 }
 
 .kit-btn.active {
-    background-color: #e28e7e; 
-    color: #333;
+    background-color: #d23b3b;
+    color: #fff;
     font-weight: 700;
-    transform: none; 
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transform: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
-/* A barra de ações em si tem display flex para alinhar os botões internos horizontalmente */
-.kit-actions-bar {
-    display: flex;
-    justify-content: space-between; 
-    gap: 10px;
-}
-
-.action-btn {
-    color: white;
-    border: none;
-    padding: 10px 18px; 
-    font-size: 0.95rem;
-    font-weight: 500;
-    border-radius: 50px; 
-    cursor: pointer;
-    transition: background-color 0.2s;
-    flex-grow: 1; 
-    text-align: center;
-}
-
-.access-btn { background-color: #c41e15; }
-.access-btn:hover { background-color: #a01811; }
-
-.rename-btn { background-color: #c41e15; }
-.rename-btn:hover { background-color: #a01811; }
-
-.delete-btn { background-color: #c41e15; } 
-.delete-btn:hover { background-color: #a01811; }
-
+/* --- DIVISOR VERTICAL --- */
 .vertical-separator {
     position: absolute;
-    left: 278px; 
+    left: 278px;
     top: 0;
     bottom: 0;
     width: 2px;
     background-color: #ddd;
-    z-index: 1; 
-    margin-top: 50px; 
+    z-index: 1;
+    margin-top: 50px;
 }
 
+/* --- ÁREA PRINCIPAL --- */
 .kit-main-view {
-    flex-grow: 1; 
+    flex-grow: 1;
     padding-left: 10px;
 }
