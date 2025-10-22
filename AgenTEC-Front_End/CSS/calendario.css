@@ -436,6 +436,47 @@ html {
     box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
 }
 
+.schedule-btn{
+    display: none;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.schedule-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
+}
+
+.delete-btn{
+    display: none;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.delete-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
 .event-indicator{
     font-size: 0.rem;
     color: var(--primary);
