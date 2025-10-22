@@ -186,8 +186,8 @@
 
           <div class="kit-list-container">
                 
-                <div class="kit-active-block">
-                    <button class="kit-btn active">Kit 1</button>
+                <div class="kit-item-block"> 
+                    <button class="kit-btn">Kit 1</button>
 
                     <div class="kit-actions-bar">
                         <button class="action-btn access-btn">Acessar</button>
@@ -196,17 +196,57 @@
                     </div>
                 </div>
 
-                <button class="kit-btn">Kit 2</button>
-                <button class="kit-btn">Kit 3</button>
-                <button class="kit-btn">Kit 4</button>
-                <button class="kit-btn">Kit 5</button>
-                <button class="kit-btn">Kit 6</button>
+                <div class="kit-item-block">
+                    <button class="kit-btn">Kit 2</button>
+                     <div class="kit-actions-bar">
+                        <button class="action-btn access-btn">Acessar</button>
+                        <button class="action-btn rename-btn">Renomear</button>
+                        <button class="action-btn delete-btn">Deletar</button>
+                    </div>
+                </div>
+
+                <div class="kit-item-block">
+                    <button class="kit-btn">Kit 3</button>
+                     <div class="kit-actions-bar">
+                        <button class="action-btn access-btn">Acessar</button>
+                        <button class="action-btn rename-btn">Renomear</button>
+                        <button class="action-btn delete-btn">Deletar</button>
+                    </div>
+                </div>
+
+                <div class="kit-item-block">
+                    <button class="kit-btn">Kit 4</button>
+                     <div class="kit-actions-bar">
+                        <button class="action-btn access-btn">Acessar</button>
+                        <button class="action-btn rename-btn">Renomear</button>
+                        <button class="action-btn delete-btn">Deletar</button>
+                    </div>
+                </div>
+
+                <div class="kit-item-block">
+                    <button class="kit-btn">Kit 5</button>
+                     <div class="kit-actions-bar">
+                        <button class="action-btn access-btn">Acessar</button>
+                        <button class="action-btn rename-btn">Renomear</button>
+                        <button class="action-btn delete-btn">Deletar</button>
+                    </div>
+                </div>
+
+                <div class="kit-item-block">
+                    <button class="kit-btn">Kit 6</button>
+                     <div class="kit-actions-bar">
+                        <button class="action-btn access-btn">Acessar</button>
+                        <button class="action-btn rename-btn">Renomear</button>
+                        <button class="action-btn delete-btn">Deletar</button>
+                    </div>
+                </div>
+
             </div>
 
             <div class="vertical-separator"></div>
             
             <div class="kit-main-view">
-                </div>
+            </div>
             
         </div>
 
@@ -249,17 +289,29 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const kitButtons = document.querySelectorAll('.kit-btn');
+
             kitButtons.forEach(button => {
                 button.addEventListener('click', function() {
+                    // 1. Limpa todas as classes 'kit-active-block' (oculta todas as barras de ações)
+                    document.querySelectorAll('.kit-item-block').forEach(block => {
+                        block.classList.remove('kit-active-block');
+                    });
+                    
+                    // 2. Limpa a classe 'active' de todos os botões (remove o destaque)
                     kitButtons.forEach(btn => {
                         btn.classList.remove('active');
                     });
+                    
+                    // 3. Adiciona 'active' ao botão clicado
                     this.classList.add('active');
+                    
+                    // 4. Adiciona 'kit-active-block' ao pai do botão clicado para MOSTRAR a barra de ações
+                    this.closest('.kit-item-block').classList.add('kit-active-block');
                 });
             });
+            
+            // REMOVIDO: A simulação de clique inicial para que a página inicie sem kits ativos.
         });
     </script>
-</body>
-</html>
 </body>
 </html>
