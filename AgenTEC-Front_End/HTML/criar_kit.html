@@ -171,19 +171,142 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const kitButtons = document.querySelectorAll('.kit-btn');
+document.addEventListener('DOMContentLoaded', function () {
+    const kitItems = document.querySelectorAll('.kit-item');
+    const mainView = document.querySelector('.kit-main-view');
 
-            kitButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    kitButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+    // Texto inicial na área direita
+    mainView.innerHTML = '<p class="placeholder">Aguardando seleção de kit...</p>';
 
-            const firstKitButton = document.querySelector('.kit-btn');
-            if (firstKitButton) firstKitButton.classList.add('active');
+    kitItems.forEach((item, index) => {
+        const kitButton = item.querySelector('.kit-btn');
+        const renameButton = item.querySelector('.renomear');
+        const deleteButton = item.querySelector('.deletar');
+        const accessButton = item.querySelector('.acessar');
+
+        // === Selecionar Kit ===
+        kitButton.addEventListener('click', function () {
+            kitItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
         });
-    </script>
+
+        // === Acessar Kit ===
+        accessButton.addEventListener('click', function (event) {
+            event.stopPropagation();
+            const nomeKit = kitButton.textContent.trim();
+            mainView.innerHTML = `<p>📦 Exibindo informações de <strong>${nomeKit}</strong></p>`;
+            showMessage(`Kit "${nomeKit}" acessado.`, true);
+        });
+
+        // === Deletar Kit ===
+        deleteButton.addEventListener('click', function (event) {
+            event.stopPropagation();
+            openPopupConfirm({
+                message: "Deseja realmente limpar os dados do kit?",
+                onConfirm: () => {
+                    const kitNum = index + 1;
+                    kitButton.textContent = `Kit ${kitNum}`;
+                    mainView.innerHTML = '<p class="placeholder">Aguardando seleção de kit...</p>';
+                    showMessage("Kit redefinido com sucesso!", true);
+                },
+                onCancel: () => {
+                    showMessage("Ação cancelada.", false);
+                }
+            });
+        });
+
+        // === Renomear Kit ===
+        renameButton.addEventListener('click', function (event) {
+            event.stopPropagation();
+            openPopupRename({
+                currentName: kitButton.textContent,
+                onConfirm: (novoNome) => {
+                    if (novoNome && novoNome.trim() !== "") {
+                        kitButton.textContent = novoNome.trim();
+                        showMessage("Kit renomeado com sucesso!", true);
+                    } else {
+                        showMessage("Nome inválido. Nenhuma alteração feita.", false);
+                    }
+                }
+            });
+        });
+    });
+
+    // === Popup de confirmação ===
+    function openPopupConfirm({ message, onConfirm, onCancel }) {
+        const overlay = document.createElement('div');
+        overlay.classList.add('popup-overlay');
+        overlay.innerHTML = `
+            <div class="popup">
+                <h3>${message}</h3>
+                <button id="confirmar">Confirmar</button>
+                <button id="cancelar">Cancelar</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        overlay.style.display = 'flex';
+
+        overlay.querySelector('#confirmar').addEventListener('click', () => {
+            overlay.remove();
+            onConfirm();
+        });
+
+        overlay.querySelector('#cancelar').addEventListener('click', () => {
+            overlay.remove();
+            onCancel();
+        });
+    }
+
+    // === Popup de renomear ===
+    function openPopupRename({ currentName, onConfirm }) {
+        const overlay = document.createElement('div');
+        overlay.classList.add('popup-overlay');
+        overlay.innerHTML = `
+            <div class="popup">
+                <h3>Renomear Kit</h3>
+                <input type="text" id="novoNome" value="${currentName}">
+                <div>
+                    <button id="confirmar">Confirmar</button>
+                    <button id="cancelar">Cancelar</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        overlay.style.display = 'flex';
+
+        const input = overlay.querySelector('#novoNome');
+        input.focus();
+
+        overlay.querySelector('#confirmar').addEventListener('click', () => {
+            const novoNome = input.value;
+            overlay.remove();
+            onConfirm(novoNome);
+        });
+
+        overlay.querySelector('#cancelar').addEventListener('click', () => {
+            overlay.remove();
+            showMessage("Ação cancelada.", false);
+        });
+    }
+
+    // === Mensagem flutuante temporária ===
+    function showMessage(text, success) {
+        const msg = document.createElement('div');
+        msg.classList.add('popup-message');
+        msg.textContent = text;
+        msg.style.backgroundColor = success ? '#d4edda' : '#f8d7da';
+        msg.style.color = success ? '#155724' : '#721c24';
+        document.body.appendChild(msg);
+        msg.style.display = 'block';
+        setTimeout(() => {
+            msg.remove();
+        }, 2500);
+    }
+});
+</script>
+
+
+
+
 </body>
 </html>
