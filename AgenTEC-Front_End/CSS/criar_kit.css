@@ -207,3 +207,49 @@
     border-color: #a00000;
     box-shadow: 0 0 4px rgba(160, 0, 0, 0.4);
 }
+
+/* Botão flutuante (histórico) */
+.floating-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #a00000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+    background-color: #7a0000;
+}
+
+/* Botões dentro do popup de salvar como */
+#kitOptions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#kitOptions .kitOption {
+    background-color: #a00000;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#kitOptions .kitOption:hover {
+    background-color: #7a0000;
+    transform: scale(1.05);
+}
