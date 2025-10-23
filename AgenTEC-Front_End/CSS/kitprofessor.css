@@ -1,50 +1,54 @@
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
-}
+/* Importa estilos globais do modelo anterior */
+@import url('vidrarias.css');
 
+/* Ajuste de título igual à página de Vidrarias */
 .main-content {
-  padding: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
   text-align: center;
 }
 
 .page-title {
-  font-size: 2rem;
-  color: #222;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .title-underline {
-  width: 200px;
+  width: 320px;
   height: 4px;
-  background-color: #b71c1c;
-  margin: 10px auto 40px;
+  border-radius: 5px;
+  background-color: #c41e15;
+  margin: 0 auto 40px;
 }
 
-.kits-container h2 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 20px;
-}
-
+/* Caixa dos kits */
 .kits-boxes {
   display: flex;
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .box {
-  border: 3px solid #000;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   padding: 20px;
+  background-color: #fdfdfd;
   width: 350px;
   min-height: 250px;
-  text-align: left;
 }
 
 .box h3 {
-  margin-bottom: 10px;
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #004b49;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
 textarea {
@@ -55,38 +59,34 @@ textarea {
   font-size: 1rem;
   padding: 10px;
   background-color: #fafafa;
+  border-radius: 5px;
 }
 
-.buttons {
-  margin-top: 40px;
+/* Botões iguais aos da página de vidrarias */
+.action-buttons-container {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
 }
 
-button {
-  padding: 12px 20px;
-  font-size: 1rem;
+.action-btn {
+  padding: 15px 30px;
+  border-radius: 50px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-voltar {
-  background-color: #ccc;
-}
-
-.btn-confirmar {
-  background-color: #2d6083;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: background-color 0.3s, transform 0.2s;
+  background-color: #5d5d5d;
   color: white;
+  box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-.btn-salvos {
-  background-color: #1a3e55;
-  color: white;
-}
-
-button:hover {
-  opacity: 0.85;
+.action-btn:hover {
+  background-color: #373737;
+  transform: translateY(-3px);
 }
