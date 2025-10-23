@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criação de Kits - Professor</title>
+  <title>Criação de Kits - Professores</title>
 
   <link rel="stylesheet" href="../CSS/kitprofessor.css">
   <link rel="stylesheet" href="../CSS/professor.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-  <!-- HEADER DO GOVERNO -->
+  <!-- TOPO GOVERNO SP -->
   <section class="govsp-topo">
     <div class="govsp-portal">
       <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
@@ -55,15 +60,72 @@
     </div>
   </header>
 
-  <!-- MENU PRINCIPAL -->
+  <!-- MENU PRINCIPAL (idêntico ao professor.html) -->
   <nav class="main-menu-container" role="navigation">
     <ul class="menu">
       <li><a href="index.html">Home</a></li>
-      <li><a href="professor.html">Professores</a></li>
-      <li><a href="MR.html">Materiais e Reagentes</a></li>
-      <li><a href="criar_kit.html">Kits Criados</a></li>
+
+      <li class="dropdown">
+        <a href="#">Institucional <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/conselho-de-escola/">Conselho de escola</a></li>
+          <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/planos/">Planos de curso</a></li>
+          <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/quem-somos/">Quem somos</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#">Inst. Auxiliares <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/apm/">APM</a></li>
+          <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/gremio-estudantil/">Grêmio Estudantil</a></li>
+        </ul>
+      </li>
+
+      <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/cursos">Cursos</a></li>
+
+      <li class="dropdown">
+        <a href="#">Alunos <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/acesso-ao-microsoft-teams/">Acesso ao Microsoft Teams</a></li>
+          <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/acesso-ao-nsa-sistema-academico/">NSA - Sistema Acadêmico</a></li>
+          <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2025/01/Calendario2025.pdf" target="_blank">Calendário Escolar</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#">Professores <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="#">CPS – Cetec Capacitações</a></li>
+          <li><a href="https://sigurh.cps.sp.gov.br/" target="_blank">SIGURH – CPS</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#">Biblioteca <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="https://biblioteca-laura-dias-de-camargo-etec-julio-de-mesquita.webnode.page/" target="_blank">Nossa Biblioteca</a></li>
+          <li><a href="https://biblio.cps.sp.gov.br/" target="_blank">BiblioCPS</a></li>
+        </ul>
+      </li>
+
+      <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
+      <li><a href="login.html">Agendamentos</a></li>
     </ul>
   </nav>
+
+  <!-- BREADCRUMB -->
+  <div id="breadcrumb">
+    <div class="breadcrumb-container">
+      <span>
+        <a href="index.html">Home</a> /
+        <a href="login.html">Agendamentos</a> /
+        <a href="professor.html">Professores</a> /
+        <a href="MR.html">Materiais e Reagentes</a> /
+        Criar Kits
+      </span>
+    </div>
+  </div>
 
   <!-- CONTEÚDO PRINCIPAL -->
   <main class="main-content">
@@ -81,7 +143,7 @@
 
         <div class="box">
           <h3>Reagentes:</h3>
-          <textarea placeholder="Lista de reagentes selecionados..." readonly></textarea>
+          <textarea placeholder="Lista de reagentes selecionadas..." readonly></textarea>
         </div>
       </div>
 
