@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professores - Agendamento</title>
+    <title>Reagentes - Agendamento</title>
 
-    <link rel="stylesheet" href="../CSS/MR.css">
+    <link rel="stylesheet" href="../CSS/professor.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -173,47 +173,40 @@
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="professor.html">Professor </a>
-                / Materiais e reagentes</span>
+            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="professor.html"> Professores
+            </a>/ Lista de Reagentes</span>
         </div>
     </div>
 
     <main class="main-content">
-        <h1 class="page-title">Professores</h1>
+        <h1 class="page-title">Lista de Reagentes</h1>
         <div class="title-underline"></div>
-
-        <div class="cards-container">
-
-            <a href="vidrarias.html" class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-flask"></i>
+        <div vw="" class="enabled"
+            style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+            <div vw-access-button="" class="active">
+                <img class="vp-access-button" data-src="assets/access_icon.svg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_icon.svg">
+                <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+            </div>
+            <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+                <div vp="">
                 </div>
-                <p class="card-text">Vidrarias</p>
-            </a>
-
-            <a href="reagentes.html" class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-vial"></i>
-                </div>
-                <p class="card-text">Reagentes</p>
-            </a>
-
-            <a href="tecnicos.html" class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-briefcase"></i> 
-                </div>
-                <p class="card-text">Criar Kits</p>
-            </a>
-
-            <a href="tecnicos.html" class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <p class="card-text">Ver listas de itens</p>
-            </a>
-
+            </div>
         </div>
 
+        <div class="button-container">
+            <a class="button-custom" href="MR.html">Voltar</a>
+            <a class="button-custom" href="#">Ver Kits</a>
+        </div>
+
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        </section>
     </main>
     <script>
 
@@ -236,39 +229,16 @@
         });
 
         window.addEventListener('DOMContentLoaded', () => {
-
-            // Pega os parâmetros da URL
             const params = new URLSearchParams(window.location.search);
-
-            // Verifica se o parâmetro 'reserva' tem o valor 'sucesso'
             if (params.get('reserva') === 'sucesso') {
                 const notification = document.getElementById('notification');
-
-                // 1. Mostra a notificação adicionando a classe 'show'
                 notification.classList.add('show');
-
-                // 2. Esconde a notificação automaticamente após 5 segundos
                 setTimeout(() => {
                     notification.classList.remove('show');
-                }, 5000); // 5000 milissegundos = 5 segundos
+                }, 5000);
             }
         });
     </script>
-    <div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-<div vw-access-button="" class="active">
-        <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
-        <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-    </div>
-<div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-        <div vp="">
-            </div>
-    </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
-
 </body>
 
 </html>
