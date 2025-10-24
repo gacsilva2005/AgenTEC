@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reagentes - Agendamento</title>
 
-    <link rel="stylesheet" href="../CSS/professor.css">
+    <link rel="stylesheet" href="../CSS/reagentes.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,10 +50,6 @@
                     class="fa-solid fa-triangle-exclamation"></i></a>
         </nav>
     </section>
-
-    <div id="notification" class="notification">
-        <i class="fas fa-check-circle"></i> Reserva efetuada com sucesso!
-    </div>
 
     <header id="cps-header">
         <div class="cps-header__container">
@@ -174,7 +170,7 @@
     <div id="breadcrumb">
         <div class="breadcrumb-container">
             <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="professor.html"> Professores
-            </a>/ Lista de Reagentes</span>
+                </a>/ Lista de Reagentes</span>
         </div>
     </div>
 
@@ -197,9 +193,19 @@
             </div>
         </div>
 
-        <div class="button-container">
-            <a class="button-custom" href="MR.html">Voltar</a>
-            <a class="button-custom" href="#">Ver Kits</a>
+        <div class="main-container">
+            <div class="search-container">
+                <form action="#" class="form-pesquisa" method="get" role="search">
+                    <input id="search-area" class="search-area" name="s" placeholder="Buscar Reagentes" type="search">
+                    <button class="search-submit" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <div class="button-container">
+                <a class="button-custom" href="MR.html">Voltar</a>
+                <a class="button-custom" id="buttom-confirm" href="#">Confirmar</a>
+                <a class="button-custom" href="#">Ver Kits</a>
+            </div>
         </div>
 
         <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
