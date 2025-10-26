@@ -2,6 +2,8 @@ body,
 html {
     margin: 0;
     padding: 0;
+    height: 100%;
+    overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
     background-color: #ffffff;
     color: #333;
@@ -217,11 +219,13 @@ html {
 /* --- ESTILOS DO CALENDÁRIO --- */
 
 .main-content {
+    min-height: calc(100vh - 100px);
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
-    padding: 30px 20px;
-    background-color: #f8f9fa;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+    margin: 0 auto;
 }
 
 :root{
@@ -245,24 +249,27 @@ html {
     align-items: center;
     margin: 0 auto;
     margin-top: 20px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 @media (min-width: 768px) {
     .container{
         flex-direction: row;
         align-items: flex-start;
+        justify-content: flex-start;
+        gap: 30px;
     }
 }
 
 .calendar-container{
     position: relative;
-    right: 10%;
     background: white;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 500%;
-    margin: 0 auto;
+    flex: 0 0 700px;
+    width: 100%;
+    margin: 0;
     max-width: 700px;
     overflow: hidden;
     transform-style: preserve-3d;
@@ -273,6 +280,12 @@ html {
 .calendar-container:hover{
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.calendar-container,
+.event-panel {
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .calendar-header{
@@ -490,6 +503,7 @@ html {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
+    flex: 0 0 420px;
     width: 100%;
     max-width: 450px;
     height: fit-content;
@@ -575,6 +589,9 @@ html {
         max-width: 500px;
         margin: 0 auto;
         right: 0;
+        flex: 0 0 auto;
+        height: auto;
+        transform: none;
     }
 
     .event-panel {
@@ -582,6 +599,8 @@ html {
         max-width: 500px;
         margin: 0 auto;
         order: 2;
+        flex: 0 0 auto;
+        height: auto;
     }
 
         .event-date{

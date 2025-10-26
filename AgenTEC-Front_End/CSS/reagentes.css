@@ -1,30 +1,32 @@
 /* CSS Reset e Estilos Globais */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #ffffff;
     color: #333;
+    overflow-x: hidden;
 }
 
 .govsp-topo {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     background-color: #e9e9e9;
-    border-bottom: 1px solid #ddd; 
+    border-bottom: 1px solid #ddd;
 }
 
 .govsp-portal img {
-    height: 30px;  
-    width: auto;   
-    display: block; 
+    height: 30px;
+    width: auto;
+    display: block;
 }
 
 .govsp-portal {
-    background-color: #000; 
-    padding: 8px 25px 8px 15px; 
-    border-radius: 0 50px 50px 0; 
+    background-color: #000;
+    padding: 8px 25px 8px 15px;
+    border-radius: 0 50px 50px 0;
 }
 
 .govsp-topo .govsp-portal img {
@@ -41,11 +43,12 @@ body, html {
 .govsp-navbar :hover {
     transform: translate(0.2px, 0.2px);
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
-}       
+}
 
 
 .govsp-topo .govsp-navbar img {
-    height: 23px;;
+    height: 23px;
+    ;
 }
 
 .govsp-topo .govsp-social {
@@ -56,6 +59,7 @@ body, html {
     padding: 20px;
     border-bottom: 1px solid #eee;
 }
+
 .cps-header__container {
     max-width: 1200px;
     margin: 0 auto;
@@ -65,57 +69,59 @@ body, html {
     gap: 20px;
     flex-wrap: wrap;
 }
+
 .cps-header__logo img {
     max-height: 50px;
 }
 
 .form-pesquisa {
-    display: flex; 
-    align-items: center; 
-    border: 1px solid #ccc; 
-    border-radius: 50px; 
-    overflow: hidden; 
-    max-width: 400px; 
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 400px;
     background-color: white;
 }
 
 .campo-de-busca {
-    flex: 1; 
-    border: none; 
-    outline: none; 
-    padding: 15px 50px; 
-    font-size: 1rem; 
-    background-color: transparent; 
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 50px;
+    font-size: 1rem;
+    background-color: transparent;
 }
 
 .campo-de-busca::placeholder {
-    color: #999; 
+    color: #999;
 }
 
 .busca-submit {
-    border: none; 
-    border-left: 1px solid #ccc; 
-    background-color: transparent; 
-    padding: 10px 18px; 
-    cursor: pointer; 
+    border: none;
+    border-left: 1px solid #ccc;
+    background-color: transparent;
+    padding: 10px 18px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .busca-submit .fa-search {
-    color: #b20000; 
-    font-size: 1.1rem; 
+    color: #b20000;
+    font-size: 1.1rem;
 }
 
 .busca-submit:hover {
-    background-color: #f5f5f5; 
+    background-color: #f5f5f5;
 }
 
 .main-menu-container {
-    background-color: #c41e15; 
+    background-color: #c41e15;
     padding: 0 20px;
 }
+
 .main-menu-container .menu {
     max-width: 1200px;
     margin: 0 auto;
@@ -124,6 +130,7 @@ body, html {
     display: flex;
     flex-wrap: wrap;
 }
+
 .main-menu-container .menu li a {
     display: block;
     padding: 15px 20px;
@@ -134,7 +141,7 @@ body, html {
 }
 
 .main-menu-container .menu li a:hover {
-    background-color: #831c16ef; 
+    background-color: #831c16ef;
 }
 
 #breadcrumb {
@@ -142,15 +149,27 @@ body, html {
     padding: 12px 20px;
     border-bottom: 1px solid #e9ecef;
 }
+
 .breadcrumb-container {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
     color: #6c757d;
 }
+
 .breadcrumb-container a {
     color: #c41e15;
     text-decoration: none;
+}
+
+:root {
+    --primary: #970000;
+    --secondary: #c70000;
+    /* vermelho protótipo */
+    --accent: #F5F7FA;
+    --light: #333333;
+    --dark: #000000;
+    --text: #ffffff;
 }
 
 .button-container {
@@ -163,11 +182,11 @@ body, html {
     padding: 20px;
 }
 
-.button-custom{
+.button-custom {
     flex-direction: column;
     text-align: center;
     display: flex;
-    max-width: 70px;
+    max-width: 200px;
     background-color: #008B8B;
     padding: 20px 60px;
     text-decoration: none;
@@ -175,16 +194,309 @@ body, html {
     border-radius: 50px;
     font-size: 1.2rem;
     transition: all 0.3s ease;
-    cursor:pointer
+    cursor: pointer
 }
 
-.button-custom:hover{
+.button-custom:hover {
     transform: translateY(-5px);
     background-color: #006666;
 }
 
-.button-custom:active{
+.button-custom:active {
     transform: translateY(-2px);
+}
+
+.container {
+    color: var(--text);
+}
+
+.card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-list .card-item {
+    list-style: none;
+}
+
+.card-list .card-item .card-link {
+    width: 200px;
+    user-select: none;
+    display: block;
+    background-color: var(--secondary);
+    padding: 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    min-height: 200px;
+}
+
+.card-list .card-link {
+    width: 100%;
+    object-fit: cover;
+    font-weight: 500;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.card-list .card-link:hover{
+    transform: scale(1.05);
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card-list .card-link .chemical-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    margin: 0 auto;
+}
+
+.card-list .card-link .chemical-icon .material-symbols-outlined {
+    font-size: 48px;
+}
+
+.card-list .card-link .card-title {
+    margin-top: 15px;
+    color: var(--text);
+    font-size: 1.19rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.card-list .card-link .card-description {
+    color: var(--text);
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+.card-list .card-link .add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    padding: 0.4em 1em;
+    margin: auto;
+    width: fit-content;
+    cursor: pointer;
+    background-color: var(--primary);
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.card-list .card-link:hover .add-button {
+    transform: scale(1.1);
+    background-color: rgb(109, 0, 0);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    background-color: rgba(80, 0, 0, 0.527);
+    border-radius: 50%;
+    padding: 10px;
+    color: white !important;
+    cursor: pointer;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 18px;
+    color: white !important;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    transition: all 0.3s ease;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.swiper-slide-visible {
+    opacity: 1.0;
+}
+
+.container.swiper {
+    padding: 0px 200px;
+    overflow: visible;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+    .container.swiper {
+        padding: 20px 100px;
+        max-width: 200px;
+    }
+    
+    .card-list .card-item .card-link {
+        width: 90%;
+    }
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente escuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color:white;
+    color:rgb(0, 0, 0);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-content .modal-title {
+    margin-left: 5px;
+    color: var(--dark);
+}
+
+.modal-content .unit {
+    color: var(--text);
+    font-weight: bold;
+}
+
+.modal-backdrop.show .modal-content {
+    transform: scale(1);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    border: 1px solid var(--border-color, #ccc);
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.input-group input[type="number"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    background-color: transparent;
+    color: var(--dark);
+    text-indent: 10px;  
+}
+
+.input-group:hover {
+    border-color: var(--primary);
+}
+
+.input-group .unit {
+    padding: 15px 20px;
+    background-color: var(--secondary);
+    font-weight: bold;
+}
+
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.button-confirm, .button-cancel {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.button-confirm {
+    background-color: var(--primary); /* Cor de destaque (Azul) */
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.button-confirm:hover {
+    background-color: rgb(109, 0, 0);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.button-confirm:active {
+    transform: translateY(1px);
+}
+
+.button-cancel {
+    background-color: #ccc;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.button-cancel:hover {
+    background-color: #999;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.button-cancel:active {
+    transform: translateY(1px);
+}
+
+/* Estilização para Mobile */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+    }
+    .modal-actions {
+        flex-direction: column;
+    }
+    .button-confirm, .button-cancel {
+        width: 100%;
+    }
 }
 
 .main-container {
@@ -197,50 +509,50 @@ body, html {
 }
 
 .form-pesquisa {
-    display: flex; 
-    align-items: center; 
-    border: 1px solid #ccc; 
-    border-radius: 50px; 
-    overflow: hidden; 
-    max-width: 400px; 
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 400px;
     background-color: white;
 }
 
 .search-area {
-    flex: 1; 
-    border: none; 
-    outline: none; 
-    padding: 15px 50px; 
-    font-size: 1rem; 
-    background-color: transparent; 
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 50px;
+    font-size: 1rem;
+    background-color: transparent;
 }
 
 .search-area::placeholder {
-    color: #999; 
+    color: #999;
 }
 
 .search-submit {
-    border: none; 
-    border-left: 1px solid #ccc; 
-    background-color: transparent; 
-    padding: 10px 18px; 
-    cursor: pointer; 
+    border: none;
+    border-left: 1px solid #ccc;
+    background-color: transparent;
+    padding: 10px 18px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .busca-submit .fa-search {
-    color: #000000; 
-    font-size: 1.1rem; 
+    color: #000000;
+    font-size: 1.1rem;
 }
 
-.fa-search:hover{
+.fa-search:hover {
     transform: scale(1.5);
 }
 
 .busca-submit:hover {
-    background-color: #f5f5f5; 
+    background-color: #f5f5f5;
 }
 
 @media (max-width: 767px) {
@@ -254,13 +566,13 @@ body, html {
         flex-direction: column;
         gap: 20px;
         align-items: center;
-        justify-content: center; /* centraliza verticalmente se necessário */
+        justify-content: center;
         width: 100%;
     }
 
     .button-custom {
-        width: 100%; 
-        max-width: 200px; 
+        width: 100%;
+        max-width: 200px;
         text-align: center;
     }
 }
@@ -297,60 +609,75 @@ body, html {
 }
 
 .logo-container {
-    display: flex;          
-    align-items: center;    
-    gap: 40 px;              
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .logo-container img {
-    height: 80px; 
-    width: auto;     
+    height: 80px;
+    width: auto;
 }
 
 .logo-cps {
-    height: 70px; 
+    height: 70px;
 }
 
 /* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
 
 /* Contêiner principal da navegação */
 .govsp-navbar {
-    display: flex; /* Alinha todos os itens na horizontal */
-    align-items: center; /* Centraliza os itens verticalmente */
+    display: flex;
+    /* Alinha todos os itens na horizontal */
+    align-items: center;
+    /* Centraliza os itens verticalmente */
     padding: 10px;
 }
 
 /* Estilo para todos os links (que servem como 'caixa' para os ícones) */
 .govsp-navbar a {
-    display: inline-flex; /* Permite centralizar o ícone dentro do link */
+    display: inline-flex;
+    /* Permite centralizar o ícone dentro do link */
     align-items: center;
     justify-content: center;
-    width: 28px; /* Largura da caixa */
-    height: 28px; /* Altura da caixa */
-    background-color: #7c7c7c; /* Fundo cinza claro */
-    margin: -3px; /* Espaçamento entre os ícones */
-    border-radius: 3px; /* Bordas levemente arredondadas */
-    text-decoration: none; /* Remove o sublinhado do link */
+    width: 28px;
+    /* Largura da caixa */
+    height: 28px;
+    /* Altura da caixa */
+    background-color: #7c7c7c;
+    /* Fundo cinza claro */
+    margin: -3px;
+    /* Espaçamento entre os ícones */
+    border-radius: 3px;
+    /* Bordas levemente arredondadas */
+    text-decoration: none;
+    /* Remove o sublinhado do link */
 }
 
 /* Estilo para os ícones (<i>) dentro dos links */
 .govsp-navbar a i {
-    color: #ffffff; /* Cor cinza escura para o ícone */
-    font-size: 1.2rem; /* Tamanho do ícone */
+    color: #ffffff;
+    /* Cor cinza escura para o ícone */
+    font-size: 1.2rem;
+    /* Tamanho do ícone */
 }
 
 /* Estilo para o texto "/governosp" */
 .govsp-text {
     font-size: 0.9rem;
     color: #555;
-    margin: 0px; /* Espaçamento antes e depois do texto */
+    margin: 0px;
+    /* Espaçamento antes e depois do texto */
 }
 
 /* Estilo para a linha separadora */
 .separator {
-    height: 25px; /* Altura da linha */
-    border-left: 1px solid #ccc; /* Cria a linha vertical */
-    margin: 0 10px; /* Espaçamento antes e depois da linha */
+    height: 25px;
+    /* Altura da linha */
+    border-left: 1px solid #ccc;
+    /* Cria a linha vertical */
+    margin: 0 10px;
+    /* Espaçamento antes e depois da linha */
 }
 
 /* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
@@ -364,11 +691,12 @@ body, html {
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
+    top: 100%;
+    /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
     left: 0;
     background-color: #f9f9f9;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     list-style: none;
     padding: 0;
@@ -379,12 +707,14 @@ body, html {
 /* Estilo dos links dentro do submenu */
 /* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
 .main-menu-container .menu .dropdown-content li a {
-    color: #555; /* Define a cor escura para o texto */
-    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
+    color: #555;
+    /* Define a cor escura para o texto */
+    font-weight: normal;
+    /* Garante que o texto não fique em negrito como o menu principal */
     padding: 12px 16px;
     text-align: left;
     /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
-    background-color: transparent; 
+    background-color: transparent;
 }
 
 /* Efeito de hover nos links do submenu */

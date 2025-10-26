@@ -13,6 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=experiment" />
+    <!-- Link SwiperJS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 </head>
 
 <body>
@@ -201,6 +205,137 @@
                 </form>
             </div>
 
+            <div class="container swiper">
+                <div class="card-wrapper">
+                    <ul class="card-list swiper-wrapper">
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente A</h3>
+                                <p class="card-description">Descrição do Reagente A.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente A')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente B</h3>
+                                <p class="card-description">Descrição do Reagente B.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente B')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente C</h3>
+                                <p class="card-description">Descrição do Reagente C.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente C')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente D</h3>
+                                <p class="card-description">Descrição do Reagente D.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente D')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente E</h3>
+                                <p class="card-description">Descrição do Reagente E.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente E')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente F</h3>
+                                <p class="card-description">Descrição do Reagente F.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente F')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente G</h3>
+                                <p class="card-description">Descrição do Reagente G.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente G')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente H</h3>
+                                <p class="card-description">Descrição do Reagente H.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente H')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente I</h3>
+                                <p class="card-description">Descrição do Reagente I.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente I')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Reagente J</h3>
+                                <p class="card-description">Descrição do Reagente J.</p>
+                                <a class="add-button" onclick="abrirModal('Reagente J')">Adicionar</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <div id="reagenteModal" class="modal-backdrop">
+
+                <div class="modal-content">
+
+                    <h3 class="modal-title" id="modalReagenteTitle">Adicionar Reagente</h3>
+                    <p>Informe a quantidade desejada em gramas (g):</p>
+
+                    <div class="input-group">
+                        <input type="number" id="quantidadeInput" placeholder="Ex: 50" required>
+                        <span class="unit">g</span>
+                    </div>
+
+                    <div class="modal-actions">
+                        <a class="button-cancel" onclick="fecharModal()">Cancelar</a>
+                        <a class="button-confirm" onclick="confirmarAdicao()">Confirmar</a>
+                    </div>
+
+                </div>
+            </div>
+
             <div class="button-container">
                 <a class="button-custom" href="MR.html">Voltar</a>
                 <a class="button-custom" id="buttom-confirm" href="#">Confirmar</a>
@@ -214,6 +349,9 @@
         </script>
         </section>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="../../swiper.js"></script>
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
