@@ -236,6 +236,7 @@ html {
     text-decoration: none;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
     min-height: 200px;
+    margin: 0 auto;
 }
 
 .card-list .card-link {
@@ -332,6 +333,7 @@ html {
     transition: all 0.3s ease;
     opacity: 0.3;
     transition: opacity 0.3s ease;
+    width: auto !important;
 }
 
 .swiper-slide-visible {
