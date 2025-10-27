@@ -2,7 +2,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif !important;
     background-color: #ffffff;
     color: #333;
 }
@@ -11,14 +11,14 @@ body, html {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
-    background-color: #e9e9e9;
+    background-color: #ffffff;
     border-bottom: 1px solid #ddd; 
 }
 
 .govsp-portal img {
-    height: 30px;  
-    width: auto;   
-    display: block; 
+    height: 10px;  
+    width: 200px;  
+    display: flex; 
 }
 
 .govsp-portal {
@@ -28,7 +28,7 @@ body, html {
 }
 
 .govsp-topo .govsp-portal img {
-    height: 60px;
+    height: 38px;
 }
 
 .govsp-topo .govsp-navbar {
@@ -113,9 +113,10 @@ body, html {
 }
 
 .main-menu-container {
-    background-color: #c41e15; 
+    background-color: #b20000; 
     padding: 0 20px;
 }
+
 .main-menu-container .menu {
     max-width: 1200px;
     margin: 0 auto;
@@ -138,19 +139,23 @@ body, html {
 }
 
 #breadcrumb {
-    background-color: #f8f9fa;
+    background-color: #666666;
     padding: 12px 20px;
     border-bottom: 1px solid #e9ecef;
 }
+
 .breadcrumb-container {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
-    color: #6c757d;
+    color: #ffffff;
+    font-weight: 200;
 }
+
 .breadcrumb-container a {
-    color: #c41e15;
+    color: #ffffff;
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* Conteúdo Principal */
@@ -162,7 +167,7 @@ body, html {
 
 .page-title {
     font-size: 2.5rem;
-    color: #333;
+    color: var(--primary);
     margin-bottom: 10px;
     font-weight: 700;
 }
@@ -214,6 +219,13 @@ body, html {
     pointer-events: none;
 }
 
+:root{
+    --primary: #005C6D;
+    --dark: #333333;
+    --text: white;
+    --secondary: #008892;
+}
+
 .input-group input {
     width: 100%;
     padding: 10px;
@@ -246,10 +258,84 @@ body, html {
 }
 
 .input-group input:focus {
-    border-color: #b20000;
-    
+    border-color: #b20000;  
 }
 
+.function-selector{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.function-selector .function-title {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.custom-select{
+    display: flex;
+    text-decoration: none;
+    color: var(--dark);
+    gap: 30px;
+}
+
+.custom-select a {
+    display: flex;
+    text-align: center;
+    align-items: center; 
+    justify-content: center;  
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    min-width: 100px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: var(--dark);
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.custom-select a:hover {
+    background-color: var(--secondary);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.custom-select a:active {
+    transform: translateY(1px);
+}
+
+.custom-select a {
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.submit-button{
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover{
+    background-color: var(--secondary);
+    transform: translateY(-3px);
+}
+
+.submit-button:active {
+    transform: translateY(1px);
+}
 
 @media (max-width: 768px) {
     .cps-header__container {
@@ -295,7 +381,7 @@ body, html {
     justify-content: center;
     width: 28px; /* Largura da caixa */
     height: 28px; /* Altura da caixa */
-    background-color: #7c7c7c; /* Fundo cinza claro */
+    background-color: #ffffff; /* Fundo cinza claro */
     margin: -3px; /* Espaçamento entre os ícones */
     border-radius: 3px; /* Bordas levemente arredondadas */
     text-decoration: none; /* Remove o sublinhado do link */
