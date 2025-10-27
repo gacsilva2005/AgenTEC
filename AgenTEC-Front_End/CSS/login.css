@@ -150,8 +150,6 @@ input:not(:placeholder-shown) ~ label{
 }
 
 
-
-
 @media (min-width: 375px) and (max-width: 767px) {
     .logo-section img {
         display: none;

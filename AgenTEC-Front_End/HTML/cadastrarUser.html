@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professores - Agendamento</title>
+    <title>Administradores - Agendamento</title>
 
-    <link rel="stylesheet" href="../CSS/vidrarias.css">
+    <link rel="stylesheet" href="../CSS/cadastrarUser.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">7
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
@@ -164,184 +163,97 @@
 
             <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
             <li><a href="login.html">Agendamentos</a></li>
-
-            <div id="search-mobile__btn" style="display:none;">
-                <i class="fas fa-search"></i>
-              </div>
-              <div id="menu-mobile__btn">
-                <i class="fas fa-bars"></i>
-              </div>
         </ul>
     </nav>
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ 
-                <a href="professor.html"> Professores </a> / <a href="MR.html"> Materiais e reagentes </a> / Vidrarias</span>
+            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a> <a href="administradores.html">/
+                    Administradores</a>/ Cadastrar Usuários</span>
         </div>
     </div>
 
     <main class="main-content">
-        <h1 class="page-title">Lista de Vidrarias</h1>
+        <h1 class="page-title">Cadastrar novos usuários</h1>
         <div class="title-underline"></div>
 
-        <div class="search-container">
-            <input type="search" id="item-search" placeholder="Pesquisar vidraria..." class="item-search-input">
-            <i class="fas fa-search search-icon"></i>
+        <div class="container-central">
+            <div class="form-container">
+                <form>
+                    <div class="input-group">
+                        <input type="text" id="nome" required placeholder=" ">
+                        <label for="nome">Nome Completo</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email" required placeholder=" ">
+                        <label for="email">E-mail</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="senha" required placeholder=" ">
+                        <label for="senha">Senha</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="confirmar-senha" required placeholder=" ">
+                        <label for="confirmar-senha">Confirmar Senha</label>
+                    </div>
+
+                    <select id="role" name="role" required>
+                        <option value="">Selecione a função</option>
+                        <option value="admin">Administrador</option>
+                        <option value="user">Professor</option>
+                        <option value="user">Técnico</option>
+                    </select>
+
+                    <button type="submit" class="submit-button">Cadastrar Usuário</button>
+                </form>
+            </div>
+
         </div>
+    </main>
 
-        <div class="selection-grid">
-            <div class="item-cards-container">
-                <div class="item-card">
-                    <h3 class="item-card-title">Tipo do Item</h3>
-                    <div class="item-row">
-                        <span>Item 1</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
-                    <div class="item-row">
-                        <span>Item 2</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <h3 class="item-card-title">Tipo do Item</h3>
-                    <div class="item-row">
-                        <span>Item 1</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
-                     <div class="item-row">
-                        <span>Item 2</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
-                </div>
-                </div>
-
-            <div class="selected-items-card">
-                <h3 class="item-card-title">Vidrarias selecionadas</h3>
-                <div class="selected-items-list">
-                    <p> itens 1</p>
-                    <p> itens 2</p>
-                    </div>
+    <div vw="" class="enabled"
+        style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+        <div vw-access-button="" class="active">
+            <img class="vp-access-button" data-src="assets/access_icon.svg"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_icon.svg">
+            <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+        </div>
+        <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+            <div vp="">
             </div>
         </div>
-
-        <div class="action-buttons-container">
-            <a href="MR.html"><button class="action-btn btn-primary">voltar</button></a>
-            <button class="action-btn btn-primary">Confirmar e ver lista de materiais</button>
-            <a href="reagentes.html"><button class="action-btn btn-primary">escolher reagentes</button></a> 
-        </div>
-
-    </main>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
-        // Executa o código quando o conteúdo da página estiver totalmente carregado
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <script>
+
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- LÓGICA ANTIGA PARA A BUSCA GERAL (MANTIDA) ---
-            const campoBuscaGeral = document.getElementById('campo-busca');
-            // Verifica se o campo de busca geral e o container de cards existem
-            if (campoBuscaGeral) {
-                const cardsContainer = document.querySelector('.cards-container');
-                if(cardsContainer){
-                    const todosOsCards = cardsContainer.querySelectorAll('.card');
-                    campoBuscaGeral.addEventListener('input', function () {
-                        const termoBuscado = campoBuscaGeral.value.toLowerCase();
-                        todosOsCards.forEach(function (card) {
-                            const textoDoCard = card.textContent.toLowerCase();
-                            if (textoDoCard.includes(termoBuscado)) {
-                                card.style.display = 'flex';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                }
-            }
-    
-            // --- NOVA LÓGICA PARA OS BOTÕES DE QUANTIDADE ---
-    
-            // 1. Seleciona todos os 'seletores de quantidade' da página
-            const quantitySelectors = document.querySelectorAll('.quantity-selector');
-    
-            // 2. Itera sobre cada um dos seletores encontrados
-            quantitySelectors.forEach(selector => {
-                // 3. Dentro de cada seletor, encontra os elementos específicos: o botão de menos, o de mais e o campo de valor
-                const minusButton = selector.querySelector('.minus-btn');
-                const plusButton = selector.querySelector('.plus-btn');
-                const quantitySpan = selector.querySelector('.quantity-value');
-    
-                // 4. Adiciona um "ouvinte" de evento de clique no botão de MAIS
-                plusButton.addEventListener('click', () => {
-                    // Converte o texto do span para um número inteiro
-                    let currentValue = parseInt(quantitySpan.textContent);
-                    // Incrementa o valor
-                    currentValue++;
-                    // Atualiza o texto do span com o novo valor
-                    quantitySpan.textContent = currentValue;
-                });
-    
-                // 5. Adiciona um "ouvinte" de evento de clique no botão de MENOS
-                minusButton.addEventListener('click', () => {
-                    // Converte o texto do span para um número inteiro
-                    let currentValue = parseInt(quantitySpan.textContent);
-                    // Verifica se o valor é maior que 0 para não ficar negativo
-                    if (currentValue > 0) {
-                        // Decrementa o valor
-                        currentValue--;
-                        // Atualiza o texto do span com o novo valor
-                        quantitySpan.textContent = currentValue;
+            const campoBusca = document.getElementById('campo-busca');
+            const cardsContainer = document.querySelector('.cards-container');
+            const todosOsCards = cardsContainer.querySelectorAll('.card');
+            campoBusca.addEventListener('input', function () {
+                const termoBuscado = campoBusca.value.toLowerCase();
+                todosOsCards.forEach(function (card) {
+                    const textoDoCard = card.textContent.toLowerCase();
+                    if (textoDoCard.includes(termoBuscado)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
                     }
                 });
             });
-        });
-    
-        // --- LÓGICA ANTIGA PARA NOTIFICAÇÃO (MANTIDA) ---
-        window.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('reserva') === 'sucesso') {
-                const notification = document.getElementById('notification');
-                if (notification) {
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 5000);
-                }
-            }
+
         });
     </script>
-    <div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-<div vw-access-button="" class="active">
-        <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
-        <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-    </div>
-<div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-        <div vp="">
-            </div>
-    </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
 </body>
 
 </html>

@@ -187,7 +187,7 @@ html {
     text-align: center;
     display: flex;
     max-width: 200px;
-    background-color: #008B8B;
+    background-color: #5d5d5d;
     padding: 20px 60px;
     text-decoration: none;
     color: white;
@@ -199,7 +199,7 @@ html {
 
 .button-custom:hover {
     transform: translateY(-5px);
-    background-color: #006666;
+    background-color: #373737;
 }
 
 .button-custom:active {

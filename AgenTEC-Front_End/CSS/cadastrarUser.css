@@ -168,7 +168,7 @@ body, html {
 }
 
 .title-underline {
-    width: 320px;
+    width: 500px;
     height: 4px;
     padding: 0.2px;
     border-radius: 5px;
@@ -176,42 +176,78 @@ body, html {
     margin-bottom: 40px;
 }
 
-.cards-container {
+.container-central {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 20px;
+    align-items: center;
+    width: 700px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Card com funções das telas*/
-.card {
-    background-color: #f7f7f7;
-    border: 1px solid #e0e0e0;
+.form-container {
+    background-color: #f9f9f9;
+    padding: 30px 40px; /* Increased padding to give more space on sides */
     border-radius: 8px;
-    width: 280px;
-    padding: 40px 20px;
-    text-align: center;
-    text-decoration: none;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 
+                10px 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    padding: 0 5px;
+    color: #666;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    border: solid 1px #ccc;
+    background-color: white;
     color: #333;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+.input-group input::-ms-reveal,
+.input-group input::-ms-clear {
+    filter: invert(100%); 
 }
 
-.card-icon {
-    font-size: 4rem;
-    color: #008B8B; 
-    margin-bottom: 25px;
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: 0;
+    transform: translateY(-50%) scale(0.9);
+    background-color: #f9f9f9;
+    color: #b20000;
+    font-size: 0.8rem;
 }
 
-.card-text {
-    font-size: 1.25rem;
-    font-weight: 500;
-    min-height: 50px;
+.input-group input:hover {
+    border-color: #b20000;
+}
+
+.input-group input:focus {
+    border-color: #b20000;
+    
 }
 
 
@@ -340,235 +376,4 @@ body, html {
 /* Gira a setinha para cima quando o menu está aberto */
 .menu li.dropdown:hover a .fa-chevron-down {
     transform: rotate(180deg);
-}
-
-@media (min-width: 375px) and (max-width: 767px) {
-    
-}
-
-/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
-
-.notification {
-    position: fixed; /* Fica fixo na tela mesmo com scroll */
-    top: 20px;
-    right: 20px;
-    background-color: #28a745; /* Verde para sucesso */
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaço entre o ícone e o texto */
-    z-index: 1000; /* Garante que fique por cima de outros elementos */
-
-    /* Animação */
-    transform: translateX(120%); /* Começa fora da tela */
-    opacity: 0;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-/* Classe que será adicionada via JS para mostrar a notificação */
-.notification.show {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.notification i {
-    font-size: 1.4rem;
-}
-
-/* --- ESTILOS PARA A SEÇÃO DE SELEÇÃO DE VIDRARIAS --- */
-
-/* Container da barra de pesquisa de itens */
-.search-container {
-    position: relative;
-    max-width: 500px;
-    margin: 30px auto 50px;
-}
-
-.item-search-input {
-    width: 100%;
-    padding: 15px 50px 15px 20px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.3s;
-}
-
-.item-search-input:hover{
-    border-color: #b20000;
-}
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    color: #888;
-}
-
-/* Grid principal que divide os cards de itens e os itens selecionados */
-.selection-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-/* Container para os cards de seleção de itens */
-.item-cards-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-/* Estilo individual do card de item e do card de itens selecionados */
-.item-card, .selected-items-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fdfdfd;
-    transition: all 0.3s;
-}
-
-.item-card:hover{
-    border-color: #b20000;
-}
-
-.item-card-title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #004b49; /* Tom de verde escuro/azulado */
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-/* Linha de um item dentro do card */
-.item-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.item-row:last-child {
-    margin-bottom: 0;
-}
-
-.item-row span {
-    flex: 1;
-}
-
-.item-unit {
-    text-align: right;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-/* Seletor de quantidade (+ e -) */
-.quantity-selector {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 15px;
-}
-
-.quantity-btn {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    background-color: #f5f5f5;
-    color: #333;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.quantity-btn:hover {
-    background-color: #a0a0a0;
-}
-
-.quantity-value {
-    font-weight: 500;
-    min-width: 20px;
-    text-align: center;
-}
-
-/* Card de vidrarias selecionadas */
-.selected-items-card {
-    position: sticky; /* Fica fixo ao rolar a página */
-    top: 20px;
-}
-
-.selected-items-list p {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 0 0 10px 0;
-    font-size: 0.95rem;
-    display: none;
-}
-
-/* Container dos botões de ação na parte inferior */
-.action-buttons-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.action-btn {
-    padding: 15px 30px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.action-btn:hover {
-    transform: translateY(-3px);
-}
-
-.action-btn:active {
-    transform: translateY(2px);
-}
-
-.btn-primary {
-    background-color: #5d5d5d;
-    color: white;
-    box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
-}
-
-.btn-primary:hover {
-    background-color: #373737;
-}
-
-/* Media queries para responsividade */
-@media (max-width: 992px) {
-    .selection-grid {
-        grid-template-columns: 1fr; /* Coloca os itens selecionados abaixo */
-    }
-    .item-cards-container {
-        grid-template-columns: 1fr; /* Um card por linha */
-    }
-    .action-buttons-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .action-btn {
-        width: 100%;
-    }
 }
