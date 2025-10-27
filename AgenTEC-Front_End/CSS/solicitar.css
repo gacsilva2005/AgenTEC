@@ -1,0 +1,87 @@
+/* Importação dos estilos base (Menu, Header, Topo GovSP) */
+/* Usamos o professor.css como base para manter a coerência visual */
+@import url('professor.css'); 
+
+/* Estilos específicos para o conteúdo da página de Solicitação */
+
+.main-content {
+    /* Removido text-align: center; */
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    /* Adicionamos text-align: left; para garantir que o título se alinhe */
+    text-align: left; 
+}
+
+/* Título e Subtítulo */
+.page-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+    /* Alinhamento de título já é padrão, mas reforçamos: */
+    text-align: left; 
+}
+
+.title-underline {
+    width: 250px;
+    height: 4px;
+    border-radius: 5px;
+    background-color: #c41e15;
+    margin-bottom: 40px;
+    /* Garante que o underline fique à esquerda */
+    margin-left: 0; 
+    margin-right: auto;
+}
+
+.selection-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #c41e15;
+    margin: 40px 0 30px 0;
+    text-align: center; /* CENTRALIZA APENAS O SUBTÍTULO */
+}
+
+/* Estilo para os botões de agendamento */
+.agendamento-btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center; /* Centraliza os botões dentro do container */
+    width: 100%;
+}
+
+.agendamento-btn {
+    display: block;
+    width: 100%;
+    max-width: 400px; 
+    padding: 18px 30px;
+    background-color: #c41e15; 
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.agendamento-btn:hover {
+    background-color: #a81a12;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos de responsividade simples */
+@media (max-width: 500px) {
+    .agendamento-btn {
+        font-size: 1rem;
+        padding: 15px 20px;
+        max-width: 100%;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+}
