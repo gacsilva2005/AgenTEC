@@ -13,7 +13,7 @@ Esta aplicação demonstra domínio em desenvolvimento **Front-End Clássico** e
 | Categoria | Tecnologia | Uso no Projeto |
 | :--- | :--- | :--- |
 <div data-badges>
-  <img src="https://img.shields.io/badge/html-%23000000.svg?style=for-the-badge&logo=HTML&logoColor=white" alt="HTML" />
+  <img src="https://img.shields.io/badge/html-%23000000.svg?style=for-the-badge&logo=html&logoColor=white" alt="HTML" />
     <img src="https://img.shields.io/badge/css-%23E0234E.svg?style=for-the-badge&logo=CSS&logoColor=white" alt="CSS" />
     <img src="https://img.shields.io/badge/javascript-%23007ACC.svg?style=for-the-badge&logo=javascript&logoColor=white" alt="JavaScript" />
     <img src="https://img.shields.io/badge/MySQL-%232D3748.svg?style=for-the-badge&logo=Mysql&logoColor=white" alt="MySQL" />
