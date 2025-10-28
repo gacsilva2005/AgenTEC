@@ -40,16 +40,17 @@ Esta aplicação vai além da simples exibição de formulários, funcionando co
     Localize e abra o arquivo `AgenTEC-Front_End/HTML/login.html` no seu navegador.
 
     > **Dica:** Use a extensão Live Server no VS Code para visualizar as alterações em tempo real.
-
+    
+<hr> </hr>
 
 ## 🗒️ Features do projeto 🗒️
 O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratórios, oferecendo as seguintes funcionalidades:
 
-* **- Gerenciamento de Agendamentos:** Sistema centralizado para visualização e reserva eficiente de horários em múltiplos laboratórios.
-* **- Controle de Recursos:** Organização detalhada de materiais, kits, vidrarias e reagentes disponíveis para experimentos.
-* **- Criação de Kits Personalizados:** Funcionalidade que permite aos usuários solicitarem conjuntos pré-definidos de materiais necessários para suas práticas.
-* **- Interface Intuitiva (Front-End Clássico):** Design focado na usabilidade, facilitando o fluxo de agendamento e requisição para qualquer usuário.
-* **- Estrutura de Workflow Complexa:** Demonstração prática da habilidade de modelar e implementar fluxos de trabalho complexos e específicos de um ambiente de laboratório.
+* **Gerenciamento de Agendamentos:** Sistema centralizado para visualização e reserva eficiente de horários em múltiplos laboratórios.
+* **Controle de Recursos:** Organização detalhada de materiais, kits, vidrarias e reagentes disponíveis para experimentos.
+* **Criação de Kits Personalizados:** Funcionalidade que permite aos usuários solicitarem conjuntos pré-definidos de materiais necessários para suas práticas.
+* **Interface Intuitiva (Front-End Clássico):** Design focado na usabilidade, facilitando o fluxo de agendamento e requisição para qualquer usuário.
+* **Estrutura de Workflow Complexa:** Demonstração prática da habilidade de modelar e implementar fluxos de trabalho complexos e específicos de um ambiente de laboratório.
 
 
 (Foto de Finalização) 
