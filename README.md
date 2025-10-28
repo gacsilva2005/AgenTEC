@@ -11,6 +11,7 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 
 [![MySQL](https://img.shields.io/badge/MYSQL-3972A0?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![Astah](https://img.shields.io/badge/Astah-0A8DD0?style=flat-square&logoColor=white)](https://astah.net/)
 
 </div>
 
