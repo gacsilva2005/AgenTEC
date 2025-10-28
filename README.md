@@ -2,28 +2,30 @@
 
 (Vai vir uma foto aqui)
 
-## Descrição do Projeto
+## ✨ Descrição do Projeto
 
 O **AgenTEC** é um sistema de gerenciamento de laboratórios projetado para otimizar a reserva de espaços e a organização de materiais. A plataforma centraliza o processo, permitindo que usuários agendem horários nos laboratórios de forma eficiente e solicitem "kits" personalizados, que incluem vidrarias e reagentes necessários para seus experimentos.
 
 Esta aplicação demonstra domínio em desenvolvimento **Front-End Clássico** e a estruturação de um fluxo de trabalho complexo, essencial para a rotina de um laboratório químico/biológico.
 
-
-<div data-badges>
-    <img src="https://img.shields.io/github/stars/portfolio-projetos-dev/portfoleo?style=for-the-badge" alt="GitHub stars" />
-    <img src="https://img.shields.io/github/forks/portfolio-projetos-dev/portfoleo?style=for-the-badge" alt="GitHub forks" />
-    <img src="https://img.shields.io/github/issues/portfolio-projetos-dev/portfoleo?style=for-the-badge" alt="GitHub issues" />
-</div>
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
-| :--- | :--- | :--- |
-<div data-badges>
-  <img src="https://img.shields.io/badge/html-%23000000.svg?style=for-the-badge&logo=html&logoColor=white" alt="HTML" />
-    <img src="https://img.shields.io/badge/css-%23E0234E.svg?style=for-the-badge&logo=CSS&logoColor=white" alt="CSS" />
-    <img src="https://img.shields.io/badge/javascript-%23007ACC.svg?style=for-the-badge&logo=javascript&logoColor=white" alt="JavaScript" />
-    <img src="https://img.shields.io/badge/MySQL-%232D3748.svg?style=for-the-badge&logo=Mysql&logoColor=white" alt="MySQL" />
-</div>
+Para este projeto foram utilizadas as seguintes tecnologias, focadas no desenvolvimento Front-End:
+
+### Status do Repositório
+[![GitHub stars](https://img.shields.io/github/stars/gacsilva2005/AgenTEC?style=for-the-badge&label=Stars)](https://github.com/gacsilva2005/AgenTEC/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/gacsilva2005/AgenTEC?style=for-the-badge&label=Forks)](https://github.com/gacsilva2005/AgenTEC/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/gacsilva2005/AgenTEC?style=for-the-badge&label=Issues)](https://github.com/gacsilva2005/AgenTEC/issues)
+
+### Stack Principal
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+
+---
 
 ## 🗒️ Features do Projeto
 
@@ -33,6 +35,8 @@ Esta aplicação demonstra domínio em desenvolvimento **Front-End Clássico** e
 * **Controle de Inventário (Administrativo):** Gerenciamento de estoque de materiais de laboratório.
 * **Perfis de Acesso:** Telas de acesso e fluxo de trabalho distintos para Professores, Técnicos e Administradores.
 * **Interface Intuitiva:** Design focado na experiência do usuário para facilitar a navegação e o uso do sistema.
+
+---
 
 ## 🖥️ Como Executar o Projeto
 
@@ -54,8 +58,10 @@ Como este projeto é um protótipo focado no Front-End, a execução é simples 
     ```
 3.  **Abra o arquivo principal no navegador:**
     Localize e abra o arquivo `AgenTEC-Front_End/HTML/login.html` no seu navegador.
-    
+
     > **Dica:** Use a extensão Live Server no VS Code para visualizar as alterações em tempo real.
+
+---
 
 ## 💎 Links Úteis
 
