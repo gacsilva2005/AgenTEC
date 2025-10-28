@@ -224,6 +224,10 @@ body, html {
     --dark: #333333;
     --text: white;
     --secondary: #008892;
+    --function-button: #818181;
+    --hoverFunction-button: #505050;
+    --vermelho: #b20000;
+    --hover-red: #7a0000;
 }
 
 .input-group input {
@@ -298,7 +302,7 @@ body, html {
 }
 
 .custom-select a:hover {
-    background-color: var(--secondary);
+    background-color: var(--hoverFunction-button);
     color: #fff;
     transform: translateY(-3px);
 }
@@ -308,14 +312,28 @@ body, html {
 }
 
 .custom-select a {
-    background-color: var(--primary);
-    border: 1px solid var(--primary);
+    background-color: var(--function-button);
+    border: 1px solid var(--function-button);
     color: #fff;
     transition: all 0.3s ease;
 }
 
-.submit-button{
-    width: 100%;
+.form-container .button-container {
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.voltar-button{
+    text-decoration: none;
+}
+
+.submit-button, .voltar-button {
+    min-width: 100px;
+    text-align: center;
+    justify-content: space-between;
     padding: 12px;
     background-color: var(--primary);
     color: #fff;
@@ -328,12 +346,12 @@ body, html {
     transition: all 0.3s ease;
 }
 
-.submit-button:hover{
+.submit-button:hover, .voltar-button:hover{
     background-color: var(--secondary);
     transform: translateY(-3px);
 }
 
-.submit-button:active {
+.submit-button:active, .voltar-button:active {
     transform: translateY(1px);
 }
 
