@@ -2,6 +2,8 @@
 ## Descrição
 O AgenTEC é um sistema de gerenciamento de laboratórios projetado para otimizar a reserva de espaços e a organização de materiais. A plataforma permite que usuários agendem horários nos laboratórios de forma eficiente e solicitem "kits" personalizados, que incluem vidrarias e reagentes necessários para seus experimentos.
 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" width="40" height="40"/>
+
 **_Funcionalidades_** 
 Agendamento de Laboratórios: Sistema de calendário para horários disponíveis e realização de reservas.
 
