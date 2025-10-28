@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professores - Agendamento</title>
 
-    <link rel="stylesheet" href="/AgenTEC-Front_End/CSS/atualizar_vidrarias.css">
+    <link rel="stylesheet" href="../CSS/atualizar_vidrarias.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">7
 </head>
 
 <body>
@@ -220,43 +220,152 @@
 
                 <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
                 <li><a href="login.html">Agendamentos</a></li>
+
+                <div id="search-mobile__btn" style="display:none;">
+                    <i class="fas fa-search"></i>
+                </div>
+
             </ul>
         </nav>
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ Professores</span>
+                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/
+                    <a href="professor.html"> Professores </a> / <a href="MR.html"> Materiais e reagentes </a> /
+                    Vidrarias</span>
             </div>
         </div>
 
         <main class="main-content">
-            <div class="action-buttons-container">
-                <a href="MR.html"><button class="action-btn btn-primary">voltar</button></a>
-                <button class="action-btn btn-primary">Confirmar e ver lista de materiais</button>
-                <a href="reagentes.html"><button class="action-btn btn-primary">escolher reagentes</button></a> 
-            </div>
+            <main class="main-content">
+                <h1 class="page-title">Lista de Vidrarias</h1>
+                <div class="title-underline"></div>
+
+                <div class="search-container">
+                    <input type="search" id="item-search" placeholder="Pesquisar vidraria..." class="item-search-input">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+
+                <div class="selection-grid">
+                    <div class="item-cards-container">
+
+                        <div class="item-card">
+                            <h3 class="item-card-title">Becker</h3>
+                            <div class="item-row">
+                                <div class="item-info">
+                                    <span class="item-name">50ml</span>
+                                    <span class="item-unit">x unidades</span>
+                                </div>
+                                <div class="item-actions">
+                                    <i class="fas fa-comment"></i>
+                                    <i class="fas fa-pencil-alt"></i>
+                                </div>
+                            </div>
+                            <div class="item-row">
+                                <div class="item-info">
+                                    <span class="item-name">100ml</span>
+                                    <span class="item-unit">x unidades</span>
+                                </div>
+                                <div class="item-actions">
+                                    <i class="fas fa-comment"></i>
+                                    <i class="fas fa-pencil-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item-card">
+                            <h3 class="item-card-title">Funil de plastico</h3>
+                            <div class="item-row">
+                                <div class="item-info">
+                                    <span class="item-name">30mm</span>
+                                    <span class="item-unit">x unidades</span>
+                                </div>
+                                <div class="item-actions">
+                                    <i class="fas fa-comment"></i>
+                                    <i class="fas fa-pencil-alt"></i>
+                                </div>
+                            </div>
+                            <div class="item-row">
+                                <div class="item-info">
+                                    <span class="item-name">50mm</span>
+                                    <span class="item-unit">x unidades</span>
+                                </div>
+                                <div class="item-actions">
+                                    <i class="fas fa-comment"></i>
+                                    <i class="fas fa-pencil-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="action-buttons-container">
+                    <a href="MR.html"><button class="action-btn btn-primary">voltar</button></a>
+                    
+                    <button id="btn-confirmar" class="action-btn btn-primary">confirmar</button>
+                    
+                    <a href="#"><button class="action-btn btn-primary">adicionar vidrarias</button></a>
+                </div>
+                <div class="notification" id="notification">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Itens atualizados com sucesso!</span>
+                </div>
+
+            </main>
         </main>
-        
         <script>
-
+            // Executa o código quando o conteúdo da página estiver totalmente carregado
             document.addEventListener('DOMContentLoaded', function () {
-                const campoBusca = document.getElementById('campo-busca');
-                const cardsContainer = document.querySelector('.cards-container');
-                const todosOsCards = cardsContainer.querySelectorAll('.card');
-                campoBusca.addEventListener('input', function () {
-                    const termoBuscado = campoBusca.value.toLowerCase();
-                    todosOsCards.forEach(function (card) {
-                        const textoDoCard = card.textContent.toLowerCase();
-                        if (textoDoCard.includes(termoBuscado)) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
+        
+                // --- LÓGICA DA BUSCA DE ITENS (Sua lógica antiga) ---
+                const campoBuscaGeral = document.getElementById('campo-busca');
+                if (campoBuscaGeral) {
+                    const cardsContainer = document.querySelector('.cards-container');
+                    if (cardsContainer) {
+                        const todosOsCards = cardsContainer.querySelectorAll('.card');
+                        campoBuscaGeral.addEventListener('input', function () {
+                            const termoBuscado = campoBuscaGeral.value.toLowerCase();
+                            todosOsCards.forEach(function (card) {
+                                const textoDoCard = card.textContent.toLowerCase();
+                                if (textoDoCard.includes(termoBuscado)) {
+                                    card.style.display = 'flex';
+                                } else {
+                                    card.style.display = 'none';
+                                }
+                            });
+                        });
+                    }
+                }
+        
+                // --- LÓGICA DE NOTIFICAÇÃO (Antiga e Nova) ---
+                
+                // Pega os elementos da notificação e do botão
+                const notification = document.getElementById('notification');
+                const confirmButton = document.getElementById('btn-confirmar');
+        
+                // NOVA LÓGICA: Clique no botão "Confirmar"
+                if (confirmButton && notification) {
+                    confirmButton.addEventListener('click', function(event) {
+                        event.preventDefault(); // Previne qualquer ação padrão do botão
+        
+                        // 1. Mostra a notificação
+                        notification.classList.add('show');
+        
+                        // 2. Espera 1.5 segundos e depois redireciona
+                        setTimeout(() => {
+                            // 3. Redireciona para a tela de administradores
+                            //    !!!! MUDE O NOME DA PÁGINA AQUI !!!!
+                            window.location.href = 'administradores.html'; 
+                        }, 1500); // 1.5 segundos de espera
                     });
-                });
-
+                }
+    
             });
-
+        
+            // --- LÓGICA ANTIGA DO VLIBRAS (MANTIDA) ---
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
         </script>
 </body>
 
