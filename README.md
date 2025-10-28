@@ -8,9 +8,15 @@ O **AgenTEC** é um sistema de gerenciamento de laboratórios projetado para oti
 
 Esta aplicação demonstra domínio em desenvolvimento **Front-End Clássico** e a estruturação de um fluxo de trabalho complexo, essencial para a rotina de um laboratório químico/biológico.
 
+
+<div data-badges>
+    <img src="https://img.shields.io/github/stars/portfolio-projetos-dev/portfoleo?style=for-the-badge" alt="GitHub stars" />
+    <img src="https://img.shields.io/github/forks/portfolio-projetos-dev/portfoleo?style=for-the-badge" alt="GitHub forks" />
+    <img src="https://img.shields.io/github/issues/portfolio-projetos-dev/portfoleo?style=for-the-badge" alt="GitHub issues" />
+</div>
+
 ## 🛠️ Tecnologias Utilizadas
 
-| Categoria | Tecnologia | Uso no Projeto |
 | :--- | :--- | :--- |
 <div data-badges>
   <img src="https://img.shields.io/badge/html-%23000000.svg?style=for-the-badge&logo=html&logoColor=white" alt="HTML" />
