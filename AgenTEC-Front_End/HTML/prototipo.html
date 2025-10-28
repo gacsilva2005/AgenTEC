@@ -104,10 +104,6 @@
                 </nav>
         </section>
 
-        <div id="notification" class="notification">
-            <i class="fas fa-check-circle"></i> Reserva efetuada com sucesso!
-        </div>
-
         <header id="cps-header">
             <div class="cps-header__container">
 
@@ -234,55 +230,9 @@
         </div>
 
         <main class="main-content">
-            <h1 class="page-title">Professores</h1>
-            <div class="title-underline"></div>
-
-            <div class="cards-container">
-
-                <a href="calendario.html" class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <p class="card-text">Reservar laboratório</p>
-                </a>
-
-                <a href="MR.html" class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-copy"></i>
-                    </div>
-                    <p class="card-text">Materiais e reagentes solicitados</p>
-                </a>
-
-                <a href="criar_kit.html" class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-box-open"></i>
-                    </div>
-                    <p class="card-text">Kits Criados</p>
-                </a>
-
-            </div>
-
-            <div vw="" class="enabled"
-                style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-                <div vw-access-button="" class="active">
-                    <img class="vp-access-button" data-src="assets/access_icon.svg"
-                        alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                        src="https://vlibras.gov.br/app//assets/access_icon.svg">
-                    <img class="vp-pop-up" data-src="assets/access_popup.jpg"
-                        alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                        src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-                </div>
-                <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-                    <div vp="">
-                    </div>
-                </div>
-            </div>
-            <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-            <script>
-                new window.VLibras.Widget('https://vlibras.gov.br/app');
-            </script>
-            </section>
+        <!--Comecar a codar aqui!-->
         </main>
+
         <script>
 
             document.addEventListener('DOMContentLoaded', function () {
@@ -303,16 +253,6 @@
 
             });
 
-            window.addEventListener('DOMContentLoaded', () => {
-                const params = new URLSearchParams(window.location.search);
-                if (params.get('reserva') === 'sucesso') {
-                    const notification = document.getElementById('notification');
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 5000);
-                }
-            });
         </script>
 </body>
 
