@@ -1,5 +1,9 @@
 # 📌 AgenTEC - Gerenciamento e Agendamento de Laboratórios
 ---
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/xGdUh5E" data-context="false" ><a href="//imgur.com/a/xGdUh5E"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
+
 <div align="center">    
 
 ![Último Commit](https://img.shields.io/github/last-commit/gacsilva2005/AgenTEC?style=for-the-badge&label=ÚLTIMO%20COMMIT)
