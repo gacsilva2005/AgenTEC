@@ -9,6 +9,23 @@ html {
     color: #333;
 }
 
+:root{
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #b20000;
+    --secondary-red: #970000;
+    --hoverSecRed-color: #e70000;
+    --hoverRed-color: #831c16ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+    --event-panel-bg: #f8f9fa;
+    --day-selected: #e70000d7;
+}
 /* --- Topo Governo SP --- */
 .govsp-topo {
     display: flex;
@@ -120,7 +137,7 @@ html {
 }
 
 .busca-submit .fa-search {
-    color: #b20000;
+    color: var(--primary-red);
     font-size: 1.1rem;
 }
 
@@ -168,7 +185,7 @@ html {
     z-index: 1;
     list-style: none;
     padding: 0;
-    border-top: 3px solid #b20000;
+    border-top: 3px solid var(--primary-red);
 }
 
 .main-menu-container .menu .dropdown-content li a {
@@ -180,7 +197,7 @@ html {
 
 .main-menu-container .menu .dropdown-content li a:hover {
     background-color: #f1f1f1;
-    color: #b20000;
+    color: var(--primary-red);
 }
 
 .menu li.dropdown:hover .dropdown-content {
@@ -228,18 +245,6 @@ html {
     margin: 0 auto;
 }
 
-:root{
-    --primary: #970000;
-    --secondary: #e70000;
-    --accent: #F5F7FA;
-    --light: #333333;
-    --dark: #000000;
-    --text: #636e72;
-    --today: #7c7c7c;
-    --selected: #e70000d7;
-    --event-panel-bg: #f8f9fa;
-}
-
 .container{
     display: flex;
     flex-direction: row;
@@ -264,7 +269,7 @@ html {
 
 .calendar-container{
     position: relative;
-    background: white;
+    background: var(--text-white);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     flex: 0 0 700px;
@@ -289,8 +294,9 @@ html {
 }
 
 .calendar-header{
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-red) 0%,
+     var(--secondary-red) 100%);
+    color: var(--text-white);
     padding: 1.5rem;
     text-align: center;
     position: relative;
@@ -304,7 +310,8 @@ html {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%,
+     rgba(255, 255, 255, 0) 70%);
     transform: rotate(30deg);
 }
 
@@ -386,13 +393,13 @@ html {
 }
 
 .day.today{
-    background: var(--today);
+    background: var(--dark-gray);
     color: white;
     font-weight: bold;
 }
 
 .day.selected{
-    background: var(--selected);
+    background: var(--primary-red);
     color: white;
     font-weight: bold;
     animation: pop 0.3s ease;
@@ -410,7 +417,7 @@ html {
     }
 }
 
-.dau.other-month{
+.day.other-month{
     color: var(--text);
     opacity: 0.5;
 }
@@ -421,7 +428,7 @@ html {
     bottom: 5px;
     width: 5px;
     height: 5px;
-    background: var(--accent);
+    background: var(--primary-red);
     border-radius: 50%;
 }
 
@@ -434,7 +441,8 @@ html {
 }
 
 .today-btn{
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--primary-red) 0%,
+    var(--secondary-red) 100%);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -450,8 +458,8 @@ html {
 }
 
 .schedule-btn{
-    display: none;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--hoverLight-color) 0%, 
+    var(--hoverCian-color) 100%);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -467,8 +475,8 @@ html {
 }
 
 .delete-btn{
-    display: none;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--hoverLight-color) 0%, 
+    var(--hoverCian-color) 100%);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -491,8 +499,8 @@ html {
 }
 
 .event-indicator{
-    font-size: 0.rem;
-    color: var(--primary);
+    font-size: 0rem;
+    color: var(--primary-red);
     display: flex;
     align-items: center;
     gap: 5px;
@@ -506,7 +514,13 @@ html {
     flex: 0 0 420px;
     width: 100%;
     max-width: 450px;
-    height: fit-content;
+    flex-direction: column;
+}
+
+.container .all-event{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .event-header{
@@ -515,13 +529,13 @@ html {
     align-items: center;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid rgba(123, 0, 2, 0.2);
+    border-bottom: 2px solid var(--low-hoverCian);
 }
 
 .event-date{
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--hoverCian-color);
 }
 
 .event-list{
@@ -549,13 +563,13 @@ html {
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--hoverLight-color);
     flex-shrink: 0;
 }
 
 .event-time{
     font-weight: 600;
-    color: var(--primary);
+    color: var(--hoverCian-color);
     min-width: 80px;
 }
 
@@ -572,7 +586,7 @@ html {
 
 .event-icon{
     font-size: 1.2rem;
-    color: var(--primary);
+    color: var(--hoverCian-color);
     margin-right: 10px;
 }
 
