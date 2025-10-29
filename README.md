@@ -1,4 +1,4 @@
-# 🗓️ AgenTEC - Gerenciamento e Agendamento de Laboratórios
+# 📌🗓️ AgenTEC - Gerenciamento e Agendamento de Laboratórios
 ---
 <br>
 <br>
