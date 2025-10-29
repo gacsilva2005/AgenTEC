@@ -1,0 +1,684 @@
+:root{
+    --primary-color: #004b49; 
+    --accent-color: #008B8B; 
+    --light-gray: #f5f5f5; 
+    --dark-gray: #666666; 
+    --text-white: #ffffff;
+}
+
+/* CSS Reset e Estilos Globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.govsp-topo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd; 
+}
+
+.govsp-portal img {
+    height: 10px;  
+    width: 200px;   
+    display: block; 
+}
+
+.govsp-portal {
+    background-color: #000; 
+    padding: 8px 25px 8px 15px; 
+    border-radius: 0 50px 50px 0; 
+}
+
+.govsp-topo .govsp-portal img {
+    height: 38px;
+}
+
+.govsp-topo .govsp-navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.govsp-navbar :hover {
+    transform: translate(0.2px, 0.2px);
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}       
+
+
+.govsp-topo .govsp-navbar img {
+    height: 23px;;
+}
+
+.govsp-topo .govsp-social {
+    display: inline-block;
+}
+
+#cps-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+.cps-header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cps-header__logo img {
+    max-height: 50px;
+}
+
+.form-pesquisa {
+    display: flex; 
+    align-items: center; 
+    border: 1px solid #ccc; 
+    border-radius: 50px; 
+    overflow: hidden; 
+    max-width: 400px; 
+    background-color: white;
+}
+
+.campo-de-busca {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    padding: 15px 50px; 
+    font-size: 1rem; 
+    background-color: transparent; 
+}
+
+.campo-de-busca::placeholder {
+    color: #999; 
+}
+
+.busca-submit {
+    border: none; 
+    border-left: 1px solid #ccc; 
+    background-color: transparent; 
+    padding: 10px 18px; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.busca-submit .fa-search {
+    color: #b20000; 
+    font-size: 1.1rem; 
+}
+
+.busca-submit:hover {
+    background-color: #f5f5f5; 
+}
+
+.main-menu-container {
+    background-color: #b20000; 
+    padding: 0 20px;
+}
+.main-menu-container .menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main-menu-container .menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.main-menu-container .menu li a:hover {
+    background-color: #831c16ef; 
+}
+
+#breadcrumb {
+    background-color: #666666;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.breadcrumb-container a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #005C6D;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.title-underline {
+    width: 350px;
+    height: 4px;
+    padding: 0.2px;
+    border-radius: 5px;
+    background-color: #c41e15;
+    margin-bottom: 40px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Card com funções das telas*/
+.card {
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 280px;
+    padding: 40px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+    font-size: 4rem;
+    color: #008B8B; 
+    margin-bottom: 25px;
+}
+
+.card-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    min-height: 50px;
+}
+
+
+@media (max-width: 768px) {
+    .cps-header__container {
+        flex-direction: column;
+    }
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+    }
+}
+
+.logo-container {
+    display: flex;          
+    align-items: center;    
+    gap: 40 px;              
+}
+
+.logo-container img {
+    height: 80px; 
+    width: auto;     
+}
+
+.logo-cps {
+    height: 70px; 
+}
+
+/* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
+
+/* Contêiner principal da navegação */
+.govsp-navbar {
+    display: flex; /* Alinha todos os itens na horizontal */
+    align-items: center; /* Centraliza os itens verticalmente */
+    padding: 10px;
+}
+
+/* Estilo para todos os links (que servem como 'caixa' para os ícones) */
+.govsp-navbar a {
+    display: inline-flex; /* Permite centralizar o ícone dentro do link */
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Largura da caixa */
+    height: 28px; /* Altura da caixa */
+    background-color: #ffffff; /* Fundo cinza claro */
+    margin: -3px; /* Espaçamento entre os ícones */
+    border-radius: 3px; /* Bordas levemente arredondadas */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+/* Estilo para os ícones (<i>) dentro dos links */
+.govsp-navbar a i {
+    color: #ffffff; /* Cor cinza escura para o ícone */
+    font-size: 1.2rem; /* Tamanho do ícone */
+}
+
+/* Estilo para o texto "/governosp" */
+.govsp-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0px; /* Espaçamento antes e depois do texto */
+}
+
+/* Estilo para a linha separadora */
+.separator {
+    height: 25px; /* Altura da linha */
+    border-left: 1px solid #ccc; /* Cria a linha vertical */
+    margin: 0 10px; /* Espaçamento antes e depois da linha */
+}
+
+/* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
+
+/* Garante que o item principal do menu seja posicionado corretamente */
+.menu li.dropdown {
+    position: relative;
+}
+
+/* Esconde o submenu por padrão */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    /* margin-top: 10px; FOI REMOVIDO PARA CORRIGIR O PROBLEMA DE FECHAMENTO */
+    border-top: 3px solid #b20000;
+}
+
+/* Estilo dos links dentro do submenu */
+/* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
+.main-menu-container .menu .dropdown-content li a {
+    color: #555; /* Define a cor escura para o texto */
+    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
+    padding: 12px 16px;
+    text-align: left;
+    /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
+    background-color: transparent; 
+}
+
+/* Efeito de hover nos links do submenu */
+.main-menu-container .menu .dropdown-content li a:hover {
+    background-color: #f1f1f1;
+    color: #b20000;
+}
+
+/* Mostra o submenu quando o mouse passa por cima do item principal */
+.menu li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para a setinha */
+.dropdown a .fa-chevron-down {
+    font-size: 0.7em;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Gira a setinha para cima quando o menu está aberto */
+.menu li.dropdown:hover a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+    
+}
+
+/* --- ESTILOS PARA NOVA PÁGINA 'ADICIONAR VIDRARIAS' --- */
+
+/* Contêiner para seções do formulário */
+.form-section {
+    width: 100%;
+    max-width: 800px; /* Limita a largura */
+    margin: 0 auto 40px auto; /* Centraliza e adiciona espaço abaixo */
+    padding: 25px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-section h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--primary-color, #004b49);
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent-color, #008B8B);
+    padding-bottom: 10px;
+}
+
+/* Barra de pesquisa local */
+.search-local-container {
+    display: flex;
+    width: 100%;
+}
+
+.search-local-input {
+    flex-grow: 1; /* Ocupa o espaço disponível */
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px; /* Cantos arredondados à esquerda */
+    outline: none;
+}
+
+.search-local-button {
+    border: none;
+    background-color: var(--primary-color, #004b49);
+    color: white;
+    padding: 0 20px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0; /* Cantos arredondados à direita */
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.search-local-button:hover {
+    background-color: var(--accent-color, #008B8B);
+}
+
+/* Container de resultados da pesquisa */
+.search-results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+.search-results ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.search-results li {
+    padding: 5px 0;
+}
+
+
+/* Formulário de Cadastro */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group, .quantity-group {
+    width: 100%;
+}
+
+.input-group label, .quantity-group label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+
+.input-group input[type="text"]:focus {
+    border-color: var(--accent-color, #008B8B);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,139,139,0.3);
+}
+
+/* Seletor de Quantidade */
+.quantity-stepper {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--primary-color, #004b49);
+    transition: background-color 0.2s ease;
+}
+.quantity-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.btn-minus {
+    border-radius: 5px 0 0 5px;
+}
+
+.btn-plus {
+    border-radius: 0 5px 5px 0;
+}
+
+.quantity-stepper input[type="text"] {
+    width: 70px;
+    height: 45px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #333;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Container para alinhar stepper e botão de confirmar */
+.stepper-container {
+    display: flex;
+    align-items: center; /* Alinha o stepper e o botão na vertical */
+    gap: 590px; /* Espaço entre o stepper e o novo botão */
+}
+
+/* Estilo para o novo botão de confirmar pequeno */
+.btn-confirm-small {
+    height: 45px; /* Mesma altura do stepper */
+    width: 55px;  /* Um pouco mais largo que alto */
+    border: none;
+    background-color: var(--primary-color, #004b49); /* Cor primária do tema */
+    color: white;
+    font-size: 1.3rem; /* Tamanho do ícone de check */
+    border-radius: 5px; /* Borda arredondada igual ao stepper */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-confirm-small:hover {
+    background-color: var(--accent-color, #008B8B); /* Cor de destaque ao passar o mouse */
+}
+
+/* Container dos botões de ação na parte inferior */
+.action-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.action-btn {
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+}
+
+.action-btn:active {
+    transform: translateY(2px);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+}
+
+/* Media queries para responsividade */
+@media (max-width: 992px) {
+    .selection-grid {
+        grid-template-columns: 1fr;
+        /* Coloca os itens selecionados abaixo */
+    }
+
+    .item-cards-container {
+        grid-template-columns: 1fr;
+        /* Um card por linha */
+    }
+
+    .action-buttons-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}
+
+/* --- ESTILOS PARA A NOVA TABELA DE VIDRARIAS --- */
+
+.tabela-vidrarias-container {
+    width: 100%;
+    max-width: 800px; /* Mesma largura das seções de formulário */
+    margin: 40px auto; /* Centraliza e adiciona espaço */
+    padding: 25px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tabela-vidrarias-container h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--primary-color, #004b49);
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-color, #008B8B);
+    padding-bottom: 10px;
+}
+
+.tabela-vidrarias {
+    width: 100%;
+    border-collapse: collapse; /* Tira espaço entre bordas */
+}
+
+.tabela-vidrarias thead {
+    background-color: var(--primary-color, #004b49);
+    color: white;
+}
+
+.tabela-vidrarias th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.tabela-vidrarias tbody tr:nth-child(even) {
+    background-color: #f0f0f0; /* Cor alternada para linhas (zebrado) */
+}
+
+.tabela-vidrarias td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Alinha a quantidade à direita para melhor visualização */
+.tabela-vidrarias th:last-child,
+.tabela-vidrarias td:last-child {
+    text-align: right;
+    width: 1
+}
+/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
+
+.notification {
+    position: fixed; /* Fica fixo na tela mesmo com scroll */
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; /* Verde para sucesso */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+    z-index: 1000; /* Garante que fique por cima de outros elementos */
+
+    /* Animação */
+    transform: translateX(120%); /* Começa fora da tela */
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Classe que será adicionada via JS para mostrar a notificação */
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification i {
+    font-size: 1.4rem;
+}
+
