@@ -51,6 +51,8 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 * **Interface Intuitiva (Front-End Clássico):** Design focado na usabilidade, facilitando o fluxo de agendamento e requisição para qualquer usuário.
 * **Estrutura de Workflow Complexa:** Demonstração prática da habilidade de modelar e implementar fluxos de trabalho complexos e específicos de um ambiente de laboratório.
 
+<hr> </hr>
+
 <div align="center">   
 <img src="https://i.postimg.cc/VLZXxfBG/etec.png" alt="Logo da ETEC" width="300"/>
 </div>
