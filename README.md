@@ -1,10 +1,11 @@
-# 📌 AgenTEC - Gerenciamento e Agendamento de Laboratórios
+# AgenTEC - Gerenciamento e Agendamento de Laboratórios
 ---
 
 
 <div align="center">    
 <img src="https://i.postimg.cc/VLZXxfBG/etec.png" alt="Logo da ETEC" width="300"/>
 <br> <br> <br> 
+    
 ![Último Commit](https://img.shields.io/github/last-commit/gacsilva2005/AgenTEC?style=for-the-badge&label=ÚLTIMO%20COMMIT)
 ![Tamanho do Repositório](https://img.shields.io/github/repo-size/gacsilva2005/AgenTEC?style=for-the-badge&label=TAMANHO)
 
@@ -59,7 +60,7 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 <br>
 
 <div align="center">   
-<img src="https://i.postimg.cc/2yJR2k7y/Governo-do-estado-de-SP.png" alt="Banner ETEC" width="600"/>
+<img src="https://i.postimg.cc/50YZjdVj/CPS.png" alt="Banner ETEC" width="600"/>
 </div>
 
 
