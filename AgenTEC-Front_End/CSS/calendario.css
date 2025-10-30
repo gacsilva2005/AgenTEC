@@ -609,10 +609,10 @@ html {
 .action-buttons-container {
     display: flex;
     justify-content: center;
-    gap: 350px;
     align-items: center;
-    padding-top: 20px;
-    margin-top: -110px;
+    gap: 100px;
+    padding: 20px 0;
+    flex-wrap: wrap;
 }
 
 .action-btn {
@@ -670,5 +670,12 @@ html {
 
         .event-date{
         font-size: 1.3rem;
+    
+    }
+
+    .action-buttons-container {
+        margin-top: auto;
+        flex-direction: column;
+        gap: 15px;
     }
 }

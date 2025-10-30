@@ -11,12 +11,12 @@ body, html {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
-    background-color: #e9e9e9;
+    background-color: #ffffff;
     border-bottom: 1px solid #ddd; 
 }
 
 .govsp-portal img {
-    height: 30px;  
+    height: 60px;  
     width: auto;   
     display: block; 
 }
@@ -28,7 +28,7 @@ body, html {
 }
 
 .govsp-topo .govsp-portal img {
-    height: 60px;
+    height: 38px;
 }
 
 .govsp-topo .govsp-navbar {
@@ -138,7 +138,7 @@ body, html {
 }
 
 #breadcrumb {
-    background-color: #f8f9fa;
+    background-color: #666666;
     padding: 12px 20px;
     border-bottom: 1px solid #e9ecef;
 }
@@ -146,11 +146,12 @@ body, html {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
-    color: #6c757d;
+    color: #ffffff;
 }
 .breadcrumb-container a {
-    color: #c41e15;
+    color: #ffffff;
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* Conteúdo Principal */
@@ -168,12 +169,31 @@ body, html {
 }
 
 .title-underline {
-    width: 250px;
-    height: 4px;
-    padding: 0.2px;
-    border-radius: 5px;
-    background-color: #c41e15;
-    margin-bottom: 40px;
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--huge: 42px;
+    --progress-bar-width: 200px;
+    --progress-bar-height: 200px;
+    --font-size: 25px;
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    font-family: Roboto, Arial, sans-sreif;
+    color: #333;
+    font-weight: 300;
+    line-height: 2.5rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
 }
 
 .cards-container {
@@ -259,7 +279,7 @@ body, html {
     justify-content: center;
     width: 28px; /* Largura da caixa */
     height: 28px; /* Altura da caixa */
-    background-color: #7c7c7c; /* Fundo cinza claro */
+    background-color: #ffffff; /* Fundo cinza claro */
     margin: -3px; /* Espaçamento entre os ícones */
     border-radius: 3px; /* Bordas levemente arredondadas */
     text-decoration: none; /* Remove o sublinhado do link */

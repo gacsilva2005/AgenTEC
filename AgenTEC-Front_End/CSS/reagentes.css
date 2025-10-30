@@ -9,11 +9,26 @@ html {
     overflow-x: hidden;
 }
 
+:root{
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+}
+
 .govsp-topo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #e9e9e9;
+    background-color: #ffffff;
     border-bottom: 1px solid #ddd;
 }
 
@@ -30,7 +45,7 @@ html {
 }
 
 .govsp-topo .govsp-portal img {
-    height: 60px;
+    height: 38px;
 }
 
 .govsp-topo .govsp-navbar {
@@ -47,8 +62,7 @@ html {
 
 
 .govsp-topo .govsp-navbar img {
-    height: 23px;
-    ;
+    height: 23px;    ;
 }
 
 .govsp-topo .govsp-social {
@@ -145,7 +159,7 @@ html {
 }
 
 #breadcrumb {
-    background-color: #f8f9fa;
+    background-color: #666666;
     padding: 12px 20px;
     border-bottom: 1px solid #e9ecef;
 }
@@ -154,22 +168,13 @@ html {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
-    color: #6c757d;
+    color: #ffffff;
 }
 
 .breadcrumb-container a {
-    color: #c41e15;
+    color: #ffffff;
     text-decoration: none;
-}
-
-:root {
-    --primary: #970000;
-    --secondary: #c70000;
-    /* vermelho protótipo */
-    --accent: #F5F7FA;
-    --light: #333333;
-    --dark: #000000;
-    --text: #ffffff;
+    font-weight: bold;
 }
 
 .button-container {
@@ -187,7 +192,7 @@ html {
     text-align: center;
     display: flex;
     max-width: 200px;
-    background-color: #5d5d5d;
+    background-color: var(--primary-color);
     padding: 20px 60px;
     text-decoration: none;
     color: white;
@@ -199,7 +204,7 @@ html {
 
 .button-custom:hover {
     transform: translateY(-5px);
-    background-color: #373737;
+    background-color: var(--hoverCian-color);
 }
 
 .button-custom:active {
@@ -207,7 +212,7 @@ html {
 }
 
 .container {
-    color: var(--text);
+    color: var(--text-white);
 }
 
 .card-wrapper {
@@ -230,7 +235,7 @@ html {
     width: 200px;
     user-select: none;
     display: block;
-    background-color: var(--secondary);
+    background-color: var(--primary-red);
     padding: 18px;
     border-radius: 30px;
     text-decoration: none;
@@ -266,14 +271,14 @@ html {
 
 .card-list .card-link .card-title {
     margin-top: 15px;
-    color: var(--text);
+    color: var(--text-white);
     font-size: 1.19rem;
     text-align: center;
     font-weight: 600;
 }
 
 .card-list .card-link .card-description {
-    color: var(--text);
+    color: var(--text-white);
     font-size: 1rem;
     text-align: center;
     font-weight: 400;
@@ -291,8 +296,8 @@ html {
     margin: auto;
     width: fit-content;
     cursor: pointer;
-    background-color: var(--primary);
-    color: var(--text);
+    background-color: var(--hoverRed-color);
+    color: var(--text-white);
     transition: all 0.3s ease;
 }
 
@@ -453,14 +458,15 @@ html {
     font-weight: bold;
     cursor: pointer;
     border: none;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    background-color: var(--primary-color);
 }
 
 .button-confirm {
-    background-color: var(--primary); /* Cor de destaque (Azul) */
+    background-color: var(--primary-color); /* Cor de destaque (Azul) */
     color: white;
-    transition: all 0.3s ease;
 }
+
 
 .button-confirm:hover {
     background-color: rgb(109, 0, 0);
@@ -488,7 +494,6 @@ html {
     transform: translateY(1px);
 }
 
-/* Estilização para Mobile */
 @media (max-width: 480px) {
     .modal-content {
         padding: 20px;
@@ -594,12 +599,31 @@ html {
 }
 
 .title-underline {
-    width: 350px;
-    height: 4px;
-    padding: 0.2px;
-    border-radius: 5px;
-    background-color: #c41e15;
-    margin-bottom: 40px;
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--huge: 42px;
+    --progress-bar-width: 200px;
+    --progress-bar-height: 200px;
+    --font-size: 25px;
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    font-family: Roboto, Arial, sans-sreif;
+    color: #333;
+    font-weight: 300;
+    line-height: 2.5rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
 }
 
 .cards-container {
@@ -646,7 +670,7 @@ html {
     /* Largura da caixa */
     height: 28px;
     /* Altura da caixa */
-    background-color: #7c7c7c;
+    background-color: #ffffff;
     /* Fundo cinza claro */
     margin: -3px;
     /* Espaçamento entre os ícones */
