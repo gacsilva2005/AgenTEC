@@ -26,6 +26,7 @@ html {
     --event-panel-bg: #f8f9fa;
     --day-selected: #e70000d7;
 }
+
 /* --- Topo Governo SP --- */
 .govsp-topo {
     display: flex;
@@ -54,13 +55,17 @@ html {
     padding-right: 20px;
 }
 
+.govsp-topo .govsp-portal img {
+    height: 38px;
+}
+
 .govsp-navbar a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 28px;
     height: 28px;
-    background-color: #7c7c7c;
+    background-color: #ffffff;
     margin: -3px;
     border-radius: 3px;
     text-decoration: none;
@@ -216,7 +221,7 @@ html {
 
 /* --- Breadcrumb --- */
 #breadcrumb {
-    background-color: #f8f9fa;
+    background-color: #666666;
     padding: 12px 20px;
     border-bottom: 1px solid #e9ecef;
 }
@@ -225,12 +230,13 @@ html {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
-    color: #6c757d;
+    color: #ffffff;
 }
 
 .breadcrumb-container a {
-    color: #c41e15;
+    color: #ffffff;
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* --- ESTILOS DO CALENDÁRIO --- */
@@ -294,7 +300,7 @@ html {
 }
 
 .calendar-header{
-    background: linear-gradient(135deg, var(--primary-red) 0%,
+    background: linear-gradient(135deg, var(--hoverCian-color) 0%,
      var(--secondary-red) 100%);
     color: var(--text-white);
     padding: 1.5rem;
@@ -393,7 +399,7 @@ html {
 }
 
 .day.today{
-    background: var(--dark-gray);
+    background: var(--light-gray);
     color: white;
     font-weight: bold;
 }
@@ -441,8 +447,8 @@ html {
 }
 
 .today-btn{
-    background: linear-gradient(135deg, var(--primary-red) 0%,
-    var(--secondary-red) 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%,
+    var(--hoverCian-color) 100%);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -458,7 +464,7 @@ html {
 }
 
 .schedule-btn{
-    background: linear-gradient(135deg, var(--hoverLight-color) 0%, 
+    background: linear-gradient(135deg, var(--primary-color) 0%,
     var(--hoverCian-color) 100%);
     color: white;
     border: none;
@@ -475,7 +481,7 @@ html {
 }
 
 .delete-btn{
-    background: linear-gradient(135deg, var(--hoverLight-color) 0%, 
+    background: linear-gradient(135deg, var(--primary-color) 0%,
     var(--hoverCian-color) 100%);
     color: white;
     border: none;
@@ -499,8 +505,8 @@ html {
 }
 
 .event-indicator{
-    font-size: 0rem;
-    color: var(--primary-red);
+    font-size: 1.1rem;
+    color: var(--hoverCian-color);
     display: flex;
     align-items: center;
     gap: 5px;
@@ -511,10 +517,11 @@ html {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
-    flex: 0 0 420px;
+    flex: 1 1 170px;
     width: 100%;
     max-width: 450px;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .container .all-event{
@@ -533,7 +540,7 @@ html {
 }
 
 .event-date{
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--hoverCian-color);
 }
@@ -580,14 +587,58 @@ html {
 .no-events{
     text-align: center;
     color: var(--text);
-    padding: 2rem 1rem;
-    font-style: italic
+    padding: 1.37rem 1rem;
+    font-style: italic;
+    font-size: 1rem;
 }
 
 .event-icon{
     font-size: 1.2rem;
     color: var(--hoverCian-color);
     margin-right: 10px;
+}
+
+.all-event {
+    display: flex;
+    flex-wrap: wrap; /* permite quebra em linha em telas menores */
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.action-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 350px;
+    align-items: center;
+    padding-top: 20px;
+    margin-top: -110px;
+}
+
+.action-btn {
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.action-btn:hover {
+    background-color: var(--hoverCian-color);
+    transform: translateY(-3px);
+}
+
+.action-btn:active {
+    transform: translateY(2px);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
 }
 
 @media(max-width: 767px){

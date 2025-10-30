@@ -16,39 +16,97 @@
 </head>
 
 <body>
+<!-- DAUTONISMO -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+<!-- DAUTONISMO -->
+<!-- FACEBOOK -->
+<div class="fb_reset" id="fb-root">
+    <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
+        <div></div>
+    </div>
+</div>
+<script async="" crossorigin="anonymous" defer=""
+    src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&amp;version=v5.0"></script>
+<!-- FACEBOOK -->
+<!-- PRINCIPAL -->
+<div class="site" id="page">
+    <!-- BARRA GOVERNO -->
     <section class="govsp-topo">
-        <div class="govsp-portal">
-            <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
-                <img src="../Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
-            </a>
-        </div>
-        <nav class="govsp-navbar">
-            <a href="https://www.flickr.com/photos/governosp/" target="_blank" title="Flickr"><i
-                    class="fa-brands fa-flickr"></i></a>
-            <a href="https://www.linkedin.com/company/governosp" target="_blank" title="LinkedIn"><i
-                    class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.tiktok.com/@governosp" target="_blank" title="TikTok"><i
-                    class="fa-brands fa-tiktok"></i></a>
-            <a href="https://www.youtube.com/governosp" target="_blank" title="YouTube"><i
-                    class="fa-brands fa-youtube"></i></a>
-            <a href="https://x.com/governosp" target="_blank" title="X (Twitter)"><i
-                    class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.instagram.com/governosp" target="_blank" title="Instagram"><i
-                    class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/governosp" target="_blank" title="Facebook"><i
-                    class="fa-brands fa-facebook-f"></i></a>
-            <p class="govsp-text">/governosp</p>
-            <div class="separator"></div>
-            <a href="#" title="Aumentar Fonte"><i class="fa-solid fa-text-height"></i></a>
-            <a href="#" title="Contraste"><i class="fa-solid fa-circle-half-stroke"></i></a>
-            <a href="https://www.sp.gov.br/sp" title="Comunicar Erros"><i
-                    class="fa-solid fa-triangle-exclamation"></i></a>
-        </nav>
+        <link
+            href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/topo-padrao-govsp.min.css"
+            rel="stylesheet" type="text/css" />
+        <link
+            href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/barra-contraste-govsp.min.css"
+            rel="stylesheet" type="text/css" />
+        <div class="blu-e" id="govsp-topbarGlobal">
+            <div id="topbarGlobal">
+                <div class="govsp-black" id="topbarLink">
+                    <div class="govsp-portal">
+                        <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
+                            <img alt="Governo do Estado de São Paulo" class="logo" height="38"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-governo-do-estado-sp.png" />
+                        </a>
+                    </div>
+                </div>
+                <nav class="govsp-navbar govsp-navbar-expand-lg">
+                    <a class="govsp-social" href="https://www.flickr.com/governosp/" target="_blank">
+                        <img alt="Flickr Governo de São Paulo" class="govsp-icon-social"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-flickr.png" />
+                    </a>
+                    <a class="govsp-social" href="https://www.linkedin.com/company/governosp/" target="_blank">
+                        <img alt="Linkedin Governo de São Paulo" class="govsp-icon-social"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-linkedin.png" />
+                    </a>
+                    <a class="govsp-social" href="https://www.tiktok.com/@governosp" target="_blank">
+                        <img alt="TikTok Governo de São Paulo" class="govsp-icon-social"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-tiktok.png" />
+                    </a>
+                    <a class="govsp-social" href="https://www.youtube.com/governosp/" target="_blank">
+                        <img alt="Youtube Governo de São Paulo" class="govsp-icon-social"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-youtube.png" />
+                    </a>
+                    <a class="govsp-social" href="https://www.twitter.com/governosp/" target="_blank">
+                        <img alt="Facebook Governo de São Paulo" class="govsp-icon-social"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-twitter.png" />
+                    </a>
+                    <a class="govsp-social" href="https://www.instagram.com/governosp/" target="_blank">
+                        <img alt="Instagram Governo de São Paulo" class="govsp-icon-social"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-insta.png" />
+                    </a>
+                    <a class="govsp-social" href="https://www.facebook.com/governosp/" target="_blank">
+                        <img alt="Facebook Governo de São Paulo" class="govsp-icon-social"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-facebook.png" />
+                    </a>
+                    <p class="govsp-social" style="min-height:auto;">/governosp</p>
+                    <div id="separador-nav"></div>
+                    <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', 1);">
+                        <img alt="Aumentar Fonte" class="govsp-acessibilidade"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-big-font.png" />
+                    </a>
+                    <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', -1);">
+                        <img alt="Diminuir Fonte" class="govsp-acessibilidade"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-small-font.png" />
+                    </a>
+                    <a accesskey="3" class="govsp-acessibilidade" href="#" id="altocontraste"
+                        onclick="window.toggleContrast()" onkeydown="window.toggleContrast()">
+                        <img alt="Contraste" class="govsp-acessibilidade"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-contrast.png" />
+                    </a>
+                    <a class="govsp-acessibilidade"
+                        href="http://www.saopaulo.sp.gov.br/fale-conosco/comunicar-erros/" target="_blank"
+                        title="Comunicar Erros">
+                        <img class="govsp-acessibilidade"
+                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-error-report.png" />
+                    </a>
+                </nav>
+            </div>
+            </nav>
     </section>
 
     <header id="cps-header">
         <div class="cps-header__container">
+
             <div class="logo-container">
                 <a href="index.html">
                     <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
@@ -74,7 +132,8 @@
                 <ul class="dropdown-content">
                     <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/conselho-de-escola/">Conselho de
                             escola</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/planos/">Planos de curso</a></li>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/planos/">Planos de curso</a>
+                    </li>
                     <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/quem-somos/">Quem Somos</a></li>
                 </ul>
             </li>
@@ -104,7 +163,8 @@
                     <li><a
                             href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/e-mail-institucional-sysmail-projeto-office-365/">E-mail
                             institucional – Sysmail</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/estagio/">Estágio e Aprendizagem</a>
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/estagio/">Estágio e
+                            Aprendizagem</a>
                     </li>
                     <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/horario-das-aulas/">Horário das
                             aulas</a></li>
@@ -124,15 +184,15 @@
                 <ul class="dropdown-content">
                     <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/08/copams.pdf"
                             target="_blank">Cartilha: Assédio Moral, Virtual e Sexual</a></li>
-                    <li><a href="#">CPS - Cetec Capacitações</a></li>
+                    <li><a href="#">CPS – Cetec Capacitações</a></li>
                     <li><a href="https://www.e-folha.prodesp.sp.gov.br/desc_dempagto/Entrada.asp?cliente=092"
-                            target="_blank">E-folha - Prodesp</a></li>
-                    <li><a href="https://nsa.cps.sp.gov.br/frmesenha.aspx" target="_blank">Esqueci a senha - NSA</a>
+                            target="_blank">E-folha – Prodesp</a></li>
+                    <li><a href="https://nsa.cps.sp.gov.br/frmesenha.aspx" target="_blank">Esqueci a senha – NSA</a>
                     </li>
                     <li><a href="https://recad.sp.gov.br/" target="_blank">Recadastramento Anual</a></li>
                     <li><a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBa3k4ejZYOS1GWTRnUllDaFhEbzNSM1I4alRk&cid=3856F8FDA5CFBC4C&id=3856F8FDA5CFBC4C%21150&parId=3856F8FDA5CFBC4C%21129&o=OneUp"
                             target="_blank">Regimento Disciplinar</a></li>
-                    <li><a href="https://sigurh.cps.sp.gov.br/" target="_blank">SIGURH - CPS</a></li>
+                    <li><a href="https://sigurh.cps.sp.gov.br/" target="_blank">SIGURH – CPS</a></li>
                 </ul>
             </li>
 
@@ -146,7 +206,8 @@
                             target="_blank">Lista de Gibis</a></li>
                     <li><a href="https://onedrive.live.com/edit.aspx?resid=3856F8FDA5CFBC4C!508&embed=1&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3QvYy8zODU2RjhGREE1Q0ZCQzRDL1VBUk12TS1sX2ZoV0lJQTRfQUVBQUFBQUFHZ2plTVVvZHFqcl9NOA&redeemstatus=true&authkey=!AGgjeMUodqjr_M8"
                             target="_blank">Lista de Mídias</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/lista-de-revistas/">Lista de
+                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/lista-de-revistas/">Lista
+                            de
                             Revistas</a></li>
                     <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/orientacoes-tcc/">Orientações
                             para TCC</a></li>
@@ -196,12 +257,8 @@
                         <span>Possui eventos</span>
                     </div>
                 </div>
-
-
-
-
             </div>
-            <section class="all-event">
+            <div class="all-event">
                 <div class="event-panel" id="event-panel">
                     <div class="event-header">
                         <div class="event-date" id="event-date">Escolha uma data</div>
@@ -244,11 +301,17 @@
                         <button class="delete-btn" id="delete-btn"> Deletar </button>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
 
         <script src="../JS (Front-End)/calendario.js"></script>
     </div>
+
+    <div class="action-buttons-container">
+        <a href="professor.html"><button class="action-btn btn-primary">Voltar</button></a>
+        <a href="reagentes.html"><button class="action-btn btn-primary">Confirmar</button></a> 
+    </div>
+
     <div vw="" class="enabled"
         style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
         <div vw-access-button="" class="active">
