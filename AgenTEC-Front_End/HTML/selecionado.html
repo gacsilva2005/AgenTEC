@@ -222,17 +222,36 @@
             const agendamentoDisplay = document.getElementById('agendamento-selecionado');
             
             if (agendamento) {
-                // Atualiza o texto do agendamento
-                agendamentoDisplay.textContent = agendamento;
+                // Decodifica a string da URL e a exibe
+                const agendamentoDecoded = decodeURIComponent(agendamento.replace(/\+/g, ' '));
+                agendamentoDisplay.textContent = agendamentoDecoded;
                 
                 // Opcional: Atualiza o breadcrumb (um pouco mais complexo, mas adiciona valor)
                 const breadcrumbContainer = document.querySelector('.breadcrumb-container span');
-                // Encontra a última âncora antes de "Selecionado" e a substitui ou adiciona
-                let htmlContent = breadcrumbContainer.innerHTML.replace(' / Selecionado', '');
-                breadcrumbContainer.innerHTML = htmlContent + ` / <a href="selecionado.html?agendamento=${agendamento}">Selecionado</a>`;
+                // Adiciona o agendamento ao breadcrumb (após "Selecionado")
+                let htmlContent = breadcrumbContainer.innerHTML;
+                
+                // Verifica se "Selecionado" já está no breadcrumb para evitar duplicidade
+                if (!htmlContent.includes('Selecionado')) {
+                    htmlContent += ` / <a href="selecionado.html?agendamento=${agendamento}">Selecionado</a>`;
+                }
+                
+                // Remove o valor 'hardcoded' e adiciona a informação do agendamento
+                breadcrumbContainer.innerHTML = htmlContent;
+                
+            } else {
+                 // Se não houver parâmetro, exibe uma mensagem padrão
+                 agendamentoDisplay.textContent = "Nenhum Agendamento Selecionado";
             }
+
+            // Lógica de busca (padrão das outras telas)
             const campoBusca = document.getElementById('campo-busca');
             if (campoBusca) {
+                // A lógica de busca do Header é desnecessária aqui, mas é bom mantê-la fora do bloco do Agendamento.
+                // Vou replicar o event listener de busca que estava em seus outros arquivos.
+                campoBusca.addEventListener('input', function () {
+                    const termoBuscado = campoBusca.value.toLowerCase();
+                });
             }
         });
     </script>
