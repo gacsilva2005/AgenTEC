@@ -1,41 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Etec Júlio de Mesquita</title>
-    <link rel="stylesheet" href="../CSS/login.css"> <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Fonte e ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2d9d6b6f9.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../CSS/login.css">
 </head>
+
 <body>
+    <div class="login-container">
+        <!-- Seção de Logos -->
+        <div class="logo-section">
+            <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita Santo André">
+            <img src="../Assets/etec.png" alt="Logo Centro Paula Souza">
+        </div>
 
+        <!-- Seção de Login -->
+        <div class="form-section">
+            <a href="index.html" class="home-link"><i class="fas fa-home"></i> Home</a>
+            <h2>Login</h2>
+            <form>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="email" id="email" required placeholder="">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="senha" required placeholder="">
+                    <label for="senha">Senha</label>
+                </div>
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        </div>
 
-
-<div class="login-container">
-    <div class="logo-section">
-        <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita Santo André">
-        <img src="../Assets/etec.png" alt="Logo Centro Paula Souza">
+        <!-- Seção de Recuperação -->
+        <div class="recover-section hidden-panel">
+            <a href="#" class="back-login"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <h2>Recuperar Senha</h2>
+            <form>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="recuperaEmail" required placeholder="">
+                    <label for="recuperaEmail">Digite seu Email</label>
+                </div>
+                <button type="submit" class="btn-login">Enviar Código</button>
+            </form>
+        </div>
     </div>
 
-    <div class="form-section">
-        <a href="index.html" class="home-link"><i class="fas fa-home"></i> Home</a>
-        <h2>Login</h2>
-        <form>
-            <div class="input-group">
-                <i class="fas fa-user"></i> <input type="email" id = "email" required placeholder="">
-                <label for="email">Email</label>
-            </div>
-            <div class="input-group">
-                <i class="fas fa-lock"></i>  <input type="password" id = "senha" required placeholder="">
-                <label for="senha">Senha</label>
-            </div>
-            <button type="submit" class="btn-login">Entrar</button>
-        </form>
-        <a href="professor.html" class="forgot-password">Esqueceu a senha?</a>
-    </div>
-</div>
+    <script>
+        // Definições de HTML (certifique-se de usar estes blocos no seu JS)
+        const initialFormHTML = `
+    <a href="index.html" class="home-link"><i class="fas fa-home"></i> Home</a>
+    <h2>Login</h2>
+    <form>
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="email" id="email" required placeholder="">
+            <label for="email">Email</label>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="senha" required placeholder="">
+            <label for="senha">Senha</label>
+        </div>
+        <button type="submit" class="btn-login">Entrar</button>
+    </form>
+    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+`;
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-NfJzF+n0NfW7fJ5Z3+gK9L4L/5Y2V/7tP0B8U9v9yH0h7u3H4E8qY2f2K1z510Xw2" crossorigin="anonymous"></script>
+        const recoveryFormHTML = `
+    <a href="#" class="back-login"><i class="fas fa-arrow-left"></i> Voltar</a>
+    <h2>Recuperar Senha</h2>
+    <form>
+        <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="recuperaEmail" required placeholder="">
+            <label for="recuperaEmail">Digite seu Email</label>
+        </div>
+        <button type="submit" class="btn-login">Enviar Código</button>
+    </form>
+`;
 
+
+        // Função para configurar o evento de login/recuperação
+        function setupEvents() {
+            const forgotLink = document.querySelector(".forgot-password");
+            const formSection = document.querySelector(".form-section");
+            const logoSection = document.querySelector(".logo-section"); // **Pegue o logo-section**
+
+            // 1. Evento IR para Recuperar Senha (Slide para a direita)
+            if (forgotLink) {
+                forgotLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+
+                    // Desliza os painéis em direções opostas
+                    formSection.classList.add("slide-left");  // Vai para a esquerda
+                    logoSection.classList.add("slide-right"); // Vai para a direita
+
+                    // Espera a animação (600ms) e substitui o conteúdo
+                    setTimeout(() => {
+                        formSection.innerHTML = recoveryFormHTML;
+                        setupEvents();
+                    }, 600);
+                });
+            }
+            
+
+            // 2. Evento VOLTAR para Login (Slide para a esquerda)
+            const backLink = document.querySelector(".back-login");
+            if (backLink) {
+                backLink.addEventListener("click", (ev) => {
+                    ev.preventDefault();
+
+                    // Remove o slide-left (painel vermelho volta)
+                    formSection.classList.remove("slide-left");
+                    // Remove o slide-right (painel branco volta)
+                    logoSection.classList.remove("slide-right");
+
+                    // Espera a animação de retorno (600ms) e restaura o conteúdo
+                    setTimeout(() => {
+                        formSection.innerHTML = initialFormHTML;
+                        setupEvents();
+                    }, 600);
+                });
+            }
+        }
+
+        // Inicializa os eventos quando a página carrega
+        document.addEventListener("DOMContentLoaded", () => {
+            setupEvents();
+        });
+    </script>
 </body>
+
 </html>
