@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a2d9d6b6f9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=home" />
+
 
     <link rel="stylesheet" href="../CSS/login.css">
 </head>
@@ -24,12 +26,13 @@
         </div>
 
         <!-- Seção de Login -->
-        <div class="form-section">
-            <a href="index.html" class="home-link"><i class="fas fa-home"></i> Home</a>
+        <div class="form-section" id="formSection">
+            <a href="index.html" class="home-link"><span class="material-symbols-outlined">
+                home
+                </span> Home</a>
             <h2>Login</h2>
             <form>
                 <div class="input-group">
-                    <i class="fas fa-user"></i>
                     <input type="email" id="email" required placeholder="">
                     <label for="email">Email</label>
                 </div>
@@ -40,108 +43,11 @@
                 </div>
                 <button type="submit" class="btn-login">Entrar</button>
             </form>
-            <a href="#" class="forgot-password">Esqueceu a senha?</a>
-        </div>
-
-        <!-- Seção de Recuperação -->
-        <div class="recover-section hidden-panel">
-            <a href="#" class="back-login"><i class="fas fa-arrow-left"></i> Voltar</a>
-            <h2>Recuperar Senha</h2>
-            <form>
-                <div class="input-group">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" id="recuperaEmail" required placeholder="">
-                    <label for="recuperaEmail">Digite seu Email</label>
-                </div>
-                <button type="submit" class="btn-login">Enviar Código</button>
-            </form>
+            <a class="forgot-password" id="forgotPassword">Esqueceu a senha?</a>
         </div>
     </div>
-
-    <script>
-        // Definições de HTML (certifique-se de usar estes blocos no seu JS)
-        const initialFormHTML = `
-    <a href="index.html" class="home-link"><i class="fas fa-home"></i> Home</a>
-    <h2>Login</h2>
-    <form>
-        <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="email" id="email" required placeholder="">
-            <label for="email">Email</label>
-        </div>
-        <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="senha" required placeholder="">
-            <label for="senha">Senha</label>
-        </div>
-        <button type="submit" class="btn-login">Entrar</button>
-    </form>
-    <a href="#" class="forgot-password">Esqueceu a senha?</a>
-`;
-
-        const recoveryFormHTML = `
-    <a href="#" class="back-login"><i class="fas fa-arrow-left"></i> Voltar</a>
-    <h2>Recuperar Senha</h2>
-    <form>
-        <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input type="email" id="recuperaEmail" required placeholder="">
-            <label for="recuperaEmail">Digite seu Email</label>
-        </div>
-        <button type="submit" class="btn-login">Enviar Código</button>
-    </form>
-`;
-
-
-        // Função para configurar o evento de login/recuperação
-        function setupEvents() {
-            const forgotLink = document.querySelector(".forgot-password");
-            const formSection = document.querySelector(".form-section");
-            const logoSection = document.querySelector(".logo-section"); // **Pegue o logo-section**
-
-            // 1. Evento IR para Recuperar Senha (Slide para a direita)
-            if (forgotLink) {
-                forgotLink.addEventListener("click", (e) => {
-                    e.preventDefault();
-
-                    // Desliza os painéis em direções opostas
-                    formSection.classList.add("slide-left");  // Vai para a esquerda
-                    logoSection.classList.add("slide-right"); // Vai para a direita
-
-                    // Espera a animação (600ms) e substitui o conteúdo
-                    setTimeout(() => {
-                        formSection.innerHTML = recoveryFormHTML;
-                        setupEvents();
-                    }, 600);
-                });
-            }
-            
-
-            // 2. Evento VOLTAR para Login (Slide para a esquerda)
-            const backLink = document.querySelector(".back-login");
-            if (backLink) {
-                backLink.addEventListener("click", (ev) => {
-                    ev.preventDefault();
-
-                    // Remove o slide-left (painel vermelho volta)
-                    formSection.classList.remove("slide-left");
-                    // Remove o slide-right (painel branco volta)
-                    logoSection.classList.remove("slide-right");
-
-                    // Espera a animação de retorno (600ms) e restaura o conteúdo
-                    setTimeout(() => {
-                        formSection.innerHTML = initialFormHTML;
-                        setupEvents();
-                    }, 600);
-                });
-            }
-        }
-
-        // Inicializa os eventos quando a página carrega
-        document.addEventListener("DOMContentLoaded", () => {
-            setupEvents();
-        });
-    </script>
+    
+    <script src="../JS (Front-End)/forgotPassword.js"> </script>
 </body>
 
 </html>

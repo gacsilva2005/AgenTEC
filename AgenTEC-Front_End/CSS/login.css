@@ -13,6 +13,11 @@ body {
     background-attachment: fixed;
 }
 
+/* ⬅️ CORREÇÃO 1: Garante que padding e border sejam incluídos na width */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 .login-container {
     display: flex;
     max-width: 900px;
@@ -20,7 +25,7 @@ body {
     border-radius: 40px;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
     overflow: hidden;
-    padding: 30px;  
+    padding: 30px;
     position: relative;
     min-height: 380px;
 }
@@ -47,7 +52,7 @@ body {
     background-color: #b20000;
     box-shadow: -8px 0 15px rgba(0, 0, 0, 0.399);
     color: white;
-    padding: 15px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,6 +61,16 @@ body {
     margin: -40px -30px -40px 0px;
     border-top-left-radius: 45px;
     border-bottom-left-radius: 45px;
+}
+
+.form-section form {
+    width: 100%;
+    max-width: 360px;/* largura máxima do form (ajuste se quiser) */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+    margin: 0 auto;/* garante centralização */
 }
 
 .form-section h2 {
@@ -73,8 +88,11 @@ body {
 
 .input-group {
     position: relative;
-    width: 100%;
+    width: 80%;
     margin-bottom: 20px;
+    /* ⬅️ CORREÇÃO 2: Centraliza o elemento com width: 80% */
+    margin-left: auto; 
+    margin-right: auto;
 }
 
 label{
@@ -86,9 +104,9 @@ label{
     transition: 0.3s;
 }
 
-.input-group i {
+.input-group i, .input-group .material-symbols-outlined {
     position: absolute;
-    left: -30px; 
+    left: 10px;
     top: 50%;
     transform: translateY(-50%); 
     color: #ffffff; 
@@ -121,7 +139,7 @@ input:not(:placeholder-shown) ~ label{
 }
 
 .btn-login {
-    width: 100%;
+    width: 80%;
     padding: 12px;
     border: none;
     border-radius: 5px;
@@ -130,6 +148,8 @@ input:not(:placeholder-shown) ~ label{
     font-size: 1.2rem;
     cursor: pointer;
     margin-top: 10px;
+    margin-left: auto; 
+    margin-right: auto;
     transition: background-color 0.3s;
     transition: all 0.3s ease;
 }
@@ -150,55 +170,61 @@ input:not(:placeholder-shown) ~ label{
     margin-top: 5px;
     font-size: 0.9rem;
     text-align: center;
+    cursor: pointer;
 }
 
-.recover-section {
-    flex: 1;
-    background-color: #b20000;
+.back-login{
     color: white;
-    padding: 15px;
+    text-decoration: none;
+    align-self: flex-end;
+    margin: 0px 10px 40px 0px;
+}
+
+.slide-out {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+  .form-section {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.slide-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.input-group .recuperarEmail {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    border: solid 1px rgba(255, 255, 255, 0.8);
+    background-color: transparent;
+    color: #ffffff;
+    outline: none;
+    text-align: left;
+}
+
+.home-link {
+    display: inline-flex;
     align-items: center;
-    text-align: center;
-    position: absolute;
-    top: 0;
-    right: -100%;
-    width: 50%;
-    height: 100%;
-    transition: right 0.4s ease-in-out;
+    gap: 2px;
+    text-decoration: none;
+    color: var(--white, #ffffff);
+    font-size: 16px;
+    font-weight: 500;
 }
-
-.recover-section.active {
-    right: 0;
+  
+  .home-link .material-symbols-outlined {
+    font-size: 25px;
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-block;
 }
-
-.form-section {
-    transition: transform 0.6s ease-in-out;
-    position: relative;
-    z-index: 2;
-}
-
-.form-section.slide-out {
-    transform: translateX(-100%);
-}
-
-/* Faz o painel deslizar para a esquerda e permanecer lá */
-.form-section.slide-left {
-    transform: translateX(-100%);
-}
-
-/* Esconde a seção inicialmente */
-.hidden {
-    display: none;
-}
-
-.login-container .logo-section .slide-right {
-    /* Mova o painel 100% da sua PRÓPRIA largura para a direita */
-    transform: translateX(100%);
-}
-
 
 @media (min-width: 375px) and (max-width: 767px) {
     .logo-section img {
@@ -214,7 +240,7 @@ input:not(:placeholder-shown) ~ label{
         border-radius: 40px;
         box-shadow: none;
         overflow: visible;
-        padding: 0  
+        padding: 0  
     }
 
     .form-section {
