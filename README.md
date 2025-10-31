@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 📌 AgenTEC - Gerenciamento e Agendamento de Laboratórios
 ---
 <br>
@@ -72,7 +71,3 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 
 * [**Etec Irmã Agostina**](https://www.cps.sp.gov.br/etecs/etec-irma-agostina-capela-do-socorro/)
 * [**Centro Paulo de Souza**](https://www.cps.sp.gov.br/)
-
-=======
-# AgenTEC
->>>>>>> Back_End
