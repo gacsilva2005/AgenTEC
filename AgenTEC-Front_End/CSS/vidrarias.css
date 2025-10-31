@@ -1,38 +1,47 @@
 /* CSS Reset e Estilos Globais */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #ffffff;
     color: #333;
+    overflow-x: hidden;
 }
 
 :root{
-    --primary-color: #004b49; 
-    --accent-color: #008B8B; 
-    --light-gray: #f5f5f5; 
-    --dark-gray: #666666; 
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
     --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
 }
 
 .govsp-topo {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     background-color: #ffffff;
-    border-bottom: 1px solid #ddd; 
+    border-bottom: 1px solid #ddd;
 }
 
 .govsp-portal img {
-    height: 40px;  
-    width: 200px;   
-    display: block; 
+    height: 30px;
+    width: auto;
+    display: block;
 }
 
 .govsp-portal {
-    background-color: #000; 
-    padding: 8px 25px 8px 15px; 
-    border-radius: 0 50px 50px 0; 
+    background-color: #000;
+    padding: 8px 25px 8px 15px;
+    border-radius: 0 50px 50px 0;
 }
 
 .govsp-topo .govsp-portal img {
@@ -49,11 +58,11 @@ body, html {
 .govsp-navbar :hover {
     transform: translate(0.2px, 0.2px);
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
-}       
+}
 
 
 .govsp-topo .govsp-navbar img {
-    height: 23px;;
+    height: 23px;    ;
 }
 
 .govsp-topo .govsp-social {
@@ -64,6 +73,7 @@ body, html {
     padding: 20px;
     border-bottom: 1px solid #eee;
 }
+
 .cps-header__container {
     max-width: 1200px;
     margin: 0 auto;
@@ -73,57 +83,59 @@ body, html {
     gap: 20px;
     flex-wrap: wrap;
 }
+
 .cps-header__logo img {
     max-height: 50px;
 }
 
 .form-pesquisa {
-    display: flex; 
-    align-items: center; 
-    border: 1px solid #ccc; 
-    border-radius: 50px; 
-    overflow: hidden; 
-    max-width: 400px; 
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 400px;
     background-color: white;
 }
 
 .campo-de-busca {
-    flex: 1; 
-    border: none; 
-    outline: none; 
-    padding: 15px 50px; 
-    font-size: 1rem; 
-    background-color: transparent; 
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 50px;
+    font-size: 1rem;
+    background-color: transparent;
 }
 
 .campo-de-busca::placeholder {
-    color: #999; 
+    color: #999;
 }
 
 .busca-submit {
-    border: none; 
-    border-left: 1px solid #ccc; 
-    background-color: transparent; 
-    padding: 10px 18px; 
-    cursor: pointer; 
+    border: none;
+    border-left: 1px solid #ccc;
+    background-color: transparent;
+    padding: 10px 18px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .busca-submit .fa-search {
-    color: #b20000; 
-    font-size: 1.1rem; 
+    color: #b20000;
+    font-size: 1.1rem;
 }
 
 .busca-submit:hover {
-    background-color: #f5f5f5; 
+    background-color: #f5f5f5;
 }
 
 .main-menu-container {
-    background-color: #c41e15; 
+    background-color: #c41e15;
     padding: 0 20px;
 }
+
 .main-menu-container .menu {
     max-width: 1200px;
     margin: 0 auto;
@@ -132,6 +144,7 @@ body, html {
     display: flex;
     flex-wrap: wrap;
 }
+
 .main-menu-container .menu li a {
     display: block;
     padding: 15px 20px;
@@ -142,11 +155,11 @@ body, html {
 }
 
 .main-menu-container .menu li a:hover {
-    background-color: #831c16ef; 
+    background-color: #831c16ef;
 }
 
 #breadcrumb {
-    background-color: var(--dark-gray);
+    background-color: #666666;
     padding: 12px 20px;
     border-bottom: 1px solid #e9ecef;
 }
@@ -155,14 +168,451 @@ body, html {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
-    color: var(--text-white);
+    color: #ffffff;
 }
 
 .breadcrumb-container a {
-    color: var(--text-white);
+    color: #ffffff;
     text-decoration: none;
-    font-style: bold;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-top: 5rem;
+    padding: 20px;
+}
+
+.button-custom {
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+    max-width: 200px;
+    background-color: var(--primary-color);
+    padding: 20px 60px;
+    text-decoration: none;
+    color: white;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    cursor: pointer
+}
+
+.button-custom:hover {
+    transform: translateY(-5px);
+    background-color: var(--hoverCian-color);
+}
+
+.button-custom:active {
+    transform: translateY(-2px);
+}
+
+.container {
+    color: var(--text-white);
+}
+
+.card-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-list .card-item {
+    list-style: none;
+}
+
+.card-list .card-item .card-link {
+    width: 200px;
+    user-select: none;
+    display: block;
+    background-color: var(--primary-red);
+    padding: 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    min-height: 200px;
+    margin: 0 auto;
+}
+
+.card-list .card-link {
+    width: 100%;
+    object-fit: cover;
     font-weight: 500;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.card-list .card-link:hover{
+    transform: scale(1.05);
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card-list .card-link .chemical-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    margin: 0 auto;
+}
+
+.card-list .card-link .chemical-icon .material-symbols-outlined {
+    font-size: 48px;
+}
+
+.card-list .card-link .card-title {
+    margin-top: 15px;
+    color: var(--text-white);
+    font-size: 1.19rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.card-list .card-link .card-description {
+    color: var(--text-white);
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+.card-list .card-link .add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    padding: 0.4em 1em;
+    margin: auto;
+    width: fit-content;
+    cursor: pointer;
+    background-color: var(--hoverRed-color);
+    color: var(--text-white);
+    transition: all 0.3s ease;
+}
+
+.card-list .card-link:hover .add-button {
+    transform: scale(1.1);
+    background-color: rgb(109, 0, 0);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    background-color: rgba(80, 0, 0, 0.527);
+    border-radius: 50%;
+    padding: 10px;
+    color: white !important;
+    cursor: pointer;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 18px;
+    color: white !important;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    transition: all 0.3s ease;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+    width: auto !important;
+}
+
+.swiper-slide-visible {
+    opacity: 1.0;
+}
+
+.container.swiper {
+    padding: 0px 200px;
+    overflow: visible;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+    .container.swiper {
+        padding: 20px 100px;
+        max-width: 200px;
+    }
+    
+    .card-list .card-item .card-link {
+        width: 90%;
+    }
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente escuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color:white;
+    color:rgb(0, 0, 0);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-content .modal-title {
+    margin-left: 5px;
+    color: var(--dark);
+}
+
+.modal-content .unit {
+    color: var(--text);
+    font-weight: bold;
+}
+
+.modal-backdrop.show .modal-content {
+    transform: scale(1);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    border: 1px solid var(--border-color, #ccc);
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* ⬅️ MUDANÇA AQUI: Adicionei o 'select' e removi o 'input[type="number"]' */
+.input-group select {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.1rem;
+    background-color: transparent;
+    color: var(--dark);
+    text-indent: 10px; 
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;         
+    padding-right: 40px; 
+    background-repeat: no-repeat;
+    background-position: right 15px center; 
+    background-size: 35px;
+}
+
+.input-group select:focus {
+    border-color: var(--hoverCian-color, #005C6D);
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 15px; 
+    top: 50%; 
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    pointer-events: none; /* Permite que o clique passe para o select */
+    color: var(--primary-color, #243E63); 
+    font-size: 24px; 
+    transition: transform 0.3s ease; /* ⬅️ Essencial para a animação */
+    z-index: 2; 
+}
+
+/* ⬇️ EFEITO DE ROTAÇÃO: Gira o ícone quando o INPUT-GROUP está focado */
+.input-group:focus-within .dropdown-icon {
+    transform: translateY(-50%) rotate(180deg); /* Gira 180 graus (para cima) */
+    color: var(--hoverCian-color, #005C6D); 
+}
+
+.input-group:hover {
+    border-color: var(--primary);
+}
+
+.input-group .unit {
+    padding: 15px 20px;
+    background-color: var(--secondary);
+    font-weight: bold;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.button-confirm, .button-cancel {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    background-color: var(--primary-color);
+}
+
+.button-confirm {
+    background-color: var(--primary-color); /* Cor de destaque (Azul) */
+    color: white;
+}
+
+
+.button-confirm:hover {
+    background-color: rgb(109, 0, 0);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.button-confirm:active {
+    transform: translateY(1px);
+}
+
+.button-cancel {
+    background-color: #ccc;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.button-cancel:hover {
+    background-color: #999;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.button-cancel:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+    }
+    .modal-actions {
+        flex-direction: column;
+    }
+    .button-confirm, .button-cancel {
+        width: 100%;
+    }
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 40px;
+}
+
+.form-pesquisa {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 400px;
+    background-color: white;
+}
+
+.search-area {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 50px;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.search-area::placeholder {
+    color: #999;
+}
+
+.search-submit {
+    border: none;
+    border-left: 1px solid #ccc;
+    background-color: transparent;
+    padding: 10px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.busca-submit .fa-search {
+    color: #000000;
+    font-size: 1.1rem;
+}
+
+.fa-search:hover {
+    transform: scale(1.5);
+}
+
+.busca-submit:hover {
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 767px) {
+    .main-container {
+        gap: 25px;
+        margin-top: 30px;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .button-custom {
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+    }
 }
 
 /* Conteúdo Principal */
@@ -174,7 +624,7 @@ body, html {
 
 .page-title {
     font-size: 2.5rem;
-    color: #004b49;
+    color: #333;
     margin-bottom: 10px;
     font-weight: 700;
 }
@@ -215,105 +665,76 @@ body, html {
     margin-top: 20px;
 }
 
-/* Card com funções das telas*/
-.card {
-    background-color: #f7f7f7;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    width: 280px;
-    padding: 40px 20px;
-    text-align: center;
-    text-decoration: none;
-    color: #333;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-}
-
-.card-icon {
-    font-size: 4rem;
-    color: #008B8B; 
-    margin-bottom: 25px;
-}
-
-.card-text {
-    font-size: 1.25rem;
-    font-weight: 500;
-    min-height: 50px;
-}
-
-
-@media (max-width: 768px) {
-    .cps-header__container {
-        flex-direction: column;
-    }
-    .cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card {
-        width: 90%;
-    }
-}
-
 .logo-container {
-    display: flex;          
-    align-items: center;    
-    gap: 40 px;              
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .logo-container img {
-    height: 80px; 
-    width: auto;     
+    height: 80px;
+    width: auto;
 }
 
 .logo-cps {
-    height: 70px; 
+    height: 70px;
 }
 
 /* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
 
 /* Contêiner principal da navegação */
 .govsp-navbar {
-    display: flex; /* Alinha todos os itens na horizontal */
-    align-items: center; /* Centraliza os itens verticalmente */
+    display: flex;
+    /* Alinha todos os itens na horizontal */
+    align-items: center;
+    /* Centraliza os itens verticalmente */
     padding: 10px;
 }
 
 /* Estilo para todos os links (que servem como 'caixa' para os ícones) */
 .govsp-navbar a {
-    display: inline-flex; /* Permite centralizar o ícone dentro do link */
+    display: inline-flex;
+    /* Permite centralizar o ícone dentro do link */
     align-items: center;
     justify-content: center;
-    width: 28px; /* Largura da caixa */
-    height: 28px; /* Altura da caixa */
-    background-color: #ffffff; /* Fundo cinza claro */
-    margin: -3px; /* Espaçamento entre os ícones */
-    border-radius: 3px; /* Bordas levemente arredondadas */
-    text-decoration: none; /* Remove o sublinhado do link */
+    width: 28px;
+    /* Largura da caixa */
+    height: 28px;
+    /* Altura da caixa */
+    background-color: #ffffff;
+    /* Fundo cinza claro */
+    margin: -3px;
+    /* Espaçamento entre os ícones */
+    border-radius: 3px;
+    /* Bordas levemente arredondadas */
+    text-decoration: none;
+    /* Remove o sublinhado do link */
 }
 
 /* Estilo para os ícones (<i>) dentro dos links */
 .govsp-navbar a i {
-    color: #ffffff; /* Cor cinza escura para o ícone */
-    font-size: 1.2rem; /* Tamanho do ícone */
+    color: #ffffff;
+    /* Cor cinza escura para o ícone */
+    font-size: 1.2rem;
+    /* Tamanho do ícone */
 }
 
 /* Estilo para o texto "/governosp" */
 .govsp-text {
     font-size: 0.9rem;
     color: #555;
-    margin: 0px; /* Espaçamento antes e depois do texto */
+    margin: 0px;
+    /* Espaçamento antes e depois do texto */
 }
 
 /* Estilo para a linha separadora */
 .separator {
-    height: 25px; /* Altura da linha */
-    border-left: 1px solid #ccc; /* Cria a linha vertical */
-    margin: 0 10px; /* Espaçamento antes e depois da linha */
+    height: 25px;
+    /* Altura da linha */
+    border-left: 1px solid #ccc;
+    /* Cria a linha vertical */
+    margin: 0 10px;
+    /* Espaçamento antes e depois da linha */
 }
 
 /* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
@@ -327,11 +748,12 @@ body, html {
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
+    top: 100%;
+    /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
     left: 0;
     background-color: #f9f9f9;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     list-style: none;
     padding: 0;
@@ -342,12 +764,14 @@ body, html {
 /* Estilo dos links dentro do submenu */
 /* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
 .main-menu-container .menu .dropdown-content li a {
-    color: #555; /* Define a cor escura para o texto */
-    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
+    color: #555;
+    /* Define a cor escura para o texto */
+    font-weight: normal;
+    /* Garante que o texto não fique em negrito como o menu principal */
     padding: 12px 16px;
     text-align: left;
     /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
-    background-color: transparent; 
+    background-color: transparent;
 }
 
 /* Efeito de hover nos links do submenu */
@@ -371,235 +795,4 @@ body, html {
 /* Gira a setinha para cima quando o menu está aberto */
 .menu li.dropdown:hover a .fa-chevron-down {
     transform: rotate(180deg);
-}
-
-@media (min-width: 375px) and (max-width: 767px) {
-    
-}
-
-/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
-
-.notification {
-    position: fixed; /* Fica fixo na tela mesmo com scroll */
-    top: 20px;
-    right: 20px;
-    background-color: #28a745; /* Verde para sucesso */
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaço entre o ícone e o texto */
-    z-index: 1000; /* Garante que fique por cima de outros elementos */
-
-    /* Animação */
-    transform: translateX(120%); /* Começa fora da tela */
-    opacity: 0;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-/* Classe que será adicionada via JS para mostrar a notificação */
-.notification.show {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.notification i {
-    font-size: 1.4rem;
-}
-
-/* --- ESTILOS PARA A SEÇÃO DE SELEÇÃO DE VIDRARIAS --- */
-
-/* Container da barra de pesquisa de itens */
-.search-container {
-    position: relative;
-    max-width: 500px;
-    margin: 30px auto 50px;
-}
-
-.item-search-input {
-    width: 100%;
-    padding: 15px 50px 15px 20px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.3s;
-}
-
-.item-search-input:hover{
-    border-color: #b20000;
-}
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    color: #888;
-}
-
-/* Grid principal que divide os cards de itens e os itens selecionados */
-.selection-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-/* Container para os cards de seleção de itens */
-.item-cards-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-/* Estilo individual do card de item e do card de itens selecionados */
-.item-card, .selected-items-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fdfdfd;
-    transition: all 0.3s;
-}
-
-.item-card:hover{
-    border-color: #b20000;
-}
-
-.item-card-title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #004b49; /* Tom de verde escuro/azulado */
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-/* Linha de um item dentro do card */
-.item-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.item-row:last-child {
-    margin-bottom: 0;
-}
-
-.item-row span {
-    flex: 1;
-}
-
-.item-unit {
-    text-align: right;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-/* Seletor de quantidade (+ e -) */
-.quantity-selector {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 15px;
-}
-
-.quantity-btn {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    background-color: #f5f5f5;
-    color: #333;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.quantity-btn:hover {
-    background-color: #a0a0a0;
-}
-
-.quantity-value {
-    font-weight: 500;
-    min-width: 20px;
-    text-align: center;
-}
-
-/* Card de vidrarias selecionadas */
-.selected-items-card {
-    position: sticky; /* Fica fixo ao rolar a página */
-    top: 20px;
-}
-
-.selected-items-list p {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 0 0 10px 0;
-    font-size: 0.95rem;
-    display: none;
-}
-
-/* Container dos botões de ação na parte inferior */
-.action-buttons-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.action-btn {
-    padding: 15px 30px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.action-btn:hover {
-    transform: translateY(-3px);
-}
-
-.action-btn:active {
-    transform: translateY(2px);
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-color);
-}
-
-/* Media queries para responsividade */
-@media (max-width: 992px) {
-    .selection-grid {
-        grid-template-columns: 1fr; /* Coloca os itens selecionados abaixo */
-    }
-    .item-cards-container {
-        grid-template-columns: 1fr; /* Um card por linha */
-    }
-    .action-buttons-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .action-btn {
-        width: 100%;
-    }
 }

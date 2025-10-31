@@ -4,394 +4,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professores - Agendamento</title>
+    <title>Vidrarias - Agendamento</title>
 
     <link rel="stylesheet" href="../CSS/vidrarias.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">7
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=experiment" />
+    <!-- Link SwiperJS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 </head>
 
 <body>
-<!-- DAUTONISMO -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- DAUTONISMO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<!-- DAUTONISMO -->
-<!-- FACEBOOK -->
-<div class="fb_reset" id="fb-root">
-  <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
-    <div></div>
-  </div>
-</div>
-<script async="" crossorigin="anonymous" defer=""
-  src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&amp;version=v5.0"></script>
-<!-- FACEBOOK -->
-<!-- PRINCIPAL -->
-<div class="site" id="page">
-  <!-- BARRA GOVERNO -->
-  <section class="govsp-topo">
-    <link
-      href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/topo-padrao-govsp.min.css"
-      rel="stylesheet" type="text/css" />
-    <link
-      href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/barra-contraste-govsp.min.css"
-      rel="stylesheet" type="text/css" />
-    <div class="blu-e" id="govsp-topbarGlobal">
-            <div id="topbarGlobal">
-                <div class="govsp-black" id="topbarLink">
-                    <div class="govsp-portal">
-                        <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
-                            <img alt="Governo do Estado de São Paulo" class="logo" height="38"
-                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-governo-do-estado-sp.png" />
-                        </a>
-                    </div>
-                  </div>
-                <nav class="govsp-navbar govsp-navbar-expand-lg">
-                  <a class="govsp-social" href="https://www.flickr.com/governosp/" target="_blank">
-                    <img alt="Flickr Governo de São Paulo" class="govsp-icon-social"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-flickr.png" />
-                  </a>
-                  <a class="govsp-social" href="https://www.linkedin.com/company/governosp/" target="_blank">
-                    <img alt="Linkedin Governo de São Paulo" class="govsp-icon-social"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-linkedin.png" />
-                  </a>
-                  <a class="govsp-social" href="https://www.tiktok.com/@governosp" target="_blank">
-                    <img alt="TikTok Governo de São Paulo" class="govsp-icon-social"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-tiktok.png" />
-                  </a>
-                  <a class="govsp-social" href="https://www.youtube.com/governosp/" target="_blank">
-                    <img alt="Youtube Governo de São Paulo" class="govsp-icon-social"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-youtube.png" />
-                  </a>
-                  <a class="govsp-social" href="https://www.twitter.com/governosp/" target="_blank">
-                    <img alt="Facebook Governo de São Paulo" class="govsp-icon-social"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-twitter.png" />
-                  </a>
-                  <a class="govsp-social" href="https://www.instagram.com/governosp/" target="_blank">
-                    <img alt="Instagram Governo de São Paulo" class="govsp-icon-social"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-insta.png" />
-                  </a>
-                  <a class="govsp-social" href="https://www.facebook.com/governosp/" target="_blank">
-                    <img alt="Facebook Governo de São Paulo" class="govsp-icon-social"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-facebook.png" />
-                  </a>
-                  <p class="govsp-social" style="min-height:auto;">/governosp</p>
-                  <div id="separador-nav"></div>
-                  <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', 1);">
-                    <img alt="Aumentar Fonte" class="govsp-acessibilidade"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-big-font.png" />
-                  </a>
-                  <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', -1);">
-                    <img alt="Diminuir Fonte" class="govsp-acessibilidade"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-small-font.png" />
-                  </a>
-                  <a accesskey="3" class="govsp-acessibilidade" href="#" id="altocontraste" onclick="window.toggleContrast()"
-                    onkeydown="window.toggleContrast()">
-                    <img alt="Contraste" class="govsp-acessibilidade"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-contrast.png" />
-                  </a>
-                  <a class="govsp-acessibilidade" href="http://www.saopaulo.sp.gov.br/fale-conosco/comunicar-erros/"
-                    target="_blank" title="Comunicar Erros">
-                    <img class="govsp-acessibilidade"
-                      src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-error-report.png" />
-                  </a>
-                </nav>
-              </div>
-        </nav>
-    </section>
-
-    <header id="cps-header">
-        <div class="cps-header__container">
-
-            <div class="logo-container">
-                <a href="index.html">
-                    <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
-                </a>
-                <a href="https://www.cps.sp.gov.br/" target="_blank">
-                    <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
-                </a>
-            </div>
-            <form action="#" class="form-pesquisa" method="get" role="search">
-                <input id="campo-busca" class="campo-de-busca" name="s" placeholder="O que deseja localizar?"
-                    type="search">
-                <button class="busca-submit" type="submit"><i class="fas fa-search"></i></button>
-            </form>
+    <!-- DAUTONISMO -->
+    <!-- FACEBOOK -->
+    <div class="fb_reset" id="fb-root">
+        <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
+            <div></div>
         </div>
-    </header>
+    </div>
+    <script async="" crossorigin="anonymous" defer=""
+        src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&amp;version=v5.0"></script>
+    <!-- FACEBOOK -->
+    <!-- PRINCIPAL -->
+    <div class="site" id="page">
+        <!-- BARRA GOVERNO -->
+        <section class="govsp-topo">
+            <link
+                href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/topo-padrao-govsp.min.css"
+                rel="stylesheet" type="text/css" />
+            <link
+                href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/barra-contraste-govsp.min.css"
+                rel="stylesheet" type="text/css" />
+            <div class="blu-e" id="govsp-topbarGlobal">
+                <div id="topbarGlobal">
+                    <div class="govsp-black" id="topbarLink">
+                        <div class="govsp-portal">
+                            <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
+                                <img alt="Governo do Estado de São Paulo" class="logo" height="38"
+                                    src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-governo-do-estado-sp.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <nav class="govsp-navbar govsp-navbar-expand-lg">
+                        <a class="govsp-social" href="https://www.flickr.com/governosp/" target="_blank">
+                            <img alt="Flickr Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-flickr.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.linkedin.com/company/governosp/" target="_blank">
+                            <img alt="Linkedin Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-linkedin.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.tiktok.com/@governosp" target="_blank">
+                            <img alt="TikTok Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-tiktok.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.youtube.com/governosp/" target="_blank">
+                            <img alt="Youtube Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-youtube.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.twitter.com/governosp/" target="_blank">
+                            <img alt="Facebook Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-twitter.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.instagram.com/governosp/" target="_blank">
+                            <img alt="Instagram Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-insta.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.facebook.com/governosp/" target="_blank">
+                            <img alt="Facebook Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-facebook.png" />
+                        </a>
+                        <p class="govsp-social" style="min-height:auto;">/governosp</p>
+                        <div id="separador-nav"></div>
+                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', 1);">
+                            <img alt="Aumentar Fonte" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-big-font.png" />
+                        </a>
+                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', -1);">
+                            <img alt="Diminuir Fonte" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-small-font.png" />
+                        </a>
+                        <a accesskey="3" class="govsp-acessibilidade" href="#" id="altocontraste"
+                            onclick="window.toggleContrast()" onkeydown="window.toggleContrast()">
+                            <img alt="Contraste" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-contrast.png" />
+                        </a>
+                        <a class="govsp-acessibilidade"
+                            href="http://www.saopaulo.sp.gov.br/fale-conosco/comunicar-erros/" target="_blank"
+                            title="Comunicar Erros">
+                            <img class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-error-report.png" />
+                        </a>
+                    </nav>
+                </div>
+                </nav>
+        </section>
 
-    <nav class="main-menu-container" role="navigation">
-        <ul class="menu">
-            <li><a href="index.html">Home</a></li>
+        <header id="cps-header">
+            <div class="cps-header__container">
 
-            <li class="dropdown">
-                <a>Institucional <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-content">
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/conselho-de-escola/">Conselho de
-                            escola</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/planos/">Planos de curso</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/quem-somos/">Quem Somos</a></li>
-                </ul>
-            </li>
+                <div class="logo-container">
+                    <a href="index.html">
+                        <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                    </a>
+                    <a href="https://www.cps.sp.gov.br/" target="_blank">
+                        <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                    </a>
+                </div>
+                <form action="#" class="form-pesquisa" method="get" role="search">
+                    <input id="campo-busca" class="campo-de-busca" name="s" placeholder="O que deseja localizar?"
+                        type="search">
+                    <button class="busca-submit" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </header>
 
-            <li class="dropdown">
-                <a href="#">Inst. Auxiliares <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-content">
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/apm/">APM</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/gremio-estudantil/">Grêmio
-                            Estudantil</a></li>
-                </ul>
-            </li>
+        <nav class="main-menu-container" role="navigation">
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
 
-            <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/cursos">Cursos</a></li>
+                <li class="dropdown">
+                    <a>Institucional <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/conselho-de-escola/">Conselho de
+                                escola</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/planos/">Planos de curso</a>
+                        </li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/quem-somos/">Quem Somos</a></li>
+                    </ul>
+                </li>
 
-            <li class="dropdown">
-                <a href="#">Alunos <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-content">
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/acesso-ao-microsoft-teams/">Acesso ao
-                            Microsoft Teams</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/acesso-ao-nsa-sistema-academico/">Acesso
-                            ao NSA (Sistema Acadêmico)</a></li>
-                    <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2025/01/Calendario2025.pdf"
-                            target="_blank">Calendário Escolar</a></li>
-                    <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/09/Cartilha-COPAMS.pdf"
-                            target="_blank">Cartilha: Assédio moral, virtual e sexual</a></li>
-                    <li><a
-                            href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/e-mail-institucional-sysmail-projeto-office-365/">E-mail
-                            institucional – Sysmail</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/estagio/">Estágio e Aprendizagem</a>
-                    </li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/horario-das-aulas/">Horário das
-                            aulas</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/passe-escolar/">Passe Escolar</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/primeiros-passos/">Primeiros
-                            Passos</a></li>
-                    <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/10/Regimento_Comum_Deliberacao_CEETEPS-85_2022-07-23.pdf"
-                            target="_blank">Regimento Comum</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/secretaria-academica/">Secretaria
-                            acadêmica</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/soe/">SOE</a></li>
-                </ul>
-            </li>
+                <li class="dropdown">
+                    <a href="#">Inst. Auxiliares <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/apm/">APM</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/gremio-estudantil/">Grêmio
+                                Estudantil</a></li>
+                    </ul>
+                </li>
 
-            <li class="dropdown">
-                <a href="#">Professores <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-content">
-                    <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/08/copams.pdf"
-                            target="_blank">Cartilha: Assédio Moral, Virtual e Sexual</a></li>
-                    <li><a href="#">CPS – Cetec Capacitações</a></li>
-                    <li><a href="https://www.e-folha.prodesp.sp.gov.br/desc_dempagto/Entrada.asp?cliente=092"
-                            target="_blank">E-folha – Prodesp</a></li>
-                    <li><a href="https://nsa.cps.sp.gov.br/frmesenha.aspx" target="_blank">Esqueci a senha – NSA</a>
-                    </li>
-                    <li><a href="https://recad.sp.gov.br/" target="_blank">Recadastramento Anual</a></li>
-                    <li><a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBa3k4ejZYOS1GWTRnUllDaFhEbzNSM1I4alRk&cid=3856F8FDA5CFBC4C&id=3856F8FDA5CFBC4C%21150&parId=3856F8FDA5CFBC4C%21129&o=OneUp"
-                            target="_blank">Regimento Disciplinar</a></li>
-                    <li><a href="https://sigurh.cps.sp.gov.br/" target="_blank">SIGURH – CPS</a></li>
-                </ul>
-            </li>
+                <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/cursos">Cursos</a></li>
 
-            <li class="dropdown">
-                <a href="#">Biblioteca <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-content">
-                    <li><a href="https://biblioteca-laura-dias-de-camargo-etec-julio-de-mesquita.webnode.page/"
-                            target="_blank">Nossa Biblioteca</a></li>
-                    <li><a href="https://biblio.cps.sp.gov.br/" target="_blank">BiblioCPS</a></li>
-                    <li><a href="https://onedrive.live.com/edit.aspx?resid=3856F8FDA5CFBC4C!507&embed=1&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3QvYy8zODU2RjhGREE1Q0ZCQzRDL1VBUk12TS1sX2ZoV0lJQTQtd0VBQUFBQUFGZTdYcGxkbEhqdUlMOA&redeemstatus=true&authkey=!AFe7XpldlHjuIL8"
-                            target="_blank">Lista de Gibis</a></li>
-                    <li><a href="https://onedrive.live.com/edit.aspx?resid=3856F8FDA5CFBC4C!508&embed=1&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3QvYy8zODU2RjhGREE1Q0ZCQzRDL1VBUk12TS1sX2ZoV0lJQTRfQUVBQUFBQUFHZ2plTVVvZHFqcl9NOA&redeemstatus=true&authkey=!AGgjeMUodqjr_M8"
-                            target="_blank">Lista de Mídias</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/lista-de-revistas/">Lista de
-                            Revistas</a></li>
-                    <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/orientacoes-tcc/">Orientações
-                            para TCC</a></li>
-                    <li><a href="https://onedrive.live.com/embed?cid=3856F8FDA5CFBC4C&resid=3856F8FDA5CFBC4C%211231&authkey=AMI0IF64eKLGYCs&em=2"
-                            target="_blank">Estatística de uso do acervo da biblioteca</a></li>
-                    <li><a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBa3k4ejZYOS1GWTRnMnBBN0NyUG95S1dHZF94&cid=3856F8FDA5CFBC4C&id=3856F8FDA5CFBC4C%21490&parId=3856F8FDA5CFBC4C%21485&o=OneUp"
-                            target="_blank">Política de Desenvolvimento de Acervo</a></li>
-                </ul>
-            </li>
+                <li class="dropdown">
+                    <a href="#">Alunos <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/acesso-ao-microsoft-teams/">Acesso ao
+                                Microsoft Teams</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/acesso-ao-nsa-sistema-academico/">Acesso
+                                ao NSA (Sistema Acadêmico)</a></li>
+                        <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2025/01/Calendario2025.pdf"
+                                target="_blank">Calendário Escolar</a></li>
+                        <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/09/Cartilha-COPAMS.pdf"
+                                target="_blank">Cartilha: Assédio moral, virtual e sexual</a></li>
+                        <li><a
+                                href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/e-mail-institucional-sysmail-projeto-office-365/">E-mail
+                                institucional – Sysmail</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/estagio/">Estágio e
+                                Aprendizagem</a>
+                        </li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/horario-das-aulas/">Horário das
+                                aulas</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/passe-escolar/">Passe Escolar</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/primeiros-passos/">Primeiros
+                                Passos</a></li>
+                        <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/10/Regimento_Comum_Deliberacao_CEETEPS-85_2022-07-23.pdf"
+                                target="_blank">Regimento Comum</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/secretaria-academica/">Secretaria
+                                acadêmica</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/soe/">SOE</a></li>
+                    </ul>
+                </li>
 
-            <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
-            <li><a href="login.html">Agendamentos</a></li>
+                <li class="dropdown">
+                    <a href="#">Professores <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/08/copams.pdf"
+                                target="_blank">Cartilha: Assédio Moral, Virtual e Sexual</a></li>
+                        <li><a href="#">CPS – Cetec Capacitações</a></li>
+                        <li><a href="https://www.e-folha.prodesp.sp.gov.br/desc_dempagto/Entrada.asp?cliente=092"
+                                target="_blank">E-folha – Prodesp</a></li>
+                        <li><a href="https://nsa.cps.sp.gov.br/frmesenha.aspx" target="_blank">Esqueci a senha – NSA</a>
+                        </li>
+                        <li><a href="https://recad.sp.gov.br/" target="_blank">Recadastramento Anual</a></li>
+                        <li><a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBa3k4ejZYOS1GWTRnUllDaFhEbzNSM1I4alRk&cid=3856F8FDA5CFBC4C&id=3856F8FDA5CFBC4C%21150&parId=3856F8FDA5CFBC4C%21129&o=OneUp"
+                                target="_blank">Regimento Disciplinar</a></li>
+                        <li><a href="https://sigurh.cps.sp.gov.br/" target="_blank">SIGURH – CPS</a></li>
+                    </ul>
+                </li>
 
-            <div id="search-mobile__btn" style="display:none;">
-                <i class="fas fa-search"></i>
-              </div>
-              
-        </ul>
-    </nav>
+                <li class="dropdown">
+                    <a href="#">Biblioteca <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://biblioteca-laura-dias-de-camargo-etec-julio-de-mesquita.webnode.page/"
+                                target="_blank">Nossa Biblioteca</a></li>
+                        <li><a href="https://biblio.cps.sp.gov.br/" target="_blank">BiblioCPS</a></li>
+                        <li><a href="https://onedrive.live.com/edit.aspx?resid=3856F8FDA5CFBC4C!507&embed=1&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3QvYy8zODU2RjhGREE1Q0ZCQzRDL1VBUk12TS1sX2ZoV0lJQTQtd0VBQUFBQUFGZTdYcGxkbEhqdUlMOA&redeemstatus=true&authkey=!AFe7XpldlHjuIL8"
+                                target="_blank">Lista de Gibis</a></li>
+                        <li><a href="https://onedrive.live.com/edit.aspx?resid=3856F8FDA5CFBC4C!508&embed=1&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3QvYy8zODU2RjhGREE1Q0ZCQzRDL1VBUk12TS1sX2ZoV0lJQTRfQUVBQUFBQUFHZ2plTVVvZHFqcl9NOA&redeemstatus=true&authkey=!AGgjeMUodqjr_M8"
+                                target="_blank">Lista de Mídias</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/lista-de-revistas/">Lista
+                                de
+                                Revistas</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/orientacoes-tcc/">Orientações
+                                para TCC</a></li>
+                        <li><a href="https://onedrive.live.com/embed?cid=3856F8FDA5CFBC4C&resid=3856F8FDA5CFBC4C%211231&authkey=AMI0IF64eKLGYCs&em=2"
+                                target="_blank">Estatística de uso do acervo da biblioteca</a></li>
+                        <li><a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBa3k4ejZYOS1GWTRnMnBBN0NyUG95S1dHZF94&cid=3856F8FDA5CFBC4C&id=3856F8FDA5CFBC4C%21490&parId=3856F8FDA5CFBC4C%21485&o=OneUp"
+                                target="_blank">Política de Desenvolvimento de Acervo</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
+                <li><a href="login.html">Agendamentos</a></li>
+            </ul>
+        </nav>
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ 
-                <a href="professor.html"> Professores </a> / <a href="MR.html"> Materiais e reagentes </a> / Vidrarias</span>
+            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="professor.html"> Professores
+                </a>/ Lista de Vidrarias</span>
         </div>
     </div>
 
     <main class="main-content">
         <h1 class="page-title">Lista de Vidrarias</h1>
         <div class="title-underline"></div>
-
-        <div class="search-container">
-            <input type="search" id="item-search" placeholder="Pesquisar vidraria..." class="item-search-input">
-            <i class="fas fa-search search-icon"></i>
-        </div>
-
-        <div class="selection-grid">
-            <div class="item-cards-container">
-                <div class="item-card">
-                    <h3 class="item-card-title">Tipo do Item</h3>
-                    <div class="item-row">
-                        <span>Item 1</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
-                    <div class="item-row">
-                        <span>Item 2</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
+        <div vw="" class="enabled"
+            style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+            <div vw-access-button="" class="active">
+                <img class="vp-access-button" data-src="assets/access_icon.svg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_icon.svg">
+                <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+            </div>
+            <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+                <div vp="">
                 </div>
-                <div class="item-card">
-                    <h3 class="item-card-title">Tipo do Item</h3>
-                    <div class="item-row">
-                        <span>Item 1</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
-                     <div class="item-row">
-                        <span>Item 2</span>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus-btn">-</button>
-                            <span class="quantity-value">0</span>
-                            <button class="quantity-btn plus-btn">+</button>
-                        </div>
-                        <span class="item-unit"> unidades</span>
-                    </div>
-                </div>
-                </div>
-
-            <div class="selected-items-card">
-                <h3 class="item-card-title">Vidrarias selecionadas</h3>
-                <div class="selected-items-list">
-                    <p> itens 1</p>
-                    <p> itens 2</p>
-                    </div>
             </div>
         </div>
 
-        <div class="action-buttons-container">
-            <a href="MR.html"><button class="action-btn btn-primary">voltar</button></a>
-            <button class="action-btn btn-primary">Confirmar e ver lista de materiais</button>
-            <a href="reagentes.html"><button class="action-btn btn-primary">escolher reagentes</button></a> 
+        <div class="main-container">
+            <div class="search-container">
+                <form action="#" class="form-pesquisa" method="get" role="search">
+                    <input id="search-area" class="search-area" name="s" placeholder="Buscar Vidrarias" type="search">
+                    <button class="search-submit" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <div class="container swiper">
+                <div class="card-wrapper">
+                    <ul class="card-list swiper-wrapper">
+                        <li class="card-item swiper-slide onclick="centralizarSlide(1)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria A</h3>
+                                <p class="card-description">Descrição da Vidraria A.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria A')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide onclick="centralizarSlide(2)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria B</h3>
+                                <p class="card-description">Descrição da Vidraria B.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria B')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide onclick="centralizarSlide(3)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria C</h3>
+                                <p class="card-description">Descrição da Vidraria C.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria C')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide onclick="centralizarSlide(4)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria D</h3>
+                                <p class="card-description">Descrição da Vidraria D.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria D')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide onclick="centralizarSlide(5)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria E</h3>
+                                <p class="card-description">Descrição da Vidraria E.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria E')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide onclick="centralizarSlide(6)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria F</h3>
+                                <p class="card-description">Descrição da Vidraria F.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria F')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide onclick="centralizarSlide(7)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria G</h3>
+                                <p class="card-description">Descrição da Vidraria G.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria G')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide onclick="centralizarSlide(8)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria H</h3>
+                                <p class="card-description">Descrição da Vidraria H.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria H')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide onclick="centralizarSlide(9)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria I</h3>
+                                <p class="card-description">Descrição da Vidraria I.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria I')">Adicionar</a>
+                            </div>
+                        </li>
+                        <li class="card-item swiper-slide onclick="centralizarSlide(10)"">
+                            <div class="card-link">
+                                <div class="chemical-icon">
+                                    <span class="material-symbols-outlined icon">experiment</span>
+                                </div>
+                                <h3 class="card-title">Vidraria J</h3>
+                                <p class="card-description">Descrição da Vidraria J.</p>
+                                <a class="add-button" onclick="event.stopPropagation(); abrirModal('Vidraria J')">Adicionar</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <div id="reagenteModal" class="modal-backdrop">
+
+                <div class="modal-content">
+
+                    <h3 class="modal-title" id="modalReagenteTitle">Adicionar Vidraria</h3>
+                    <p>Informe o tamanho do recipiente (ml):</p>
+
+                    <div class="input-group">
+                        <label for="quantidade-vidraria" class="unit">Qtd</label>
+                        <select id="quantidade-vidraria" name="quantidade-vidraria" required>
+                            <option value="" disabled selected>20ml</option>
+                            <option value="1">50ml</option>
+                            <option value="2">100ml</option>
+                            <option value="5">150ml</option>
+                            <option value="10">200ml</option>
+                        </select>
+                        <span class="material-icons dropdown-icon">arrow_drop_down</span>
+                    </div>
+
+                    <div class="modal-actions">
+                        <a class="button-cancel" onclick="fecharModal()">Cancelar</a>
+                        <a class="button-confirm" onclick="confirmarAdicao()">Confirmar</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="button-container">
+                <a class="button-custom" href="MR.html">Voltar</a>
+                <a class="button-custom" id="buttom-confirm" href="professor.html">Confirmar</a>
+                <a class="button-custom" href="kitprofessor.html">Ver Kits</a>
+            </div>
         </div>
 
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        </section>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="../JS (Front-End)/swiper.js"></script>
     <script>
-        // Executa o código quando o conteúdo da página estiver totalmente carregado
-        document.addEventListener('DOMContentLoaded', function () {
+        // Variável para armazenar o nome da vidraria que está sendo adicionada
+        let vidrariaSelecionada = ""; 
+    
+        function abrirModal(nomeVidraria) {
+            // DEPURAÇÃO: Verifica se a função está sendo chamada
+            console.log("Abrindo modal para: " + nomeVidraria); 
+    
+            // 1. Armazena o nome da vidraria globalmente
+            vidrariaSelecionada = nomeVidraria;
+    
+            // 2. Atualiza o título do modal
+            document.getElementById('modalReagenteTitle').textContent = `Adicionar ${nomeVidraria}`;
+    
+            // 3. Reseta a seleção para a opção padrão
+            const select = document.getElementById('quantidade-vidraria');
+            select.value = ""; 
             
-            // --- LÓGICA ANTIGA PARA A BUSCA GERAL (MANTIDA) ---
-            const campoBuscaGeral = document.getElementById('campo-busca');
-            // Verifica se o campo de busca geral e o container de cards existem
-            if (campoBuscaGeral) {
-                const cardsContainer = document.querySelector('.cards-container');
-                if(cardsContainer){
-                    const todosOsCards = cardsContainer.querySelectorAll('.card');
-                    campoBuscaGeral.addEventListener('input', function () {
-                        const termoBuscado = campoBuscaGeral.value.toLowerCase();
-                        todosOsCards.forEach(function (card) {
-                            const textoDoCard = card.textContent.toLowerCase();
-                            if (textoDoCard.includes(termoBuscado)) {
-                                card.style.display = 'flex';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                }
+            // 4. Exibe o modal adicionando a CLASSE 'show' (conforme seu CSS)
+            document.getElementById('reagenteModal').classList.add('show');
+        }
+    
+        function fecharModal() {
+            // Esconde o modal removendo a CLASSE 'show'
+            document.getElementById('reagenteModal').classList.remove('show');
+        }
+    
+        function confirmarAdicao() {
+            const selectQuantidade = document.getElementById('quantidade-vidraria');
+            const quantidade = selectQuantidade.value; 
+    
+            // VALIDAÇÃO: Verifica se o usuário selecionou uma quantidade
+            if (!quantidade || quantidade === "") {
+                alert("Por favor, selecione a quantidade desejada.");
+                return; 
             }
     
-            // --- NOVA LÓGICA PARA OS BOTÕES DE QUANTIDADE ---
-    
-            // 1. Seleciona todos os 'seletores de quantidade' da página
-            const quantitySelectors = document.querySelectorAll('.quantity-selector');
-    
-            // 2. Itera sobre cada um dos seletores encontrados
-            quantitySelectors.forEach(selector => {
-                // 3. Dentro de cada seletor, encontra os elementos específicos: o botão de menos, o de mais e o campo de valor
-                const minusButton = selector.querySelector('.minus-btn');
-                const plusButton = selector.querySelector('.plus-btn');
-                const quantitySpan = selector.querySelector('.quantity-value');
-    
-                // 4. Adiciona um "ouvinte" de evento de clique no botão de MAIS
-                plusButton.addEventListener('click', () => {
-                    // Converte o texto do span para um número inteiro
-                    let currentValue = parseInt(quantitySpan.textContent);
-                    // Incrementa o valor
-                    currentValue++;
-                    // Atualiza o texto do span com o novo valor
-                    quantitySpan.textContent = currentValue;
-                });
-    
-                // 5. Adiciona um "ouvinte" de evento de clique no botão de MENOS
-                minusButton.addEventListener('click', () => {
-                    // Converte o texto do span para um número inteiro
-                    let currentValue = parseInt(quantitySpan.textContent);
-                    // Verifica se o valor é maior que 0 para não ficar negativo
-                    if (currentValue > 0) {
-                        // Decrementa o valor
-                        currentValue--;
-                        // Atualiza o texto do span com o novo valor
-                        quantitySpan.textContent = currentValue;
+            // 💡 Substitua este console.log pela sua lógica real de agendamento!
+            console.log(`Vidraria: ${vidrariaSelecionada}, Quantidade: ${quantidade} adicionada para agendamento.`);
+            alert(`Adicionado ao agendamento: ${quantidade}x ${vidrariaSelecionada}`);
+            
+            // 5. Fecha o modal após a confirmação
+            fecharModal();
+        }
+        
+        // Assegura que o script do SwiperJS seja carregado antes de inicializá-lo
+        // Seu código SwiperJS deve estar em '../JS (Front-End)/swiper.js'
+        // Mas a inicialização é importante:
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicialização do Swiper (se não estiver em swiper.js ou se precisar de garantia)
+            if (typeof Swiper !== 'undefined') {
+                new Swiper('.swiper', {
+                    // Seus parâmetros Swiper...
+                    loop: true,
+                    slidesPerView: 'auto',
+                    centeredSlides: true,
+                    spaceBetween: 30,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 30,
+                        }
                     }
                 });
-            });
-        });
-    
-        // --- LÓGICA ANTIGA PARA NOTIFICAÇÃO (MANTIDA) ---
-        window.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('reserva') === 'sucesso') {
-                const notification = document.getElementById('notification');
-                if (notification) {
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 5000);
-                }
             }
         });
+    
     </script>
-    <div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-<div vw-access-button="" class="active">
-        <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
-        <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-    </div>
-<div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-        <div vp="">
-            </div>
-    </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
 </body>
 
 </html>
