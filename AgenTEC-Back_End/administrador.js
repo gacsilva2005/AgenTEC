@@ -85,4 +85,4 @@ class Administrador {
     }
 }
 
-module.exports = Administrador;
+export default Administrador;

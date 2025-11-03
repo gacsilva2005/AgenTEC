@@ -50,4 +50,4 @@ class Tecnico {
     }
 }
 
-module.exports = Tecnico;
+export default Tecnico;

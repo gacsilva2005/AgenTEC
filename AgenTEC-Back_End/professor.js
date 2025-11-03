@@ -51,4 +51,4 @@ class Professor {
     }
 }
 
-module.exports = Professor;
+export default Professor;

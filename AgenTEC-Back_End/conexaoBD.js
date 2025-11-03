@@ -1,5 +1,5 @@
 // Database.js
-const mysql = require('mysql2/promise');
+import mysql from "mysql2/promise";
 
 class Database {
     #pool;
@@ -23,4 +23,4 @@ class Database {
     }
 }
 
-module.exports = Database;
+export default Database;
