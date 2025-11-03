@@ -4,12 +4,14 @@ const cors = require('cors');
 const Database = require('./conexaoBD');
 const Administrador = require('./administrador');
 const Professor = require('./professor');
+const Tecnico = require('./tecnico');
 
 class Server {
     #app;
     #db;
     #admin;
     #prof;
+    #tec;
 
     constructor(port = 3000) {
         this.#app = express();
@@ -27,6 +29,7 @@ class Server {
 
         this.#admin = new Administrador(null, this.#db);
         this.#prof = new Professor(null, this.#db);
+        this.#tec = new Tecnico(null, this.#db);
 
         this.#configRoutes();
         this.#startServer(port);
@@ -48,18 +51,22 @@ class Server {
                 tipo = 'administrador';
             } else if (email.endsWith('@prof.com')) {
                 tipo = 'professor';
+            } else if (email.endsWith('@tec.com')) {
+                tipo = 'tecnico';
             } else {
                 return res.status(400).json({
                     success: false,
-                    message: 'Domínio de e-mail inválido. Use @adm.com ou @prof.com'
+                    message: 'Domínio de e-mail inválido. Use @adm.com, @prof.com ou @tec.com'
                 });
             }
 
             let result;
             if (tipo === 'administrador') {
                 result = await this.#admin.autenticarUsuario(email, senha);
-            } else {
+            } else if (tipo === 'professor'){
                 result = await this.#prof.autenticarUsuario(email, senha);
+            } else {
+                result = await this.#tec.autenticarUsuario(email, senha);
             }
 
             if (!result.success) {
@@ -67,12 +74,8 @@ class Server {
                 return res.status(401).json(result);
             }
 
-            // SE CHEGAR AQUI, O LOGIN FOI BEM-SUCEDIDO.
-            // O objeto 'result' DEVE conter 'result.usuario'.
-
-            // Padroniza para o que o login.js espera
-            const usuario = result.usuario; // Linha 70
-            usuario.tipo = tipo; // Linha 71 - Agora 'usuario' é um objeto válido!
+            const usuario = result.usuario;
+            usuario.tipo = tipo;
 
             return res.json({
                 success: true,

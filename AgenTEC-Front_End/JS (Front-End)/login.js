@@ -55,7 +55,9 @@
                             window.location.href = '../HTML/AdmScreen/administradores.html';
                         } else if (tipo === 'professor') {
                             window.location.href = '../HTML/ProfScreen/professor.html';
-                        } else {
+                        } else if (tipo === 'tecnico'){
+                            window.location.href = '../HTML/TecScreen/tecnicos.html';
+                        } else{
                             alert('Tipo de usuário desconhecido. Verifique o servidor.');
                         }
                     }, 1500);
