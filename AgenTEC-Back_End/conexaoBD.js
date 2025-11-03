@@ -10,8 +10,8 @@ class Database {
 
     async query(sql, params) {
         try {
-            const [rows] = await this.#pool.execute(sql, params);
-            return rows;
+            const [result] = await this.#pool.execute(sql, params);
+            return result;
         } catch (err) {
             console.error('Erro no DB:', err);
             throw err;

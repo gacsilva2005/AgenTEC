@@ -1,3 +1,4 @@
+// administrador.js
 class Administrador {
     #id;
     #db;
@@ -28,14 +29,14 @@ class Administrador {
                     return { success: false, message: 'Função inválida' };
             }
 
-            // Verifica se o e-mail já existe na tabela correspondente
+            // Verifica se o e-mail já existe
             const verificarQuery = `SELECT * FROM ${tabela} WHERE ${colunas[1]} = ? LIMIT 1`;
             const rows = await this.#db.query(verificarQuery, [email]);
             if (rows.length > 0) {
                 return { success: false, message: 'E-mail já cadastrado' };
             }
 
-            // Inserir novo usuário (senha sem hash)
+            // Inserir novo usuário sem hash
             const insertQuery = `INSERT INTO ${tabela} (${colunas.join(', ')}) VALUES (?, ?, ?)`;
             const result = await this.#db.query(insertQuery, [nome, email, senha]);
 
@@ -46,20 +47,16 @@ class Administrador {
         }
     }
 
-    adicionarItemLista() {}
-    removerItemLista() {}
-    alterarItemLista() {}
-    consultarHistorico() {}
-
     async autenticarUsuario(email, senha) { 
         try {
             const query = 'SELECT * FROM administrador WHERE email_administrador = ? LIMIT 1';
             const rows = await this.#db.query(query, [email]);
 
-            const user = rows[0];
-            if (!user) {
+            if (!rows || rows.length === 0) {
                 return { success: false, message: 'Usuário não encontrado' };
             }
+
+            const user = rows[0];
 
             if (user.senha_administrador !== senha) {
                 return { success: false, message: 'Senha incorreta' };
@@ -71,12 +68,17 @@ class Administrador {
                 email: user.email_administrador
             };
 
-            return { success: true, usuario: usuario };
+            return { success: true, usuario };
         } catch (err) {
             console.error('Erro ao autenticar administrador:', err);
             return { success: false, message: 'Erro ao autenticar' };
         }
     }
+
+    adicionarItemLista() {}
+    removerItemLista() {}
+    alterarItemLista() {}
+    consultarHistorico() {}
 
     getId() {
         return this.#id;

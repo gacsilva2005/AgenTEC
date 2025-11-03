@@ -218,13 +218,13 @@
                 </li>
 
                 <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
-                <li><a href="login.html">Agendamentos</a></li>
+                <li><a href="../login.html">Agendamentos</a></li>
             </ul>
         </nav>
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a> <a href="administradores.html">/
+                <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a> <a href="administradores.html">/
                         Administradores</a>/ Cadastrar Usuários</span>
             </div>
         </div>
@@ -235,7 +235,7 @@
 
             <div class="container-central">
                 <div class="form-container">
-                    <form>
+                    <form id="cadastroForm">
                         <div class="input-group">
                             <input type="text" id="nome" required placeholder=" ">
                             <label for="nome">Nome Completo</label>
@@ -259,16 +259,17 @@
                         <div class="function-selector">
                             <label for="role" class="function-title">Função:</label>
                             <div class="custom-select">
-                                <a class="class-selector" data-role="Administrador">Administrador</a>
-                                <a class="class-selector" data-role="Técnico">Técnico</a>
-                                <a class="class-selector" data-role="Professor">Professor</a>
+                                <a class="class-selector" data-role="administrador">Administrador</a>
+                                <a class="class-selector" data-role="tecnico">Técnico</a>
+                                <a class="class-selector" data-role="professor">Professor</a>
                             </div>
                             <input type="hidden" id="role" name="role">
                         </div>
                         <div class="button-container">
                             <a href="administradores.html" class="voltar-button">Voltar</a>
-                            <a href="administradores.html"><button type="submit" class="submit-button">Cadastrar Usuário</button></a>
+                            <button type="submit" class="submit-button">Cadastrar Usuário</button>
                         </div>
+                        <p id="cadastroMessage"></p>
                     </form>
                 </div>
 
