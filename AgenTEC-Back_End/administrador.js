@@ -36,7 +36,7 @@ class Administrador {
                 return { success: false, message: 'E-mail já cadastrado' };
             }
 
-            // Inserir novo usuário sem hash
+            // Inserir novo usuário
             const insertQuery = `INSERT INTO ${tabela} (${colunas.join(', ')}) VALUES (?, ?, ?)`;
             const result = await this.#db.query(insertQuery, [nome, email, senha]);
 
