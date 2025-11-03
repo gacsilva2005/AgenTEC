@@ -43,9 +43,9 @@ html {
 }
 
 .govsp-portal img {
-    height: 60px;
-    width: auto;
-    display: block;
+    height: 10px;  
+    width: 200px;  
+    display: flex; 
 }
 
 .govsp-navbar {

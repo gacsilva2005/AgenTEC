@@ -7,6 +7,21 @@ body, html {
     color: #333;
 }
 
+:root{
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+}
+
 .govsp-topo {
     display: flex;
     justify-content: space-between; 
@@ -163,7 +178,7 @@ body, html {
 
 .page-title {
     font-size: 2.5rem;
-    color: #333;
+    color: var(--hoverCian-color);
     margin-bottom: 10px;
     font-weight: 700;
 }

@@ -9,9 +9,24 @@
   text-align: center;
 }
 
+:root{
+  --primary-color: #243E63; 
+  --hoverCian-color: #005C6D; 
+  --low-hoverCian: #005d6d5b; 
+  --hoverLight-color: #00C1CF;
+  --primary-red: #970000;
+  --secondary-red: #c70000;
+  --hoverRed-color: #5d0500ef; 
+  --light-gray: #636e72; 
+  --dark-gray: #333333; 
+  --text-white: #ffffff;
+  --dark: #000000;
+  --secondaryLight-gray: #7c7c7c;
+}
+
 .page-title {
   font-size: 2.5rem;
-  color: #333;
+  color: var(--hoverCian-color);
   margin-bottom: 10px;
   font-weight: 700;
 }
@@ -81,12 +96,12 @@ textarea {
   font-weight: 500;
   text-transform: uppercase;
   transition: background-color 0.3s, transform 0.2s;
-  background-color: #5d5d5d;
+  background-color: var(--primary-color);
   color: white;
   box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .action-btn:hover {
-  background-color: #373737;
+  background-color: var(--hoverCian-color);
   transform: translateY(-3px);
 }

@@ -425,7 +425,6 @@ html {
     transition: all 0.3s ease;
 }
 
-/* ⬅️ MUDANÇA AQUI: Adicionei o 'select' e removi o 'input[type="number"]' */
 .input-group select {
     flex-grow: 1;
     padding: 10px 15px;
@@ -457,13 +456,12 @@ html {
     pointer-events: none; /* Permite que o clique passe para o select */
     color: var(--primary-color, #243E63); 
     font-size: 24px; 
-    transition: transform 0.3s ease; /* ⬅️ Essencial para a animação */
+    transition: transform 0.3s ease;
     z-index: 2; 
 }
 
-/* ⬇️ EFEITO DE ROTAÇÃO: Gira o ícone quando o INPUT-GROUP está focado */
 .input-group:focus-within .dropdown-icon {
-    transform: translateY(-50%) rotate(180deg); /* Gira 180 graus (para cima) */
+    transform: translateY(-50%) rotate(180deg);
     color: var(--hoverCian-color, #005C6D); 
 }
 
@@ -624,7 +622,7 @@ html {
 
 .page-title {
     font-size: 2.5rem;
-    color: #333;
+    color: var(--hoverCian-color);
     margin-bottom: 10px;
     font-weight: 700;
 }

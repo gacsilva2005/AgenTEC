@@ -6,6 +6,21 @@ body, html {
     color: #333;
 }
 
+:root{
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+}
+
 .govsp-topo {
     display: flex;
     justify-content: space-between; 
@@ -112,7 +127,7 @@ body, html {
 }
 
 .main-menu-container {
-    background-color: #b20000; 
+    background-color: #c41e15; 
     padding: 0 20px;
 }
 .main-menu-container .menu {
@@ -165,7 +180,7 @@ body, html {
 
 .page-title {
     font-size: 2.5rem;
-    color: var(--primary);
+    color: var(--hoverCian-color);
     margin-bottom: 10px;
     font-weight: 700;
 }
@@ -195,7 +210,7 @@ body, html {
     height: 15px;
     background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
     font-size: 1.6rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .logo-container {
@@ -306,9 +321,8 @@ body, html {
     margin-bottom: 10px;
 }
 
-/* === BOTÃO DE KIT SELECIONADO === */
 .kit-item.active .kit-btn {
-    background-color: #d23b3b !important; /* tom mais claro */
+    background-color: #d23b3b !important;
     color: #fff !important;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
 }
@@ -330,7 +344,6 @@ body, html {
     transform: scale(1.05);
 }
 
-/* === POPUP === */
 .popup-overlay {
     position: fixed;
     top: 0;
