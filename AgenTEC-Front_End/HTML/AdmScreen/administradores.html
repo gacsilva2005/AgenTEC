@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento Selecionado</title>
+    <title>Administradores - Agendamento</title>
 
-    <link rel="stylesheet" href="../CSS/selecionado.css">
+    <link rel="stylesheet" href="../../CSS/administradores.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
     <section class="govsp-topo">
         <div class="govsp-portal">
             <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
-                <img src="../Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
+                <img src="../../Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
             </a>
         </div>
         <nav class="govsp-navbar">
@@ -54,11 +54,11 @@
         <div class="cps-header__container">
 
             <div class="logo-container">
-                <a href="index.html">
-                    <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                <a href="../index.html">
+                    <img src="../../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                 </a>
                 <a href="https://www.cps.sp.gov.br/" target="_blank">
-                    <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                    <img src="../../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
                 </a>
             </div>
             <form action="#" class="form-pesquisa" method="get" role="search">
@@ -71,7 +71,7 @@
 
     <nav class="main-menu-container" role="navigation">
         <ul class="menu">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
 
             <li class="dropdown">
                 <a>Institucional <i class="fas fa-chevron-down"></i></a>
@@ -162,40 +162,49 @@
             </li>
 
             <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
-            <li><a href="login.html">Agendamentos</a></li>
+            <li><a href="../login.html">Agendamentos</a></li>
         </ul>
     </nav>
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="professor.html">Professor </a>
-                / <a href="solicitar_materiais.html">Solicitar Materiais</a> / Selecionado</span>
+            <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a>/ Administradores</span>
         </div>
     </div>
 
     <main class="main-content">
-        
-        <div class="selection-container">
-            
-            <div class="agendamento-info">
-                <h2>Agendamento Selecionado</h2>
-                <p id="agendamento-selecionado">Lab 1 - 24/11 - 4 aula</p> 
-            </div>
+        <h1 class="page-title">Administradores</h1>
+        <div class="title-underline"></div>
 
-            <div class="action-btn-group">
-                <a href="criar_kit.html" class="action-btn">Selecionar Kit Pré-definido</a>
+        <div class="cards-container">
 
-                <a href="MR.html" class="action-btn">Seguir com os Itens Selecionados</a>
-            </div>
+            <a href="cadastrarUser.html" class="card">
+                <div class="card-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <p class="card-text">Cadastrar novos professores e técnicos</p>
+            </a>
 
-            <div class="back-button-container">
-                <a href="solicitar_materiais.html" class="back-button">Voltar</a>
-            </div>
+            <a href="atualizar_vidrarias.html" class="card">
+                <div class="card-icon">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <p class="card-text">Cadastrar e atualizar o banco de materiais</p>
+            </a>
+
+            <a href="#" class="card">
+                <div class="card-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <p class="card-text">Ver histórico de uso de materiais"</p>
+            </a>
+
         </div>
         
     </main>
-    
-    <div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+
+    <div vw="" class="enabled"
+        style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
         <div vw-access-button="" class="active">
             <img class="vp-access-button" data-src="assets/access_icon.svg"
                 alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
@@ -215,46 +224,37 @@
     </script>
 
     <script>
-        // Script para buscar o agendamento da URL e exibir na tela
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const agendamento = params.get('agendamento');
-            const agendamentoDisplay = document.getElementById('agendamento-selecionado');
-            
-            if (agendamento) {
-                // Decodifica a string da URL e a exibe
-                const agendamentoDecoded = decodeURIComponent(agendamento.replace(/\+/g, ' '));
-                agendamentoDisplay.textContent = agendamentoDecoded;
-                
-                // Opcional: Atualiza o breadcrumb (um pouco mais complexo, mas adiciona valor)
-                const breadcrumbContainer = document.querySelector('.breadcrumb-container span');
-                // Adiciona o agendamento ao breadcrumb (após "Selecionado")
-                let htmlContent = breadcrumbContainer.innerHTML;
-                
-                // Verifica se "Selecionado" já está no breadcrumb para evitar duplicidade
-                if (!htmlContent.includes('Selecionado')) {
-                    htmlContent += ` / <a href="selecionado.html?agendamento=${agendamento}">Selecionado</a>`;
-                }
-                
-                // Remove o valor 'hardcoded' e adiciona a informação do agendamento
-                breadcrumbContainer.innerHTML = htmlContent;
-                
-            } else {
-                 // Se não houver parâmetro, exibe uma mensagem padrão
-                 agendamentoDisplay.textContent = "Nenhum Agendamento Selecionado";
-            }
 
-            // Lógica de busca (padrão das outras telas)
+        document.addEventListener('DOMContentLoaded', function () {
             const campoBusca = document.getElementById('campo-busca');
-            if (campoBusca) {
-                // A lógica de busca do Header é desnecessária aqui, mas é bom mantê-la fora do bloco do Agendamento.
-                // Vou replicar o event listener de busca que estava em seus outros arquivos.
-                campoBusca.addEventListener('input', function () {
-                    const termoBuscado = campoBusca.value.toLowerCase();
+            const cardsContainer = document.querySelector('.cards-container');
+            const todosOsCards = cardsContainer.querySelectorAll('.card');
+            campoBusca.addEventListener('input', function () {
+                const termoBuscado = campoBusca.value.toLowerCase();
+                todosOsCards.forEach(function (card) {
+                    const textoDoCard = card.textContent.toLowerCase();
+                    if (textoDoCard.includes(termoBuscado)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
                 });
+            });
+
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('reserva') === 'sucesso') {
+                const notification = document.getElementById('notification');
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
             }
         });
     </script>
 </body>
 
 </html>
+

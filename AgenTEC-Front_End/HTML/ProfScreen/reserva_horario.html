@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professores - Agendamento</title>
 
-    <link rel="stylesheet" href="../CSS/reserva_horario.css">
+    <link rel="stylesheet" href="../../CSS/reserva_horario.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
     <section class="govsp-topo">
         <div class="govsp-portal">
             <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
-                <img src="../Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
+                <img src="../../Assets/Logo-Sao-Paulo.jpg" alt="Governo do Estado de São Paulo">
             </a>
         </div>
         <nav class="govsp-navbar">
@@ -52,11 +52,11 @@
     <header id="cps-header">
         <div class="cps-header__container">
             <div class="logo-container">
-                <a href="index.html">
-                    <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                <a href="../index.html">
+                    <img src="../../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                 </a>
                 <a href="https://www.cps.sp.gov.br/" target="_blank">
-                    <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                    <img src="../../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
                 </a>
             </div>
             <form action="#" class="form-pesquisa" method="get" role="search">
@@ -69,7 +69,7 @@
 
     <nav class="main-menu-container" role="navigation">
         <ul class="menu">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
 
             <li class="dropdown">
                 <a>Institucional <i class="fas fa-chevron-down"></i></a>
@@ -160,13 +160,13 @@
             </li>
 
             <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
-            <li><a href="login.html">Agendamentos</a></li>
+            <li><a href="../login.html">Agendamentos</a></li>
         </ul>
     </nav>
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/
+            <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a>/
                 <a href="professor.html">Professores </a>/ <a href="calendario.html">Calendario </a>/ Reservas </span>
         </div>
     </div>
@@ -245,58 +245,63 @@
     </div>
 
     <script>
-    // Espera o documento carregar para garantir que todos os elementos existam
-    document.addEventListener('DOMContentLoaded', () => {
+        // Espera o documento carregar para garantir que todos os elementos existam
+        document.addEventListener('DOMContentLoaded', () => {
 
-        const confirmButton = document.getElementById('confirmButton');
-        // Define os 'names' de todos os grupos de radio que são obrigatórios
-        const requiredGroups = ['periodo', 'horario', 'laboratorio'];
+            const confirmButton = document.getElementById('confirmButton');
+            // Define os 'names' de todos os grupos de radio que são obrigatórios
+            const requiredGroups = ['periodo', 'horario', 'laboratorio'];
 
-        function checkSelections() {
-            // Verifica se CADA um dos grupos obrigatórios tem uma opção marcada
-            const allGroupsSelected = requiredGroups.every(groupName => {
-                // Procura por um input CHECADO com o 'name' do grupo atual
-                return document.querySelector(`input[name="${groupName}"]:checked`) !== null;
+            function checkSelections() {
+                // Verifica se CADA um dos grupos obrigatórios tem uma opção marcada
+                const allGroupsSelected = requiredGroups.every(groupName => {
+                    // Procura por um input CHECADO com o 'name' do grupo atual
+                    return document.querySelector(`input[name="${groupName}"]:checked`) !== null;
+                });
+
+                // Se 'allGroupsSelected' for true, o botão é habilitado (disabled = false)
+                // Se for false, o botão é desabilitado (disabled = true)
+                confirmButton.disabled = !allGroupsSelected;
+            }
+
+            // Adiciona um "ouvinte" para QUALQUER mudança nos radio buttons da página
+            const allRadioInputs = document.querySelectorAll('input[type="radio"]');
+            allRadioInputs.forEach(radio => {
+                radio.addEventListener('change', checkSelections);
             });
 
-            // Se 'allGroupsSelected' for true, o botão é habilitado (disabled = false)
-            // Se for false, o botão é desabilitado (disabled = true)
-            confirmButton.disabled = !allGroupsSelected;
-        }
+            // Adiciona o evento de clique para o botão de confirmar (para navegar)
+            confirmButton.addEventListener('click', () => {
+                // Esta função só roda se o botão não estiver desabilitado
+                window.location.href = 'professor.html?reserva=sucesso';
+            });
 
-        // Adiciona um "ouvinte" para QUALQUER mudança nos radio buttons da página
-        const allRadioInputs = document.querySelectorAll('input[type="radio"]');
-        allRadioInputs.forEach(radio => {
-            radio.addEventListener('change', checkSelections);
+            // Roda a verificação uma vez quando a página carrega para garantir
+            // que o botão comece desabilitado.
+            checkSelections();
+
         });
+    </script>
 
-        // Adiciona o evento de clique para o botão de confirmar (para navegar)
-        confirmButton.addEventListener('click', () => {
-            // Esta função só roda se o botão não estiver desabilitado
-            window.location.href = 'professor.html?reserva=sucesso'; 
-        });
-
-        // Roda a verificação uma vez quando a página carrega para garantir
-        // que o botão comece desabilitado.
-        checkSelections();
-
-    });
-</script>
-
-<div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-<div vw-access-button="" class="active">
-        <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
-        <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-    </div>
-<div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-        <div vp="">
+    <div vw="" class="enabled"
+        style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+        <div vw-access-button="" class="active">
+            <img class="vp-access-button" data-src="assets/access_icon.svg"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_icon.svg">
+            <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+        </div>
+        <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+            <div vp="">
             </div>
+        </div>
     </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </body>
 

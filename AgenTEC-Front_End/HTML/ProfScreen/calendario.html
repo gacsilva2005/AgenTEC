@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professores - Agendamento</title>
 
-    <link rel="stylesheet" href="../CSS/MR.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- CSS do vanilla-js-calendar -->
+    <link href="https://cdn.jsdelivr.net/npm/vanilla-js-calendar@1.1.0/dist/js-calendar.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../CSS/calendario.css">
 </head>
 
 <body>
@@ -108,11 +108,11 @@
         <div class="cps-header__container">
 
             <div class="logo-container">
-                <a href="index.html">
-                    <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                <a href="../index.html">
+                    <img src="../../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                 </a>
                 <a href="https://www.cps.sp.gov.br/" target="_blank">
-                    <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                    <img src="../../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
                 </a>
             </div>
             <form action="#" class="form-pesquisa" method="get" role="search">
@@ -125,7 +125,7 @@
 
     <nav class="main-menu-container" role="navigation">
         <ul class="menu">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
 
             <li class="dropdown">
                 <a>Institucional <i class="fas fa-chevron-down"></i></a>
@@ -219,108 +219,118 @@
             </li>
 
             <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
-            <li><a href="login.html">Agendamentos</a></li>
+            <li><a href="../login.html">Agendamentos</a></li>
         </ul>
     </nav>
 
     <div id="breadcrumb">
         <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="professor.html">Professor </a>
-                / Materiais e reagentes</span>
+            <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a>/ <a href="professor.html"> Professores
+                </a>/ Calendário</span>
         </div>
     </div>
-
-    <main class="main-content">
-        <h1 class="page-title">Professores</h1>
-        <div class="title-underline"></div>
-
-        <div class="cards-container">
-
-            <a href="vidrarias.html" class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-flask"></i>
+    <div class="main-content">
+        <div class="container">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <div class="nav-buttons">
+                        <button class="nav-btn" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                        <button class="nav-btn" id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="month-year" id="month-year">Setembro 2025</div>
                 </div>
-                <p class="card-text">Vidrarias</p>
-            </a>
-
-            <a href="reagentes.html" class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-vial"></i>
+                <div class="weekdays">
+                    <div class="weekday">Seg</div>
+                    <div class="weekday">Ter</div>
+                    <div class="weekday">Qua</div>
+                    <div class="weekday">Qui</div>
+                    <div class="weekday">Sex</div>
+                    <div class="weekday">Sab</div>
+                    <div class="weekday">Dom</div>
                 </div>
-                <p class="card-text">Reagentes</p>
-            </a>
 
-            <a href="kitprofessor.html" class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-briefcase"></i> 
+                <div class="days" id="days"></div>
+                <div class="calendar-footer">
+                    <button class="today-btn" id="today-btn"><i class="fas fa-calendar-day"></i> Hoje </button>
+                    <div class="event-indicator">
+                        <i class="fas fa-circle" style="color: var(--acent); font-size: 0.6rem;"></i>
+                        <span>Possui eventos</span>
+                    </div>
                 </div>
-                <p class="card-text">Criar Kits</p>
-            </a>
-
-            <a href="tecnicos.html" class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <p class="card-text"> Lista de Itens </p>
-            </a>
-
-        </div>
-
-    </main>
-    <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const campoBusca = document.getElementById('campo-busca');
-            const cardsContainer = document.querySelector('.cards-container');
-            const todosOsCards = cardsContainer.querySelectorAll('.card');
-            campoBusca.addEventListener('input', function () {
-                const termoBuscado = campoBusca.value.toLowerCase();
-                todosOsCards.forEach(function (card) {
-                    const textoDoCard = card.textContent.toLowerCase();
-                    if (textoDoCard.includes(termoBuscado)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-
-            // Pega os parâmetros da URL
-            const params = new URLSearchParams(window.location.search);
-
-            // Verifica se o parâmetro 'reserva' tem o valor 'sucesso'
-            if (params.get('reserva') === 'sucesso') {
-                const notification = document.getElementById('notification');
-
-                // 1. Mostra a notificação adicionando a classe 'show'
-                notification.classList.add('show');
-
-                // 2. Esconde a notificação automaticamente após 5 segundos
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 5000); // 5000 milissegundos = 5 segundos
-            }
-        });
-    </script>
-    <div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-<div vw-access-button="" class="active">
-        <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
-        <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-    </div>
-<div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-        <div vp="">
             </div>
-    </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
+            <div class="all-event">
+                <div class="event-panel" id="event-panel">
+                    <div class="event-header">
+                        <div class="event-date" id="event-date">Escolha uma data</div>
+                        <i class="fas fa-calendar-alt event-icon"></i>
+                    </div>
+                    <div class="event-list" id="event-list">
+                        <div class="no-events">Escolha uma data com evento para vê-lo aqui.</div>
+                    </div>
+                    <div class="button-container">
+                        <button class="schedule-btn" id="schedule-btn"><i class="fas fa-calendar-day"></i> Agendar
+                        </button>
+                        <button class="delete-btn" id="delete-btn"> Deletar </button>
+                    </div>
+                </div>
+                <div class="event-panel" id="event-panel">
+                    <div class="event-header">
+                        <div class="event-date" id="event-date">Escolha um horário</div>
+                        <i class="fas fa-calendar-alt event-icon"></i>
+                    </div>
+                    <div class="event-list" id="event-list">
+                        <div class="no-events">Escolha um horário para o evento para vê-lo aqui.</div>
+                    </div>
+                    <div class="button-container">
+                        <button class="schedule-btn" id="schedule-btn"><i class="fas fa-calendar-day"></i> Editar
+                        </button>
+                        <button class="delete-btn" id="delete-btn"> Deletar </button>
+                    </div>
+                </div>
+                <div class="event-panel" id="event-panel">
+                    <div class="event-header">
+                        <div class="event-date" id="event-date">Escolha um Laboratório</div>
+                        <i class="fas fa-calendar-alt event-icon"></i>
+                    </div>
+                    <div class="event-list" id="event-list">
+                        <div class="no-events">Escolha um laboratório para o evento para vê-lo aqui.</div>
+                    </div>
+                    <div class="button-container">
+                        <button class="schedule-btn" id="schedule-btn"><i class="fas fa-calendar-day"></i> Editar
+                        </button>
+                        <button class="delete-btn" id="delete-btn"> Deletar </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <script src="../../JS (Front-End)/calendario.js"></script>
+    </div>
+
+    <div class="action-buttons-container">
+        <a href="professor.html"><button class="action-btn btn-primary">Voltar</button></a>
+        <a href="reagentes.html"><button class="action-btn btn-primary">Confirmar</button></a> 
+    </div>
+
+    <div vw="" class="enabled"
+        style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+        <div vw-access-button="" class="active">
+            <img class="vp-access-button" data-src="assets/access_icon.svg"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_icon.svg">
+            <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+        </div>
+        <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+            <div vp="">
+            </div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 
 </html>

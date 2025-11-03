@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores - Agendamento</title>
+    <title>Professores - Agendamento</title>
 
-    <link rel="stylesheet" href="../CSS/cadastrarUser.css">
+    <link rel="stylesheet" href="../../CSS/professor.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
@@ -107,11 +108,11 @@
             <div class="cps-header__container">
 
                 <div class="logo-container">
-                    <a href="index.html">
-                        <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                    <a href="../index.html">
+                        <img src="../../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                     </a>
                     <a href="https://www.cps.sp.gov.br/" target="_blank">
-                        <img src="../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                        <img src="../../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
                     </a>
                 </div>
                 <form action="#" class="form-pesquisa" method="get" role="search">
@@ -124,7 +125,7 @@
 
         <nav class="main-menu-container" role="navigation">
             <ul class="menu">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
 
                 <li class="dropdown">
                     <a>Institucional <i class="fas fa-chevron-down"></i></a>
@@ -224,77 +225,60 @@
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a> <a href="administradores.html">/
-                        Administradores</a>/ Cadastrar Usuários</span>
+                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ Professores</span>
             </div>
         </div>
 
         <main class="main-content">
-            <h1 class="page-title">Cadastrar novos usuários</h1>
+            <h1 class="page-title">Professores</h1>
             <div class="title-underline"></div>
 
-            <div class="container-central">
-                <div class="form-container">
-                    <form>
-                        <div class="input-group">
-                            <input type="text" id="nome" required placeholder=" ">
-                            <label for="nome">Nome Completo</label>
-                        </div>
+            <div class="cards-container">
 
-                        <div class="input-group">
-                            <input type="email" id="email" required placeholder=" ">
-                            <label for="email">E-mail</label>
-                        </div>
+                <a href="calendario.html" class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <p class="card-text">Reservar laboratório</p>
+                </a>
 
-                        <div class="input-group">
-                            <input type="password" id="senha" required placeholder=" ">
-                            <label for="senha">Senha</label>
-                        </div>
+                <a href="MR.html" class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <p class="card-text">Materiais e reagentes solicitados</p>
+                </a>
 
-                        <div class="input-group">
-                            <input type="password" id="confirmar-senha" required placeholder=" ">
-                            <label for="confirmar-senha">Confirmar Senha</label>
-                        </div>
-
-                        <div class="function-selector">
-                            <label for="role" class="function-title">Função:</label>
-                            <div class="custom-select">
-                                <a class="class-selector">Administrador</a>
-                                <a class="class-selector">Técnico</a>
-                                <a class="class-selector">Professor</a>
-                            </div>
-                        </div>
-                        <div class="button-container">
-                            <a href="administradores.html" class="voltar-button">Voltar</a>
-                            <a href="administradores.html"><button type="submit" class="submit-button">Cadastrar Usuário</button></a>
-                        </div>
-                    </form>
-                </div>
+                <a href="criar_kit.html" class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <p class="card-text">Kits Criados</p>
+                </a>
 
             </div>
-            
+
+            <div vw="" class="enabled"
+                style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+                <div vw-access-button="" class="active">
+                    <img class="vp-access-button" data-src="assets/access_icon.svg"
+                        alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                        src="https://vlibras.gov.br/app//assets/access_icon.svg">
+                    <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                        alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                        src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+                </div>
+                <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+                    <div vp="">
+                    </div>
+                </div>
+            </div>
+            <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+            <script>
+                new window.VLibras.Widget('https://vlibras.gov.br/app');
+            </script>
+            </section>
         </main>
-
-        <div vw="" class="enabled"
-            style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-            <div vw-access-button="" class="active">
-                <img class="vp-access-button" data-src="assets/access_icon.svg"
-                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                    src="https://vlibras.gov.br/app//assets/access_icon.svg">
-                <img class="vp-pop-up" data-src="assets/access_popup.jpg"
-                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                    src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-            </div>
-            <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-                <div vp="">
-                </div>
-            </div>
-        </div>
-        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-        <script>
-            new window.VLibras.Widget('https://vlibras.gov.br/app');
-        </script>
-
         <script>
 
             document.addEventListener('DOMContentLoaded', function () {
@@ -313,6 +297,17 @@
                     });
                 });
 
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const params = new URLSearchParams(window.location.search);
+                if (params.get('reserva') === 'sucesso') {
+                    const notification = document.getElementById('notification');
+                    notification.classList.add('show');
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 5000);
+                }
             });
         </script>
 </body>
