@@ -7,7 +7,45 @@ class Administrador {
         this.#db = db;
     }
 
-    cadastrarUsuario() {}
+    async cadastrarUsuario(nome, email, senha, funcao) {
+        try {
+            let tabela, colunas;
+
+            switch (funcao.toLowerCase()) {
+                case 'administrador':
+                    tabela = 'administrador';
+                    colunas = ['nome_administrador', 'email_administrador', 'senha_administrador'];
+                    break;
+                case 'professor':
+                    tabela = 'professor';
+                    colunas = ['nome_professor', 'email_professor', 'senha_professor'];
+                    break;
+                case 'tecnico':
+                    tabela = 'tecnico';
+                    colunas = ['nome_tecnico', 'email_tecnico', 'senha_tecnico'];
+                    break;
+                default:
+                    return { success: false, message: 'Função inválida' };
+            }
+
+            // Verifica se o e-mail já existe na tabela correspondente
+            const verificarQuery = `SELECT * FROM ${tabela} WHERE ${colunas[1]} = ? LIMIT 1`;
+            const rows = await this.#db.query(verificarQuery, [email]);
+            if (rows.length > 0) {
+                return { success: false, message: 'E-mail já cadastrado' };
+            }
+
+            // Inserir novo usuário (senha sem hash)
+            const insertQuery = `INSERT INTO ${tabela} (${colunas.join(', ')}) VALUES (?, ?, ?)`;
+            const result = await this.#db.query(insertQuery, [nome, email, senha]);
+
+            return { success: true, usuarioId: result.insertId, message: 'Usuário cadastrado com sucesso' };
+        } catch (err) {
+            console.error('Erro ao cadastrar usuário:', err);
+            return { success: false, message: 'Erro ao cadastrar usuário' };
+        }
+    }
+
     adicionarItemLista() {}
     removerItemLista() {}
     alterarItemLista() {}

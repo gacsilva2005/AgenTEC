@@ -259,10 +259,11 @@
                         <div class="function-selector">
                             <label for="role" class="function-title">Função:</label>
                             <div class="custom-select">
-                                <a class="class-selector">Administrador</a>
-                                <a class="class-selector">Técnico</a>
-                                <a class="class-selector">Professor</a>
+                                <a class="class-selector" data-role="Administrador">Administrador</a>
+                                <a class="class-selector" data-role="Técnico">Técnico</a>
+                                <a class="class-selector" data-role="Professor">Professor</a>
                             </div>
+                            <input type="hidden" id="role" name="role">
                         </div>
                         <div class="button-container">
                             <a href="administradores.html" class="voltar-button">Voltar</a>
@@ -290,6 +291,7 @@
                 </div>
             </div>
         </div>
+        <script src="../../JS (Front-End)/cadastrarUser.js"></script>
         <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
         <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');

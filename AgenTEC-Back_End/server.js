@@ -36,58 +36,53 @@ class Server {
     }
 
     #configRoutes() {
+        // LOGIN
         this.#app.post('/login', async (req, res) => {
             const { email, senha } = req.body;
-
             if (!email || !senha) {
-                return res.status(400).json({
-                    success: false,
-                    message: 'Email e senha são obrigatórios'
-                });
+                return res.status(400).json({ success: false, message: 'Email e senha são obrigatórios' });
             }
 
             let tipo = '';
-            if (email.endsWith('@adm.com')) {
-                tipo = 'administrador';
-            } else if (email.endsWith('@prof.com')) {
-                tipo = 'professor';
-            } else if (email.endsWith('@tec.com')) {
-                tipo = 'tecnico';
-            } else {
-                return res.status(400).json({
-                    success: false,
-                    message: 'Domínio de e-mail inválido. Use @adm.com, @prof.com ou @tec.com'
-                });
-            }
+            if (email.endsWith('@adm.com')) tipo = 'administrador';
+            else if (email.endsWith('@prof.com')) tipo = 'professor';
+            else if (email.endsWith('@tec.com')) tipo = 'tecnico';
+            else return res.status(400).json({ success: false, message: 'Domínio de e-mail inválido. Use @adm.com, @prof.com ou @tec.com' });
 
             let result;
-            if (tipo === 'administrador') {
-                result = await this.#admin.autenticarUsuario(email, senha);
-            } else if (tipo === 'professor'){
-                result = await this.#prof.autenticarUsuario(email, senha);
-            } else {
-                result = await this.#tec.autenticarUsuario(email, senha);
-            }
+            if (tipo === 'administrador') result = await this.#admin.autenticarUsuario(email, senha);
+            else if (tipo === 'professor') result = await this.#prof.autenticarUsuario(email, senha);
+            else result = await this.#tec.autenticarUsuario(email, senha);
 
-            if (!result.success) {
-                // Se falhar, retorna o erro e NÃO tenta acessar result.usuario
-                return res.status(401).json(result);
-            }
+            if (!result.success) return res.status(401).json(result);
 
             const usuario = result.usuario;
             usuario.tipo = tipo;
+            return res.json({ success: true, usuario });
+        });
 
-            return res.json({
-                success: true,
-                usuario
-            });
+        // CADASTRAR USUÁRIO
+        this.#app.post('/api/cadastrar-usuario', async (req, res) => {
+            try {
+                const { nome, email, senha, funcao } = req.body;
+        
+                if (!nome || !email || !senha || !funcao) {
+                    return res.status(400).json({ success: false, message: 'Todos os campos são obrigatórios' });
+                }
+        
+                // Apenas administradores podem cadastrar
+                const resultado = await this.#admin.cadastrarUsuario(nome, email, senha, funcao);
+        
+                return res.json(resultado);
+            } catch (err) {
+                console.error('Erro na rota de cadastro:', err);
+                return res.status(500).json({ success: false, message: 'Erro ao cadastrar usuário' });
+            }
         });
     }
 
     #startServer(port) {
-        this.#app.listen(port, () =>
-            console.log(`Servidor rodando na porta ${port}`)
-        );
+        this.#app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));
     }
 }
 

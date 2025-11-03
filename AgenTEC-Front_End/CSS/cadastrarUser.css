@@ -337,6 +337,11 @@ body, html {
     transition: all 0.3s ease;
 }
 
+.custom-select .selected{
+    border: 1px solid var(--secondary);
+    background-color: var(--secondary);
+}
+
 .form-container .button-container {
     display: flex;
     gap: 40px;

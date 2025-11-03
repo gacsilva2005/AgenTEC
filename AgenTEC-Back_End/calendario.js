@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 eventListE1.appendChild(eventItem);
             });
         } else {
-            eventListE1.innerHTML = '<div class="no-events">No events scheduled for this day</div>';
+            eventListE1.innerHTML = '<div class="no-events">Não há eventos para este dia</div>';
         }
     }
 
