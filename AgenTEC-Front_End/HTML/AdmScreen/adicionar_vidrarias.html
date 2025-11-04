@@ -68,10 +68,6 @@
                             <img alt="Instagram Governo de São Paulo" class="govsp-icon-social"
                                 src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-insta.png" />
                         </a>
-                        <a class="govsp-social" href="https://www.facebook.com/governosp/" target="_blank">
-                            <img alt="Facebook Governo de São Paulo" class="govsp-icon-social"
-                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-facebook.png" />
-                        </a>
                         <p class="govsp-social" style="min-height:auto;">/governosp</p>
                         <div id="separador-nav"></div>
                         <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', 1);">
@@ -228,6 +224,7 @@
                     <div class="input-group">
                         <label for="nome_vidraria">Nome da vidraria</label>
                         <input type="text" id="nome_vidraria" name="nome_vidraria" placeholder="Ex: Béquer 250ml">
+                        <span class="error-message" id="nome-error"></span>
                     </div>
                     <div class="quantity-group">
                         <label for="quantity">Quantidade em estoque</label>
@@ -243,10 +240,10 @@
                                 <i class="fas fa-check"></i>
                             </button>
                         </div>
+                        <span class="error-message" id="quantity-error"></span>
                     </div>
                 </div>
             </div>
-            
             <div class="tabela-vidrarias-container" id="tabela-vidrarias-container" style="display: none;">
                 <h2>Vidrarias Adicionadas</h2>
                 <table class="tabela-vidrarias">
@@ -254,6 +251,7 @@
                         <tr>
                             <th>Nome da Vidraria</th>
                             <th>Quantidade</th>
+                            <th>Ação</th> 
                         </tr>
                     </thead>
                     <tbody id="tabela-vidrarias-body">
@@ -267,138 +265,18 @@
                     
                     <button id="btn-confirmar" class="action-btn btn-primary">confirmar</button>
             </div>
-            <div class="notification" id="notification">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Itens adicionados com sucesso!</span>
+            
+            <div class="notification" id="notification-success">
+                <i class="fas fa-check-circle"></i>
+                <span>Operação realizada com sucesso!</span>
             </div>
+            </main>
 
-        </main>
-
+        <script src="../../JS (Front-End)/adicionar.vidraria.js"></script> 
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Script de busca local (header)
-                const campoBuscaHeader = document.getElementById('campo-busca');
-                if (campoBuscaHeader) {
-                    campoBuscaHeader.addEventListener('input', function () {
-                        // ... (sua lógica de filtro de header)
-                    });
-                }
-
-                // --- CÓDIGO PARA O SELETOR DE QUANTIDADE ---
-                const btnMinus = document.querySelector('.btn-minus');
-                const btnPlus = document.querySelector('.btn-plus');
-                const quantityInput = document.getElementById('quantity'); // Input da quantidade
-
-                if (btnMinus && btnPlus && quantityInput) {
-                    btnMinus.addEventListener('click', function () {
-                        let currentValue = parseInt(quantityInput.value);
-                        if (currentValue > 0) {
-                            quantityInput.value = currentValue - 1;
-                        }
-                    });
-
-                    btnPlus.addEventListener('click', function () {
-                        let currentValue = parseInt(quantityInput.value);
-                        quantityInput.value = currentValue + 1;
-                    });
-                }
-
-                // --- CÓDIGO PARA A PESQUISA LOCAL ---
-                const searchButtonLocal = document.querySelector('.search-local-button');
-                const searchInputLocal = document.getElementById('search-local-input');
-                const searchResultsContainer = document.querySelector('.search-results');
-                const searchTermSpan = document.getElementById('search-term');
-
-                if (searchButtonLocal) {
-                    searchButtonLocal.addEventListener('click', function () {
-                        const query = searchInputLocal.value;
-                        if (query.trim() !== '') {
-                            searchTermSpan.textContent = query;
-                            searchResultsContainer.style.display = 'block';
-                            // Lógica de busca real iria aqui
-                        } else {
-                            searchResultsContainer.style.display = 'none';
-                        }
-                    });
-                }
-
-                // --- NOVO CÓDIGO PARA ADICIONAR ITEM NA TABELA ---
-                
-                // 1. Pegar os elementos
-                const confirmButtonSmall = document.querySelector('.btn-confirm-small');
-                const nomeVidrariaInput = document.getElementById('nome_vidraria');
-                const tabelaContainer = document.getElementById('tabela-vidrarias-container');
-                const tabelaBody = document.getElementById('tabela-vidrarias-body');
-
-                if (confirmButtonSmall) {
-                    // 2. Adicionar o "ouvinte" de clique
-                    confirmButtonSmall.addEventListener('click', function() {
-                        
-                        // 3. Pegar os valores dos inputs
-                        const nome = nomeVidrariaInput.value;
-                        const qtde = quantityInput.value;
-
-                        // 4. Validar os dados
-                        if (nome.trim() === '') {
-                            alert('Por favor, insira o nome da vidraria.');
-                            nomeVidrariaInput.focus(); // Foca no campo de nome
-                            return; // Para a execução
-                        }
-                        if (parseInt(qtde) <= 0) {
-                            alert('A quantidade deve ser maior que zero.');
-                            return; // Para a execução
-                        }
-
-                        // 5. Mostrar a tabela (caso seja a primeira vez)
-                        tabelaContainer.style.display = 'block';
-
-                        // 6. Criar a nova linha e as células
-                        const newRow = document.createElement('tr');
-                        
-                        const cellNome = document.createElement('td');
-                        cellNome.textContent = nome; // Adiciona o nome
-                        
-                        const cellQtde = document.createElement('td');
-                        cellQtde.textContent = qtde; // Adiciona a quantidade
-
-                        // 7. Adicionar as células à linha
-                        newRow.appendChild(cellNome);
-                        newRow.appendChild(cellQtde);
-
-                        // 8. Adicionar a nova linha ao corpo da tabela
-                        tabelaBody.appendChild(newRow);
-
-                        // 9. (Bônus) Limpar os campos para o próximo item
-                        nomeVidrariaInput.value = '';
-                        quantityInput.value = '0';
-                        nomeVidrariaInput.focus(); // Foca no campo de nome novamente
-                    });
-                }
-
-                // --- LÓGICA DE NOTIFICAÇÃO (Antiga e Nova) ---
-                
-                // Pega os elementos da notificação e do botão
-                const notification = document.getElementById('notification');
-                const confirmButton = document.getElementById('btn-confirmar');
-        
-                // NOVA LÓGICA: Clique no botão "Confirmar"
-                if (confirmButton && notification) {
-                    confirmButton.addEventListener('click', function(event) {
-                        event.preventDefault(); // Previne qualquer ação padrão do botão
-        
-                        // 1. Mostra a notificação
-                        notification.classList.add('show');
-        
-                        // 2. Espera 1.5 segundos e depois redireciona
-                        setTimeout(() => {
-                            // 3. Redireciona para a tela de administradores
-                            //    !!!! MUDE O NOME DA PÁGINA AQUI !!!!
-                            window.location.href = 'administradores.html'; 
-                        }, 1500); // 1.5 segundos de espera
-                    });
-                }
-            });
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
         </script>
-        </body>
+    </body>
 
 </html>

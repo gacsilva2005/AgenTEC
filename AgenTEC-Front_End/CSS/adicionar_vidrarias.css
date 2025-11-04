@@ -67,6 +67,7 @@ body, html {
     display: inline-block;
 }
 
+/* --- Estilos para o Header (Logos e Busca) --- */
 #cps-header {
     padding: 20px;
     border-bottom: 1px solid #eee;
@@ -127,6 +128,7 @@ body, html {
     background-color: #f5f5f5; 
 }
 
+/* --- Estilos do Menu Principal --- */
 .main-menu-container {
     background-color: #b20000; 
     padding: 0 20px;
@@ -152,6 +154,7 @@ body, html {
     background-color: #831c16ef; 
 }
 
+/* --- Estilos do Breadcrumb --- */
 #breadcrumb {
     background-color: #666666;
     padding: 12px 20px;
@@ -170,7 +173,7 @@ body, html {
     font-weight: bold;
 }
 
-/* Conteúdo Principal */
+/* --- Conteúdo Principal e Título --- */
 .main-content {
     max-width: 1200px;
     margin: 40px auto;
@@ -212,58 +215,53 @@ body, html {
     margin-bottom: 10px;
 }
 
-.cards-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin-top: 20px;
+/* --- Menu Dropdown --- */
+.menu li.dropdown {
+    position: relative;
 }
 
-/* Card com funções das telas*/
-.card {
-    background-color: #f7f7f7;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    width: 280px;
-    padding: 40px 20px;
-    text-align: center;
-    text-decoration: none;
-    color: #333;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    border-top: 3px solid #b20000;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+.main-menu-container .menu .dropdown-content li a {
+    color: #555; 
+    font-weight: normal; 
+    padding: 12px 16px;
+    text-align: left;
+    background-color: transparent; 
 }
 
-.card-icon {
-    font-size: 4rem;
-    color: #008B8B; 
-    margin-bottom: 25px;
+.main-menu-container .menu .dropdown-content li a:hover {
+    background-color: #f1f1f1;
+    color: #b20000;
 }
 
-.card-text {
-    font-size: 1.25rem;
-    font-weight: 500;
-    min-height: 50px;
+.menu li.dropdown:hover .dropdown-content {
+    display: block;
 }
 
-
-@media (max-width: 768px) {
-    .cps-header__container {
-        flex-direction: column;
-    }
-    .cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card {
-        width: 90%;
-    }
+.dropdown a .fa-chevron-down {
+    font-size: 0.7em;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
 }
 
+.menu li.dropdown:hover a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* --- Estilos da Seção Adicionar Vidrarias --- */
 .logo-container {
     display: flex;          
     align-items: center;    
@@ -279,116 +277,10 @@ body, html {
     height: 70px; 
 }
 
-/* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
-
-/* Contêiner principal da navegação */
-.govsp-navbar {
-    display: flex; /* Alinha todos os itens na horizontal */
-    align-items: center; /* Centraliza os itens verticalmente */
-    padding: 10px;
-}
-
-/* Estilo para todos os links (que servem como 'caixa' para os ícones) */
-.govsp-navbar a {
-    display: inline-flex; /* Permite centralizar o ícone dentro do link */
-    align-items: center;
-    justify-content: center;
-    width: 28px; /* Largura da caixa */
-    height: 28px; /* Altura da caixa */
-    background-color: #ffffff; /* Fundo cinza claro */
-    margin: -3px; /* Espaçamento entre os ícones */
-    border-radius: 3px; /* Bordas levemente arredondadas */
-    text-decoration: none; /* Remove o sublinhado do link */
-}
-
-/* Estilo para os ícones (<i>) dentro dos links */
-.govsp-navbar a i {
-    color: #ffffff; /* Cor cinza escura para o ícone */
-    font-size: 1.2rem; /* Tamanho do ícone */
-}
-
-/* Estilo para o texto "/governosp" */
-.govsp-text {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0px; /* Espaçamento antes e depois do texto */
-}
-
-/* Estilo para a linha separadora */
-.separator {
-    height: 25px; /* Altura da linha */
-    border-left: 1px solid #ccc; /* Cria a linha vertical */
-    margin: 0 10px; /* Espaçamento antes e depois da linha */
-}
-
-/* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
-
-/* Garante que o item principal do menu seja posicionado corretamente */
-.menu li.dropdown {
-    position: relative;
-}
-
-/* Esconde o submenu por padrão */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
-    left: 0;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    list-style: none;
-    padding: 0;
-    /* margin-top: 10px; FOI REMOVIDO PARA CORRIGIR O PROBLEMA DE FECHAMENTO */
-    border-top: 3px solid #b20000;
-}
-
-/* Estilo dos links dentro do submenu */
-/* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
-.main-menu-container .menu .dropdown-content li a {
-    color: #555; /* Define a cor escura para o texto */
-    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
-    padding: 12px 16px;
-    text-align: left;
-    /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
-    background-color: transparent; 
-}
-
-/* Efeito de hover nos links do submenu */
-.main-menu-container .menu .dropdown-content li a:hover {
-    background-color: #f1f1f1;
-    color: #b20000;
-}
-
-/* Mostra o submenu quando o mouse passa por cima do item principal */
-.menu li.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Estilo para a setinha */
-.dropdown a .fa-chevron-down {
-    font-size: 0.7em;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-}
-
-/* Gira a setinha para cima quando o menu está aberto */
-.menu li.dropdown:hover a .fa-chevron-down {
-    transform: rotate(180deg);
-}
-
-@media (min-width: 375px) and (max-width: 767px) {
-    
-}
-
-/* --- ESTILOS PARA NOVA PÁGINA 'ADICIONAR VIDRARIAS' --- */
-
-/* Contêiner para seções do formulário */
 .form-section {
     width: 100%;
-    max-width: 800px; /* Limita a largura */
-    margin: 0 auto 40px auto; /* Centraliza e adiciona espaço abaixo */
+    max-width: 800px; 
+    margin: 0 auto 40px auto; 
     padding: 25px;
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -399,15 +291,13 @@ body, html {
 .form-section h2 {
     font-size: 1.8rem;
     font-weight: 500;
-    color: var(--primary-colo, #004b49);
+    color: var(--primary-color, #004b49);
     margin-top: 0;
     margin-bottom: 25px;
     border-bottom: 2px solid var(--primary-red, #008B8B);
     padding-bottom: 10px;
 }
 
-
-/* Formulário de Cadastro */
 .form-container {
     display: flex;
     flex-direction: column;
@@ -416,6 +306,7 @@ body, html {
 
 .input-group, .quantity-group {
     width: 100%;
+    position: relative; 
 }
 
 .input-group label, .quantity-group label {
@@ -432,7 +323,7 @@ body, html {
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    box-sizing: border-box; 
 }
 
 .input-group input[type="text"]:focus {
@@ -441,7 +332,6 @@ body, html {
     box-shadow: 0 0 5px rgba(0,139,139,0.3);
 }
 
-/* Seletor de Quantidade */
 .quantity-stepper {
     display: flex;
     align-items: center;
@@ -485,22 +375,20 @@ body, html {
     outline: none;
 }
 
-/* Container para alinhar stepper e botão de confirmar */
 .stepper-container {
     display: flex;
-    align-items: center; /* Alinha o stepper e o botão na vertical */
-    gap: 590px; /* Espaço entre o stepper e o novo botão */
+    align-items: center; 
+    gap: 590px; 
 }
 
-/* Estilo para o novo botão de confirmar pequeno */
 .btn-confirm-small {
-    height: 45px; /* Mesma altura do stepper */
-    width: 55px;  /* Um pouco mais largo que alto */
+    height: 45px; 
+    width: 55px;  
     border: none;
-    background-color: var(--primary-color, #004b49); /* Cor primária do tema */
+    background-color: var(--primary-color, #004b49); 
     color: white;
-    font-size: 1.3rem; /* Tamanho do ícone de check */
-    border-radius: 5px; /* Borda arredondada igual ao stepper */
+    font-size: 1.3rem; 
+    border-radius: 5px; 
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -509,7 +397,7 @@ body, html {
 }
 
 .btn-confirm-small:hover {
-    background-color: var(--accent-color, #008B8B); /* Cor de destaque ao passar o mouse */
+    background-color: var(--hoverCian-color, #008B8B); 
 }
 
 .action-buttons-container {
@@ -554,12 +442,10 @@ body, html {
 @media (max-width: 992px) {
     .selection-grid {
         grid-template-columns: 1fr;
-        /* Coloca os itens selecionados abaixo */
     }
 
     .item-cards-container {
         grid-template-columns: 1fr;
-        /* Um card por linha */
     }
 
     .action-buttons-container {
@@ -572,12 +458,12 @@ body, html {
     }
 }
 
-/* --- ESTILOS PARA A NOVA TABELA DE VIDRARIAS --- */
+/* --- ESTILOS PARA A TABELA DE VIDRARIAS --- */
 
 .tabela-vidrarias-container {
     width: 100%;
-    max-width: 800px; /* Mesma largura das seções de formulário */
-    margin: 40px auto; /* Centraliza e adiciona espaço */
+    max-width: 800px; 
+    margin: 40px auto; 
     padding: 25px;
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -597,7 +483,7 @@ body, html {
 
 .tabela-vidrarias {
     width: 100%;
-    border-collapse: collapse; /* Tira espaço entre bordas */
+    border-collapse: collapse; 
 }
 
 .tabela-vidrarias thead {
@@ -613,7 +499,7 @@ body, html {
 }
 
 .tabela-vidrarias tbody tr:nth-child(even) {
-    background-color: #f0f0f0; /* Cor alternada para linhas (zebrado) */
+    background-color: #f0f0f0; 
 }
 
 .tabela-vidrarias td {
@@ -623,41 +509,88 @@ body, html {
     font-size: 1rem;
 }
 
-/* Alinha a quantidade à direita para melhor visualização */
+/* ATUALIZADO: Ajuste para centralizar o botão de Ação */
+.tabela-vidrarias th:nth-child(2),
+.tabela-vidrarias td:nth-child(2) {
+    text-align: right;
+}
+
 .tabela-vidrarias th:last-child,
 .tabela-vidrarias td:last-child {
-    text-align: right;
-    width: 1
+    text-align: center; /* Centraliza o cabeçalho e o botão */
+    width: 80px; /* Largura pequena para a coluna de ação */
 }
-/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
 
+/* --- NOVO ESTILO PARA O BOTÃO DE REMOÇÃO --- */
+.btn-remover-item {
+    background: none;
+    border: none;
+    color: var(--primary-red, #970000); /* Cor vermelha para destaque */
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-remover-item:hover {
+    background-color: var(--primary-red, #970000);
+    color: var(--text-white, #ffffff); /* Inverte as cores no hover */
+}
+
+.btn-remover-item:active {
+    transform: translateY(1px);
+}
+
+/* --- ESTILO PARA MENSAGENS DE ERRO INLINE --- */
+.error-message {
+    display: block; 
+    color: var(--primary-red, #b20000); 
+    font-size: 0.9rem;
+    margin-top: 5px;
+    visibility: hidden; 
+    height: 0; 
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.error-message.visible {
+    visibility: visible;
+    height: auto;
+    margin-top: 8px;
+    padding: 5px 10px;
+    background-color: rgba(178, 0, 0, 0.1); 
+    border-radius: 4px;
+}
+
+/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO FLUTUANTE (Mantida) --- */
 .notification {
-    position: fixed; /* Fica fixo na tela mesmo com scroll */
+    position: fixed; 
     top: 20px;
     right: 20px;
-    background-color: #28a745; /* Verde para sucesso */
+    background-color: #28a745; 
     color: white;
     padding: 15px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaço entre o ícone e o texto */
-    z-index: 1000; /* Garante que fique por cima de outros elementos */
-
-    /* Animação */
-    transform: translateX(120%); /* Começa fora da tela */
+    
+    visibility: hidden; 
     opacity: 0;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    
+    transition: opacity 0.4s ease-in-out, visibility 0.4s; 
+    z-index: 1000; 
+    
+    display: flex; 
+    align-items: center;
+    gap: 10px;
 }
 
-/* Classe que será adicionada via JS para mostrar a notificação */
 .notification.show {
-    transform: translateX(0);
+    visibility: visible;
     opacity: 1;
 }
 
 .notification i {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
-
