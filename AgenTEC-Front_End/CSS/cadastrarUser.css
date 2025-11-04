@@ -167,7 +167,7 @@ body, html {
 
 .page-title {
     font-size: 2.5rem;
-    color: var(--primary);
+    color: var(--hoverCian-color);
     margin-bottom: 10px;
     font-weight: 700;
 }
@@ -239,14 +239,21 @@ body, html {
 }
 
 :root{
-    --primary: #005C6D;
-    --dark: #333333;
-    --text: white;
-    --secondary: #008892;
-    --function-button: #818181;
-    --hoverFunction-button: #505050;
-    --vermelho: #b20000;
-    --hover-red: #7a0000;
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #b20000;
+    --secondary-red: #ff2020;
+    --hoverSecRed-color: #e70000;
+    --hoverRed-color: #831c16ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+    --event-panel-bg: #f8f9fa;
+    --day-selected: #e70000d7;
 }
 
 .input-group input {
@@ -321,7 +328,7 @@ body, html {
 }
 
 .custom-select a:hover {
-    background-color: var(--hoverFunction-button);
+    background-color: var(--hoverCian-color);
     color: #fff;
     transform: translateY(-3px);
 }
@@ -331,15 +338,15 @@ body, html {
 }
 
 .custom-select a {
-    background-color: var(--function-button);
-    border: 1px solid var(--function-button);
+    background-color: var(--light-gray);
+    border: 1px solid var(--light-gray);
     color: #fff;
     transition: all 0.3s ease;
 }
 
 .custom-select .selected{
-    border: 1px solid var(--secondary);
-    background-color: var(--secondary);
+    border: 1px solid var(--hoverCian-color);
+    background-color: var(--hoverCian-color);
 }
 
 .form-container .button-container {
@@ -359,7 +366,7 @@ body, html {
     text-align: center;
     justify-content: space-between;
     padding: 12px;
-    background-color: var(--primary);
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
     border-radius: 25px;
@@ -371,7 +378,7 @@ body, html {
 }
 
 .submit-button:hover, .voltar-button:hover{
-    background-color: var(--secondary);
+    background-color: var(--hoverCian-color);
     transform: translateY(-3px);
 }
 
