@@ -1,10 +1,17 @@
 :root{
-    --primary-color: #004b49; 
-    --accent-color: #008B8B; 
-    --light-gray: #f5f5f5; 
-    --dark-gray: #666666; 
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
     --text-white: #ffffff;
-}
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+  }
 
 /* CSS Reset e Estilos Globais */
 body, html {
@@ -392,57 +399,11 @@ body, html {
 .form-section h2 {
     font-size: 1.8rem;
     font-weight: 500;
-    color: var(--primary-color, #004b49);
+    color: var(--primary-colo, #004b49);
     margin-top: 0;
     margin-bottom: 25px;
-    border-bottom: 2px solid var(--accent-color, #008B8B);
+    border-bottom: 2px solid var(--primary-red, #008B8B);
     padding-bottom: 10px;
-}
-
-/* Barra de pesquisa local */
-.search-local-container {
-    display: flex;
-    width: 100%;
-}
-
-.search-local-input {
-    flex-grow: 1; /* Ocupa o espaço disponível */
-    padding: 12px 15px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px; /* Cantos arredondados à esquerda */
-    outline: none;
-}
-
-.search-local-button {
-    border: none;
-    background-color: var(--primary-color, #004b49);
-    color: white;
-    padding: 0 20px;
-    cursor: pointer;
-    border-radius: 0 5px 5px 0; /* Cantos arredondados à direita */
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-}
-
-.search-local-button:hover {
-    background-color: var(--accent-color, #008B8B);
-}
-
-/* Container de resultados da pesquisa */
-.search-results {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 5px;
-}
-.search-results ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-.search-results li {
-    padding: 5px 0;
 }
 
 
@@ -475,7 +436,7 @@ body, html {
 }
 
 .input-group input[type="text"]:focus {
-    border-color: var(--accent-color, #008B8B);
+    border-color: var(--secondary-red,);
     outline: none;
     box-shadow: 0 0 5px rgba(0,139,139,0.3);
 }
@@ -551,7 +512,6 @@ body, html {
     background-color: var(--accent-color, #008B8B); /* Cor de destaque ao passar o mouse */
 }
 
-/* Container dos botões de ação na parte inferior */
 .action-buttons-container {
     display: flex;
     justify-content: space-between;
@@ -587,7 +547,7 @@ body, html {
 }
 
 .btn-primary:hover {
-    background-color: var(--accent-color);
+    background-color: var(--hoverCian-color);
 }
 
 /* Media queries para responsividade */
@@ -631,7 +591,7 @@ body, html {
     color: var(--primary-color, #004b49);
     margin-top: 0;
     margin-bottom: 20px;
-    border-bottom: 2px solid var(--accent-color, #008B8B);
+    border-bottom: 2px solid var(--primary-red, #008B8B);
     padding-bottom: 10px;
 }
 
