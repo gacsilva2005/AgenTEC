@@ -1,137 +1,147 @@
-function updateSlideOpacity(swiper) {
-    for (let i = 0; i < swiper.slides.length; i++) {
-        const slide = swiper.slides[i];
-        
-        // Esta linha é crucial: usa o 'progress' individual do slide
-        const slideProgress = swiper.slides[i].progress; 
-        const absProgress = Math.abs(slideProgress); 
-        
-        let opacity;
+document.addEventListener('DOMContentLoaded', async function () {
+    const cardList = document.querySelector('.card-list');
+    const modal = document.getElementById('reagenteModal');
+    const modalTitle = document.getElementById('modalReagenteTitle');
+    const quantidadeInput = document.getElementById('quantidadeInput');
+    const unitSpan = document.querySelector('.input-group .unit');
 
-        // --- LÓGICA DE OPACIDADE AJUSTADA ---
-        
-        // absProgress: 
-        // ~0: Slide Central
-        // ~1: Vizinhos imediatos (esquerda e direita)
-        // >1: Slides mais distantes
-        
-        if (absProgress <= 1.1) { 
-            // Os slides que estão muito próximos do centro (incluindo os vizinhos)
-            
-            // Calcula opacidade: 1 - 0.3 (contraste) * absProgress (distância)
-            // Central (0) = 1. Vizinhos (1) = 0.7.
-            opacity = 1 - (absProgress * 0.3); 
-        } else { 
-            // Slides distantes
-            opacity = 0.4; 
-        }
+    let reagentes = [];
+    let currentReagente = null;
 
-        // Garante a opacidade mínima
-        opacity = Math.max(opacity, 0.4); 
-        // ------------------------------------
-        
-        slide.style.opacity = opacity;
-        slide.style.transition = 'opacity 0.3s ease';
-
-        // Lógica de Desativação
-        const threshold = 0.6; 
-        if (absProgress > threshold) {
-            slide.classList.add('is-disabled');
-        } else {
-            slide.classList.remove('is-disabled');
-        }
+    try {
+        const response = await fetch('../../../AgenTEC-DataBase-(JSON)/reagentes.json');
+        if (!response.ok) throw new Error('Erro ao carregar JSON');
+        reagentes = await response.json();
+    } catch (error) {
+        console.error(error);
+        cardList.innerHTML = '<p style="color: red; text-align: center;">Erro ao carregar reagentes.</p>';
+        return;
     }
-}
-// ===============================================
-const mySwiper = new Swiper('.card-wrapper', {
-    spaceBetween: 30,
-    loop: true,
-    slidesPerView: 3,
-    centeredSlides: true,
-    watchSlidesProgress: true,
 
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true
-    },
+    cardList.innerHTML = '';
 
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
+    reagentes.forEach((reagente, index) => {
+        const li = document.createElement('li');
+        li.className = 'card-item swiper-slide';
+        li.dataset.index = index;
 
-    on: {
-        // Chamado durante o movimento (para animação suave)
-        progress: function() {
-            updateSlideOpacity(this);
+        const descricao = `${reagente.tipo} • ${reagente.quantidade}${reagente.unidade}`;
+
+        li.innerHTML = `
+            <div class="card-link">
+                <div class="chemical-icon">
+                    <span class="material-symbols-outlined icon">experiment</span>
+                </div>
+                <h3 class="card-title">${reagente.nome}</h3>
+                <p class="card-description">${descricao}</p>
+                <a class="add-button" data-nome="${reagente.nome}" data-unidade="${reagente.unidade}">
+                    Adicionar
+                </a>
+            </div>
+        `;
+
+        const addButton = li.querySelector('.add-button');
+        addButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            abrirModal(reagente);
+        });
+
+        li.addEventListener('click', () => {
+            const swiper = document.querySelector('.card-wrapper').swiper;
+            swiper.slideToLoop(index, 500);
+        });
+
+        cardList.appendChild(li);
+    });
+
+    const swiper = new Swiper('.card-wrapper', {
+        spaceBetween: 30,
+        loop: true,
+        slidesPerView: 3,
+        centeredSlides: true,
+        watchSlidesProgress: true,
+
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true
         },
-        
-        // Chamado ao final do movimento (para corrigir a inconsistência do loop)
-        slideChangeTransitionEnd: function() {
-            updateSlideOpacity(this);
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
-        
-        // Mantém a transição CSS que você já tinha
-        setTransition: function(speed) {
-            const swiper = this;
-            for (let i = 0; i < swiper.slides.length; i++) {
-                swiper.slides[i].style.transition = `${speed}ms`;
+
+        on: {
+            progress: updateSlideOpacity,
+            slideChangeTransitionEnd: updateSlideOpacity,
+            setTransition: function (speed) {
+                for (let i = 0; i < this.slides.length; i++) {
+                    this.slides[i].style.transition = `${speed}ms`;
+                }
             }
         },
-        
-        // Adiciona o listener de clique para centralização
-        init: function() {
-            const swiper = this;
-            swiper.slides.forEach((slideEl) => {
-                slideEl.addEventListener('click', () => {
-                    const clickedIndex = parseInt(slideEl.dataset.swiperSlideIndex);
-                    
-                    if (!isNaN(clickedIndex)) {
-                        swiper.slideToLoop(clickedIndex, 500); 
-                    }
-                });
-            });
-        }
-    },
 
-    breakpoints: {
-        0: {
-            slidesPerView: 1,
-        },
-        768: {
-            slidesPerView: 2,
-        },
-        1024: {
-            slidesPerView: 3,
+        breakpoints: {
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+        }
+    });
+
+    function abrirModal(reagente) {
+        currentReagente = reagente;
+        modalTitle.innerText = `Adicionar ${reagente.nome}`;
+        quantidadeInput.value = '';
+        unitSpan.innerText = reagente.unidade;
+        modal.classList.add('show');
+    }
+
+    window.abrirModal = abrirModal;
+
+    window.fecharModal = function () {
+        modal.classList.remove('show');
+    };
+
+    window.confirmarAdicao = function () {
+        const quantidade = parseFloat(quantidadeInput.value);
+        if (!quantidade || quantidade <= 0) {
+            alert('Por favor, insira uma quantidade válida.');
+            return;
+        }
+
+        if (quantidade > currentReagente.quantidade) {
+            alert(`Quantidade indisponível! Máximo: ${currentReagente.quantidade}${currentReagente.unidade}`);
+            return;
+        }
+
+        console.log(`Adicionado: ${currentReagente.nome} - ${quantidade}${currentReagente.unidade}`);
+        fecharModal();
+    };
+
+    const searchInput = document.getElementById('search-area');
+    searchInput.addEventListener('input', function () {
+        const termo = this.value.toLowerCase().trim();
+        const slides = document.querySelectorAll('.swiper-slide');
+
+        slides.forEach((slide, index) => {
+            const reagente = reagentes[index];
+            const texto = `${reagente.nome} ${reagente.tipo}`.toLowerCase();
+            slide.style.display = texto.includes(termo) ? 'flex' : 'none';
+        });
+
+        swiper.update();
+    });
+
+    function updateSlideOpacity(swiper) {
+        for (let i = 0; i < swiper.slides.length; i++) {
+            const slide = swiper.slides[i];
+            const slideProgress = swiper.slides[i].progress;
+            const absProgress = Math.abs(slideProgress);
+            let opacity = absProgress <= 1.1 ? 1 - (absProgress * 0.3) : 0.4;
+            opacity = Math.max(opacity, 0.4);
+            slide.style.opacity = opacity;
+            slide.style.transition = 'opacity 0.3s ease';
         }
     }
 });
-
-// ===============================================
-function abrirModal(nomeReagente) {
-    // A função de clique do slide acima agora centraliza o card.
-    // O botão 'Adicionar' (no HTML) deve chamar esta função com event.stopPropagation()
-    
-    document.getElementById('modalReagenteTitle').innerText = `Adicionar ${nomeReagente}`;
-    document.getElementById('quantidadeInput').value = ''; // Limpa o input
-    document.getElementById('reagenteModal').classList.add('show');
-}
-
-function fecharModal() {
-    document.getElementById('reagenteModal').classList.remove('show');
-}
-
-function confirmarAdicao() {
-    const quantidade = document.getElementById('quantidadeInput').value;
-    const reagente = document.getElementById('modalReagenteTitle').innerText.replace('Adicionar ', '');
-
-    if (quantidade && parseInt(quantidade) > 0) {
-        console.log(`Adicionado ${reagente}: ${quantidade}g`);
-        // Aqui entra a sua LÓGICA DE NEGÓCIO (método da classe Sistema)
-        
-        fecharModal();
-    } else {
-        alert('Por favor, insira uma quantidade válida.');
-    }
-}
