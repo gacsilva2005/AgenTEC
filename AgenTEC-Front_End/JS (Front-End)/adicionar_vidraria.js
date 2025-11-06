@@ -4,13 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnPlus = document.querySelector('.btn-plus');
     const quantityInput = document.getElementById('quantity');
     const confirmButtonSmall = document.querySelector('.btn-confirm-small');
+    
+    // ATUALIZADO: Referência do novo campo
     const nomeVidrariaInput = document.getElementById('nome_vidraria');
+    const tipoVidrariaInput = document.getElementById('tipo_vidraria'); // NOVO: Campo Tipo
+    
     const tabelaContainer = document.getElementById('tabela-vidrarias-container');
     const tabelaBody = document.getElementById('tabela-vidrarias-body');
     const confirmButton = document.getElementById('btn-confirmar');
 
     // Referências aos ELEMENTOS DE MENSAGEM DE ERRO INLINE
     const nomeErrorEl = document.getElementById('nome-error');
+    const tipoErrorEl = document.getElementById('tipo-error'); // NOVO: Elemento de erro do Tipo
     const quantityErrorEl = document.getElementById('quantity-error');
 
     // Referência ao pop-up flutuante de SUCESSO 
@@ -32,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function clearAllErrors() {
         clearError(nomeErrorEl);
+        clearError(tipoErrorEl); // NOVO: Limpar erro do Tipo
         clearError(quantityErrorEl);
     }
     
@@ -107,6 +113,13 @@ document.addEventListener('DOMContentLoaded', function () {
             clearError(nomeErrorEl);
         });
     }
+    
+    // NOVO: Limpar erro do Tipo ao digitar
+    if (tipoVidrariaInput) {
+        tipoVidrariaInput.addEventListener('input', () => {
+            clearError(tipoErrorEl);
+        });
+    }
 
 
     // =========================================================
@@ -117,12 +130,19 @@ document.addEventListener('DOMContentLoaded', function () {
             clearAllErrors(); 
             
             const nome = nomeVidrariaInput.value.trim();
+            const tipo = tipoVidrariaInput.value.trim(); // NOVO: Obter o tipo
             const qtde = parseInt(quantityInput.value);
 
             // 1. VALIDAR OS DADOS (ERRO INLINE!)
             if (nome === '') {
                 displayError(nomeErrorEl, 'Por favor, insira o nome da vidraria.');
                 nomeVidrariaInput.focus(); 
+                return;
+            }
+            // NOVO: Validação do campo Tipo
+            if (tipo === '') {
+                displayError(tipoErrorEl, 'Por favor, insira o tipo da vidraria.');
+                tipoVidrariaInput.focus();
                 return;
             }
             if (qtde <= 0) {
@@ -136,7 +156,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const newRow = document.createElement('tr');
             
             const cellNome = document.createElement('td');
-            cellNome.textContent = nome;
+            // ATUALIZADO: Combinar Nome e Tipo na exibição da tabela
+            cellNome.textContent = `${nome} (${tipo})`;
             
             const cellQtde = document.createElement('td');
             cellQtde.textContent = qtde;
@@ -147,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
             removeButton.classList.add('btn-remover-item');
             removeButton.innerHTML = '<i class="fas fa-trash-alt"></i>'; // Ícone de lixeira
             
-            // Adiciona o listener de clique no botão (Nova funcionalidade)
+            // Adiciona o listener de clique no botão 
             setupRemoveButton(removeButton); 
             
             cellAcao.appendChild(removeButton);
@@ -161,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 5. Limpar os campos e mostrar sucesso na adição
             nomeVidrariaInput.value = '';
+            tipoVidrariaInput.value = ''; // NOVO: Limpar campo Tipo
             quantityInput.value = '0';
             nomeVidrariaInput.focus();
             
@@ -179,14 +201,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Verifica se há itens na tabela antes de confirmar
             if (tabelaBody.children.length === 0) {
+                // Como não há um elemento de erro específico para a tabela, usamos o do nome
                 displayError(nomeErrorEl, 'Adicione pelo menos uma vidraria antes de confirmar.');
                 nomeVidrariaInput.focus(); 
                 return;
             }
             
-            // Simulação de envio para o servidor
-            console.log('Dados da tabela enviados para a API...');
+            // Lógica para coletar e enviar todos os dados
+            const dadosParaEnvio = Array.from(tabelaBody.children).map(row => {
+                const nomeCompleto = row.cells[0].textContent; // Ex: "Béquer 250ml (Béquer)"
+                const quantidade = parseInt(row.cells[1].textContent);
+                
+                // Regex para extrair nome e tipo da string combinada
+                const match = nomeCompleto.match(/(.*) \((.*)\)/);
+                
+                return {
+                    nome: match ? match[1].trim() : nomeCompleto,
+                    tipo: match ? match[2].trim() : 'N/A',
+                    quantidade: quantidade
+                };
+            });
             
+            console.log('Dados de vidrarias prontos para envio:', dadosParaEnvio);
+
             // 1. Mostra a notificação de SUCESSO (pop-up flutuante)
             showSuccess('Adição de vidrarias finalizada com sucesso!');
 
