@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores - Agendamento</title>
+    <title>Ações de Controle - Agendamento</title>
 
-    <link rel="stylesheet" href="../../CSS/administradores.css">
+    <link rel="stylesheet" href="../../CSS/controle.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
@@ -107,7 +108,7 @@
             <div class="cps-header__container">
 
                 <div class="logo-container">
-                    <a href="../index.html">
+                    <a href="index.html">
                         <img src="../../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                     </a>
                     <a href="https://www.cps.sp.gov.br/" target="_blank">
@@ -224,67 +225,35 @@
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a>/
-                    <a href="administradores.html"> Administradores </a> / Histórico de Materiais </span>
+                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="tecnicos.html"> Técnicos </a> / Ações de Controle</span>
             </div>
         </div>
 
-    <main class="main-content">
-        <h1 class="page-title">Histórico de Materiais</h1>
-        <div class="title-underline"></div>
-    <div vw="" class="enabled"
-        style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-        <div vw-access-button="" class="active">
-            <img class="vp-access-button" data-src="assets/access_icon.svg"
-                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                src="https://vlibras.gov.br/app//assets/access_icon.svg">
-            <img class="vp-pop-up" data-src="assets/access_popup.jpg"
-                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-        </div>
-        <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-            <div vp="">
-            </div>
-        </div>
-    </div>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
+        <main class="main-content">
+        <!--Comecar a codar aqui!-->
+        </main>
 
-    <script>
+        <script>
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const campoBusca = document.getElementById('campo-busca');
-            const cardsContainer = document.querySelector('.cards-container');
-            const todosOsCards = cardsContainer.querySelectorAll('.card');
-            campoBusca.addEventListener('input', function () {
-                const termoBuscado = campoBusca.value.toLowerCase();
-                todosOsCards.forEach(function (card) {
-                    const textoDoCard = card.textContent.toLowerCase();
-                    if (textoDoCard.includes(termoBuscado)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
+            document.addEventListener('DOMContentLoaded', function () {
+                const campoBusca = document.getElementById('campo-busca');
+                const cardsContainer = document.querySelector('.cards-container');
+                const todosOsCards = cardsContainer.querySelectorAll('.card');
+                campoBusca.addEventListener('input', function () {
+                    const termoBuscado = campoBusca.value.toLowerCase();
+                    todosOsCards.forEach(function (card) {
+                        const textoDoCard = card.textContent.toLowerCase();
+                        if (textoDoCard.includes(termoBuscado)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
                 });
+
             });
 
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('reserva') === 'sucesso') {
-                const notification = document.getElementById('notification');
-                notification.classList.add('show');
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 5000);
-            }
-        });
-    </script>
-
-
-    </body>
+        </script>
+</body>
 
 </html>
