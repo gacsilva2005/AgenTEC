@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ações de Controle - Agendamento</title>
+    <title>Controle de Reagentes - Agendamento</title>
 
-    <link rel="stylesheet" href="../../CSS/controle.css">
+    <link rel="stylesheet" href="../../CSS/controle_reagentes.css"> 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -220,28 +220,25 @@
         <div id="breadcrumb">
             <div class="breadcrumb-container">
                 <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="tecnicos.html"> Técnicos
-                    </a> / Ações de Controle</span>
-            </div>
+                    </a> / Controle de Reagentes</span> </div>
         </div>
 
         <main class="main-content">
-            <h1 class="page-title">Lista de Vidrarias</h1>
-            <div class="title-underline"></div>
+            <h1 class="page-title">Lista de Reagentes</h1> <div class="title-underline"></div>
             
             <div class="search-container">
                 <form action="#" class="form-pesquisa search-page" method="get" role="search">
-                    <input id="search-area" class="search-area" name="s" placeholder="Pesquisar vidraria..." type="search">
-                    <button class="search-submit" type="submit"><i class="fas fa-search"></i></button>
+                    <input id="search-area" class="search-area" name="s" placeholder="Pesquisar reagente..." type="search"> <button class="search-submit" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
 
             <section class="items-list-container">
                 <div class="item-card">
                     <div class="table-title">
-                        <h3>Tipo do Item (Ex: Béquer)</h3>
+                        <h3>Tipo do Item (Ex: Ácido)</h3>
                     </div>
                     <div class="item-row">
-                        <p class="item-name">Item 1 (100ml)</p>
+                        <p class="item-name">Reagente A (100ml)</p>
                         <div class="item-details">
                             <p class="item-qty">5 unidades</p>
                             <i class="fas fa-comment-dots item-action" title="Ver Observação"></i>
@@ -249,7 +246,7 @@
                         </div>
                     </div>
                     <div class="item-row">
-                        <p class="item-name">Item 2 (50ml)</p>
+                        <p class="item-name">Reagente B (50ml)</p>
                         <div class="item-details">
                             <p class="item-qty">12 unidades</p>
                             <i class="fas fa-comment-dots item-action" title="Ver Observação"></i>
@@ -260,10 +257,10 @@
                 
                 <div class="item-card">
                     <div class="table-title">
-                        <h3>Tipo do Item (Ex: Pipeta)</h3>
+                        <h3>Tipo do Item (Ex: Base)</h3>
                     </div>
                     <div class="item-row">
-                        <p class="item-name">Pipeta (25ml)</p>
+                        <p class="item-name">Reagente C (25ml)</p>
                         <div class="item-details">
                             <p class="item-qty">3 unidades</p>
                             <i class="fas fa-comment-dots item-action" title="Ver Observação"></i>
@@ -274,30 +271,44 @@
             </section>
             
             <section class="action-buttons-list">
-                <a href="tecnicos.html" class="btn-global">voltar</a>
-                <a href="controle_reagentes.html" class="btn-global">escolher reagentes</a>
-                <a href="#" class="btn-global">confirmar</a>
+                <a href="controle.html" class="btn-global">voltar</a>
+                <a href="tecnicos.html" class="btn-global">menu</a> <a href="#" class="btn-global">confirmar</a>
             </section>
             
         </main>
 
         <script>
+            // A lógica de busca do controle.html pode ser reutilizada aqui.
 
             document.addEventListener('DOMContentLoaded', function () {
-                const campoBusca = document.getElementById('campo-busca');
-                const cardsContainer = document.querySelector('.cards-container');
-                const todosOsCards = cardsContainer.querySelectorAll('.card');
-                campoBusca.addEventListener('input', function () {
-                    const termoBuscado = campoBusca.value.toLowerCase();
-                    todosOsCards.forEach(function (card) {
-                        const textoDoCard = card.textContent.toLowerCase();
-                        if (textoDoCard.includes(termoBuscado)) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
+                // Selecionando a barra de busca correta para a página principal
+                const searchArea = document.getElementById('search-area'); 
+                const itemsListContainer = document.querySelector('.items-list-container'); 
+                
+                // Função de busca nos cards de itens
+                if (searchArea && itemsListContainer) {
+                    searchArea.addEventListener('input', function () {
+                        const termoBuscado = searchArea.value.toLowerCase();
+                        const todosOsCards = itemsListContainer.querySelectorAll('.item-card');
+
+                        todosOsCards.forEach(function (card) {
+                            const textoDoCard = card.textContent.toLowerCase();
+                            if (textoDoCard.includes(termoBuscado)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
                     });
-                });
+                }
+                
+                // JS para o campo de busca do cabeçalho (mantido)
+                const campoBuscaHeader = document.getElementById('campo-busca');
+                if (campoBuscaHeader) {
+                    campoBuscaHeader.addEventListener('input', function () {
+                        // Lógica de busca global do cabeçalho
+                    });
+                }
             });
 
         </script>
