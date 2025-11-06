@@ -7,10 +7,10 @@ body, html {
 }
 
 :root{
-    --primary-color: #243E63; 
-    --hoverCian-color: #005C6D; 
+    --primary-color: #243E63; /* Azul Marinho Escuro - Novo padrão para o botão Voltar/Histórico */
+    --hoverCian-color: #005C6D; /* Azul/Ciano (Mantido, mas não usado nos botões flutuantes) */
     --low-hoverCian: #005d6d5b; 
-    --hoverLight-color: #00C1CF;
+    --hoverLight-color: #00C1CF; 
     --primary-red: #970000;
     --secondary-red: #c70000;
     --hoverRed-color: #5d0500ef; 
@@ -246,9 +246,9 @@ body, html {
     align-items: center; /* centraliza os botões */
 }
 
-/* --- BOTÕES DE KIT --- */
+/* --- BOTÕES DE KIT (VERMELHO) --- */
 .kit-btn {
-    background-color: #a00000; /* vermelho protótipo */
+    background-color: #a00000; 
     color: white;
     border: none;
     padding: 14px 0;
@@ -260,17 +260,16 @@ body, html {
     width: 80%;
     margin: 0 auto;
     display: block;
-    text-align: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .kit-btn:hover {
-    background-color: #7a0000;
+    background-color: #7a0000; 
     transform: scale(1.03);
 }
 
 .kit-btn.active {
-    background-color: #d23b3b;
+    background-color: #d23b3b; 
     color: #fff;
     font-weight: 700;
     transform: none;
@@ -303,7 +302,7 @@ body, html {
     transition: all 0.3s ease;
 }
 
-/* === BOTÕES DE AÇÃO === */
+/* === BOTÕES DE AÇÃO (VERMELHO) === */
 .kit-actions {
     max-height: 0;
     overflow: hidden;
@@ -322,14 +321,14 @@ body, html {
 }
 
 .kit-item.active .kit-btn {
-    background-color: #d23b3b !important;
+    background-color: #d23b3b !important; 
     color: #fff !important;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
 }
 
-/* === BOTÕES DE AÇÃO === */
+/* === BOTÕES DE AÇÃO (VERMELHO) === */
 .action-btn {
-    background-color: #a00000;
+    background-color: #a00000; 
     color: #fff;
     border: none;
     border-radius: 999px;
@@ -340,7 +339,7 @@ body, html {
 }
 
 .action-btn:hover {
-    background-color: #7a0000;
+    background-color: #7a0000; 
     transform: scale(1.05);
 }
 
@@ -357,6 +356,7 @@ body, html {
     z-index: 9999;
 }
 
+/* --- POPUP (BOTÕES) (VERMELHO) --- */
 .popup {
     background: #fff;
     padding: 25px 30px;
@@ -373,7 +373,7 @@ body, html {
 }
 
 .popup button {
-    background-color: #a00000;
+    background-color: #a00000; 
     color: #fff;
     border: none;
     border-radius: 20px;
@@ -385,7 +385,7 @@ body, html {
 }
 
 .popup button:hover {
-    background-color: #7a0000;
+    background-color: #7a0000; 
 }
 
 .popup-message {
@@ -432,17 +432,18 @@ body, html {
     outline: none;
 }
 
+/* --- POPUP INPUT FOCUS (VERMELHO) --- */
 .popup input[type="text"]:focus {
-    border-color: #a00000;
-    box-shadow: 0 0 4px rgba(160, 0, 0, 0.4);
+    border-color: #a00000; 
+    box-shadow: 0 0 4px rgba(160, 0, 0, 0.4); 
 }
 
-/* Botão flutuante (histórico) */
+/* Botão flutuante (Histórico) - CORRIGIDO PARA AZUL MARINHO ESCURO */
 .floating-btn {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    background-color: #a00000;
+    background-color: var(--primary-color); /* CORRIGIDO: Azul Marinho Escuro */
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -452,14 +453,30 @@ body, html {
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s ease, background-color 0.2s ease;
+    padding: 0; 
+    line-height: 1; 
 }
 
 .floating-btn:hover {
     transform: scale(1.1);
-    background-color: #7a0000;
+    background-color: var(--hoverCian-color); /* Hover ciano/azul */
+    color: var(--text-white); 
 }
 
-/* Botões dentro do popup de salvar como */
+/* Botão Voltar flutuante - CORRIGIDO PARA AZUL MARINHO ESCURO */
+.floating-back {
+    right: 95px; 
+    width: auto; 
+    height: 45px; 
+    padding: 0 20px; 
+    border-radius: 999px; 
+    font-size: 1rem;
+    line-height: 45px; 
+    text-align: center;
+    /* Usa a cor de fundo e hover definida em .floating-btn */
+}
+
+/* Botões dentro do popup de salvar como (VERMELHO) */
 #kitOptions {
     display: flex;
     flex-wrap: wrap;
@@ -468,7 +485,7 @@ body, html {
 }
 
 #kitOptions .kitOption {
-    background-color: #a00000;
+    background-color: #a00000; 
     color: white;
     border: none;
     border-radius: 999px;
@@ -479,7 +496,7 @@ body, html {
 }
 
 #kitOptions .kitOption:hover {
-    background-color: #7a0000;
+    background-color: #7a0000; 
     transform: scale(1.05);
 }
 
@@ -513,20 +530,21 @@ body, html {
     font-size: 0.95rem;
 }
 
+/* --- POPUP CLOSE ICON (VERMELHO) --- */
 .popup-close {
     position: absolute;
     top: 10px;
     right: 12px;
     background: none;
     border: none;
-    color: #a00000;
+    color: #a00000; 
     font-size: 1.3rem;
     cursor: pointer;
     transition: color 0.2s ease;
 }
 
 .popup-close:hover {
-    color: #7a0000;
+    color: #7a0000; 
 }
 
 /* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
@@ -591,7 +609,7 @@ body, html {
     list-style: none;
     padding: 0;
     /* margin-top: 10px; FOI REMOVIDO PARA CORRIGIR O PROBLEMA DE FECHAMENTO */
-    border-top: 3px solid #b20000;
+    border-top: 3px solid #b20000; /* Vermelho original */
 }
 
 /* Estilo dos links dentro do submenu */
@@ -608,7 +626,7 @@ body, html {
 /* Efeito de hover nos links do submenu */
 .main-menu-container .menu .dropdown-content li a:hover {
     background-color: #f1f1f1;
-    color: #b20000;
+    color: #b20000; /* Vermelho original */
 }
 
 /* Mostra o submenu quando o mouse passa por cima do item principal */
