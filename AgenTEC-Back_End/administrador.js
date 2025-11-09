@@ -4,26 +4,33 @@ class Administrador {
     #db;
 
     constructor(id, db) {
-        this.#id = id;
-        this.#db = db;
+        this.#id = id; // ID do administrador logado
+        this.#db = db; // instância da conexão com o banco
     }
 
+    // Cadastrar usuário
     async cadastrarUsuario(nome, email, senha, funcao) {
         try {
-            let tabela, colunas;
+            let tabela, colunas, valores;
 
             switch (funcao.toLowerCase()) {
                 case 'administrador':
                     tabela = 'administrador';
                     colunas = ['nome_administrador', 'email_administrador', 'senha_administrador'];
+                    valores = [nome, email, senha];
                     break;
                 case 'professor':
                     tabela = 'professor';
-                    colunas = ['nome_professor', 'email_professor', 'senha_professor'];
+                    colunas = ['nome_professor', 'email_professor', 'senha_professor', 'administrador_id_administrador'];
+                    // Garante que o administrador logado exista
+                    if (!this.#id) return { success: false, message: 'Administrador não logado' };
+                    valores = [nome, email, senha, this.#id];
                     break;
                 case 'tecnico':
                     tabela = 'tecnico';
-                    colunas = ['nome_tecnico', 'email_tecnico', 'senha_tecnico'];
+                    colunas = ['nome_tecnico', 'email_tecnico', 'senha_tecnico', 'administrador_id_administrador'];
+                    if (!this.#id) return { success: false, message: 'Administrador não logado' };
+                    valores = [nome, email, senha, this.#id];
                     break;
                 default:
                     return { success: false, message: 'Função inválida' };
@@ -37,8 +44,8 @@ class Administrador {
             }
 
             // Inserir novo usuário
-            const insertQuery = `INSERT INTO ${tabela} (${colunas.join(', ')}) VALUES (?, ?, ?)`;
-            const result = await this.#db.query(insertQuery, [nome, email, senha]);
+            const insertQuery = `INSERT INTO ${tabela} (${colunas.join(', ')}) VALUES (${colunas.map(() => '?').join(', ')})`;
+            const result = await this.#db.query(insertQuery, valores);
 
             return { success: true, usuarioId: result.insertId, message: 'Usuário cadastrado com sucesso' };
         } catch (err) {
@@ -47,7 +54,8 @@ class Administrador {
         }
     }
 
-    async autenticarUsuario(email, senha) { 
+    // Autenticar administrador
+    async autenticarUsuario(email, senha) {
         try {
             const query = 'SELECT * FROM administrador WHERE email_administrador = ? LIMIT 1';
             const rows = await this.#db.query(query, [email]);
@@ -62,6 +70,9 @@ class Administrador {
                 return { success: false, message: 'Senha incorreta' };
             }
 
+            // Atualiza o ID do administrador logado
+            this.#id = user.id_administrador;
+
             const usuario = {
                 id: user.id_administrador,
                 nome: user.nome_administrador,
@@ -75,11 +86,13 @@ class Administrador {
         }
     }
 
-    adicionarItemLista() {}
-    removerItemLista() {}
-    alterarItemLista() {}
-    consultarHistorico() {}
+    // Métodos de lista e histórico (placeholders)
+    adicionarItemLista() { }
+    removerItemLista() { }
+    alterarItemLista() { }
+    consultarHistorico() { }
 
+    // Retorna ID do administrador logado
     getId() {
         return this.#id;
     }
