@@ -69,22 +69,31 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     // === 4. SWIPER CORRIGIDO (5 CARDS NO DESKTOP) ===
-    const swiper = new Swiper('.swiper', {
+    const swiper = new Swiper('.card-wrapper', {
         loop: true,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        centeredSlides: false,
-        pagination: { el: '.swiper-pagination', clickable: true },
+        slidesPerView: 3,
+        spaceBetween: 30,
+        centeredSlides: true,
+        pagination: { 
+            el: '.swiper-pagination', 
+            clickable: true,
+            dynamicBullets: true 
+        },
+
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+
+        
+
         breakpoints: {
             640: { slidesPerView: 2, spaceBetween: 20 },
             768: { slidesPerView: 3, spaceBetween: 25 },
             1024: { slidesPerView: 5, spaceBetween: 30 }
         }
     });
+
 
     // === 5. MODAL ===
     function abrirModal(grupo) {
@@ -129,7 +138,4 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
         swiper.update();
     });
-
-    // === 7. REMOVER OPACIDADE (não precisa mais) ===
-    // Removido para manter todos os cards visíveis
 });
