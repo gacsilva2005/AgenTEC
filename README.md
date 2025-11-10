@@ -125,7 +125,6 @@ O arquivo do banco está localizado em:
 </blockquote>
 
 <br><br>
-<hr>
 <br>
 
     
