@@ -4,7 +4,7 @@
 <br>
 
 <div align="center">    
-<img src="https://i.postimg.cc/VLZXxfBG/etec.png" alt="Logo da ETEC" width="300"/>
+<img src="https://i.postimg.cc/FsmHzwtm/ETEC-Brancop-remove.png" alt="Logo da ETEC" width="300"/>
 <br> <br> <br> 
     
 ![Último Commit](https://img.shields.io/github/last-commit/gacsilva2005/AgenTEC?style=for-the-badge&label=ÚLTIMO%20COMMIT)
@@ -151,7 +151,7 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 <br>
 
 <div align="center">   
-<img src="https://i.postimg.cc/CLQcvsLt/Banner-ETEC.png" alt="Banner ETEC" width="600"/>
+<img src="https://i.postimg.cc/HLfpgh4d/ETEC-B-remove.png" alt="Banner ETEC" width="600"/>
 </div>
 
 ---
