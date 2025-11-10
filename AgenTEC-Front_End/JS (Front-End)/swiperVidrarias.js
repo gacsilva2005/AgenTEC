@@ -88,9 +88,24 @@ document.addEventListener('DOMContentLoaded', async function () {
         
 
         breakpoints: {
-            640: { slidesPerView: 2, spaceBetween: 20 },
-            768: { slidesPerView: 3, spaceBetween: 25 },
-            1024: { slidesPerView: 5, spaceBetween: 30 }
+            320: {  // Mobile pequeno
+                slidesPerView: 1.5,
+                spaceBetween: 15,
+                centeredSlides: true
+            },
+            480: {  // Mobile
+                slidesPerView: 2,
+                spaceBetween: 20,
+                centeredSlides: false
+            },
+            768: {  // Tablet
+                slidesPerView: 3,
+                spaceBetween: 25
+            },
+            1024: { // Desktop
+                slidesPerView: 5,
+                spaceBetween: 30
+            }
         }
     });
 
@@ -99,7 +114,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     function abrirModal(grupo) {
         vidrariaAtual = grupo;
         modalTitle.textContent = `Adicionar ${grupo.nome}`;
-        quantidadeSelect.innerHTML = '<option value="" disabled selected>Selecione a capacidade</option>';
+        quantidadeSelect.innerHTML = '<option value="" id = "quantidade-vidraria" >Selecione a capacidade</option>';
 
         if (grupo.capacidades.length === 0) {
             const opt = document.createElement('option');
