@@ -19,8 +19,6 @@ img:is([sizes="auto" i], [sizes^="auto," i]) {
   text-decoration: none
 }
 
-
-
 .wp-block-cps-grid-botoes {
   color: #fff;
   padding: 2px

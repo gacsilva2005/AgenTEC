@@ -85,3 +85,32 @@
         font-size: 2rem;
     }
 }
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem ;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i{
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}

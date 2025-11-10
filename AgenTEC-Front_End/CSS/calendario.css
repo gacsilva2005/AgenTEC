@@ -322,7 +322,7 @@ html {
 }
 
 .month-year {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
     position: relative;
@@ -540,7 +540,7 @@ html {
 }
 
 .event-date{
-    font-size: 1.1rem;
+    font-size: 2rem;
     font-weight: 600;
     color: var(--hoverCian-color);
 }
@@ -589,11 +589,11 @@ html {
     color: var(--text);
     padding: 1.37rem 1rem;
     font-style: italic;
-    font-size: 1rem;
+    font-size: 1.7rem;
 }
 
 .event-icon{
-    font-size: 1.2rem;
+    font-size: 2rem;
     color: var(--hoverCian-color);
     margin-right: 10px;
 }
@@ -620,7 +620,7 @@ html {
     border-radius: 50px;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     text-transform: uppercase;
     transition: background-color 0.3s, transform 0.2s;
@@ -678,4 +678,39 @@ html {
         flex-direction: column;
         gap: 15px;
     }
+}
+
+#cps-rodape__redes-icones {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem ;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i{
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
 }

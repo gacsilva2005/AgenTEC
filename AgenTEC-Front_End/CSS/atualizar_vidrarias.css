@@ -8,20 +8,20 @@ html {
     color: #333;
 }
 
-:root{
-    --primary-color: #243E63; 
-    --hoverCian-color: #005C6D; 
-    --low-hoverCian: #005d6d5b; 
+:root {
+    --primary-color: #243E63;
+    --hoverCian-color: #005C6D;
+    --low-hoverCian: #005d6d5b;
     --hoverLight-color: #00C1CF;
     --primary-red: #970000;
     --secondary-red: #c70000;
-    --hoverRed-color: #5d0500ef; 
-    --light-gray: #636e72; 
-    --dark-gray: #333333; 
+    --hoverRed-color: #5d0500ef;
+    --light-gray: #636e72;
+    --dark-gray: #333333;
     --text-white: #ffffff;
     --dark: #000000;
     --secondaryLight-gray: #7c7c7c;
-  }
+}
 
 .govsp-topo {
     display: flex;
@@ -186,7 +186,7 @@ html {
 }
 
 .page-title {
-    font-size: 2.5rem;
+    font-size: 4rem;
     color: var(--hoverCian-color);
     margin-bottom: 10px;
     font-weight: 700;
@@ -246,14 +246,10 @@ html {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.card-icon {
-    font-size: 4rem;
-    color: #008B8B;
-    margin-bottom: 25px;
-}
+
 
 .card-text {
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: 500;
     min-height: 50px;
 }
@@ -324,13 +320,13 @@ html {
 .govsp-navbar a i {
     color: #ffffff;
     /* Cor cinza escura para o ícone */
-    font-size: 1.2rem;
+    font-size: 2rem;
     /* Tamanho do ícone */
 }
 
 /* Estilo para o texto "/governosp" */
 .govsp-text {
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     color: #555;
     margin: 0px;
     /* Espaçamento antes e depois do texto */
@@ -411,20 +407,36 @@ html {
 /* --- ESTILOS PARA A SEÇÃO DE SELEÇÃO DE VIDRARIAS --- */
 
 /* Container da barra de pesquisa de itens */
+/* Bloco Corrigido */
 .search-container {
+    display: flex;
+    align-items: center;
     position: relative;
-    max-width: 500px;
-    margin: 30px auto 50px;
+    max-width: 700px;
+    width: 90%;
+    margin: 40px auto 50px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    padding: 0 20px;
+    transition: border-color 0.3s;
+}
+
+.search-container:hover {
+    border-color: #b20000;
 }
 
 .item-search-input {
+    flex: 1;
     width: 100%;
-    padding: 15px 50px 15px 20px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.3s;
+    padding: 15px 10px 15px 0;
+    border: none !important;
+    outline: none !important;
+    background-color: transparent;
+    border-radius: 0;
+    font-size: 2rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .item-search-input:hover {
@@ -432,29 +444,44 @@ html {
 }
 
 .search-icon {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
     color: #888;
+    font-size: 1.8rem;
+    cursor: pointer;
 }
 
 /* Grid principal que divide os cards de itens e os itens selecionados */
 .selection-grid {
-    display: grid;
     justify-items: center;
     gap: 30px;
-    align-items: start;
+    align-items: center;
+
 }
 
 /* Container para os cards de seleção de itens */
+/* Bloco Corrigido */
 .item-cards-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    /* ESSENCIAL: Permite que os cards quebrem a linha */
+    justify-content: center;
+    align-items: stretch;
     gap: 30px;
     width: 100%;
-    max-width: 900px;
+    margin-top: 20px;
 }
+
+/* Bloco Opcional, mas Recomendado */
+.item-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fdfdfd;
+    flex-grow: 1;
+    flex-basis: 350px;
+    min-width: 300px;
+    max-width: 450px;
+}
+
 
 /* Estilo individual do card de item e do card de itens selecionados */
 .item-card,
@@ -473,7 +500,7 @@ html {
 }
 
 .item-card-title {
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: 500;
     color: var(--hoverCian-color);
     padding-bottom: 10px;
@@ -511,14 +538,14 @@ html {
 }
 
 .item-info .item-name {
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 400;
     color: #333;
 }
 
 .item-info .item-unit {
     color: #666;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     margin-left: 20px;
     padding-left: 20px;
     border-left: 1px solid #ddd;
@@ -533,7 +560,7 @@ html {
 }
 
 .item-actions i {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
     /* Tamanho dos ícones */
     color: var(--dark-gray);
     cursor: pointer;
@@ -558,7 +585,7 @@ html {
     padding: 10px;
     border-radius: 5px;
     margin: 0 0 10px 0;
-    font-size: 0.95rem;
+    font-size: 1.4em;
     display: none;
 }
 
@@ -570,6 +597,7 @@ html {
     margin-top: 50px;
     padding-top: 20px;
     border-top: 1px solid #eee;
+    margin-bottom: 180px;
 }
 
 .action-btn {
@@ -577,7 +605,7 @@ html {
     border-radius: 50px;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     text-transform: uppercase;
     transition: background-color 0.3s, transform 0.2s;
@@ -626,21 +654,26 @@ html {
 /* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
 
 .notification {
-    position: fixed; /* Fica fixo na tela mesmo com scroll */
+    position: fixed;
+    /* Fica fixo na tela mesmo com scroll */
     top: 20px;
     right: 20px;
-    background-color: #28a745; /* Verde para sucesso */
+    background-color: #28a745;
+    /* Verde para sucesso */
     color: white;
     padding: 15px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre o ícone e o texto */
-    z-index: 1000; /* Garante que fique por cima de outros elementos */
+    gap: 10px;
+    /* Espaço entre o ícone e o texto */
+    z-index: 1000;
+    /* Garante que fique por cima de outros elementos */
 
     /* Animação */
-    transform: translateX(120%); /* Começa fora da tela */
+    transform: translateX(120%);
+    /* Começa fora da tela */
     opacity: 0;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
@@ -653,4 +686,33 @@ html {
 
 .notification i {
     font-size: 1.4rem;
+}
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i {
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
 }
