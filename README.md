@@ -43,7 +43,7 @@ O arquivo do banco está localizado em:
 <pre><code>AgenTEC-DataBase-(SQL)/banco.sql</code></pre>
 
 <p align="center">
-  <a href="https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql"><strong>📥 Ouclique aqui para baixar o banco.sql</strong></a>
+  <a href="https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql"><strong>📥 Ou clique aqui para baixar o banco.sql</strong></a>
 </p>
 
 
@@ -83,7 +83,7 @@ O arquivo do banco está localizado em:
 <h3>🔑 Logins Pré-definidos</h3>
 
 <p>O sistema já possui <strong>três logins diferentes</strong> configurados no banco para testes iniciais:</p>
-
+<br><br>
 <table align="center">
   <tr>
     <th>Tipo de Usuário</th>
@@ -130,9 +130,7 @@ O arquivo do banco está localizado em:
 </blockquote>
 
 <br><br>
-<br>
-
-    
+  
 <hr> </hr>
 
 ## 🗒️ Features do projeto 🗒️
@@ -159,3 +157,4 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 
 * [**Etec Irmã Agostina**](https://www.cps.sp.gov.br/etecs/etec-irma-agostina-capela-do-socorro/)
 * [**Centro Paulo de Souza**](https://www.cps.sp.gov.br/)
+* [**Banco de Dados Local**]<a href="https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql">
