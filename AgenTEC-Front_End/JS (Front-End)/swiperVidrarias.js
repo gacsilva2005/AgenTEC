@@ -69,28 +69,52 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     // === 4. SWIPER CORRIGIDO (5 CARDS NO DESKTOP) ===
-    const swiper = new Swiper('.swiper', {
+    const swiper = new Swiper('.card-wrapper', {
         loop: true,
-        slidesPerView: 1,
-        spaceBetween: 20,
-        centeredSlides: false,
-        pagination: { el: '.swiper-pagination', clickable: true },
+        slidesPerView: 3,
+        spaceBetween: 30,
+        centeredSlides: true,
+        pagination: { 
+            el: '.swiper-pagination', 
+            clickable: true,
+            dynamicBullets: true 
+        },
+
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+
+        
+
         breakpoints: {
-            640: { slidesPerView: 2, spaceBetween: 20 },
-            768: { slidesPerView: 3, spaceBetween: 25 },
-            1024: { slidesPerView: 5, spaceBetween: 30 }
+            320: {  // Mobile pequeno
+                slidesPerView: 1.5,
+                spaceBetween: 15,
+                centeredSlides: true
+            },
+            480: {  // Mobile
+                slidesPerView: 2,
+                spaceBetween: 20,
+                centeredSlides: false
+            },
+            768: {  // Tablet
+                slidesPerView: 3,
+                spaceBetween: 25
+            },
+            1024: { // Desktop
+                slidesPerView: 5,
+                spaceBetween: 30
+            }
         }
     });
+
 
     // === 5. MODAL ===
     function abrirModal(grupo) {
         vidrariaAtual = grupo;
         modalTitle.textContent = `Adicionar ${grupo.nome}`;
-        quantidadeSelect.innerHTML = '<option value="" disabled selected>Selecione a capacidade</option>';
+        quantidadeSelect.innerHTML = '<option value="" id = "quantidade-vidraria" >Selecione a capacidade</option>';
 
         if (grupo.capacidades.length === 0) {
             const opt = document.createElement('option');
@@ -129,7 +153,4 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
         swiper.update();
     });
-
-    // === 7. REMOVER OPACIDADE (não precisa mais) ===
-    // Removido para manter todos os cards visíveis
 });

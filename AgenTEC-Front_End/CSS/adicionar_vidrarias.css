@@ -181,7 +181,7 @@ body, html {
 }
 
 .page-title {
-    font-size: 2.5rem;
+    font-size: 4rem;
     color: #005C6D;
     margin-bottom: 10px;
     font-weight: 700;
@@ -252,7 +252,7 @@ body, html {
 }
 
 .dropdown a .fa-chevron-down {
-    font-size: 0.7em;
+    font-size: 1.1em;
     margin-left: 5px;
     transition: transform 0.3s ease;
 }
@@ -289,7 +289,7 @@ body, html {
 }
 
 .form-section h2 {
-    font-size: 1.8rem;
+    font-size: 2.3rem;
     font-weight: 500;
     color: var(--primary-color, #004b49);
     margin-top: 0;
@@ -311,7 +311,7 @@ body, html {
 
 .input-group label, .quantity-group label {
     display: block;
-    font-size: 1.1rem;
+    font-size: 2rem;
     font-weight: 500;
     color: #333;
     margin-bottom: 8px;
@@ -320,7 +320,7 @@ body, html {
 .input-group input[type="text"] {
     width: 100%;
     padding: 12px 15px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box; 
@@ -342,7 +342,7 @@ body, html {
     height: 45px;
     border: 1px solid #ccc;
     background-color: white;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
     color: var(--primary-color, #004b49);
@@ -364,7 +364,7 @@ body, html {
     width: 70px;
     height: 45px;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: #333;
     border: 1px solid #ccc;
@@ -378,16 +378,16 @@ body, html {
 .stepper-container {
     display: flex;
     align-items: center; 
-    gap: 590px; 
+    gap: 500px; 
 }
 
 .btn-confirm-small {
     height: 45px; 
-    width: 55px;  
+    width: 105px;  
     border: none;
     background-color: var(--primary-color, #004b49); 
     color: white;
-    font-size: 1.3rem; 
+    font-size: 2rem; 
     border-radius: 5px; 
     cursor: pointer;
     display: flex;
@@ -407,6 +407,7 @@ body, html {
     margin-top: 50px;
     padding-top: 20px;
     border-top: 1px solid #eee;
+    margin-bottom: 150px;
 }
 
 .action-btn {
@@ -414,7 +415,7 @@ body, html {
     border-radius: 50px;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-weight: 500;
     text-transform: uppercase;
     transition: background-color 0.3s, transform 0.2s;
@@ -472,7 +473,7 @@ body, html {
 }
 
 .tabela-vidrarias-container h2 {
-    font-size: 1.8rem;
+    font-size: 3rem;
     font-weight: 500;
     color: var(--primary-color, #004b49);
     margin-top: 0;
@@ -494,7 +495,7 @@ body, html {
 .tabela-vidrarias th {
     padding: 12px 15px;
     text-align: left;
-    font-size: 1.1rem;
+    font-size: 1.8rem;
     font-weight: 500;
 }
 
@@ -506,7 +507,8 @@ body, html {
     padding: 12px 15px;
     border-bottom: 1px solid #ddd;
     color: #333;
-    font-size: 1rem;
+    font-size: 1.4rem;
+    font-weight: 400;
 }
 
 /* ATUALIZADO: Ajuste para centralizar o botão de Ação */
@@ -527,7 +529,7 @@ body, html {
     border: none;
     color: var(--primary-red, #970000); /* Cor vermelha para destaque */
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     padding: 5px 8px;
     border-radius: 4px;
     transition: background-color 0.2s ease, color 0.2s ease;
@@ -546,7 +548,7 @@ body, html {
 .error-message {
     display: block; 
     color: var(--primary-red, #b20000); 
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     margin-top: 5px;
     visibility: hidden; 
     height: 0; 
@@ -593,4 +595,33 @@ body, html {
 
 .notification i {
     font-size: 1.5rem;
+}
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem ;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i{
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
 }

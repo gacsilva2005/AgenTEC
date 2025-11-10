@@ -177,7 +177,7 @@ body, html {
 }
 
 .page-title {
-    font-size: 2.5rem;
+    font-size: 4rem;
     color: var(--hoverCian-color);
     margin-bottom: 10px;
     font-weight: 700;
@@ -247,7 +247,7 @@ body, html {
 }
 
 .card-text {
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: 500;
     min-height: 50px;
 }
@@ -404,7 +404,7 @@ body, html {
     border: none;
     outline: none;
     padding: 15px 25px; 
-    font-size: 1rem; 
+    font-size: 2rem; 
     background-color: transparent; 
 }
 
@@ -421,7 +421,7 @@ body, html {
 
 .search-submit .fa-search {
     color: var(--primary-color); /* Usando a cor azul marinho */
-    font-size: 1.1rem; 
+    font-size: 2rem; 
 }
 
 /* Contêiner da lista de cards */
@@ -452,7 +452,7 @@ body, html {
 
 .item-card .table-title h3 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 2rem;
     color: var(--primary-color); /* Azul marinho */
 }
 
@@ -462,7 +462,7 @@ body, html {
     align-items: center;
     padding: 12px 20px;
     border-bottom: 1px solid #f0f0f0;
-    font-size: 0.95rem;
+    font-size: 1.4rem;
 }
 
 .item-row:last-child {
@@ -478,7 +478,7 @@ body, html {
 .item-action {
     cursor: pointer;
     color: var(--hoverCian-color); /* Ciano/azul */
-    font-size: 1.1rem;
+    font-size: 2rem;
     transition: color 0.2s;
 }
 
@@ -493,8 +493,8 @@ body, html {
     justify-content: center;
     flex-wrap: wrap;
     gap: 50px; /* Espaçamento entre os botões na linha */
-    margin-top: 80px;
-    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 150px;
 }
 
 .btn-global {
@@ -504,7 +504,7 @@ body, html {
     padding: 15px 35px;
     text-decoration: none;
     border-radius: 50px;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease;
@@ -536,4 +536,33 @@ body, html {
     .item-card {
         max-width: 90%;
     }
+}
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem ;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i{
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
 }

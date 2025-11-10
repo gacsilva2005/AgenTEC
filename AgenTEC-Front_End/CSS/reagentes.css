@@ -103,7 +103,7 @@ html {
     border: none;
     outline: none;
     padding: 15px 50px;
-    font-size: 1rem;
+    font-size: 2rem;
     background-color: transparent;
 }
 
@@ -185,6 +185,7 @@ html {
     gap: 100px;
     margin-top: 5rem;
     padding: 20px;
+    margin-bottom: 150px;
 }
 
 .button-custom {
@@ -197,7 +198,7 @@ html {
     text-decoration: none;
     color: white;
     border-radius: 50px;
-    font-size: 1.2rem;
+    font-size: 2rem;
     transition: all 0.3s ease;
     cursor: pointer
 }
@@ -261,25 +262,25 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
+    font-size: 60px;
     margin: 0 auto;
 }
 
 .card-list .card-link .chemical-icon .material-symbols-outlined {
-    font-size: 48px;
+    font-size: 60px;
 }
 
 .card-list .card-link .card-title {
     margin-top: 15px;
     color: var(--text-white);
-    font-size: 1.19rem;
+    font-size: 1.9rem;
     text-align: center;
     font-weight: 600;
 }
 
 .card-list .card-link .card-description {
     color: var(--text-white);
-    font-size: 1rem;
+    font-size: 1.6rem;
     text-align: center;
     font-weight: 400;
 }
@@ -290,7 +291,7 @@ html {
     align-items: center;
     text-align: center;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     border-radius: 50px;
     padding: 0.4em 1em;
     margin: auto;
@@ -326,7 +327,7 @@ html {
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-    font-size: 18px;
+    font-size: 48px;
     color: white !important;
 }
 
@@ -346,7 +347,7 @@ html {
 }
 
 .container.swiper {
-    padding: 0px 200px;
+    padding: 0px 2px;
     overflow: visible;
     max-width: 700px;
     margin: 0 auto;
@@ -429,7 +430,7 @@ html {
     padding: 10px 15px;
     border: none;
     outline: none;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     background-color: transparent;
     color: var(--dark);
     text-indent: 10px;  
@@ -592,7 +593,7 @@ html {
 }
 
 .page-title {
-    font-size: 2.5rem;
+    font-size: 4rem;
     color: var(--hoverCian-color);
     margin-bottom: 10px;
     font-weight: 700;
@@ -764,4 +765,33 @@ html {
 /* Gira a setinha para cima quando o menu está aberto */
 .menu li.dropdown:hover a .fa-chevron-down {
     transform: rotate(180deg);
+}
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem ;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i{
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
 }

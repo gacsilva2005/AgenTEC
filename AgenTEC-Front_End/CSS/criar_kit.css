@@ -179,7 +179,7 @@ body, html {
 }
 
 .page-title {
-    font-size: 2.5rem;
+    font-size: 4rem;
     color: var(--hoverCian-color);
     margin-bottom: 10px;
     font-weight: 700;
@@ -244,6 +244,7 @@ body, html {
     padding-right: 30px;
     gap: 15px !important;
     align-items: center; /* centraliza os botões */
+    margin-bottom: 200px;
 }
 
 /* --- BOTÕES DE KIT (VERMELHO) --- */
@@ -252,7 +253,7 @@ body, html {
     color: white;
     border: none;
     padding: 14px 0;
-    font-size: 1.1rem;
+    font-size: 2rem;
     font-weight: 500;
     border-radius: 999px;
     cursor: pointer;
@@ -285,7 +286,8 @@ body, html {
     width: 2px;
     background-color: #ddd;
     z-index: 1;
-    margin-top: 50px;
+    margin-top: 5px;
+margin-bottom: 150px;
 }
 
 /* --- ÁREA PRINCIPAL --- */
@@ -333,7 +335,7 @@ body, html {
     border: none;
     border-radius: 999px;
     padding: 6px 14px;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -409,7 +411,7 @@ body, html {
     justify-content: center;
     align-items: center;
     color: #555;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     min-height: 400px;
@@ -427,7 +429,7 @@ body, html {
     padding: 8px;
     border: 1px solid #aaa;
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: 1.4rem;
     margin-bottom: 12px;
     outline: none;
 }
@@ -449,7 +451,7 @@ body, html {
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    font-size: 1.4rem;
+    font-size: 2rem;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s ease, background-color 0.2s ease;
@@ -470,7 +472,7 @@ body, html {
     height: 45px; 
     padding: 0 20px; 
     border-radius: 999px; 
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 45px; 
     text-align: center;
     /* Usa a cor de fundo e hover definida em .floating-btn */
@@ -490,7 +492,7 @@ body, html {
     border: none;
     border-radius: 999px;
     padding: 6px 14px;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -527,7 +529,7 @@ body, html {
 .materials-list li {
     padding: 6px 0;
     border-bottom: 1px solid #eee;
-    font-size: 0.95rem;
+    font-size: 1.4rem;
 }
 
 /* --- POPUP CLOSE ICON (VERMELHO) --- */
@@ -644,4 +646,33 @@ body, html {
 /* Gira a setinha para cima quando o menu está aberto */
 .menu li.dropdown:hover a .fa-chevron-down {
     transform: rotate(180deg);
+}
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem ;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i{
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
 }
