@@ -223,83 +223,122 @@
             </ul>
         </nav>
 
-    <div id="breadcrumb">
-        <div class="breadcrumb-container">
-            <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a>/ Técnicos</span>
+        <div id="breadcrumb">
+            <div class="breadcrumb-container">
+                <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a>/ Técnicos</span>
+            </div>
         </div>
-    </div>
 
-    <main class="main-content">
-        <h1 class="page-title">Técnicos</h1>
-        <div class="title-underline"></div>
-
-        <div class="cards-container">
-
-        <a href="#" class="card">
-            <div class="card-icon">
-                <i class="fas fa-calendar-alt"></i>
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Técnicos</h1>
+                <div class="button-container">
+                    <button id="btn-logout" class="button-custom">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Desconectar</span>
+                    </button>
+                </div>
             </div>
-            <p class="card-text">Agendamentos futuros e seus kits associados</p>
-        </a>
+            <div class="title-underline"></div>
 
-        <a href="#" class="card">
-            <div class="card-icon">
-                <i class="fas fa-copy"></i>
-            </div>
-            <p class="card-text">Lista de materiais por experimento</p>
-        </a>
+            <div class="cards-container">
 
-        <a href="controle.html" class="card">
-            <div class="card-icon">
-                <i class="fas fa-tasks"></i>
-            </div>
-            <p class="card-text">Ações de controle</p>
-        </a>
+                <a href="#" class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <p class="card-text">Agendamentos futuros e seus kits associados</p>
+                </a>
 
-        <a href="#" class="card">
-            <div class="card-icon">
-                <i class="fas fa-wrench"></i>
-            </div>
-            <p class="card-text">Corrigir estoque</p>
-        </a>
+                <a href="#" class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <p class="card-text">Lista de materiais por experimento</p>
+                </a>
 
-    </div>
-    
-    </main>
-    <div vw="" class="enabled" style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-<div vw-access-button="" class="active">
-        <img class="vp-access-button" data-src="assets/access_icon.svg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_icon.svg">
-        <img class="vp-pop-up" data-src="assets/access_popup.jpg" alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-    </div>
-<div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-        <div vp="">
+                <a href="controle.html" class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <p class="card-text">Ações de controle</p>
+                </a>
+
+                <a href="#" class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <p class="card-text">Corrigir estoque</p>
+                </a>
+
             </div>
-    </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
-    <script>
-        
-    document.addEventListener('DOMContentLoaded', function() {
-        const campoBusca = document.getElementById('campo-busca');
-        const cardsContainer = document.querySelector('.cards-container');
-        const todosOsCards = cardsContainer.querySelectorAll('.card');
-        campoBusca.addEventListener('input', function() {
-            const termoBuscado = campoBusca.value.toLowerCase();
-            todosOsCards.forEach(function(card) {
-                const textoDoCard = card.textContent.toLowerCase();
-                if (textoDoCard.includes(termoBuscado)) {
-                    card.style.display = 'flex'; 
-                } else {
-                    card.style.display = 'none';
-                }
+        </main>
+        <div vw="" class="enabled"
+            style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+            <div vw-access-button="" class="active">
+                <img class="vp-access-button" data-src="assets/access_icon.svg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_icon.svg">
+                <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+            </div>
+            <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+                <div vp="">
+                </div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const campoBusca = document.getElementById('campo-busca');
+                const cardsContainer = document.querySelector('.cards-container');
+                const todosOsCards = cardsContainer.querySelectorAll('.card');
+                campoBusca.addEventListener('input', function () {
+                    const termoBuscado = campoBusca.value.toLowerCase();
+                    todosOsCards.forEach(function (card) {
+                        const textoDoCard = card.textContent.toLowerCase();
+                        if (textoDoCard.includes(termoBuscado)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+
             });
-        });
+            const logoutButton = document.getElementById('btn-logout');
 
-    });
-    </script>
+            // 2. Adiciona um "ouvinte" de clique no botão
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function () {
+                    logout(); // Chama a nossa função de logout
+                });
+            }
+
+            /**
+             * Função de Logout
+             * Limpa a sessão/memória de login e redireciona para a tela inicial.
+             */
+            function logout() {
+                console.log("Deslogando usuário...");
+
+                // 3. Limpa a memória de login
+                // ASSUMIMOS que você salva o usuário em localStorage com a chave 'loggedInUserType'
+                // Se o nome da sua chave for outro (ex: 'usuario_logado'), troque abaixo.
+                localStorage.removeItem('loggedInUserType');
+
+                // Se você usar sessionStorage, descomente a linha abaixo:
+                // sessionStorage.clear(); 
+
+                // 4. Redireciona o usuário para a tela inicial (index.html)
+                window.location.href = '../login.html';
+            } 
+        </script>
 </body>
 
 </html>

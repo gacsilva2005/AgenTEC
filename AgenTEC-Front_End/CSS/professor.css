@@ -1,5 +1,6 @@
 /* CSS Reset e Estilos Globais */
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -7,12 +8,27 @@ body, html {
     color: #333;
 }
 
+:root {
+    --primary-color: #243E63;
+    --hoverCian-color: #005C6D;
+    --low-hoverCian: #005d6d5b;
+    --hoverLight-color: #00C1CF;
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef;
+    --light-gray: #636e72;
+    --dark-gray: #333333;
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+}
+
 .govsp-topo {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     background-color: #ffffff;
-    border-bottom: 1px solid #ddd; 
+    border-bottom: 1px solid #ddd;
 }
 
 .govsp-portal img {
@@ -22,9 +38,9 @@ body, html {
 }
 
 .govsp-portal {
-    background-color: #000; 
-    padding: 8px 25px 8px 15px; 
-    border-radius: 0 50px 50px 0; 
+    background-color: #000;
+    padding: 8px 25px 8px 15px;
+    border-radius: 0 50px 50px 0;
 }
 
 .govsp-topo .govsp-portal img {
@@ -41,7 +57,7 @@ body, html {
 .govsp-navbar :hover {
     transform: translate(0.2px, 0.2px);
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
-}       
+}
 
 
 .govsp-topo .govsp-navbar img {
@@ -56,6 +72,7 @@ body, html {
     padding: 20px;
     border-bottom: 1px solid #eee;
 }
+
 .cps-header__container {
     max-width: 1200px;
     margin: 0 auto;
@@ -65,57 +82,59 @@ body, html {
     gap: 20px;
     flex-wrap: wrap;
 }
+
 .cps-header__logo img {
     max-height: 50px;
 }
 
 .form-pesquisa {
-    display: flex; 
-    align-items: center; 
-    border: 1px solid #ccc; 
-    border-radius: 50px; 
-    overflow: hidden; 
-    max-width: 400px; 
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 400px;
     background-color: white;
 }
 
 .campo-de-busca {
-    flex: 1; 
-    border: none; 
-    outline: none; 
-    padding: 15px 50px; 
-    font-size: 1rem; 
-    background-color: transparent; 
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 50px;
+    font-size: 1rem;
+    background-color: transparent;
 }
 
 .campo-de-busca::placeholder {
-    color: #999; 
+    color: #999;
 }
 
 .busca-submit {
-    border: none; 
-    border-left: 1px solid #ccc; 
-    background-color: transparent; 
-    padding: 10px 18px; 
-    cursor: pointer; 
+    border: none;
+    border-left: 1px solid #ccc;
+    background-color: transparent;
+    padding: 10px 18px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .busca-submit .fa-search {
-    color: #b20000; 
-    font-size: 1.1rem; 
+    color: #b20000;
+    font-size: 1.1rem;
 }
 
 .busca-submit:hover {
-    background-color: #f5f5f5; 
+    background-color: #f5f5f5;
 }
 
 .main-menu-container {
-    background-color: #c41e15; 
+    background-color: #c41e15;
     padding: 0 20px;
 }
+
 .main-menu-container .menu {
     max-width: 1200px;
     margin: 0 auto;
@@ -124,6 +143,7 @@ body, html {
     display: flex;
     flex-wrap: wrap;
 }
+
 .main-menu-container .menu li a {
     display: block;
     padding: 15px 20px;
@@ -134,7 +154,7 @@ body, html {
 }
 
 .main-menu-container .menu li a:hover {
-    background-color: #831c16ef; 
+    background-color: #831c16ef;
 }
 
 #breadcrumb {
@@ -142,6 +162,7 @@ body, html {
     padding: 12px 20px;
     border-bottom: 1px solid #e9ecef;
 }
+
 .breadcrumb-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -167,6 +188,23 @@ body, html {
     color: #005C6D;
     margin-bottom: 10px;
     font-weight: 700;
+    clear: both;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.page-header .page-title {
+    margin: 0;
+}
+
+.page-header .button-container {
+    margin: 0;
+    padding: 0;
 }
 
 .title-underline {
@@ -194,7 +232,7 @@ body, html {
     height: 15px;
     background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
     font-size: 1.6rem;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 }
 
 .cards-container {
@@ -225,7 +263,7 @@ body, html {
 
 .card-icon {
     font-size: 4rem;
-    color: #008B8B; 
+    color: #008B8B;
     margin-bottom: 25px;
 }
 
@@ -240,70 +278,87 @@ body, html {
     .cps-header__container {
         flex-direction: column;
     }
+
     .cards-container {
         flex-direction: column;
         align-items: center;
     }
+
     .card {
         width: 90%;
     }
 }
 
 .logo-container {
-    display: flex;          
-    align-items: center;    
-    gap: 40 px;              
+    display: flex;
+    align-items: center;
+    gap: 40 px;
 }
 
 .logo-container img {
-    height: 80px; 
-    width: auto;     
+    height: 80px;
+    width: auto;
 }
 
 .logo-cps {
-    height: 70px; 
+    height: 70px;
 }
 
 /* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
 
 /* Contêiner principal da navegação */
 .govsp-navbar {
-    display: flex; /* Alinha todos os itens na horizontal */
-    align-items: center; /* Centraliza os itens verticalmente */
+    display: flex;
+    /* Alinha todos os itens na horizontal */
+    align-items: center;
+    /* Centraliza os itens verticalmente */
     padding: 10px;
 }
 
 /* Estilo para todos os links (que servem como 'caixa' para os ícones) */
 .govsp-navbar a {
-    display: inline-flex; /* Permite centralizar o ícone dentro do link */
+    display: inline-flex;
+    /* Permite centralizar o ícone dentro do link */
     align-items: center;
     justify-content: center;
-    width: 28px; /* Largura da caixa */
-    height: 28px; /* Altura da caixa */
-    background-color: #ffffff; /* Fundo cinza claro */
-    margin: -3px; /* Espaçamento entre os ícones */
-    border-radius: 3px; /* Bordas levemente arredondadas */
-    text-decoration: none; /* Remove o sublinhado do link */
+    width: 28px;
+    /* Largura da caixa */
+    height: 28px;
+    /* Altura da caixa */
+    background-color: #ffffff;
+    /* Fundo cinza claro */
+    margin: -3px;
+    /* Espaçamento entre os ícones */
+    border-radius: 3px;
+    /* Bordas levemente arredondadas */
+    text-decoration: none;
+    /* Remove o sublinhado do link */
 }
 
 /* Estilo para os ícones (<i>) dentro dos links */
 .govsp-navbar a i {
-    color: #ffffff; /* Cor cinza escura para o ícone */
-    font-size: 1.2rem; /* Tamanho do ícone */
+    color: #ffffff;
+    /* Cor cinza escura para o ícone */
+    font-size: 1.2rem;
+    /* Tamanho do ícone */
 }
 
 /* Estilo para o texto "/governosp" */
 .govsp-text {
     font-size: 0.9rem;
     color: #555;
-    margin: 0px; /* Espaçamento antes e depois do texto */
+    margin: 0px;
+    /* Espaçamento antes e depois do texto */
 }
 
 /* Estilo para a linha separadora */
 .separator {
-    height: 25px; /* Altura da linha */
-    border-left: 1px solid #ccc; /* Cria a linha vertical */
-    margin: 0 10px; /* Espaçamento antes e depois da linha */
+    height: 25px;
+    /* Altura da linha */
+    border-left: 1px solid #ccc;
+    /* Cria a linha vertical */
+    margin: 0 10px;
+    /* Espaçamento antes e depois da linha */
 }
 
 /* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
@@ -317,11 +372,12 @@ body, html {
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
+    top: 100%;
+    /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
     left: 0;
     background-color: #f9f9f9;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     list-style: none;
     padding: 0;
@@ -332,12 +388,14 @@ body, html {
 /* Estilo dos links dentro do submenu */
 /* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
 .main-menu-container .menu .dropdown-content li a {
-    color: #555; /* Define a cor escura para o texto */
-    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
+    color: #555;
+    /* Define a cor escura para o texto */
+    font-weight: normal;
+    /* Garante que o texto não fique em negrito como o menu principal */
     padding: 12px 16px;
     text-align: left;
     /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
-    background-color: transparent; 
+    background-color: transparent;
 }
 
 /* Efeito de hover nos links do submenu */
@@ -363,28 +421,80 @@ body, html {
     transform: rotate(180deg);
 }
 
-@media (min-width: 375px) and (max-width: 767px) {
-    
+@media (min-width: 375px) and (max-width: 767px) {}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
 }
+
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: #005C6D;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 510;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button-custom:hover {
+    color: var(--primary-color);
+}
+
+.button-custom:active {
+    color: var(--primary-color);
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .button-confirm,
+    .button-cancel {
+        width: 100%;
+    }
+}
+
 
 /* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
 
 .notification {
-    position: fixed; /* Fica fixo na tela mesmo com scroll */
+    position: fixed;
+    /* Fica fixo na tela mesmo com scroll */
     top: 20px;
     right: 20px;
-    background-color: #28a745; /* Verde para sucesso */
+    background-color: #28a745;
+    /* Verde para sucesso */
     color: white;
     padding: 15px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
-    gap: 10px; /* Espaço entre o ícone e o texto */
-    z-index: 1000; /* Garante que fique por cima de outros elementos */
+    gap: 10px;
+    /* Espaço entre o ícone e o texto */
+    z-index: 1000;
+    /* Garante que fique por cima de outros elementos */
 
     /* Animação */
-    transform: translateX(120%); /* Começa fora da tela */
+    transform: translateX(120%);
+    /* Começa fora da tela */
     opacity: 0;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
@@ -398,4 +508,3 @@ body, html {
 .notification i {
     font-size: 1.4rem;
 }
-

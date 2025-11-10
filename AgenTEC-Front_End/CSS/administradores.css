@@ -183,6 +183,21 @@ body, html {
     font-weight: 700;
 }
 
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.page-header .page-title {
+    margin: 0;
+}
+
+.page-header .button-container {
+    margin: 0;
+    padding: 0;
+}
 .title-underline {
     --wp--preset--font-size--normal: 16px;
     --wp--preset--font-size--huge: 42px;
@@ -340,4 +355,52 @@ body, html {
     padding: 0;
     /* margin-top: 10px; FOI REMOVIDO PARA CORRIGIR O PROBLEMA DE FECHAMENTO */
     border-top: 3px solid #b20000;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: #005C6D;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 510;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button-custom:hover {
+    color: var(--primary-color);
+}
+
+.button-custom:active {
+    color: var(--primary-color);
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .button-confirm,
+    .button-cancel {
+        width: 100%;
+    }
 }
