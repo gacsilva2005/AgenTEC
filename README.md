@@ -128,6 +128,12 @@ O arquivo do banco está localizado em:
 <blockquote>
 💡 <strong>Dica:</strong> Use a extensão <strong>Live Server</strong> no VS Code para visualizar as alterações em tempo real.
 </blockquote>
+<br><br>
+<blockquote>
+<p align="center">
+  💥 <strong>Extra:</strong> O projeto está em fase experimental, e futuramente todo o sistema oficial de banco de dados será diretamente integrado em um <strong>sistema de nuvem seguro</strong>.
+</p>
+</blockquote>
 
 <br><br>
   
