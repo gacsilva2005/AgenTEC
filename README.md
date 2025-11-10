@@ -16,6 +16,7 @@
 
 [![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)](https://git-scm.com/)
 [![MySQL](https://img.shields.io/badge/MYSQL-3972A0?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![JSON](https://img.shields.io/badge/JSON-000000?style=flat-square&logo=json&logoColor=yellow)](https://www.json.org/json-en.html)
 
 </div>
 
@@ -29,6 +30,7 @@ Esta aplicação vai além da simples exibição de formulários, funcionando co
 ### Requisitos
 
 * Um navegador web moderno (Chrome, Firefox, Edge, etc.).
+* Possuir instalado em seu desktop o MySQL.
 
 ### Execução
 
@@ -36,14 +38,22 @@ Esta aplicação vai além da simples exibição de formulários, funcionando co
     ```bash
     git clone [(https://github.com/gacsilva2005/AgenTEC.git)]
     ```
-2.  **Acesse o diretório:**
-    ```bash
-    cd AgenTEC-Front_End
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
+3. **Acesse o diretório do servidor:**
+   ```bash
+    cd AgenTEC-Back_End
     ```
-3.  **Abra o arquivo principal no navegador:**
-    Localize e abra o arquivo `AgenTEC-Front_End/HTML/login.html` no seu navegador.
+4. **Inicie o servidor:**
+   ```bash
+   node server.js
+   ```
+5.  **Abra o arquivo principal no navegador:**
+    Localize e abra o arquivo `AgenTEC-Front_End/HTML/index.html` no seu navegador.
 
-    > **Dica:** Use a extensão Live Server no VS Code para visualizar as alterações em tempo real.
+    > Utilize a extensão Live Server no VS Code para visualizar as alterações em tempo real.
     
 <hr> </hr>
 
