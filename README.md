@@ -83,7 +83,6 @@ O arquivo do banco está localizado em:
 <h3>🔑 Logins Pré-definidos</h3>
 
 <p>O sistema já possui <strong>três logins diferentes</strong> configurados no banco para testes iniciais:</p>
-<br><br>
 <table align="">
   <tr>
     <th>Tipo de Usuário</th>
@@ -106,7 +105,7 @@ O arquivo do banco está localizado em:
     <td><code>agentecprofessor123</code></td>
   </tr>
 </table>
-
+<br><br>
 
 <h3>💻 Execução do Front-End</h3>
 
