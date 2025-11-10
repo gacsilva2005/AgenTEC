@@ -84,7 +84,7 @@ O arquivo do banco está localizado em:
 
 <p>O sistema já possui <strong>três logins diferentes</strong> configurados no banco para testes iniciais:</p>
 <br><br>
-<table align="center">
+<table align="">
   <tr>
     <th>Tipo de Usuário</th>
     <th>E-mail</th>
@@ -107,7 +107,6 @@ O arquivo do banco está localizado em:
   </tr>
 </table>
 
-<br><br>
 
 <h3>💻 Execução do Front-End</h3>
 
