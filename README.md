@@ -153,9 +153,8 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 <br>
 
 <div align="center">   
-<img src="" alt="Banner ETEC" width="600"/>
+<img src="https://i.postimg.cc/CLQcvsLt/Banner-ETEC.png" alt="Banner ETEC" width="600"/>
 </div>
-
 
 ---
 
