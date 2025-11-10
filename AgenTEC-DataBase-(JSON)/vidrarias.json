@@ -1,0 +1,1386 @@
+[
+    {
+      "id": 1,
+      "nome": "Almofariz de cerâmica",
+      "capacidade": 305,
+      "unidade": "ml"
+    },
+    {
+      "id": 2,
+      "nome": "Almofariz de cerâmica",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 3,
+      "nome": "Alongador",
+      "capacidade": "24/40",
+      "unidade": "cm"
+    },
+    {
+      "id": 4,
+      "nome": "Aparelho de Nitrogênio"
+    },
+    {
+      "id": 5,
+      "nome": "Argolas",
+      "capacidade": 10,
+      "unidade": "cm"
+    },
+    {
+      "id": 6,
+      "nome": "Argolas",
+      "capacidade": 7,
+      "unidade": "cm"
+    },
+    {
+      "id": 7,
+      "nome": "Argolas",
+      "capacidade": 6,
+      "unidade": "cm"
+    },
+    {
+      "id": 8,
+      "nome": "Argolas",
+      "capacidade": 4,
+      "unidade": "cm"
+    },
+    {
+      "id": 9,
+      "nome": "Bagueta Plástico"
+    },
+    {
+      "id": 10,
+      "nome": "Bagueta Vidro"
+    },
+    {
+      "id": 11,
+      "nome": "Balão de três vias",
+      "capacidade": 2000,
+      "unidade": "ml"
+    },
+    {
+      "id": 12,
+      "nome": "Balão de três vias",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 13,
+      "nome": "Balão de fundo chato",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 14,
+      "nome": "Balão de fundo chato",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 15,
+      "nome": "Balão de fundo redondo",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 16,
+      "nome": "Balão de fundo redondo",
+      "capacidade": 800,
+      "unidade": "ml"
+    },
+    {
+      "id": 17,
+      "nome": "Balão de fundo redondo",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 18,
+      "nome": "Balão de fundo redondo",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 19,
+      "nome": "Balão volumétrico",
+      "capacidade": 2000,
+      "unidade": "ml"
+    },
+    {
+      "id": 20,
+      "nome": "Balão volumétrico",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 21,
+      "nome": "Balão volumétrico",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 22,
+      "nome": "Balão volumétrico",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 23,
+      "nome": "Balão volumétrico",
+      "capacidade": 200,
+      "unidade": "ml"
+    },
+    {
+      "id": 24,
+      "nome": "Balão volumétrico",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 25,
+      "nome": "Balão volumétrico",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 26,
+      "nome": "Balão volumétrico",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 27,
+      "nome": "Balão volumétrico",
+      "capacidade": 20,
+      "unidade": "ml"
+    },
+    {
+      "id": 28,
+      "nome": "Balão volumétrico",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 29,
+      "nome": "Béquer de plástico",
+      "capacidade": 2000,
+      "unidade": "ml"
+    },
+    {
+      "id": 30,
+      "nome": "Béquer de plástico",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 31,
+      "nome": "Béquer de plástico",
+      "capacidade": 600,
+      "unidade": "ml"
+    },
+    {
+      "id": 32,
+      "nome": "Béquer de plástico",
+      "capacidade": 400,
+      "unidade": "ml"
+    },
+    {
+      "id": 33,
+      "nome": "Béquer de plástico",
+      "capacidade": 150,
+      "unidade": "ml"
+    },
+    {
+      "id": 34,
+      "nome": "Béquer de plástico",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 35,
+      "nome": "Béquer de plástico",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 36,
+      "nome": "Béquer de vidro",
+      "capacidade": 2000,
+      "unidade": "ml"
+    },
+    {
+      "id": 37,
+      "nome": "Béquer de vidro",
+      "capacidade": 600,
+      "unidade": "ml"
+    },
+    {
+      "id": 38,
+      "nome": "Béquer de vidro",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 39,
+      "nome": "Béquer de vidro",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 40,
+      "nome": "Béquer de vidro",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 41,
+      "nome": "Béquer de vidro",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 42,
+      "nome": "Bico de Bunsen"
+    },
+    {
+      "id": 43,
+      "nome": "Bureta",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 44,
+      "nome": "Bureta",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 45,
+      "nome": "Cabeça de sucção"
+    },
+    {
+      "id": 46,
+      "nome": "Cadinho de porcelana"
+    },
+    {
+      "id": 47,
+      "nome": "Tampa de cadinho"
+    },
+    {
+      "id": 48,
+      "nome": "Cápsula de porcelana",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 49,
+      "nome": "Cilindro",
+      "capacidade": 40.5,
+      "unidade": "g"
+    },
+    {
+      "id": 50,
+      "nome": "Cilindro",
+      "capacidade": 46.5,
+      "unidade": "g"
+    },
+    {
+      "id": 51,
+      "nome": "Cilindro",
+      "capacidade": 13.9,
+      "unidade": "g"
+    },
+    {
+      "id": 52,
+      "nome": "Cleverger"
+    },
+    {
+      "id": 53,
+      "nome": "Destiladora com junta 19/38 esmerilhadas e ponta gotesadora",
+      "capacidade": 200,
+      "unidade": "mm"
+    },
+    {
+      "id": 54,
+      "nome": "Vigreux com saida lateral e entrada para termometro"
+    },
+    {
+      "id": 55,
+      "nome": "Vigreux simples"
+    },
+    {
+      "id": 56,
+      "nome": "Bola Allihn",
+      "capacidade": 200,
+      "unidade": "m"
+    },
+    {
+      "id": 57,
+      "nome": "Reto Liebig"
+    },
+    {
+      "id": 58,
+      "nome": "Serpentina Grahan"
+    },
+    {
+      "id": 59,
+      "nome": "Cone Imhoff",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 60,
+      "nome": "Conectores em L"
+    },
+    {
+      "id": 61,
+      "nome": "Cubeta de Quartzo"
+    },
+    {
+      "id": 62,
+      "nome": "Cubeta de Vidro"
+    },
+    {
+      "id": 63,
+      "nome": "Elenmeyer",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 64,
+      "nome": "Elenmeyer",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 65,
+      "nome": "Elenmeyer",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 66,
+      "nome": "Erlenmeyer de boca esmerilhada",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 67,
+      "nome": "Erlenmeyer de boca esmerilhada",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 68,
+      "nome": "Erlenmeyer de boca esmerilhada",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 69,
+      "nome": "Espátula Metálica"
+    },
+    {
+      "id": 70,
+      "nome": "Espátula Plástico"
+    },
+    {
+      "id": 71,
+      "nome": "Frasco para destilação",
+      "capacidade": 125,
+      "unidade": "ml"
+    },
+    {
+      "id": 72,
+      "nome": "Frasco iodimétrico",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 73,
+      "nome": "Frasco iodimétrico",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 74,
+      "nome": "Fita de pH",
+      "capacidade": 1,
+      "unidade": "caixa"
+    },
+    {
+      "id": 75,
+      "nome": "Funil Liso",
+      "capacidade": 100,
+      "unidade": "mm"
+    },
+    {
+      "id": 76,
+      "nome": "Funil raiado",
+      "capacidade": 100,
+      "unidade": "mm"
+    },
+    {
+      "id": 77,
+      "nome": "Funil raiado",
+      "capacidade": 80,
+      "unidade": "mm"
+    },
+    {
+      "id": 78,
+      "nome": "Funil raiado",
+      "capacidade": 55,
+      "unidade": "mm"
+    },
+    {
+      "id": 79,
+      "nome": "Funil de plástico",
+      "capacidade": 50,
+      "unidade": "mm"
+    },
+    {
+      "id": 80,
+      "nome": "Funil de Buchner",
+      "capacidade": 150,
+      "unidade": "mm"
+    },
+    {
+      "id": 81,
+      "nome": "Funil de Buchner",
+      "capacidade": 125,
+      "unidade": "mm"
+    },
+    {
+      "id": 82,
+      "nome": "Funil de Buchner",
+      "capacidade": 70,
+      "unidade": "mm"
+    },
+    {
+      "id": 83,
+      "nome": "Funil de separação tipo pêra",
+      "capacidade": 1000009,
+      "unidade": "ml"
+    },
+    {
+      "id": 84,
+      "nome": "Funil de separação tipo pêra",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 85,
+      "nome": "Funil de separação tipo pêra",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 86,
+      "nome": "Funil de separação tipo pêra",
+      "capacidade": 125,
+      "unidade": "ml"
+    },
+    {
+      "id": 87,
+      "nome": "Funil sinterizado",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 88,
+      "nome": "Funil sinterizado",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 89,
+      "nome": "Funil sinterizado",
+      "capacidade": 30,
+      "unidade": "ml"
+    },
+    {
+      "id": 90,
+      "nome": "Junta conectante 24/40 Adaptadora"
+    },
+    {
+      "id": 91,
+      "nome": "Junta conectante 24/40 Para vácuo"
+    },
+    {
+      "id": 92,
+      "nome": "Junta conectante 24/40 Paralela"
+    },
+    {
+      "id": 93,
+      "nome": "Kitasssato",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 94,
+      "nome": "Kitasssato",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 95,
+      "nome": "Kitasssato",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 96,
+      "nome": "Papel de Filtro Quantitativo",
+      "capacidade": 12.5,
+      "unidade": "cm"
+    },
+    {
+      "id": 97,
+      "nome": "Papel de Filtro Quantitativo",
+      "capacidade": 9.0,
+      "unidade": "cm"
+    },
+    {
+      "id": 98,
+      "nome": "Papel de Filtro Quantitativo",
+      "capacidade": 12.5,
+      "unidade": "cm"
+    },
+    {
+      "id": 99,
+      "nome": "Papel de Filtro Quantitativo",
+      "capacidade": 11.0,
+      "unidade": "cm"
+    },
+    {
+      "id": 100,
+      "nome": "Papel de Filtro Quantitativo",
+      "capacidade": 11.5,
+      "unidade": "cm"
+    },
+    {
+      "id": 101,
+      "nome": "Papel de Filtro Qualitativo"
+    },
+    {
+      "id": 102,
+      "nome": "Picnômetro",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 103,
+      "nome": "Picnômetro",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 104,
+      "nome": "Pipeta graduada",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 105,
+      "nome": "Pipeta graduada",
+      "capacidade": 20,
+      "unidade": "ml"
+    },
+    {
+      "id": 106,
+      "nome": "Pipeta graduada",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 107,
+      "nome": "Pipeta graduada",
+      "capacidade": 5,
+      "unidade": "ml"
+    },
+    {
+      "id": 108,
+      "nome": "Pipeta graduada",
+      "capacidade": 2,
+      "unidade": "ml"
+    },
+    {
+      "id": 109,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 110,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 20,
+      "unidade": "ml"
+    },
+    {
+      "id": 111,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 15,
+      "unidade": "ml"
+    },
+    {
+      "id": 112,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 113,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 5,
+      "unidade": "ml"
+    },
+    {
+      "id": 114,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 2,
+      "unidade": "ml"
+    },
+    {
+      "id": 115,
+      "nome": "Pistilo Cerâmica"
+    },
+    {
+      "id": 116,
+      "nome": "Pistilo Madeira"
+    },
+    {
+      "id": 117,
+      "nome": "Pistilo Vidro"
+    },
+    {
+      "id": 118,
+      "nome": "Placa de Petri",
+      "capacidade": 10.0,
+      "unidade": "cm"
+    },
+    {
+      "id": 119,
+      "nome": "Placa de Petri",
+      "capacidade": 9.2,
+      "unidade": "cm"
+    },
+    {
+      "id": 120,
+      "nome": "Placa de Petri",
+      "capacidade": 9.5,
+      "unidade": "cm"
+    },
+    {
+      "id": 121,
+      "nome": "Placa de Petri",
+      "capacidade": 6.0,
+      "unidade": "cm"
+    },
+    {
+      "id": 122,
+      "nome": "Proveta graduada de plástico",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 123,
+      "nome": "Proveta graduada de plástico",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 124,
+      "nome": "Proveta graduada de plástico",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 125,
+      "nome": "Proveta graduada de plástico",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 126,
+      "nome": "Proveta graduada de plástico",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 127,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 128,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 129,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 130,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 131,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 132,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 133,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 134,
+      "nome": "Proveta graduada de vidro com rolha",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 135,
+      "nome": "Proveta graduada de vidro com rolha",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 136,
+      "nome": "Seringa Plástico",
+      "capacidade": 20,
+      "unidade": "ml"
+    },
+    {
+      "id": 137,
+      "nome": "Seringa Vidro",
+      "capacidade": 20,
+      "unidade": "ml"
+    },
+    {
+      "id": 138,
+      "nome": "Soxhlet Condensador"
+    },
+    {
+      "id": 139,
+      "nome": "Soxhlet Corneta"
+    },
+    {
+      "id": 140,
+      "nome": "Suporte universal"
+    },
+    {
+      "id": 141,
+      "nome": "Tela de amianto"
+    },
+    {
+      "id": 142,
+      "nome": "Termômetro Digital"
+    },
+    {
+      "id": 143,
+      "nome": "Termômetro Mercúrio"
+    },
+    {
+      "id": 144,
+      "nome": "Termômetro Químico"
+    },
+    {
+      "id": 145,
+      "nome": "Triângulo de porcelana"
+    },
+    {
+      "id": 146,
+      "nome": "Tripé"
+    },
+    {
+      "id": 147,
+      "nome": "Tubo de ensaio",
+      "capacidade": "14x120",
+      "unidade": "mm"
+    },
+    {
+      "id": 148,
+      "nome": "Tubo de ensaio",
+      "capacidade": "15x175",
+      "unidade": "mm"
+    },
+    {
+      "id": 149,
+      "nome": "Tubo de ensaio",
+      "capacidade": "22x295",
+      "unidade": "mm"
+    },
+    {
+      "id": 150,
+      "nome": "Tubo de ensaio com tampa",
+      "capacidade": "10x95",
+      "unidade": "mm"
+    },
+    {
+      "id": 151,
+      "nome": "Tubo de ensaio com tampa",
+      "capacidade": "10x145",
+      "unidade": "mm"
+    },
+    {
+      "id": 152,
+      "nome": "Tubo de ensaio com tampa",
+      "capacidade": "15x145",
+      "unidade": "mm"
+    },
+    {
+      "id": 153,
+      "nome": "Tubo de ensaio com tampa",
+      "capacidade": "15x195",
+      "unidade": "mm"
+    },
+    {
+      "id": 154,
+      "nome": "Tubo de centrífuga",
+      "capacidade": "15x125",
+      "unidade": "mm"
+    },
+    {
+      "id": 155,
+      "nome": "Tubo de centrífuga graduado",
+      "capacidade": 15,
+      "unidade": "ml"
+    },
+    {
+      "id": 156,
+      "nome": "Tubo de destilação"
+    },
+    {
+      "id": 157,
+      "nome": "Tubo Falcon",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 158,
+      "nome": "Tubo Falcon",
+      "capacidade": 15,
+      "unidade": "ml"
+    },
+    {
+      "id": 159,
+      "nome": "Tubo de ligação T"
+    },
+    {
+      "id": 160,
+      "nome": "Tubo de ligação V"
+    },
+    {
+      "id": 161,
+      "nome": "Tubo de ligação Y"
+    },
+    {
+      "id": 162,
+      "nome": "Tubo de ligação em U com saída"
+    },
+    {
+      "id": 163,
+      "nome": "Tubo de ligação em U sem saída"
+    },
+    {
+      "id": 164,
+      "nome": "Tubo Nessler"
+    },
+    {
+      "id": 165,
+      "nome": "Vidro de relógio",
+      "capacidade": 4.8,
+      "unidade": "cm"
+    },
+    {
+      "id": 166,
+      "nome": "Vidro de relógio",
+      "capacidade": 5.0,
+      "unidade": "cm"
+    },
+    {
+      "id": 167,
+      "nome": "Vidro de relógio",
+      "capacidade": 8.0,
+      "unidade": "cm"
+    },
+    {
+      "id": 168,
+      "nome": "Vidro de relógio",
+      "capacidade": 8.8,
+      "unidade": "cm"
+    },
+    {
+      "id": 169,
+      "nome": "Vidro de relógio",
+      "capacidade": 11.0,
+      "unidade": "cm"
+    },
+    {
+      "id": 170,
+      "nome": "Bagueta de vidro"
+    },
+    {
+      "id": 171,
+      "nome": "Papel de filtro azul",
+      "capacidade": 12.5,
+      "unidade": "cm"
+    },
+    {
+      "id": 172,
+      "nome": "Papel de filtro branco",
+      "capacidade": 12.5,
+      "unidade": "cm"
+    },
+    {
+      "id": 173,
+      "nome": "Papel de filtro cinza",
+      "capacidade": 9,
+      "unidade": "cm"
+    },
+    {
+      "id": 174,
+      "nome": "Balão de fundo chato",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 175,
+      "nome": "Balão volumétrico",
+      "capacidade": 2000,
+      "unidade": "ml"
+    },
+    {
+      "id": 176,
+      "nome": "Balão volumétrico",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 177,
+      "nome": "Balão volumétrico",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 178,
+      "nome": "Balão volumétrico",
+      "capacidade": 200,
+      "unidade": "ml"
+    },
+    {
+      "id": 179,
+      "nome": "Balão volumétrico",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 180,
+      "nome": "Balão volumétrico",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 181,
+      "nome": "Balão volumétrico",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 182,
+      "nome": "Balão volumétrico",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 183,
+      "nome": "Balão volumétrico",
+      "capacidade": 5,
+      "unidade": "ml"
+    },
+    {
+      "id": 184,
+      "nome": "Pérola de vidro"
+    },
+    {
+      "id": 185,
+      "nome": "Picnômetro"
+    },
+    {
+      "id": 186,
+      "nome": "Pipetador tipo pêra"
+    },
+    {
+      "id": 187,
+      "nome": "Pipetador Pump de 25 mL",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 188,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 189,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 190,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 20,
+      "unidade": "ml"
+    },
+    {
+      "id": 191,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 192,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 5,
+      "unidade": "ml"
+    },
+    {
+      "id": 193,
+      "nome": "Pipeta volumétrica",
+      "capacidade": 2,
+      "unidade": "ml"
+    },
+    {
+      "id": 194,
+      "nome": "Béquer de plástico",
+      "capacidade": 2000,
+      "unidade": "ml"
+    },
+    {
+      "id": 195,
+      "nome": "Béquer de plástico",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 196,
+      "nome": "Béquer de plástico",
+      "capacidade": 600,
+      "unidade": "ml"
+    },
+    {
+      "id": 197,
+      "nome": "Béquer de plástico",
+      "capacidade": 400,
+      "unidade": "ml"
+    },
+    {
+      "id": 198,
+      "nome": "Béquer de vidro",
+      "capacidade": 2000,
+      "unidade": "ml"
+    },
+    {
+      "id": 199,
+      "nome": "Béquer de vidro",
+      "capacidade": 600,
+      "unidade": "ml"
+    },
+    {
+      "id": 200,
+      "nome": "Béquer de vidro",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 201,
+      "nome": "Béquer de vidro",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 202,
+      "nome": "Béquer de vidro",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 203,
+      "nome": "Béquer de vidro",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 204,
+      "nome": "Béquer de vidro",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 205,
+      "nome": "Béquer de vidro",
+      "capacidade": 5,
+      "unidade": "ml"
+    },
+    {
+      "id": 206,
+      "nome": "Pipeta graduada",
+      "capacidade": 2,
+      "unidade": "ml"
+    },
+    {
+      "id": 207,
+      "nome": "Placa de Petri"
+    },
+    {
+      "id": 208,
+      "nome": "Placa de dessecador",
+      "capacidade": 14,
+      "unidade": "cm"
+    },
+    {
+      "id": 209,
+      "nome": "Placa de dessecador",
+      "capacidade": 18,
+      "unidade": "cm"
+    },
+    {
+      "id": 210,
+      "nome": "Placa de dessecador",
+      "capacidade": 23,
+      "unidade": "cm"
+    },
+    {
+      "id": 211,
+      "nome": "Bico de Bunsen"
+    },
+    {
+      "id": 212,
+      "nome": "Bureta (saída lateral)",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 213,
+      "nome": "Bureta",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 214,
+      "nome": "ProvetaS graduadaS de plástico",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 215,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 1000,
+      "unidade": "ml"
+    },
+    {
+      "id": 216,
+      "nome": "Proveta graduada de vidro (com tampa)",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 217,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 100,
+      "unidade": "ml"
+    },
+    {
+      "id": 218,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 50,
+      "unidade": "ml"
+    },
+    {
+      "id": 219,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 25,
+      "unidade": "ml"
+    },
+    {
+      "id": 220,
+      "nome": "Proveta graduada de vidro",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 221,
+      "nome": "Cadinho Grooch",
+      "capacidade": 10,
+      "unidade": "ml"
+    },
+    {
+      "id": 222,
+      "nome": "Cadinho porcelana"
+    },
+    {
+      "id": 223,
+      "nome": "Cadinho vidro com placa porosa"
+    },
+    {
+      "id": 224,
+      "nome": "Cápsula de porcelana"
+    },
+    {
+      "id": 225,
+      "nome": "Tela de amianto"
+    },
+    {
+      "id": 226,
+      "nome": "Copo graduado",
+      "capacidade": 500,
+      "unidade": "ml"
+    },
+    {
+      "id": 227,
+      "nome": "Copo graduado",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 228,
+      "nome": "Copo graduado",
+      "capacidade": 60,
+      "unidade": "ml"
+    },
+    {
+      "id": 229,
+      "nome": "Tubo de cultura",
+      "capacidade": "16x400",
+      "unidade": "mm"
+    },
+    {
+      "id": 230,
+      "nome": "Tubo de cultura",
+      "capacidade": "20x200",
+      "unidade": "mm"
+    },
+    {
+      "id": 231,
+      "nome": "Tubo de cultura",
+      "capacidade": "25x150",
+      "unidade": "mm"
+    },
+    {
+      "id": 232,
+      "nome": "Tubo de cultura",
+      "capacidade": "25x200",
+      "unidade": "mm"
+    },
+    {
+      "id": 233,
+      "nome": "Erlenmeyer de boca larga",
+      "capacidade": 250,
+      "unidade": "ml"
+    },
+    {
+      "id": 234,
+      "nome": "Tubo Falcon"
+    },
+    {
+      "id": 235,
+      "nome": "Escova de limpeza (Grandes)"
+    },
+    {
+      "id": 236,
+      "nome": "Fita de pH",
+      "capacidade": 1,
+      "unidade": "caixa"
+    },
+    {
+      "id": 237,
+      "nome": "Vidro de relógio",
+      "capacidade": 140,
+      "unidade": "mm"
+    },
+    {
+      "id": 238,
+      "nome": "Vidro de relógio",
+      "capacidade": 110,
+      "unidade": "mm"
+    },
+    {
+      "id": 239,
+      "nome": "Vidro de relógio",
+      "capacidade": 100,
+      "unidade": "mm"
+    },
+    {
+      "id": 240,
+      "nome": "Vidro de relógio",
+      "capacidade": 80,
+      "unidade": "mm"
+    },
+    {
+      "id": 241,
+      "nome": "Vidro de relógio",
+      "capacidade": 70,
+      "unidade": "mm"
+    },
+    {
+      "id": 242,
+      "nome": "Vidro de relógio",
+      "capacidade": 50,
+      "unidade": "mm"
+    },
+    {
+      "id": 243,
+      "nome": "Funil de Büchner grande"
+    },
+    {
+      "id": 244,
+      "nome": "Funil de Büchner pequeno"
+    },
+    {
+      "id": 245,
+      "nome": "Frasco Saybolt",
+      "capacidade": 60,
+      "unidade": "ml"
+    },
+    {
+      "id": 246,
+      "nome": "Termômetro Digital"
+    },
+    {
+      "id": 247,
+      "nome": "Termômetro Químico"
+    },
+    {
+      "id": 248,
+      "nome": "Junta conectante adaptadora",
+      "capacidade": "24/40",
+      "unidade": ""
+    },
+    {
+      "id": 249,
+      "nome": "Garra para bureta unitária"
+    },
+    {
+      "id": 250,
+      "nome": "Garra para bureta dupla"
+    }
+  ]

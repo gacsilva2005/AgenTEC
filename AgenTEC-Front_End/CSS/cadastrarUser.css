@@ -1,0 +1,546 @@
+/* CSS Reset e Estilos Globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif !important;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.govsp-topo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd; 
+}
+
+.govsp-portal img {
+    height: 10px;  
+    width: 200px;  
+    display: flex; 
+}
+
+.govsp-portal {
+    background-color: #000; 
+    padding: 8px 25px 8px 15px; 
+    border-radius: 0 50px 50px 0; 
+}
+
+.govsp-topo .govsp-portal img {
+    height: 38px;
+}
+
+.govsp-topo .govsp-navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.govsp-navbar :hover {
+    transform: translate(0.2px, 0.2px);
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}       
+
+
+.govsp-topo .govsp-navbar img {
+    height: 23px;;
+}
+
+.govsp-topo .govsp-social {
+    display: inline-block;
+}
+
+#cps-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+.cps-header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cps-header__logo img {
+    max-height: 50px;
+}
+
+.form-pesquisa {
+    display: flex; 
+    align-items: center; 
+    border: 1px solid #ccc; 
+    border-radius: 50px; 
+    overflow: hidden; 
+    max-width: 400px; 
+    background-color: white;
+}
+
+.campo-de-busca {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    padding: 15px 50px; 
+    font-size: 1rem; 
+    background-color: transparent; 
+}
+
+.campo-de-busca::placeholder {
+    color: #999; 
+}
+
+.busca-submit {
+    border: none; 
+    border-left: 1px solid #ccc; 
+    background-color: transparent; 
+    padding: 10px 18px; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.busca-submit .fa-search {
+    color: #b20000; 
+    font-size: 1.1rem; 
+}
+
+.busca-submit:hover {
+    background-color: #f5f5f5; 
+}
+
+.main-menu-container {
+    background-color: #c41e15; 
+    padding: 0 20px;
+}
+
+.main-menu-container .menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main-menu-container .menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.main-menu-container .menu li a:hover {
+    background-color: #831c16ef; 
+}
+
+#breadcrumb {
+    background-color: #666666;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 200;
+}
+
+.breadcrumb-container a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: var(--hoverCian-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.title-underline {
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--huge: 42px;
+    --progress-bar-width: 200px;
+    --progress-bar-height: 200px;
+    --font-size: 25px;
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    font-family: Roboto, Arial, sans-sreif;
+    color: #333;
+    font-weight: 300;
+    line-height: 2.5rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.container-central {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-container {
+    background-color: #f9f9f9;
+    padding: 30px 40px; /* Increased padding to give more space on sides */
+    border-radius: 8px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 
+                10px 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    padding: 0 5px;
+    color: #666;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+:root{
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #b20000;
+    --secondary-red: #ff2020;
+    --hoverSecRed-color: #e70000;
+    --hoverRed-color: #831c16ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+    --event-panel-bg: #f8f9fa;
+    --day-selected: #e70000d7;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    border: solid 1px #ccc;
+    background-color: white;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input::-ms-reveal,
+.input-group input::-ms-clear {
+    filter: invert(100%); 
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: 0;
+    transform: translateY(-50%) scale(0.9);
+    background-color: #f9f9f9;
+    color: #b20000;
+    font-size: 0.8rem;
+}
+
+.input-group input:hover {
+    border-color: #b20000;
+}
+
+.input-group input:focus {
+    border-color: #b20000;  
+}
+
+.function-selector{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.function-selector .function-title {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.custom-select{
+    display: flex;
+    text-decoration: none;
+    color: var(--dark);
+    gap: 30px;
+}
+
+.custom-select a {
+    display: flex;
+    text-align: center;
+    align-items: center; 
+    justify-content: center;  
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    min-width: 100px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: var(--dark);
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.custom-select a:hover {
+    background-color: var(--hoverCian-color);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.custom-select a:active {
+    transform: translateY(1px);
+}
+
+.custom-select a {
+    background-color: var(--light-gray);
+    border: 1px solid var(--light-gray);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.custom-select .selected{
+    border: 1px solid var(--hoverCian-color);
+    background-color: var(--hoverCian-color);
+}
+
+.form-container .button-container {
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.voltar-button{
+    text-decoration: none;
+}
+
+.submit-button, .voltar-button {
+    min-width: 100px;
+    text-align: center;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover, .voltar-button:hover{
+    background-color: var(--hoverCian-color);
+    transform: translateY(-3px);
+}
+
+.submit-button:active, .voltar-button:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 768px) {
+    .cps-header__container {
+        flex-direction: column;
+    }
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+    }
+}
+
+.logo-container {
+    display: flex;          
+    align-items: center;    
+    gap: 40 px;              
+}
+
+.logo-container img {
+    height: 80px; 
+    width: auto;     
+}
+
+.logo-cps {
+    height: 70px; 
+}
+
+/* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
+
+/* Contêiner principal da navegação */
+.govsp-navbar {
+    display: flex; /* Alinha todos os itens na horizontal */
+    align-items: center; /* Centraliza os itens verticalmente */
+    padding: 10px;
+}
+
+/* Estilo para todos os links (que servem como 'caixa' para os ícones) */
+.govsp-navbar a {
+    display: inline-flex; /* Permite centralizar o ícone dentro do link */
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Largura da caixa */
+    height: 28px; /* Altura da caixa */
+    background-color: #ffffff; /* Fundo cinza claro */
+    margin: -3px; /* Espaçamento entre os ícones */
+    border-radius: 3px; /* Bordas levemente arredondadas */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+/* Estilo para os ícones (<i>) dentro dos links */
+.govsp-navbar a i {
+    color: #ffffff; /* Cor cinza escura para o ícone */
+    font-size: 1.2rem; /* Tamanho do ícone */
+}
+
+/* Estilo para o texto "/governosp" */
+.govsp-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0px; /* Espaçamento antes e depois do texto */
+}
+
+/* Estilo para a linha separadora */
+.separator {
+    height: 25px; /* Altura da linha */
+    border-left: 1px solid #ccc; /* Cria a linha vertical */
+    margin: 0 10px; /* Espaçamento antes e depois da linha */
+}
+
+/* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
+
+/* Garante que o item principal do menu seja posicionado corretamente */
+.menu li.dropdown {
+    position: relative;
+}
+
+/* Esconde o submenu por padrão */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    /* margin-top: 10px; FOI REMOVIDO PARA CORRIGIR O PROBLEMA DE FECHAMENTO */
+    border-top: 3px solid #b20000;
+}
+
+/* Estilo dos links dentro do submenu */
+/* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
+.main-menu-container .menu .dropdown-content li a {
+    color: #555; /* Define a cor escura para o texto */
+    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
+    padding: 12px 16px;
+    text-align: left;
+    /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
+    background-color: transparent; 
+}
+
+/* Efeito de hover nos links do submenu */
+.main-menu-container .menu .dropdown-content li a:hover {
+    background-color: #f1f1f1;
+    color: #b20000;
+}
+
+/* Mostra o submenu quando o mouse passa por cima do item principal */
+.menu li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para a setinha */
+.dropdown a .fa-chevron-down {
+    font-size: 0.7em;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Gira a setinha para cima quando o menu está aberto */
+.menu li.dropdown:hover a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
+
+.notification {
+    position: fixed; /* Fica fixo na tela mesmo com scroll */
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; /* Verde para sucesso */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+    z-index: 1000; /* Garante que fique por cima de outros elementos */
+
+    /* Animação */
+    transform: translateX(120%); /* Começa fora da tela */
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Classe que será adicionada via JS para mostrar a notificação */
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification i {
+    font-size: 1.4rem;
+}

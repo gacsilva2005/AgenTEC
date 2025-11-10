@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Vidrarias - Agendamento</title>
+
+    <link rel="stylesheet" href="../../CSS/adicionar_vidrarias.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <div class="fb_reset" id="fb-root">
+        <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
+            <div></div>
+        </div>
+    </div>
+    <script async="" crossorigin="anonymous" defer=""
+        src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&amp;version=v5.0"></script>
+    <div class="site" id="page">
+        <section class="govsp-topo">
+            <link
+                href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/topo-padrao-govsp.min.css"
+                rel="stylesheet" type="text/css" />
+            <link
+                href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/barra-contraste-govsp.min.css"
+                rel="stylesheet" type="text/css" />
+            <div class="blu-e" id="govsp-topbarGlobal">
+                <div id="topbarGlobal">
+                    <div class="govsp-black" id="topbarLink">
+                        <div class="govsp-portal">
+                            <a href="http://www.saopaulo.sp.gov.br/" target="_blank">
+                                <img alt="Governo do Estado de São Paulo" class="logo" height="38"
+                                    src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-governo-do-estado-sp.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <nav class="govsp-navbar govsp-navbar-expand-lg">
+                        <a class="govsp-social" href="https://www.flickr.com/governosp/" target="_blank">
+                            <img alt="Flickr Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-flickr.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.linkedin.com/company/governosp/" target="_blank">
+                            <img alt="Linkedin Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-linkedin.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.tiktok.com/@governosp" target="_blank">
+                            <img alt="TikTok Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-tiktok.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.youtube.com/governosp/" target="_blank">
+                            <img alt="Youtube Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-youtube.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.twitter.com/governosp/" target="_blank">
+                            <img alt="Facebook Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-twitter.png" />
+                        </a>
+                        <a class="govsp-social" href="https://www.instagram.com/governosp/" target="_blank">
+                            <img alt="Instagram Governo de São Paulo" class="govsp-icon-social"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-insta.png" />
+                        </a>
+                        <p class="govsp-social" style="min-height:auto;">/governosp</p>
+                        <div id="separador-nav"></div>
+                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', 1);">
+                            <img alt="Aumentar Fonte" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-big-font.png" />
+                        </a>
+                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', -1);">
+                            <img alt="Diminuir Fonte" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-small-font.png" />
+                        </a>
+                        <a accesskey="3" class="govsp-acessibilidade" href="#" id="altocontraste"
+                            onclick="window.toggleContrast()" onkeydown="window.toggleContrast()">
+                            <img alt="Contraste" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-contrast.png" />
+                        </a>
+                        <a class="govsp-acessibilidade"
+                            href="http://www.saopaulo.sp.gov.br/fale-conosco/comunicar-erros/" target="_blank"
+                            title="Comunicar Erros">
+                            <img class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-error-report.png" />
+                        </a>
+                    </nav>
+                </div>
+                </nav>
+        </section>
+
+        <header id="cps-header">
+            <div class="cps-header__container">
+                <div class="logo-container">
+                    <a href="../index.html">
+                        <img src="../../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
+                    </a>
+                    <a href="https://www.cps.sp.gov.br/" target="_blank">
+                        <img src="../../Assets/etec.png" alt="Logo Centro Paula Souza" class="logo-cps">
+                    </a>
+                </div>
+                <form action="#" class="form-pesquisa" method="get" role="search">
+                    <input id="campo-busca" class="campo-de-busca" name="s" placeholder="O que deseja localizar?"
+                        type="search">
+                    <button class="busca-submit" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </header>
+
+        <nav class="main-menu-container" role="navigation">
+            <ul class="menu">
+                <li><a href="../index.html">Home</a></li>
+                <li class="dropdown">
+                    <a>Institucional <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/conselho-de-escola/">Conselho de
+                                escola</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/planos/">Planos de curso</a>
+                        </li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/quem-somos/">Quem Somos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Inst. Auxiliares <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/apm/">APM</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/gremio-estudantil/">Grêmio
+                                Estudantil</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/cursos">Cursos</a></li>
+                <li class="dropdown">
+                    <a href="#">Alunos <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/acesso-ao-microsoft-teams/">Acesso ao
+                                Microsoft Teams</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/acesso-ao-nsa-sistema-academico/">Acesso
+                                ao NSA (Sistema Acadêmico)</a></li>
+                        <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2025/01/Calendario2025.pdf"
+                                target="_blank">Calendário Escolar</a></li>
+                        <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/09/Cartilha-COPAMS.pdf"
+                                target="_blank">Cartilha: Assédio moral, virtual e sexual</a></li>
+                        <li><a
+                                href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/e-mail-institucional-sysmail-projeto-office-365/">E-mail
+                                institucional – Sysmail</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/estagio/">Estágio e
+                                Aprendizagem</a>
+                        </li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/horario-das-aulas/">Horário das
+                                aulas</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/passe-escolar/">Passe Escolar</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/primeiros-passos/">Primeiros
+                                Passos</a></li>
+                        <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/10/Regimento_Comum_Deliberacao_CEETEPS-85_2022-07-23.pdf"
+                                target="_blank">Regimento Comum</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/secretaria-academica/">Secretaria
+                                acadêmica</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/soe/">SOE</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Professores <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/143/2024/08/copams.pdf"
+                                target="_blank">Cartilha: Assédio Moral, Virtual e Sexual</a></li>
+                        <li><a href="#">CPS – Cetec Capacitações</a></li>
+                        <li><a href="https://www.e-folha.prodesp.sp.gov.br/desc_dempagto/Entrada.asp?cliente=092"
+                                target="_blank">E-folha – Prodesp</a></li>
+                        <li><a href="https://nsa.cps.sp.gov.br/frmesenha.aspx" target="_blank">Esqueci a senha – NSA</a>
+                        </li>
+                        <li><a href="https://recad.sp.gov.br/" target="_blank">Recadastramento Anual</a></li>
+                        <li><a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBa3k4ejZYOS1GWTRnUllDaFhEbzNSM1I4alRk&cid=3856F8FDA5CFBC4C&id=3856F8FDA5CFBC4C%21150&parId=3856F8FDA5CFBC4C%21129&o=OneUp"
+                                target="_blank">Regimento Disciplinar</a></li>
+                        <li><a href="https://sigurh.cps.sp.gov.br/" target="_blank">SIGURH – CPS</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Biblioteca <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://biblioteca-laura-dias-de-camargo-etec-julio-de-mesquita.webnode.page/"
+                                target="_blank">Nossa Biblioteca</a></li>
+                        <li><a href="https://biblio.cps.sp.gov.br/" target="_blank">BiblioCPS</a></li>
+                        <li><a href="https://onedrive.live.com/edit.aspx?resid=3856F8FDA5CFBC4C!507&embed=1&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3QvYy8zODU2RjhGREE1Q0ZCQzRDL1VBUk12TS1sX2ZoV0lJQTQtd0VBQUFBQUFGZTdYcGxkbEhqdUlMOA&redeemstatus=true&authkey=!AFe7XpldlHjuIL8"
+                                target="_blank">Lista de Gibis</a></li>
+                        <li><a href="https://onedrive.live.com/edit.aspx?resid=3856F8FDA5CFBC4C!508&embed=1&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3QvYy8zODU2RjhGREE1Q0ZCQzRDL1VBUk12TS1sX2ZoV0lJQTRfQUVBQUFBQUFHZ2plTVVvZHFqcl9NOA&redeemstatus=true&authkey=!AGgjeMUodqjr_M8"
+                                target="_blank">Lista de Mídias</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/lista-de-revistas/">Lista
+                                de
+                                Revistas</a></li>
+                        <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/pagina-exemplo-2/orientacoes-tcc/">Orientações
+                                para TCC</a></li>
+                        <li><a href="https://onedrive.live.com/embed?cid=3856F8FDA5CFBC4C&resid=3856F8FDA5CFBC4C%211231&authkey=AMI0IF64eKLGYCs&em=2"
+                                target="_blank">Estatística de uso do acervo da biblioteca</a></li>
+                        <li><a href="https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBa3k4ejZYOS1GWTRnMnBBN0NyUG95S1dHZF94&cid=3856F8FDA5CFBC4C&id=3856F8FDA5CFBC4C%21490&parId=3856F8FDA5CFBC4C%21485&o=OneUp"
+                                target="_blank">Política de Desenvolvimento de Acervo</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
+                <li><a href="../login.html">Agendamentos</a></li>
+            </ul>
+        </nav>
+
+        <div id="breadcrumb">
+            <div class="breadcrumb-container">
+                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/
+                    <a href="administradores.html"> Administradores </a> / <a href="atualizar_vidrarias.html"> Atualizar
+                        vidrarias</a> / Adicionar vidrarias</span>
+            </div>
+        </div>
+
+        <main class="main-content">
+
+            <h1 class="page-title">Adicionar vidrarias</h1>
+            <div class="title-underline"></div>
+
+            <div class="form-section">
+                <h2>Cadastrar Nova Vidraria</h2>
+                <div class="form-container">
+                    <div class="input-group">
+                        <label for="nome_vidraria">Nome da vidraria</label>
+                        <input type="text" id="nome_vidraria" name="nome_vidraria" placeholder="Ex: Béquer 250ml">
+                        <span class="error-message" id="nome-error"></span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="tipo_vidraria">Tipo da Vidraria</label>
+                        <input type="text" id="tipo_vidraria" name="tipo_vidraria" placeholder="Ex: Béquer, Balão, Pipeta">
+                        <span class="error-message" id="tipo-error"></span>
+                    </div>
+                    <div class="quantity-group">
+                        <label for="quantity">Quantidade em estoque</label>
+                        <div class="stepper-container">
+                            <div class="quantity-stepper">
+                                <button type="button" class="quantity-btn btn-minus"
+                                    aria-label="Diminuir quantidade">-</button>
+                                <input type="text" id="quantity" name="quantity" value="0" readonly>
+                                <button type="button" class="quantity-btn btn-plus"
+                                    aria-label="Aumentar quantidade">+</button>
+                            </div>
+                            <button type="button" class="btn-confirm-small" aria-label="Confirmar Vidraria">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </div>
+                        <span class="error-message" id="quantity-error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="tabela-vidrarias-container" id="tabela-vidrarias-container" style="display: none;">
+                <h2>Vidrarias Adicionadas</h2>
+                <table class="tabela-vidrarias">
+                    <thead>
+                        <tr>
+                            <th>Nome da Vidraria</th>
+                            <th>Quantidade</th>
+                            <th>Ação</th> 
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-vidrarias-body">
+                        </tbody>
+                </table>
+            </div>
+            <div class="action-buttons-container">
+                    <a href="atualizar_vidrarias.html"><button class="action-btn btn-primary">voltar</button></a>
+                    
+                    <a href="administradores.html"><button class="action-btn btn-primary">menu</button></a>
+                    
+                    <button id="btn-confirmar" class="action-btn btn-primary">confirmar</button>
+            </div>
+            
+            <div class="notification" id="notification-success">
+                <i class="fas fa-check-circle"></i>
+                <span>Operação realizada com sucesso!</span>
+            </div>
+            </main>
+
+        <script src="../../JS (Front-End)/adicionar_vidraria.js"></script> 
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+    </body>
+
+</html>

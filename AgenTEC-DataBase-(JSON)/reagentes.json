@@ -1,0 +1,1864 @@
+[
+    {
+      "ID": 1,
+      "nome": "1,10 Fenantrolina monohidratada",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 29,
+      "unidade": "g"
+    },
+    {
+      "ID": 2,
+      "nome": "1,10 Phenathrolinium",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 45,
+      "unidade": "g"
+    },
+    {
+      "ID": 3,
+      "nome": "2-Naftol",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 20,
+      "unidade": "g"
+    },
+    {
+      "ID": 4,
+      "nome": "Acetado de Cálcio",
+      "tipo": "XX - Sais de Cálcio",
+      "quantidade": 360,
+      "unidade": "g"
+    },
+    {
+      "ID": 5,
+      "nome": "Acetato de Amônio",
+      "tipo": "VI - Sais de Amônio",
+      "quantidade": 35,
+      "unidade": "g"
+    },
+    {
+      "ID": 6,
+      "nome": "Acetato de Amônio",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 7,
+      "nome": "Acetato de Amônio Cristais",
+      "tipo": "VI - Sais de Amônio",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 8,
+      "nome": "Acetato de Amônio Cristais",
+      "tipo": "VI - Sais de Amônio",
+      "quantidade": 390,
+      "unidade": "g"
+    },
+    {
+      "ID": 9,
+      "nome": "Acetato de n-Butila",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 500,
+      "unidade": "mL"
+    },
+    {
+      "ID": 10,
+      "nome": "Acetato de Sódio Cristal",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 280,
+      "unidade": "g"
+    },
+    {
+      "ID": 11,
+      "nome": "Acetato de Zinco",
+      "tipo": "XXI - Sais de Zinco",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 12,
+      "nome": "Acetona",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 650,
+      "unidade": "mL"
+    },
+    {
+      "ID": 13,
+      "nome": "Acetona",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 3000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 14,
+      "nome": "Ácido Acético Glacial",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 400,
+      "unidade": "mL"
+    },
+    {
+      "ID": 15,
+      "nome": "Ácido Benzóico",
+      "tipo": "I - Ácidos Orgânicos",
+      "quantidade": 800,
+      "unidade": "g"
+    },
+    {
+      "ID": 16,
+      "nome": "Ácido Bórico",
+      "tipo": "I - Ácidos Orgânicos",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 17,
+      "nome": "Ácido Cítrico",
+      "tipo": "I - Ácidos Orgânicos",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 18,
+      "nome": "Ácido Clorídrico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 500,
+      "unidade": "mL"
+    },
+    {
+      "ID": 19,
+      "nome": "Ácido Clorídrico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 20,
+      "nome": "Ácido Clorídrico Concentrado",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 100,
+      "unidade": "mL"
+    },
+    {
+      "ID": 21,
+      "nome": "Ácido Cloroacético",
+      "tipo": "I - Ácidos Orgânicos",
+      "quantidade": 217,
+      "unidade": "g"
+    },
+    {
+      "ID": 22,
+      "nome": "Ácido Fosfórico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 600,
+      "unidade": "mL"
+    },
+    {
+      "ID": 23,
+      "nome": "Ácido Fosfórico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 800,
+      "unidade": "mL"
+    },
+    {
+      "ID": 24,
+      "nome": "Ácido Fosfórico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 25,
+      "nome": "Ácido Fosfórico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 200,
+      "unidade": "mL"
+    },
+    {
+      "ID": 26,
+      "nome": "Ácido Fosfórico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 450,
+      "unidade": "mL"
+    },
+    {
+      "ID": 27,
+      "nome": "Ácido Glacial Cristais",
+      "tipo": "I - Ácidos Orgânicos",
+      "quantidade": 60,
+      "unidade": "g"
+    },
+    {
+      "ID": 28,
+      "nome": "Ácido L-Ascórbico",
+      "tipo": "I - Ácidos Orgânicos",
+      "quantidade": 90,
+      "unidade": "g"
+    },
+    {
+      "ID": 29,
+      "nome": "Ácido Nítrico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 100,
+      "unidade": "mL"
+    },
+    {
+      "ID": 30,
+      "nome": "Ácido Nítrico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 31,
+      "nome": "Ácido Nítrico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 650,
+      "unidade": "mL"
+    },
+    {
+      "ID": 32,
+      "nome": "Ácido Oléico",
+      "tipo": "I - Ácidos Orgânicos",
+      "quantidade": 900,
+      "unidade": "g"
+    },
+    {
+      "ID": 33,
+      "nome": "Ácido Oxálico Desidratado",
+      "tipo": "I - Ácidos Orgânicos",
+      "quantidade": 215,
+      "unidade": "g"
+    },
+    {
+      "ID": 34,
+      "nome": "Ácido Perclórico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 700,
+      "unidade": "mL"
+    },
+    {
+      "ID": 35,
+      "nome": "Ácido Rosólico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 900,
+      "unidade": "mL"
+    },
+    {
+      "ID": 36,
+      "nome": "Ácido Salicílico",
+      "tipo": "I - Ácidos Orgânicos",
+      "quantidade": 125,
+      "unidade": "g"
+    },
+    {
+      "ID": 37,
+      "nome": "Ácido Sulfídrico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 300,
+      "unidade": "mL"
+    },
+    {
+      "ID": 38,
+      "nome": "Ácido Súlfurico",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 100,
+      "unidade": "mL"
+    },
+    {
+      "ID": 39,
+      "nome": "Ácido Súlfurico Concentrado",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 200,
+      "unidade": "mL"
+    },
+    {
+      "ID": 40,
+      "nome": "Alaranjado de Metila",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 75,
+      "unidade": "g"
+    },
+    {
+      "ID": 41,
+      "nome": "Álcool de Cereais",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 700,
+      "unidade": "mL"
+    },
+    {
+      "ID": 42,
+      "nome": "Álcool Etílico 96",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 850,
+      "unidade": "mL"
+    },
+    {
+      "ID": 43,
+      "nome": "Álcool Isopropílico",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 750,
+      "unidade": "mL"
+    },
+    {
+      "ID": 44,
+      "nome": "Álcool Isopropílico",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 3000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 45,
+      "nome": "Álcool Metílico",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 3000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 46,
+      "nome": "Alúmen de Potássio",
+      "tipo": "XVI - Sais de Potássio",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 47,
+      "nome": "Alúmen de Potássio",
+      "tipo": "XVI - Sais de Potássio",
+      "quantidade": 280,
+      "unidade": "g"
+    },
+    {
+      "ID": 48,
+      "nome": "Alumínio em Pó",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 360,
+      "unidade": "g"
+    },
+    {
+      "ID": 49,
+      "nome": "Aluminon",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 23,
+      "unidade": "g"
+    },
+    {
+      "ID": 50,
+      "nome": "Amido Solúvel",
+      "tipo": "XIII - Material Orgânico",
+      "quantidade": 130,
+      "unidade": "g"
+    },
+    {
+      "ID": 51,
+      "nome": "Amido Solúvel",
+      "tipo": "XIII - Material Orgânico",
+      "quantidade": 40,
+      "unidade": "g"
+    },
+    {
+      "ID": 52,
+      "nome": "Amido Solúvel",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 53,
+      "nome": "Amônio Oxalato",
+      "tipo": "V - Sais de Amônio",
+      "quantidade": 450,
+      "unidade": "g"
+    },
+    {
+      "ID": 54,
+      "nome": "Amostra 11A",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 90,
+      "unidade": "g"
+    },
+    {
+      "ID": 55,
+      "nome": "Amostra 12A",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 70,
+      "unidade": "g"
+    },
+    {
+      "ID": 56,
+      "nome": "Amostra 17A",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 91,
+      "unidade": "g"
+    },
+    {
+      "ID": 57,
+      "nome": "Anidrido Acético",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 1800,
+      "unidade": "mL"
+    },
+    {
+      "ID": 58,
+      "nome": "Anidrido Acético",
+      "tipo": "(A20) Ácidos",
+      "quantidade": 500,
+      "unidade": "mL"
+    },
+    {
+      "ID": 59,
+      "nome": "Azul de Bromofenol",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 58,
+      "unidade": "g"
+    },
+    {
+      "ID": 60,
+      "nome": "Azul de Bromotimol",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 121,
+      "unidade": "g"
+    },
+    {
+      "ID": 61,
+      "nome": "Azul de Metileno",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 80,
+      "unidade": "g"
+    },
+    {
+      "ID": 62,
+      "nome": "Azul de Timol",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 40,
+      "unidade": "g"
+    },
+    {
+      "ID": 63,
+      "nome": "Benzina de Petróleo",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 200,
+      "unidade": "mL"
+    },
+    {
+      "ID": 64,
+      "nome": "Benzoato de Sódio",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 65,
+      "nome": "Bicarbonato de Sódio",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 66,
+      "nome": "Biftalato de Potássio",
+      "tipo": "XV - Sais de Potássio",
+      "quantidade": 70,
+      "unidade": "g"
+    },
+    {
+      "ID": 67,
+      "nome": "Biftalato de Potássio",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 68,
+      "nome": "Borato de Sódio",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 67,
+      "unidade": "g"
+    },
+    {
+      "ID": 69,
+      "nome": "Bromato de Potássio",
+      "tipo": "XIV - Sais de Lítio / Potássio",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 70,
+      "nome": "Brometo de Potássio",
+      "tipo": "XIV - Sais de Lítio / Potássio",
+      "quantidade": 110,
+      "unidade": "g"
+    },
+    {
+      "ID": 71,
+      "nome": "Brometo de Sódio",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 350,
+      "unidade": "g"
+    },
+    {
+      "ID": 72,
+      "nome": "Cadmiumacetat",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 56,
+      "unidade": "g"
+    },
+    {
+      "ID": 73,
+      "nome": "Carbonato de Amônio",
+      "tipo": "VI - Sais de Amônio",
+      "quantidade": 296,
+      "unidade": "g"
+    },
+    {
+      "ID": 74,
+      "nome": "Carbonato de Cálcio",
+      "tipo": "XX - Sais de Cálcio",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 75,
+      "nome": "Carbonato de Cálcio",
+      "tipo": "XX - Sais de Cálcio",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 76,
+      "nome": "Carbonato de Magnésio",
+      "tipo": "XXIX - Sais de Magnésio",
+      "quantidade": 300,
+      "unidade": "g"
+    },
+    {
+      "ID": 77,
+      "nome": "Carbonato de Potássio",
+      "tipo": "XV - Sais de Potássio",
+      "quantidade": 900,
+      "unidade": "g"
+    },
+    {
+      "ID": 78,
+      "nome": "Carbonato de Sódio",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 370,
+      "unidade": "g"
+    },
+    {
+      "ID": 79,
+      "nome": "Carbonato de Sódio",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 80,
+      "nome": "Carboximetilcelulose 1",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 81,
+      "nome": "Carboximetilcelulose 2",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 82,
+      "nome": "Celite 545",
+      "tipo": "IV - Utilitários",
+      "quantidade": 120,
+      "unidade": "g"
+    },
+    {
+      "ID": 83,
+      "nome": "Citrato de Sódio",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 365,
+      "unidade": "g"
+    },
+    {
+      "ID": 84,
+      "nome": "Cloreto de Alúminio",
+      "tipo": "XIX - Sais de Bário de Alúminio",
+      "quantidade": 800,
+      "unidade": "g"
+    },
+    {
+      "ID": 85,
+      "nome": "Cloreto de Amônio",
+      "tipo": "VII - Sais de Amônio",
+      "quantidade": 420,
+      "unidade": "g"
+    },
+    {
+      "ID": 86,
+      "nome": "Cloreto de Bário",
+      "tipo": "XIX - Sais de Bário de Alúminio",
+      "quantidade": 600,
+      "unidade": "g"
+    },
+    {
+      "ID": 87,
+      "nome": "Cloreto de Cálcio",
+      "tipo": "XX - Sais de Cálcio",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 88,
+      "nome": "Cloreto de Cálcio Anidro",
+      "tipo": "XX - Sais de Cálcio",
+      "quantidade": 32,
+      "unidade": "g"
+    },
+    {
+      "ID": 89,
+      "nome": "Cloreto de Cobalto (oso)",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 32,
+      "unidade": "g"
+    },
+    {
+      "ID": 90,
+      "nome": "Cloreto de Cobalto II",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 91,
+      "nome": "Cloreto de Cromo",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 6,
+      "unidade": "g"
+    },
+    {
+      "ID": 92,
+      "nome": "Cloreto de Cromo III",
+      "tipo": "XXI - Sais de Zinco",
+      "quantidade": 124,
+      "unidade": "g"
+    },
+    {
+      "ID": 93,
+      "nome": "Cloreto de Cromo III (rec)",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 26,
+      "unidade": "g"
+    },
+    {
+      "ID": 94,
+      "nome": "Cloreto de Estanho",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 95,
+      "nome": "Cloreto de Estrôncio",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 30,
+      "unidade": "g"
+    },
+    {
+      "ID": 96,
+      "nome": "Cloreto de Ferro III",
+      "tipo": "XXIII - Sais de Ferro",
+      "quantidade": 260,
+      "unidade": "g"
+    },
+    {
+      "ID": 97,
+      "nome": "Cloreto de Lítio",
+      "tipo": "XIV - Sais de Lítio / Potássio",
+      "quantidade": 80,
+      "unidade": "g"
+    },
+    {
+      "ID": 98,
+      "nome": "Cloreto de Lítio",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 500,
+      "unidade": "mL"
+    },
+    {
+      "ID": 99,
+      "nome": "Cloreto de Magnésio",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 100,
+      "nome": "Cloreto de Magnésio P.A",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 101,
+      "nome": "Cloreto de Manganês",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 102,
+      "nome": "Cloreto de Mercúrio",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 45,
+      "unidade": "g"
+    },
+    {
+      "ID": 103,
+      "nome": "Cloreto de Níquel (oso)",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 155,
+      "unidade": "g"
+    },
+    {
+      "ID": 104,
+      "nome": "Cloreto de Potássio",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 105,
+      "nome": "Cloreto de Sódio",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 20,
+      "unidade": "g"
+    },
+    {
+      "ID": 106,
+      "nome": "Cloreto de Sódio",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 20,
+      "unidade": "g"
+    },
+    {
+      "ID": 107,
+      "nome": "Cloreto de Sódio",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 40,
+      "unidade": "g"
+    },
+    {
+      "ID": 108,
+      "nome": "Cloreto de Sódio",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 700,
+      "unidade": "g"
+    },
+    {
+      "ID": 109,
+      "nome": "Cloreto de Sódio Industrial",
+      "tipo": "XXV - Sais de Sódio",
+      "quantidade": 165,
+      "unidade": "g"
+    },
+    {
+      "ID": 110,
+      "nome": "Cloreto Férrico Anidro",
+      "tipo": "XXIII - Sais de Ferro",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 111,
+      "nome": "Cloreto Férrico Anidro",
+      "tipo": "XXIII - Sais de Ferro",
+      "quantidade": 40,
+      "unidade": "g"
+    },
+    {
+      "ID": 112,
+      "nome": "Cloreto Férrico Anidro",
+      "tipo": "XXIII - Sais de Ferro",
+      "quantidade": 35,
+      "unidade": "g"
+    },
+    {
+      "ID": 113,
+      "nome": "Cloridrato de Hidroxilamina",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 8,
+      "unidade": "g"
+    },
+    {
+      "ID": 114,
+      "nome": "Clorofórmio Recuperado",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 300,
+      "unidade": "mL"
+    },
+    {
+      "ID": 115,
+      "nome": "Cobre em Pó",
+      "tipo": "X - Elementos Metálicos",
+      "quantidade": 90,
+      "unidade": "g"
+    },
+    {
+      "ID": 116,
+      "nome": "Coque",
+      "tipo": "VIII - Petróleos / Catalisador",
+      "quantidade": 120,
+      "unidade": "g"
+    },
+    {
+      "ID": 117,
+      "nome": "Cromato de Potássio",
+      "tipo": "XVI - Sais de Potássio",
+      "quantidade": 280,
+      "unidade": "g"
+    },
+    {
+      "ID": 118,
+      "nome": "Cromato de Potássio",
+      "tipo": "XVI - Sais de Potássio",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 119,
+      "nome": "D(+) Maltose",
+      "tipo": "XIII - Material Orgânico",
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    {
+      "ID": 120,
+      "nome": "Dextrose Anidra",
+      "tipo": "XII - Material Orgânico",
+      "quantidade": 450,
+      "unidade": "g"
+    },
+    {
+      "ID": 121,
+      "nome": "D-Frutose",
+      "tipo": "XII - Material Orgânico",
+      "quantidade": 35,
+      "unidade": "g"
+    },
+    {
+      "ID": 122,
+      "nome": "D-Frutose",
+      "tipo": "XII - Material Orgânico",
+      "quantidade": 70,
+      "unidade": "g"
+    },
+    {
+      "ID": 123,
+      "nome": "Diclorofluoresceína",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 60,
+      "unidade": "g"
+    },
+    {
+      "ID": 124,
+      "nome": "Dicromato de Potássio",
+      "tipo": "XVI - Sais de Potássio",
+      "quantidade": 210,
+      "unidade": "g"
+    },
+    {
+      "ID": 125,
+      "nome": "Dicromato de Potássio",
+      "tipo": "XVI - Sais de Potássio",
+      "quantidade": 800,
+      "unidade": "g"
+    },
+    {
+      "ID": 126,
+      "nome": "Dimetilsulfóxido",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 200,
+      "unidade": "mL"
+    },
+    {
+      "ID": 127,
+      "nome": "Dimetilsulfóxido",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 400,
+      "unidade": "mL"
+    },
+    {
+      "ID": 128,
+      "nome": "Dimetilsulfóxido",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 550,
+      "unidade": "mL"
+    },
+    {
+      "ID": 129,
+      "nome": "EDTA Dissódico",
+      "tipo": "III - Sais Orgânicos / Elementos",
+      "quantidade": 700,
+      "unidade": "g"
+    },
+    {
+      "ID": 130,
+      "nome": "Enxofre Puro",
+      "tipo": "III - Sais Orgânicos / Elementos",
+      "quantidade": 230,
+      "unidade": "g"
+    },
+    {
+      "ID": 131,
+      "nome": "Estanho",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 10,
+      "unidade": "g"
+    },
+    {
+      "ID": 132,
+      "nome": "Estanho Granulado",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 900,
+      "unidade": "g"
+    },
+    {
+      "ID": 133,
+      "nome": "Estanho Granulado 20 mesh",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    {
+      "ID": 134,
+      "nome": "Éter de Petróleo",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 135,
+      "nome": "Éter Etílico",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 900,
+      "unidade": "mL"
+    },
+    {
+      "ID": 136,
+      "nome": "Fenantrolina",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 10,
+      "unidade": "g"
+    },
+    {
+      "ID": 137,
+      "nome": "Fenantrolina 1,10 orto",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 38,
+      "unidade": "g"
+    },
+    {
+      "ID": 138,
+      "nome": "Fenolftaleína",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 300,
+      "unidade": "g"
+    },
+    {
+      "ID": 139,
+      "nome": "Ferricianeto de Potássio",
+      "tipo": "XVI - Sais de Potássio",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 140,
+      "nome": "Ferricianeto de Potássio",
+      "tipo": "XVI - Sais de Potássio",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 141,
+      "nome": "Ferro P.A",
+      "tipo": "X - Elementos Metálicos",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 142,
+      "nome": "Ferro Sulfeto em Bastões",
+      "tipo": "XXII - Sais de Ferro",
+      "quantidade": 900,
+      "unidade": "g"
+    },
+    {
+      "ID": 143,
+      "nome": "Ferrocianeto de Potássio",
+      "tipo": "XVI - Sais de Potássio",
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    {
+      "ID": 144,
+      "nome": "Fios de Cobre",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 60,
+      "unidade": "g"
+    },
+    {
+      "ID": 145,
+      "nome": "Formaldeído",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 146,
+      "nome": "Formaldeído",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 700,
+      "unidade": "mL"
+    },
+    {
+      "ID": 147,
+      "nome": "Fosfato de Amônio Dibásico",
+      "tipo": "V - Sais de Amônio",
+      "quantidade": 150,
+      "unidade": "g"
+    },
+    {
+      "ID": 148,
+      "nome": "Fosfato de Potássio Bibásico",
+      "tipo": "XVII - Sais de Potássio",
+      "quantidade": 360,
+      "unidade": "g"
+    },
+    {
+      "ID": 149,
+      "nome": "Fosfato de Potássio Monobásico",
+      "tipo": "XVII - Sais de Potássio",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 150,
+      "nome": "Fosfato de Sódio",
+      "tipo": "XVII - Sais de Potássio",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 151,
+      "nome": "Fosfato de Sódio",
+      "tipo": "XXVI - Sais de Sódio",
+      "quantidade": 390,
+      "unidade": "g"
+    },
+    {
+      "ID": 152,
+      "nome": "Glicerina Comercial",
+      "tipo": "XI - Material Orgânico",
+      "quantidade": 1170,
+      "unidade": "mL"
+    },
+    {
+      "ID": 153,
+      "nome": "Glicerina P.A",
+      "tipo": "XI - Material Orgânico",
+      "quantidade": 500,
+      "unidade": "mL"
+    },
+    {
+      "ID": 154,
+      "nome": "Glicerina P.A USP",
+      "tipo": "XI - Material Orgânico",
+      "quantidade": 1200,
+      "unidade": "mL"
+    },
+    {
+      "ID": 155,
+      "nome": "Glicose Anidra",
+      "tipo": "XII - Material Orgânico",
+      "quantidade": 300,
+      "unidade": "g"
+    },
+    {
+      "ID": 156,
+      "nome": "Glicose Anidra",
+      "tipo": "XII - Material Orgânico",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 157,
+      "nome": "Goma Árabica",
+      "tipo": "III - Sais Orgânicos / Elementos",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 158,
+      "nome": "Hexano (ACS)",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 300,
+      "unidade": "mL"
+    },
+    {
+      "ID": 159,
+      "nome": "Hexano (NOX)",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 700,
+      "unidade": "mL"
+    },
+    {
+      "ID": 160,
+      "nome": "Hexano (Synth)",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 600,
+      "unidade": "mL"
+    },
+    {
+      "ID": 161,
+      "nome": "Hexano (Synth)",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 2000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 162,
+      "nome": "Hexano Diluído em Água",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 100,
+      "unidade": "mL"
+    },
+    {
+      "ID": 163,
+      "nome": "Hidróxido de Alúminio",
+      "tipo": "(A19) Bases",
+      "quantidade": 80,
+      "unidade": "g"
+    },
+    {
+      "ID": 164,
+      "nome": "Hidróxido de Amônio (26%)",
+      "tipo": "(A19) Bases",
+      "quantidade": 650,
+      "unidade": "mL"
+    },
+    {
+      "ID": 165,
+      "nome": "Hidróxido de Amônio (30%)",
+      "tipo": "(A19) Bases",
+      "quantidade": 800,
+      "unidade": "mL"
+    },
+    {
+      "ID": 166,
+      "nome": "Hidróxido de Amônio (30%)",
+      "tipo": "(A19) Bases",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 167,
+      "nome": "Hidróxido de Bário",
+      "tipo": "(A19) Bases",
+      "quantidade": 700,
+      "unidade": "g"
+    },
+    {
+      "ID": 168,
+      "nome": "Hidróxido de Cálcio",
+      "tipo": "(A19) Bases",
+      "quantidade": 1000,
+      "unidade": "g"
+    },
+    {
+      "ID": 169,
+      "nome": "Hidróxido de Lítio",
+      "tipo": "(A19) Bases",
+      "quantidade": 45,
+      "unidade": "g"
+    },
+    {
+      "ID": 170,
+      "nome": "Hidróxido de Potássio",
+      "tipo": "(A19) Bases",
+      "quantidade": 700,
+      "unidade": "g"
+    },
+    {
+      "ID": 171,
+      "nome": "Hidróxido de Potássio",
+      "tipo": "(A19) Bases",
+      "quantidade": 600,
+      "unidade": "g"
+    },
+    {
+      "ID": 172,
+      "nome": "Hidróxido de Potássio",
+      "tipo": "(A19) Bases",
+      "quantidade": 1000,
+      "unidade": "g"
+    },
+    {
+      "ID": 173,
+      "nome": "Hidróxido de Potássio Puro",
+      "tipo": "(A19) Bases",
+      "quantidade": 300,
+      "unidade": "g"
+    },
+    {
+      "ID": 174,
+      "nome": "Hidróxido de Sódio (Pérolas 97%)",
+      "tipo": "(A19) Bases",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 175,
+      "nome": "Hidróxido de Sódio (Pérolas 97%)",
+      "tipo": "(A19) Bases",
+      "quantidade": 700,
+      "unidade": "g"
+    },
+    {
+      "ID": 176,
+      "nome": "Hidróxido de Sódio (Pérolas 97%)",
+      "tipo": "(A19) Bases",
+      "quantidade": 800,
+      "unidade": "g"
+    },
+    {
+      "ID": 177,
+      "nome": "Hidróxido de Sódio (Micropérolas 99%)",
+      "tipo": "(A19) Bases",
+      "quantidade": 800,
+      "unidade": "g"
+    },
+    {
+      "ID": 178,
+      "nome": "Hidróxido de Sódio Comercial",
+      "tipo": "(A19) Bases",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 179,
+      "nome": "Iodato de Potássio",
+      "tipo": "XVII - Sais de Potássio",
+      "quantidade": 170,
+      "unidade": "g"
+    },
+    {
+      "ID": 180,
+      "nome": "Iodeto de Potássio",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 350,
+      "unidade": "g"
+    },
+    {
+      "ID": 181,
+      "nome": "Iodo Cloro",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 950,
+      "unidade": "mL"
+    },
+    {
+      "ID": 182,
+      "nome": "Iodo Cloro",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 450,
+      "unidade": "mL"
+    },
+    {
+      "ID": 183,
+      "nome": "Lascas de Cobre",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 65,
+      "unidade": "g"
+    },
+    {
+      "ID": 184,
+      "nome": "Lauril Sulfato de sódio",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 185,
+      "nome": "Manitol",
+      "tipo": "XIII - Material Orgânico",
+      "quantidade": 25,
+      "unidade": "g"
+    },
+    {
+      "ID": 186,
+      "nome": "Molibidato de Amônio",
+      "tipo": "VII - Sais de Amônio",
+      "quantidade": 190,
+      "unidade": "g"
+    },
+    {
+      "ID": 187,
+      "nome": "Molibidênio",
+      "tipo": "VIII - Petróleos / Catalisador",
+      "quantidade": 130,
+      "unidade": "g"
+    },
+    {
+      "ID": 188,
+      "nome": "Murexida",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 20,
+      "unidade": "g"
+    },
+    {
+      "ID": 189,
+      "nome": "Negro de Fumo",
+      "tipo": "VIII - Petróleos / Catalisador",
+      "quantidade": 10,
+      "unidade": "g"
+    },
+    {
+      "ID": 190,
+      "nome": "Ninidrina",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 40,
+      "unidade": "g"
+    },
+    {
+      "ID": 191,
+      "nome": "Nitrato de Bismuto",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 130,
+      "unidade": "g"
+    },
+    {
+      "ID": 192,
+      "nome": "Nitrato de Chumbo II",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 193,
+      "nome": "Nitrato de Estrôncio",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 25,
+      "unidade": "g"
+    },
+    {
+      "ID": 194,
+      "nome": "Nitrato de Lítio",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 650,
+      "unidade": "mL"
+    },
+    {
+      "ID": 195,
+      "nome": "Nitrato de Magnésio",
+      "tipo": "XXIX - Sais de Magnésio",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 196,
+      "nome": "Nitrato de Potássio",
+      "tipo": "XVII - Sais de Potássio",
+      "quantidade": 50,
+      "unidade": "g"
+    },
+    {
+      "ID": 197,
+      "nome": "Nitrato de Prata",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 15,
+      "unidade": "g"
+    },
+    {
+      "ID": 198,
+      "nome": "Nitrato de Sódio",
+      "tipo": "XXVI - Sais de Sódio",
+      "quantidade": 450,
+      "unidade": "g"
+    },
+    {
+      "ID": 199,
+      "nome": "Nitrato de Sódio e Cobalto III",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 30,
+      "unidade": "g"
+    },
+    {
+      "ID": 200,
+      "nome": "Nitrito de Sódio",
+      "tipo": "XXVI - Sais de Sódio",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 201,
+      "nome": "Nitrito de Sódio USP",
+      "tipo": "XXVI - Sais de Sódio",
+      "quantidade": 437,
+      "unidade": "g"
+    },
+    {
+      "ID": 202,
+      "nome": "Orto tolidina",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 18,
+      "unidade": "g"
+    },
+    {
+      "ID": 203,
+      "nome": "O-tolidina",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 40,
+      "unidade": "g"
+    },
+    {
+      "ID": 204,
+      "nome": "Oxalato de Sódio",
+      "tipo": "XXVI - Sais de Sódio",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 205,
+      "nome": "Óxido de Alúminio",
+      "tipo": "XIX - Sais de Bário de Alúminio",
+      "quantidade": 150,
+      "unidade": "g"
+    },
+    {
+      "ID": 206,
+      "nome": "Óxido de Cálcio",
+      "tipo": "XX - Sais de Cálcio",
+      "quantidade": 110,
+      "unidade": "g"
+    },
+    {
+      "ID": 207,
+      "nome": "Óxido de Cromo",
+      "tipo": "XXI - Sais de Zinco",
+      "quantidade": 106,
+      "unidade": "g"
+    },
+    {
+      "ID": 208,
+      "nome": "Óxido de Magnésio",
+      "tipo": "XXIX - Sais de Magnésio",
+      "quantidade": 300,
+      "unidade": "g"
+    },
+    {
+      "ID": 209,
+      "nome": "Permanganato de Potássio",
+      "tipo": "XVIII - Sais de Potássio",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 210,
+      "nome": "Permanganato de Potássio",
+      "tipo": "XVIII - Sais de Potássio",
+      "quantidade": 162,
+      "unidade": "g"
+    },
+    {
+      "ID": 211,
+      "nome": "Peróxido de Hidrogênio",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 212,
+      "nome": "Petróleo",
+      "tipo": "VIII - Petróleos / Catalisador",
+      "quantidade": 130,
+      "unidade": "g"
+    },
+    {
+      "ID": 213,
+      "nome": "Petróleo",
+      "tipo": "VIII - Petróleos / Catalisador",
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    {
+      "ID": 214,
+      "nome": "Powder Estabilizado",
+      "tipo": "IV - Utilitários",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 215,
+      "nome": "Prata",
+      "tipo": "X - Elementos Metálicos",
+      "quantidade": 40,
+      "unidade": "g"
+    },
+    {
+      "ID": 216,
+      "nome": "Preto de Eriocromo T",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 620,
+      "unidade": "g"
+    },
+    {
+      "ID": 217,
+      "nome": "Raspas de Alumínio",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 35,
+      "unidade": "g"
+    },
+    {
+      "ID": 218,
+      "nome": "Raspas de Estanho",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 215,
+      "unidade": "g"
+    },
+    {
+      "ID": 219,
+      "nome": "Raspas de Estanho Maleável",
+      "tipo": "IX - Elementos Metálicos",
+      "quantidade": 73,
+      "unidade": "g"
+    },
+    {
+      "ID": 220,
+      "nome": "Raspas de Magnésio",
+      "tipo": "X - Elementos Metálicos",
+      "quantidade": 20,
+      "unidade": "g"
+    },
+    {
+      "ID": 221,
+      "nome": "Raspas de Magnésio",
+      "tipo": "X - Elementos Metálicos",
+      "quantidade": 40,
+      "unidade": "g"
+    },
+    {
+      "ID": 222,
+      "nome": "Resorcin",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 77,
+      "unidade": "g"
+    },
+    {
+      "ID": 223,
+      "nome": "Sacarose",
+      "tipo": "XII - Material Orgânico",
+      "quantidade": 380,
+      "unidade": "g"
+    },
+    {
+      "ID": 224,
+      "nome": "Sílica Gel",
+      "tipo": "IV - Utilitários",
+      "quantidade": 190,
+      "unidade": "g"
+    },
+    {
+      "ID": 225,
+      "nome": "Sílica Gel (60-100)",
+      "tipo": "IV - Utilitários",
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    {
+      "ID": 226,
+      "nome": "Sílica Gel Azul",
+      "tipo": "IV - Utilitários",
+      "quantidade": 90,
+      "unidade": "g"
+    },
+    {
+      "ID": 227,
+      "nome": "Sulfato de Alúminio",
+      "tipo": "XIX - Sais de Bário de Alúminio",
+      "quantidade": 160,
+      "unidade": "g"
+    },
+    {
+      "ID": 228,
+      "nome": "Sulfato de Alúminio",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 229,
+      "nome": "Sulfato de Amônio",
+      "tipo": "V - Sais de Amônio",
+      "quantidade": 380,
+      "unidade": "g"
+    },
+    {
+      "ID": 230,
+      "nome": "Sulfato de Amônio",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 600,
+      "unidade": "mL"
+    },
+    {
+      "ID": 231,
+      "nome": "Sulfato de Cobre (pedras)",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 300,
+      "unidade": "g"
+    },
+    {
+      "ID": 232,
+      "nome": "Sulfato de Cobre II",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 270,
+      "unidade": "g"
+    },
+    {
+      "ID": 233,
+      "nome": "Sulfato de Ferro",
+      "tipo": "XXIII - Sais de Ferro",
+      "quantidade": 255,
+      "unidade": "g"
+    },
+    {
+      "ID": 234,
+      "nome": "Sulfato de Ferro II e Amônio",
+      "tipo": "XXII - Sais de Ferro",
+      "quantidade": 230,
+      "unidade": "g"
+    },
+    {
+      "ID": 235,
+      "nome": "Sulfato de Ferro III",
+      "tipo": "XXII - Sais de Ferro",
+      "quantidade": 260,
+      "unidade": "g"
+    },
+    {
+      "ID": 236,
+      "nome": "Sulfato de Ferro III e Amônio",
+      "tipo": "XXII - Sais de Ferro",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 237,
+      "nome": "Sulfato de Magnésio",
+      "tipo": "XXIX - Sais de Magnésio",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 238,
+      "nome": "Sulfato de Magnésio",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 400,
+      "unidade": "mL"
+    },
+    {
+      "ID": 239,
+      "nome": "Sulfato de Potássio",
+      "tipo": "XVIII - Sais de Potássio",
+      "quantidade": 800,
+      "unidade": "g"
+    },
+    {
+      "ID": 240,
+      "nome": "Sulfato de Prata",
+      "tipo": "XXIV - Sais Diversos",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 241,
+      "nome": "Sulfato de Sódio",
+      "tipo": "XXVII - Sais de Sódio",
+      "quantidade": 70,
+      "unidade": "g"
+    },
+    {
+      "ID": 242,
+      "nome": "Sulfito de Sódio Anidro",
+      "tipo": "XXVII - Sais de Sódio",
+      "quantidade": 1000,
+      "unidade": "g"
+    },
+    {
+      "ID": 243,
+      "nome": "Sulfato de Sódio Anidro Cristais",
+      "tipo": "XXVII - Sais de Sódio",
+      "quantidade": 800,
+      "unidade": "g"
+    },
+    {
+      "ID": 244,
+      "nome": "Sulfato de Zinco",
+      "tipo": "XXI - Sais de Zinco",
+      "quantidade": 313,
+      "unidade": "g"
+    },
+    {
+      "ID": 245,
+      "nome": "Sulfato Ferroso",
+      "tipo": "XXII - Sais de Ferro",
+      "quantidade": 70,
+      "unidade": "g"
+    },
+    {
+      "ID": 246,
+      "nome": "Sulfato Ferroso",
+      "tipo": "XXII - Sais de Ferro",
+      "quantidade": 10,
+      "unidade": "g"
+    },
+    {
+      "ID": 247,
+      "nome": "Sulfato Ferroso (Anidrol)",
+      "tipo": "XXII - Sais de Ferro",
+      "quantidade": 420,
+      "unidade": "g"
+    },
+    {
+      "ID": 248,
+      "nome": "Sulfeto de Amônio",
+      "tipo": "(A19) Bases",
+      "quantidade": 300,
+      "unidade": "mL"
+    },
+    {
+      "ID": 249,
+      "nome": "Sulfeto de Amônio",
+      "tipo": "(A19) Bases",
+      "quantidade": 1000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 250,
+      "nome": "Tartarato de Antimônio e Potássio",
+      "tipo": "XVIII - Sais de Potássio",
+      "quantidade": 70,
+      "unidade": "g"
+    },
+    {
+      "ID": 251,
+      "nome": "Tartarato de Sódio e Potássio",
+      "tipo": "XXVIII - Sais de Sódio",
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    {
+      "ID": 252,
+      "nome": "Tioacetamida",
+      "tipo": "II - Sais Orgânicos",
+      "quantidade": 35,
+      "unidade": "g"
+    },
+    {
+      "ID": 253,
+      "nome": "Tiocianato de Amônio",
+      "tipo": "V - Sais de Amônio",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 254,
+      "nome": "Tiocianato de Amônio",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 5000,
+      "unidade": "mL"
+    },
+    {
+      "ID": 255,
+      "nome": "Tiocianato de Potássio",
+      "tipo": "XVIII - Sais de Potássio",
+      "quantidade": 346,
+      "unidade": "g"
+    },
+    {
+      "ID": 256,
+      "nome": "Tiocianato de Potássio",
+      "tipo": "(A6) Álcoois e Cetonas",
+      "quantidade": 900,
+      "unidade": "mL"
+    },
+    {
+      "ID": 257,
+      "nome": "Tiossulfato de Sódio",
+      "tipo": "(A5) Produtos em Estoque",
+      "quantidade": 400,
+      "unidade": "g"
+    },
+    {
+      "ID": 258,
+      "nome": "Verde de Bromocresol",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 28,
+      "unidade": "g"
+    },
+    {
+      "ID": 259,
+      "nome": "Vermelho de Fenol",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    {
+      "ID": 260,
+      "nome": "Vermelho de Metila",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 140,
+      "unidade": "g"
+    },
+    {
+      "ID": 261,
+      "nome": "Violeta de Genciana",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 60,
+      "unidade": "g"
+    },
+    {
+      "ID": 262,
+      "nome": "Zinco em Pó",
+      "tipo": "X - Elementos Metálicos",
+      "quantidade": 500,
+      "unidade": "g"
+    },
+    {
+      "ID": 263,
+      "nome": "Zinco em Pó P.A",
+      "tipo": "X - Elementos Metálicos",
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    {
+      "ID": 264,
+      "nome": "Zinco Metálico em Pó",
+      "tipo": "X - Elementos Metálicos",
+      "quantidade": 200,
+      "unidade": "g"
+    },
+    {
+      "ID": 265,
+      "nome": "Zinco P.A",
+      "tipo": "X - Elementos Metálicos",
+      "quantidade": 100,
+      "unidade": "g"
+    },
+    {
+      "ID": 266,
+      "nome": "Zinco Sal Sódico",
+      "tipo": "(A5) Indicadores",
+      "quantidade": 10,
+      "unidade": "g"
+    }
+  ]

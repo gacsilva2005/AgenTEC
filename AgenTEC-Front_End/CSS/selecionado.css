@@ -1,0 +1,144 @@
+/* Importação dos estilos base (Menu, Header, Topo GovSP) */
+@import url('professor.css'); 
+
+/* Estilos específicos para o conteúdo da página de Agendamento Selecionado */
+
+.main-content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: left; 
+}
+
+/* Título e Subtítulo padrão */
+.page-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-align: left; 
+    display: none; /* OCULTA o título principal, pois a página tem um subtítulo centralizado */
+}
+
+.title-underline {
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--huge: 42px;
+    --progress-bar-width: 200px;
+    --progress-bar-height: 200px;
+    --font-size: 25px;
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    font-family: Roboto, Arial, sans-sreif;
+    color: #333;
+    font-weight: 300;
+    line-height: 2.5rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    display: none;
+    width: 100%;
+    height: 15px;
+    background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+/* Container que centraliza o conteúdo */
+.selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Texto do Agendamento Selecionado */
+.agendamento-info h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #c41e15; /* Vermelho padrão da ETEC/CPS */
+    margin-bottom: 10px;
+}
+
+.agendamento-info p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+/* Container para os botões de Ação */
+.action-btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+/* Estilo para os botões principais (Selecionar Kit e Seguir) */
+.action-btn {
+    display: block;
+    padding: 18px 30px;
+    background-color: #a00000; /* Vermelho escuro para destacar */
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    flex: 1;
+    max-width: 300px;
+}
+
+.action-btn:hover {
+    background-color: #7a0000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para o botão "Voltar" */
+.back-button-container {
+    margin-top: 60px;
+}
+
+.back-button {
+    padding: 15px 50px;
+    background-color: #a00000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #7a0000;
+}
+
+/* Responsividade */
+@media (max-width: 650px) {
+    .action-btn-group {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .action-btn {
+        max-width: 100%;
+    }
+    .agendamento-info p {
+        font-size: 1.5rem;
+    }
+}

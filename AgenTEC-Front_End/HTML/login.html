@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Etec Júlio de Mesquita</title>
+
+    <!-- Fonte e ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2d9d6b6f9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=home" />
+
+
+    <link rel="stylesheet" href="../CSS/login.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <!-- Seção de Logos -->
+        <div class="logo-section">
+            <img src="../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita Santo André">
+            <img src="../Assets/etec.png" alt="Logo Centro Paula Souza">
+        </div>
+
+        <!-- Seção de Login -->
+        <div class="form-section" id="formSection">
+            <a href="index.html" class="home-link"><span class="material-symbols-outlined">
+                home
+                </span> Home</a>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="email" id="email" required placeholder="">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="senha" required placeholder="">
+                    <label for="senha">Senha</label>
+                </div>
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+            <a class="forgot-password" id="forgotPassword">Esqueceu a senha?</a>
+        </div>
+    </div>
+    
+    <script src="../JS (Front-End)/forgotPassword.js"> </script>
+    <script src="../JS (Front-End)/login.js"></script>
+</body>
+
+</html>
