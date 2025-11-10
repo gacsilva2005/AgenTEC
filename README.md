@@ -23,38 +23,118 @@
 O AgenTEC é um sistema de gerenciamento de laboratórios projetado para otimizar a reserva de espaços e a organização de materiais. A plataforma centraliza o processo, permitindo que usuários agendem horários nos laboratórios de forma eficiente e solicitem kits personalizados, que incluem vidrarias e reagentes necessários para seus experimentos. 
 Esta aplicação vai além da simples exibição de formulários, funcionando como uma demonstração prática do domínio em desenvolvimento Front-End Clássico e da estruturação de um fluxo de trabalho complexo, essencial para a rotina de um laboratório químico/biológico.
 
+<h2 align="center">🖥️ Como Executar o Projeto</h2>
+
 ---
 
-## 🖥️ Como Executar o Projeto
+<br>
 
-### Requisitos
+<h3>⚙️ Pré-requisito Essencial</h3>
 
-* Um navegador web moderno (Chrome, Firefox, Edge, etc.).
-* Possuir instalado em seu desktop o MySQL.
+<p>
+Antes de iniciar o sistema, é <strong>obrigatório importar o banco de dados</strong> no MySQL, pois ele contém todas as tabelas e logins necessários para o funcionamento do sistema.
+</p>
 
-### Execução
+<p>
+O arquivo do banco está localizado em:
+</p>
 
-1.  **Clone o repositório:**
-    ```bash
-    git clone [(https://github.com/gacsilva2005/AgenTEC.git)]
-    ```
-2. **Instale as dependências:**
-   ```bash
-   npm install
-   ```
-3. **Acesse o diretório do servidor:**
-   ```bash
-    cd AgenTEC-Back_End
-    ```
-4. **Inicie o servidor:**
-   ```bash
-   node server.js
-   ```
-5.  **Abra o arquivo principal no navegador:**
-    Localize e abra o arquivo `AgenTEC-Front_End/HTML/index.html` no seu navegador.
+<pre><code>AgenTEC-DataBase-(SQL)/banco.sql</code></pre>
 
-    > Utilize a extensão Live Server no VS Code para visualizar as alterações em tempo real.
-    
+<p align="center">
+  <a href="https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql"><strong>📥 Ou clique aqui para baixar o banco.sql</strong></a>
+</p>
+
+
+<br>
+
+<h3>🧠 Como Importar o Banco de Dados</h3>
+
+<ol>
+  <li><strong>Abra o MySQL Workbench</strong><br>
+  Certifique-se de que o servidor MySQL está em execução.</li>
+  <br>
+  
+  <li><strong>Importe o script SQL:</strong><br>
+  Vá em:<br>
+  <code>File &gt; Open SQL Script...</code><br>
+  e selecione o arquivo:<br>
+  <code>AgenTEC-DataBase-(SQL)/banco.sql</code></li>
+  <br>
+  
+  <li><strong>Execute o script:</strong><br>
+  Clique no ícone ⚡ (Execute) para criar automaticamente o banco de dados <code>laboratorio_agendamentos</code> com todas as tabelas e dados.</li>
+  <br>
+  
+  <li><strong>Confirme a criação:</strong><br>
+  Atualize o painel “Schemas” e verifique se o banco <code>laboratorio_agendamentos</code> foi criado corretamente.</li>
+</ol>
+
+<br>
+
+<blockquote>
+💡 <strong>Dica via terminal:</strong><br>
+<code>mysql -u root -p &lt; "AgenTEC-DataBase-(SQL)/banco.sql"</code>
+</blockquote>
+
+<br><br>
+
+<h3>🔑 Logins Pré-definidos</h3>
+
+<p>O sistema já possui <strong>três logins diferentes</strong> configurados no banco para testes iniciais:</p>
+<table align="">
+  <tr>
+    <th>Tipo de Usuário</th>
+    <th>E-mail</th>
+    <th>Senha</th>
+  </tr>
+  <tr>
+    <td>👨‍💼 Administrador</td>
+    <td><code>agentecadm@etec.com.br</code></td>
+    <td><code>agentecadm123</code></td>
+  </tr>
+  <tr>
+    <td>🧪 Técnico</td>
+    <td><code>agentectecnico@etec.com.br</code></td>
+    <td><code>agentectec123</code></td>
+  </tr>
+  <tr>
+    <td>👩‍🏫 Professor</td>
+    <td><code>agentecprofessor@etec.com.br</code></td>
+    <td><code>agentecprofessor123</code></td>
+  </tr>
+</table>
+<br><br>
+
+<h3>💻 Execução do Front-End</h3>
+
+<ol>
+  <li><strong>Clone o repositório:</strong><br>
+  <code>git clone https://github.com/gacsilva2005/AgenTEC.git</code></li>
+  <br>
+  
+  <li><strong>Acesse o diretório:</strong><br>
+  <code>cd AgenTEC-Front_End</code></li>
+  <br>
+  
+  <li><strong>Abra o arquivo principal no navegador:</strong><br>
+  Localize e abra:<br>
+  <code>AgenTEC-Front_End/HTML/login.html</code></li>
+</ol>
+
+<blockquote>
+💡 <strong>Dica:</strong> Use a extensão <strong>Live Server</strong> no VS Code para visualizar as alterações em tempo real.
+</blockquote>
+<br><br>
+
+<p align="center">
+  <strong>Extra:</strong> O projeto está em fase experimental, e futuramente todo o sistema oficial de banco de dados será diretamente integrado em um <strong>sistema de nuvem seguro</strong>.
+</p>
+
+
+<br><br>
+  
+>>>>>>> Front_End
 <hr> </hr>
 
 ## 🗒️ Features do projeto 🗒️
@@ -71,9 +151,8 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 <br>
 
 <div align="center">   
-<img src="" alt="Banner ETEC" width="600"/>
+<img src="https://i.postimg.cc/CLQcvsLt/Banner-ETEC.png" alt="Banner ETEC" width="600"/>
 </div>
-
 
 ---
 
@@ -81,3 +160,5 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 
 * [**Etec Irmã Agostina**](https://www.cps.sp.gov.br/etecs/etec-irma-agostina-capela-do-socorro/)
 * [**Centro Paulo de Souza**](https://www.cps.sp.gov.br/)
+* [**Banco de Dados Local**](https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql)
+
