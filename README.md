@@ -162,4 +162,4 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 
 * [**Etec Irmã Agostina**](https://www.cps.sp.gov.br/etecs/etec-irma-agostina-capela-do-socorro/)
 * [**Centro Paulo de Souza**](https://www.cps.sp.gov.br/)
-* [**Banco de Dados Local**]<a href="https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql">
+* [**Banco de Dados Local**](https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql)
