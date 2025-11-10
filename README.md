@@ -44,9 +44,8 @@ O arquivo do banco está localizado em:
 
 <p align="center">
   <a href="https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql" target="_blank">
-    <strong>📥 Ou clique aqui para abrir o banco.sql</strong>
-  </a><br>
-  <em>Depois, clique com o botão direito e escolha <strong>“Salvar como...”</strong> para baixar o arquivo.</em>
+    <strong>📥 Ou clique aqui para abrir o banco.sql e salvar com o botão direito</strong>
+  </a>
 </p>
 
 </p>
