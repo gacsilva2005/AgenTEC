@@ -24,13 +24,13 @@ Esta aplicação vai além da simples exibição de formulários, funcionando co
 
 ---
 
-<h2 align="center">🖥 Como Executar o Projeto</h2>
+<h2 align="center">🖥️ Como Executar o Projeto</h2>
 
 ---
 
 <br>
 
-<h3>⚙ Pré-requisito Essencial</h3>
+<h3>⚙️ Pré-requisito Essencial</h3>
 
 <p>
 Antes de iniciar o sistema, é <strong>obrigatório importar o banco de dados</strong> no MySQL, pois ele contém todas as tabelas e logins necessários para o funcionamento do sistema.
@@ -137,14 +137,14 @@ O arquivo do banco está localizado em:
   
 <hr> </hr>
 
-## 🗒 Features do projeto 🗒
+## 🗒️ Features do projeto 🗒️
 O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratórios, oferecendo as seguintes funcionalidades:
 
-* *Gerenciamento de Agendamentos:* Sistema centralizado para visualização e reserva eficiente de horários em múltiplos laboratórios.
-* *Controle de Recursos:* Organização detalhada de materiais, kits, vidrarias e reagentes disponíveis para experimentos.
-* *Criação de Kits Personalizados:* Funcionalidade que permite aos usuários solicitarem conjuntos pré-definidos de materiais necessários para suas práticas.
-* *Interface Intuitiva (Front-End Clássico):* Design focado na usabilidade, facilitando o fluxo de agendamento e requisição para qualquer usuário.
-* *Estrutura de Workflow Complexa:* Demonstração prática da habilidade de modelar e implementar fluxos de trabalho complexos e específicos de um ambiente de laboratório.
+* **Gerenciamento de Agendamentos:** Sistema centralizado para visualização e reserva eficiente de horários em múltiplos laboratórios.
+* **Controle de Recursos:** Organização detalhada de materiais, kits, vidrarias e reagentes disponíveis para experimentos.
+* **Criação de Kits Personalizados:** Funcionalidade que permite aos usuários solicitarem conjuntos pré-definidos de materiais necessários para suas práticas.
+* **Interface Intuitiva (Front-End Clássico):** Design focado na usabilidade, facilitando o fluxo de agendamento e requisição para qualquer usuário.
+* **Estrutura de Workflow Complexa:** Demonstração prática da habilidade de modelar e implementar fluxos de trabalho complexos e específicos de um ambiente de laboratório.
 
 <br>
 <br>
@@ -158,7 +158,8 @@ O AgenTEC foi desenvolvido para centralizar e otimizar a gestão de laboratório
 
 ## 💎 Links Úteis
 
-* [*Etec Irmã Agostina*](https://www.cps.sp.gov.br/etecs/etec-irma-agostina-capela-do-socorro/)
-* [*Centro Paulo de Souza*](https://www.cps.sp.gov.br/)
-* [*Banco de Dados Local*](https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql)
+* [**Etec Irmã Agostina**](https://www.cps.sp.gov.br/etecs/etec-irma-agostina-capela-do-socorro/)
+* [**Centro Paulo de Souza**](https://www.cps.sp.gov.br/)
+* [**Banco de Dados Local**](https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql)
+
 
