@@ -105,7 +105,7 @@ O arquivo do banco está localizado em:
     <td><code>agentecprofessor123</code></td>
   </tr>
 </table>
-<br><br>
+<br>
 
 <h3>💻 Execução do Front-End</h3>
 
