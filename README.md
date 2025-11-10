@@ -129,7 +129,7 @@ O arquivo do banco está localizado em:
 <br><br>
 
 <p align="center">
-  <strong>Extra:</strong> O projeto está em fase experimental, e futuramente todo o sistema oficial de banco de dados será diretamente integrado em um <strong>sistema de nuvem seguro</strong>.
+  <strong>Extra:</strong> O projeto encontra-se em fase experimental. Em futuras versões, o banco de dados será migrado para uma solução em nuvem segura e totalmente integrada ao sistema</strong>.
 </p>
 
 
