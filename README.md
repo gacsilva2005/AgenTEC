@@ -78,7 +78,7 @@ O arquivo do banco está localizado em:
 <code>mysql -u root -p &lt; "AgenTEC-DataBase-(SQL)/banco.sql"</code>
 </blockquote>
 
-<br><br>
+<br>
 
 <h3>🔑 Logins Pré-definidos</h3>
 
