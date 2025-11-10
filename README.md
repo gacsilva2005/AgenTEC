@@ -43,7 +43,7 @@ O arquivo do banco está localizado em:
 <pre><code>AgenTEC-DataBase-(SQL)/banco.sql</code></pre>
 
 <p align="center">
-  <a href="https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql"><strong>📥 Ou clique aqui para baixar o banco.sql</strong></a>
+  <a href="https://github.com/gacsilva2005/AgenTEC/raw/main/AgenTEC-DataBase-(SQL)/banco.sql" download><strong>📥 Ou clique aqui para baixar o banco.sql</strong></a>
 </p>
 
 
