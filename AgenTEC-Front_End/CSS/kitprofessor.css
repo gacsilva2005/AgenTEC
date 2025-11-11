@@ -9,6 +9,31 @@
   text-align: center;
 }
 
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.button-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-direction: row-reverse;
+  background-color: transparent;
+  color: #005C6D;
+  padding: 0;
+  font-size: 1.6rem;
+  font-weight: 510;
+  border-radius: 0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
 :root{
   --primary-color: #243E63; 
   --hoverCian-color: #005C6D; 

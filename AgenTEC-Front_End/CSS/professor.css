@@ -224,7 +224,7 @@ html {
     line-height: 2.5rem;
     overflow-wrap: break-word;
     word-break: break-word;
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0;
     box-sizing: inherit;
     display: inline-block;

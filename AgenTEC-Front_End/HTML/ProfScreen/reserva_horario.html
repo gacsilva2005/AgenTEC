@@ -225,6 +225,12 @@
     <main class="main-content">
         <div class="agendamento-container">
             <h1 class="page-title">Professores</h1>
+            <div class="button-container">
+                <button id="btn-logout" class="button-custom">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Desconectar</span>
+                </button>
+            </div>
             <div class="title-underline"></div>
 
             <div class="selection-grid">
@@ -284,14 +290,14 @@
             </div>
         </div>
         <div class="action-buttons-container">
-        <button type="button" class="back-button" onclick="history.back()">
-            &larr; Voltar
-        </button>
+            <button type="button" class="back-button" onclick="history.back()">
+                &larr; Voltar
+            </button>
 
-        <button type="button" id="confirmButton" class="confirm-button" disabled>
-            Confirmar
-        </button>
-    </div>
+            <button type="button" id="confirmButton" class="confirm-button" disabled>
+                Confirmar
+            </button>
+        </div>
     </main>
     <!-- RODAPÉ CPS -->
     <button class="back-to-top">
@@ -391,7 +397,7 @@
     </section>
     <!-- RODAPÉ CPS -->
 
-    
+
 
     <script>
         // Espera o documento carregar para garantir que todos os elementos existam
@@ -451,7 +457,7 @@
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
-
+    <script src="../../JS (Front-End)/logout.js"></script>
 </body>
 
 </html>
