@@ -134,7 +134,7 @@ html {
     max-width: 1200px;
     margin: 0 auto;
     list-style: none;
-    padding: 0;
+    padding: 0 0 0 65px; 
     display: flex;
     flex-wrap: wrap;
 }
@@ -154,7 +154,7 @@ html {
 
 #breadcrumb {
     background-color: #666666;
-    padding: 12px 20px;
+    padding: 12px 20px 12px 90px; 
     border-bottom: 1px solid #e9ecef;
 }
 
