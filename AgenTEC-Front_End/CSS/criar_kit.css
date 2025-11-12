@@ -83,6 +83,23 @@ body, html {
     max-height: 50px;
 }
 
+.page-header .button-container {
+    margin: 0;
+    padding: 0;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.page-header .page-title {
+    margin: 0;
+}
+
 .form-pesquisa {
     display: flex; 
     align-items: center; 
@@ -179,10 +196,15 @@ body, html {
 }
 
 .page-title {
-    font-size: 4rem;
+    margin: 0;           
+    font-size: 4rem;           
+    line-height: 1.2;             
     color: var(--hoverCian-color);
-    margin-bottom: 10px;
     font-weight: 700;
+}
+
+.page-title h1{
+    width: 100px;
 }
 
 .title-underline {
@@ -634,6 +656,31 @@ margin-bottom: 150px;
 /* Mostra o submenu quando o mouse passa por cima do item principal */
 .menu li.dropdown:hover .dropdown-content {
     display: block;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: #005C6D;
+    padding: 0;
+    font-size: 1.6rem;
+    font-weight: 510;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
 }
 
 /* Estilo para a setinha */

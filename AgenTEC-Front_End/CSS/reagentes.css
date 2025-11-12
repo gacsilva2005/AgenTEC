@@ -216,6 +216,41 @@ html {
     color: var(--text-white);
 }
 
+.page-header .botao-container {
+    margin: 0;
+    padding: 0;
+}
+
+/* --- ALTERADO AQUI: Posicionamento absoluto para o botão do título --- */
+.botao-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute; /* Remove do fluxo normal */
+    top: 0; /* Alinha ao topo do main-content */
+    right: 20px; /* Alinha à direita (considerando padding do container) */
+    height: 4rem; /* Altura para centralizar verticalmente com o título */
+    width: auto;
+}
+
+.botao-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: #005C6D;
+    padding: 0;
+    font-size: 1.6rem;
+    font-weight: 510;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
 .card-wrapper {
     position: relative;
     width: 100%;
@@ -590,6 +625,7 @@ html {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
+    position: relative;
 }
 
 .page-title {
