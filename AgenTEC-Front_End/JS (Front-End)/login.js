@@ -69,9 +69,24 @@
                 }
 
             } catch (error) {
-                messageElement.textContent = 'Falha ao conectar ao servidor. Verifique se o back-end está rodando.';
+                console.error('Erro completo:', error);
+                console.error('Nome:', error.name);
+                console.error('Mensagem:', error.message);
+                console.error('Stack:', error.stack);
+            
+                // Verifica se é erro de rede
+                if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                    messageElement.textContent = 'Erro de rede: servidor não está acessível.';
+                }
+                // Verifica se é JSON inválido
+                else if (error.name === 'SyntaxError' && error.message.includes('JSON')) {
+                    messageElement.textContent = 'Erro: resposta do servidor não é JSON válido.';
+                    console.log('Resposta bruta do servidor:', error.response?.data);
+                }
+                else {
+                    messageElement.textContent = 'Erro inesperado. Veja o console.';
+                }
                 messageElement.style.color = 'red';
-                console.error('Erro na requisição fetch:', error);
             }
         });
     });

@@ -490,8 +490,8 @@ html {
     position: absolute;
     right: 15px; 
     top: 50%; 
-    transform: translateY(-50%); /* Centraliza verticalmente */
-    pointer-events: none; /* Permite que o clique passe para o select */
+    transform: translateY(-50%);
+    pointer-events: none;
     color: var(--primary-color, #243E63); 
     font-size: 24px; 
     transition: transform 0.3s ease;
@@ -577,32 +577,6 @@ html {
 #quantidade-vidraria option:disabled {
     color: #999;
     font-style: italic;
-}
-
-.input-group::after {
-    content: '▼';
-    position: absolute;
-    right: 18px;
-    top: 58%;
-    left: 88%;
-    transform: translateY(-50%);
-    transform-origin: center;
-    font-size: 1.5rem;
-    color: var(--primary-color, #243E63);
-    pointer-events: none;
-    transition: transform 0.3s ease, color 0.3s ease;
-    line-height: 1;
-    width: 12px;
-    text-align: center;
-}
-
-.input-group:focus-within::after {
-    transform: translateY(-50%) rotate(180deg);
-    color: var(--hoverCian-color, #005C6D);
-}
-
-.input-group:hover {
-    border-color: var(--hoverCian-color);
 }
 
 .button-confirm, .button-cancel {
