@@ -72,16 +72,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             prevEl: '.swiper-button-prev',
         },
 
-        on: {
-            progress: updateSlideOpacity,
-            slideChangeTransitionEnd: updateSlideOpacity,
-            setTransition: function (speed) {
-                for (let i = 0; i < this.slides.length; i++) {
-                    this.slides[i].style.transition = `${speed}ms`;
-                }
-            }
-        },
-
         breakpoints: {
             0: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
@@ -132,16 +122,4 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         swiper.update();
     });
-
-    function updateSlideOpacity(swiper) {
-        for (let i = 0; i < swiper.slides.length; i++) {
-            const slide = swiper.slides[i];
-            const slideProgress = swiper.slides[i].progress;
-            const absProgress = Math.abs(slideProgress);
-            let opacity = absProgress <= 1.1 ? 1 - (absProgress * 0.3) : 0.4;
-            opacity = Math.max(opacity, 0.4);
-            slide.style.opacity = opacity;
-            slide.style.transition = 'opacity 0.3s ease';
-        }
-    }
 });

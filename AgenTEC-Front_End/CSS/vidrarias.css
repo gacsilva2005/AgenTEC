@@ -255,10 +255,13 @@ html {
 .card-wrapper {
     position: relative;
     width: 100%;
-    padding: 60px 0;
-    overflow: visible !important;
-    background-color: #ffffff;
-    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-list .card-item {
@@ -385,19 +388,20 @@ html {
     opacity: 1.0;
 }
 
-.container { 
-    padding: 0;
-    margin: 0; 
-    max-width: 100%; 
+.container.swiper {
+    padding: 0px 2px;
     overflow: visible;
-    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
-
 @media (max-width: 768px) {
-     .container {
-        padding: 20px 0;
+     .container.swiper {
+        padding: 20px 100px;
         max-width: 100%;
     }
     

@@ -68,24 +68,22 @@ document.addEventListener('DOMContentLoaded', async function () {
         cardList.appendChild(li);
     });
 
-    // === 4. SWIPER CORRIGIDO (5 CARDS NO DESKTOP) ===
+    // === 4. SWIPER ===
     const swiper = new Swiper('.card-wrapper', {
         loop: true,
         slidesPerView: 3,
         spaceBetween: 30,
         centeredSlides: true,
-        pagination: { 
-            el: '.swiper-pagination', 
+        pagination: {
+            el: '.swiper-pagination',
             clickable: true,
-            dynamicBullets: true 
+            dynamicBullets: true
         },
 
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-
-        
 
         breakpoints: {
             320: {  // Mobile pequeno
@@ -106,7 +104,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                 slidesPerView: 5,
                 spaceBetween: 30
             }
-        }
+        },
+
+        observer: true,
+        observeParents: true
     });
 
 

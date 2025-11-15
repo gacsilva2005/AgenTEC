@@ -372,8 +372,6 @@ html {
     align-items: center;
     height: auto;
     transition: all 0.3s ease;
-    opacity: 0.3;
-    transition: opacity 0.3s ease;
     width: auto !important;
 }
 
