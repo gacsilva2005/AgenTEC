@@ -13,6 +13,7 @@ class Server {
   #admin;
   #prof;
   #tec;
+  #contasGenericas;
 
   constructor(port = 3000) {
     this.#app = express();
@@ -32,6 +33,37 @@ class Server {
     this.#prof = new Professor(null, this.#db);
     this.#tec = new Tecnico(null, this.#db);
 
+    // Contas genéricas pré-definidas
+    this.#contasGenericas = {
+      'admin@adm.com': {
+        senha: 'admin123',
+        usuario: {
+          id: -1,
+          nome: 'Administrador Geral',
+          email: 'admin@adm.com',
+          tipo: 'administrador'
+        }
+      },
+      'professor@prof.com': {
+        senha: 'prof123',
+        usuario: {
+          id: -2,
+          nome: 'Professor Demo',
+          email: 'professor@prof.com',
+          tipo: 'professor'
+        }
+      },
+      'tecnico@tec.com': {
+        senha: 'tec123',
+        usuario: {
+          id: -3,
+          nome: 'Técnico Demo',
+          email: 'tecnico@tec.com',
+          tipo: 'tecnico'
+        }
+      }
+    };
+
     this.#configRoutes();
     this.#startServer(port);
   }
@@ -44,6 +76,19 @@ class Server {
       const { email, senha } = req.body;
       if (!email || !senha) return res.status(400).json({ success: false, message: 'Email e senha são obrigatórios' });
 
+      // Primeiro verifica nas contas genéricas
+      if (this.#contasGenericas[email]) {
+        if (this.#contasGenericas[email].senha === senha) {
+          return res.json({ 
+            success: true, 
+            usuario: this.#contasGenericas[email].usuario 
+          });
+        } else {
+          return res.status(401).json({ success: false, message: 'Senha incorreta' });
+        }
+      }
+
+      // Se não for conta genérica, verifica no banco de dados
       let tipo = '';
       if (email.endsWith('@adm.com')) tipo = 'administrador';
       else if (email.endsWith('@prof.com')) tipo = 'professor';
@@ -70,6 +115,10 @@ class Server {
         const { nome, email, senha, funcao } = req.body;
         if (!nome || !email || !senha || !funcao) return res.status(400).json({ success: false, message: 'Todos os campos são obrigatórios' });
 
+        if (this.#contasGenericas[email]) {
+          return res.status(400).json({ success: false, message: 'Este email é reservado para uso do sistema' });
+        }
+
         const resultado = await this.#admin.cadastrarUsuario(nome, email, senha, funcao);
         return res.json(resultado);
       } catch (err) {
@@ -84,6 +133,11 @@ class Server {
     this.#app.post('/recuperar-senha', async (req, res) => {
       const { email } = req.body;
       if (!email) return res.status(400).json({ success: false, message: "Email obrigatório" });
+
+      // Bloqueia recuperação de senha para contas genéricas
+      if (this.#contasGenericas[email]) {
+        return res.status(400).json({ success: false, message: "Contas genéricas não permitem recuperação de senha" });
+      }
 
       const sistema = new Sistema();
       try {
