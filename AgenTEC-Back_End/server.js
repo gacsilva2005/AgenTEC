@@ -71,7 +71,7 @@ class Server {
 
   #configRoutes() {
     // -----------------------------
-    // LOGIN - CORRIGIDO
+    // LOGIN
     // -----------------------------
     this.#app.post('/login', async (req, res) => {
       const { email, senha } = req.body;
@@ -123,7 +123,7 @@ class Server {
     });
 
     // -----------------------------
-    // VERIFICAR AGENDAMENTOS POR DATA - CORRIGIDO
+    // VERIFICAR AGENDAMENTOS POR DATA
     // -----------------------------
     this.#app.get('/api/agendamentos/:data', async (req, res) => {
       try {
@@ -148,6 +148,18 @@ class Server {
 
         // Formata a data para YYYY-MM-DD
         const dataSQL = dataFormatada.toISOString().split('T')[0];
+        const hoje = new Date();
+        hoje.setHours(0, 0, 0, 0); // Zera as horas para comparar apenas a data
+
+        // VALIDAÇÃO: Verifica se a data é anterior à data atual
+        if (dataFormatada < hoje) {
+          return res.json({ 
+            success: true, 
+            totalAgendamentos: 0, 
+            podeAgendar: false,
+            message: 'Não é possível agendar para datas passadas.'
+          });
+        }
 
         console.log(`Verificando agendamentos para: ${dataSQL}`);
 
@@ -176,7 +188,7 @@ class Server {
     });
 
     // -----------------------------
-    // CRIAR AGENDAMENTO - CORRIGIDO PARA O SCHEMA REAL
+    // CRIAR AGENDAMENTO
     // -----------------------------
     this.#app.post('/api/agendamentos', async (req, res) => {
       try {
@@ -184,6 +196,33 @@ class Server {
         
         if (!data_agendamento || !horario_inicio || !laboratorio || !professor_id || !materia) {
           return res.status(400).json({ success: false, message: 'Todos os campos são obrigatórios' });
+        }
+
+        // VALIDAÇÃO: Verifica se a data não é passada
+        const dataAgendamento = new Date(data_agendamento);
+        const hoje = new Date();
+        hoje.setHours(0, 0, 0, 0); // Zera as horas para comparar apenas a data
+
+        if (dataAgendamento < hoje) {
+          return res.status(400).json({ 
+            success: false, 
+            message: 'Não é possível agendar para datas passadas.' 
+          });
+        }
+
+        // VALIDAÇÃO: Se for hoje, verifica se o horário não é passado
+        if (dataAgendamento.getTime() === hoje.getTime()) {
+          const agora = new Date();
+          const [horas, minutos] = horario_inicio.split(':').map(Number);
+          const horarioAgendamento = new Date();
+          horarioAgendamento.setHours(horas, minutos, 0, 0);
+          
+          if (horarioAgendamento < agora) {
+            return res.status(400).json({ 
+              success: false, 
+              message: 'Não é possível agendar para horários passados no dia de hoje.' 
+            });
+          }
         }
 
         // Se horario_fim não foi fornecido, calcula como 1 hora depois do início
@@ -220,7 +259,6 @@ class Server {
           return res.status(400).json({ success: false, message: 'Já existe um agendamento para este horário e laboratório.' });
         }
 
-        // Insere o agendamento - CORRIGIDO para o schema real
         const insertQuery = `
           INSERT INTO agendamentos 
           (data_agendamento, horario_inicio, horario_fim, id_laboratorio, id_professor, observacoes, status) 
@@ -247,7 +285,7 @@ class Server {
     });
 
     // -----------------------------
-    // CADASTRAR USUÁRIO - CORRIGIDO
+    // CADASTRAR USUÁRIO
     // -----------------------------
     this.#app.post('/api/cadastrar-usuario', async (req, res) => {
       try {
@@ -332,6 +370,29 @@ class Server {
       } catch (err) {
         console.error('Erro ao listar laboratórios:', err);
         res.status(500).json({ success: false, message: 'Erro ao listar laboratórios' });
+      }
+    });
+
+    // -----------------------------
+    // LISTAR AGENDAMENTOS DO PROFESSOR
+    // -----------------------------
+    this.#app.get('/api/meus-agendamentos/:professor_id', async (req, res) => {
+      try {
+        const { professor_id } = req.params;
+        
+        const query = `
+          SELECT a.*, l.nome as nome_laboratorio 
+          FROM agendamentos a 
+          JOIN laboratorios l ON a.id_laboratorio = l.id_laboratorio 
+          WHERE a.id_professor = ? 
+          ORDER BY a.data_agendamento DESC, a.horario_inicio DESC
+        `;
+        const agendamentos = await this.#db.query(query, [professor_id]);
+        
+        res.json({ success: true, agendamentos });
+      } catch (err) {
+        console.error('Erro ao listar agendamentos:', err);
+        res.status(500).json({ success: false, message: 'Erro ao listar agendamentos' });
       }
     });
 
