@@ -128,6 +128,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function exibirHorariosDisponiveis(horariosData) {
         eventListTime.innerHTML = ''; // Limpa a lista anterior
 
+        // Esconde o resumo se estiver visível
+        const summaryElement = document.getElementById('selected-time-summary');
+        if (summaryElement) {
+            summaryElement.style.display = 'none';
+        }
+
         if (!horariosData || horariosData.totalDisponiveis === 0) {
             eventListTime.innerHTML = '<div class="no-events">Nenhum horário disponível para esta data.</div>';
             return;
@@ -184,6 +190,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mostra o painel de tempo
         eventTimePanel.style.display = 'block';
         eventTimePanel.querySelector('.event-date').textContent = `Horários disponíveis - ${formatarData(selectedDate)}`;
+        
+        // Garante que a lista de horários esteja visível
+        eventListTime.style.display = 'block';
     }
 
     // Função para selecionar um horário
@@ -197,10 +206,78 @@ document.addEventListener('DOMContentLoaded', function () {
         element.classList.add('selected');
 
         selectedTime = horario;
+        
+        // Mostra o resumo do horário selecionado
+        mostrarResumoHorario(horario);
+        
         showMessage(`Horário selecionado: ${horario.aula} - ${horario.horario}`, true);
 
         // Mostra o painel de laboratórios
         exibirLaboratoriosDisponiveis();
+    }
+
+    // Função para mostrar o resumo do horário selecionado
+    function mostrarResumoHorario(horario) {
+        // Cria ou obtém o elemento de resumo
+        let summaryElement = document.getElementById('selected-time-summary');
+        if (!summaryElement) {
+            summaryElement = document.createElement('div');
+            summaryElement.id = 'selected-time-summary';
+            summaryElement.className = 'selected-time-summary';
+            eventTimePanel.insertBefore(summaryElement, eventListTime);
+        }
+
+        // Determina o período (Manhã ou Tarde)
+        const periodo = horario.horario.includes('13:00') || 
+                       horario.horario.includes('14:00') || 
+                       horario.horario.includes('15:00') || 
+                       horario.horario.includes('16:00') || 
+                       horario.horario.includes('17:00') ? 'Tarde' : 'Manhã';
+        
+        // Atualiza o conteúdo do resumo
+        summaryElement.innerHTML = `
+            <div class="time-summary-content">
+                <div class="period-badge ${periodo.toLowerCase()}">${periodo}</div>
+                <div class="time-details">
+                    <span class="selected-aula">${horario.aula}</span>
+                    <span class="selected-horario">${horario.horario}</span>
+                </div>
+                <button class="change-time-btn" id="change-time-btn">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+        `;
+
+        // Adiciona event listener para o botão de alterar horário
+        document.getElementById('change-time-btn').addEventListener('click', voltarSelecaoHorarios);
+        
+        // Esconde a lista de horários e mostra o resumo
+        eventListTime.style.display = 'none';
+        summaryElement.style.display = 'block';
+        
+        // Atualiza o header do painel
+        document.querySelector('#eventTime-panel .event-date').textContent = 'Horário Selecionado';
+    }
+
+    // Função para voltar à seleção de horários
+    function voltarSelecaoHorarios() {
+        const summaryElement = document.getElementById('selected-time-summary');
+        const eventListTime = document.getElementById('event-list-time');
+        
+        // Esconde o resumo e mostra a lista de horários
+        if (summaryElement) {
+            summaryElement.style.display = 'none';
+        }
+        eventListTime.style.display = 'block';
+        
+        // Reseta a seleção
+        selectedTime = null;
+        document.querySelectorAll('.time-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        
+        // Atualiza o header
+        document.querySelector('#eventTime-panel .event-date').textContent = `Horários disponíveis - ${formatarData(selectedDate)}`;
     }
 
     // Função para exibir laboratórios disponíveis
@@ -366,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const months = [
             "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "D ezembro"
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
         ];
         const dayNames = [
             "Domingo", "Segunda-feira", "Terça-feira",
@@ -467,6 +544,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Esconde painéis adicionais
         eventTimePanel.style.display = 'none';
         eventLabPanel.style.display = 'none';
+        
+        // Remove o resumo se existir
+        const summaryElement = document.getElementById('selected-time-summary');
+        if (summaryElement) {
+            summaryElement.remove();
+        }
     });
 
     // Próximo Mês
@@ -481,6 +564,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Esconde painéis adicionais
         eventTimePanel.style.display = 'none';
         eventLabPanel.style.display = 'none';
+        
+        // Remove o resumo se existir
+        const summaryElement = document.getElementById('selected-time-summary');
+        if (summaryElement) {
+            summaryElement.remove();
+        }
     });
 
     // Botão "Hoje"
@@ -495,6 +584,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Verifica agendamentos para hoje
         const agendamentosInfo = await verificarAgendamentos(dateStr);
         showEvents(dateStr, agendamentosInfo);
+        
+        // Remove o resumo se existir
+        const summaryElement = document.getElementById('selected-time-summary');
+        if (summaryElement) {
+            summaryElement.remove();
+        }
     });
 
     // Configura botão de confirmar

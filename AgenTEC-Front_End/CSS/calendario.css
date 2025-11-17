@@ -505,7 +505,7 @@ html {
 }
 
 .event-indicator{
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     color: var(--hoverCian-color);
     display: flex;
     align-items: center;
@@ -880,18 +880,15 @@ html {
     }
 }
 
-/* Adicione estas regras no final do seu CSS */
-
-/* Corrigindo a notificação - posição e z-index */
 #notificationMessage {
     position: fixed;
-    top: 150px; /* Abaixo da faixa vermelha do menu */
+    top: 150px;
     right: 20px;
     padding: 15px 20px;
     border-radius: 8px;
     color: white;
     font-weight: bold;
-    z-index: 10000; /* Valor muito alto para ficar acima de tudo */
+    z-index: 10000;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -901,7 +898,6 @@ html {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Garantir que o header não sobreponha a notificação */
 .govsp-topo,
 #cps-header,
 .main-menu-container {
@@ -952,10 +948,9 @@ html {
     animation: slideOutRight 0.3s ease-in forwards;
 }
 
-/* Ajustes para mobile - manter a notificação acessível */
 @media (max-width: 768px) {
     #notificationMessage {
-        top: 120px; /* Um pouco mais baixo em mobile */
+        top: 120px;
         right: 10px;
         left: 10px;
         max-width: none;
@@ -963,16 +958,6 @@ html {
     }
 }
 
-/* Ajustes para telas muito pequenas */
-@media (max-width: 480px) {
-    #notificationMessage {
-        top: 100px;
-        font-size: 0.9em;
-        padding: 12px 15px;
-    }
-}
-
-/* Adicional: melhorar a visibilidade do calendário em geral */
 .calendar-container {
     position: relative;
     z-index: 1;
@@ -982,6 +967,110 @@ html {
     position: relative;
     z-index: 1;
 }
+
+.selected-time-summary {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.time-summary-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.period-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.period-badge.manha {
+    background-color: #fff3cd;
+    color: #0c5460;
+}
+
+.period-badge.tarde {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.time-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.selected-aula {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.selected-horario {
+    color: #7f8c8d;
+    font-size: 1.3rem;
+}
+
+.change-time-btn {
+    background: none;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    padding: 8px;
+    color: #7f8c8d;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.change-time-btn:hover {
+    background-color: #f8f9fa;
+    border-color: var(--hoverCian-color);
+    color: var(--hoverCian-color);
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.time-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.time-btn:hover {
+    border-color: var(--hoverCian-color);
+    background-color: #f8f9fa;
+}
+
+.time-btn.selected {
+    border-color: #27ae60;
+    background-color: #d5f4e6;
+}
+
+.aula-label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.horario {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
 
 
 .main-menu-container .menu {
