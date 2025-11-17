@@ -595,7 +595,7 @@ html {
 .event-icon{
     font-size: 2rem;
     color: var(--hoverCian-color);
-    margin-right: 10px;
+    margin: 0 10px;
 }
 
 .all-event {
@@ -730,6 +730,267 @@ html {
 .schedule-btn:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+}
+
+/* Estilos para os painéis de horário e laboratório */
+.time-section {
+    margin-bottom: 20px;
+}
+
+.time-section h4 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 600;
+    border-bottom: 1px solid #ecf0f1;
+    padding-bottom: 5px;
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.lab-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.time-btn, .lab-btn {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-family: inherit;
+}
+
+.time-btn:hover, .lab-btn:hover {
+    border-color: #3498db;
+    background: #f8f9fa;
+}
+
+.time-btn.selected, .lab-btn.selected {
+    border-color: #27ae60;
+    background: #e8f5e8;
+}
+
+.aula-label {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.horario {
+    display: block;
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+.lab-name {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.lab-info {
+    display: block;
+    color: #7f8c8d;
+    font-size: 0.85em;
+}
+
+/* Estilos para o painel de eventos (horários e laboratórios) */
+.event-panel {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.event-date {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.event-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.no-events {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Estilos para o status de agendamento */
+.agendamento-status {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-indicator.disponivel {
+    background: #27ae60;
+}
+
+.status-indicator.lotado {
+    background: #e74c3c;
+}
+
+
+/* Ajustes de responsividade */
+@media (max-width: 768px) {
+    .time-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .action-buttons-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}
+
+/* Adicione estas regras no final do seu CSS */
+
+/* Corrigindo a notificação - posição e z-index */
+#notificationMessage {
+    position: fixed;
+    top: 150px; /* Abaixo da faixa vermelha do menu */
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    z-index: 10000; /* Valor muito alto para ficar acima de tudo */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    word-wrap: break-word;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Garantir que o header não sobreponha a notificação */
+.govsp-topo,
+#cps-header,
+.main-menu-container {
+    position: relative;
+    z-index: 9999; /* Menor que a notificação */
+}
+
+/* Ajustes específicos para a notificação de sucesso */
+#notificationMessage[style*="background-color: #4CAF50"] {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
+    border-left: 4px solid #2e7d32;
+}
+
+/* Ajustes específicos para a notificação de erro */
+#notificationMessage[style*="background-color: #f44336"] {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%) !important;
+    border-left: 4px solid #b71c1c;
+}
+
+/* Animações melhoradas para a notificação */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+#notificationMessage {
+    animation: slideInRight 0.3s ease-out forwards;
+}
+
+#notificationMessage.fade-out {
+    animation: slideOutRight 0.3s ease-in forwards;
+}
+
+/* Ajustes para mobile - manter a notificação acessível */
+@media (max-width: 768px) {
+    #notificationMessage {
+        top: 120px; /* Um pouco mais baixo em mobile */
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        margin: 0 10px;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    #notificationMessage {
+        top: 100px;
+        font-size: 0.9em;
+        padding: 12px 15px;
+    }
+}
+
+/* Adicional: melhorar a visibilidade do calendário em geral */
+.calendar-container {
+    position: relative;
+    z-index: 1;
+}
+
+.event-panel {
+    position: relative;
+    z-index: 1;
+}
+
+
+.main-menu-container .menu {
+    position: relative;
+    z-index: 5;
+}
+
+.dropdown-content {
+    z-index: 9998;
 }
 
 #cps-rodape__redes-icones {

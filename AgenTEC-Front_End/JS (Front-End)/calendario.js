@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    //Elementos do DOM
+    // Elementos do DOM
     const monthYearE1 = document.getElementById('month-year');
     const daysE1 = document.getElementById('days');
     const prevMonthBtn = document.getElementById('prev-month');
@@ -9,9 +9,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const eventListE1 = document.getElementById('event-list');
     const scheduleBtn = document.getElementById('schedule-btn');
 
-    //Variáveis de Estado
+    // Novos elementos para os painéis de horário e laboratório
+    const eventTimePanel = document.getElementById('eventTime-panel');
+    const eventListTime = document.getElementById('event-list-time');
+    const eventLabPanel = document.getElementById('eventLab-panel');
+    const eventListLab = document.getElementById('event-list-lab');
+    const scheduleTimeBtn = document.getElementById('schedule-btn-time');
+    const confirmBtn = document.querySelector('.btn-primary[href*="reagentes.html"]');
+
+    // Variáveis de Estado
     let currentDate = new Date();
     let selectedDate = null;
+    let selectedTime = null;
+    let selectedLab = null;
     const events = window.events || {}; // Carrega eventos de uma variável global
 
     // Função para mostrar notificações
@@ -78,8 +88,178 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Nova função para buscar horários disponíveis
+    async function buscarHorariosDisponiveis(dataStr) {
+        try {
+            const response = await fetch(`http://localhost:3000/api/horarios-disponiveis/${dataStr}`);
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                return result;
+            } else {
+                throw new Error(result.message || 'Erro ao buscar horários disponíveis');
+            }
+        } catch (error) {
+            console.error('Erro ao buscar horários disponíveis:', error);
+            showMessage('Erro ao carregar horários disponíveis', false);
+            return null;
+        }
+    }
+
+    // Função para carregar laboratórios disponíveis
+    async function carregarLaboratorios() {
+        try {
+            const response = await fetch('http://localhost:3000/api/laboratorios');
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                return result.laboratorios;
+            } else {
+                throw new Error(result.message || 'Erro ao carregar laboratórios');
+            }
+        } catch (error) {
+            console.error('Erro ao carregar laboratórios:', error);
+            showMessage('Erro ao carregar laboratórios', false);
+            return [];
+        }
+    }
+
+    // Função para exibir horários disponíveis no painel de tempo
+    function exibirHorariosDisponiveis(horariosData) {
+        eventListTime.innerHTML = ''; // Limpa a lista anterior
+
+        if (!horariosData || horariosData.totalDisponiveis === 0) {
+            eventListTime.innerHTML = '<div class="no-events">Nenhum horário disponível para esta data.</div>';
+            return;
+        }
+
+        // Cria seção da manhã
+        if (horariosData.horariosManha.length > 0) {
+            const manhaSection = document.createElement('div');
+            manhaSection.className = 'time-section';
+            manhaSection.innerHTML = '<h4>Manhã</h4>';
+
+            const manhaGrid = document.createElement('div');
+            manhaGrid.className = 'time-grid';
+
+            horariosData.horariosManha.forEach(horario => {
+                const timeBtn = document.createElement('button');
+                timeBtn.className = 'time-btn';
+                timeBtn.innerHTML = `
+                    <span class="aula-label">${horario.aula}</span>
+                    <span class="horario">${horario.horario}</span>
+                `;
+                timeBtn.addEventListener('click', () => selecionarHorario(horario, timeBtn));
+                manhaGrid.appendChild(timeBtn);
+            });
+
+            manhaSection.appendChild(manhaGrid);
+            eventListTime.appendChild(manhaSection);
+        }
+
+        // Cria seção da tarde
+        if (horariosData.horariosTarde.length > 0) {
+            const tardeSection = document.createElement('div');
+            tardeSection.className = 'time-section';
+            tardeSection.innerHTML = '<h4>Tarde</h4>';
+
+            const tardeGrid = document.createElement('div');
+            tardeGrid.className = 'time-grid';
+
+            horariosData.horariosTarde.forEach(horario => {
+                const timeBtn = document.createElement('button');
+                timeBtn.className = 'time-btn';
+                timeBtn.innerHTML = `
+                    <span class="aula-label">${horario.aula}</span>
+                    <span class="horario">${horario.horario}</span>
+                `;
+                timeBtn.addEventListener('click', () => selecionarHorario(horario, timeBtn));
+                tardeGrid.appendChild(timeBtn);
+            });
+
+            tardeSection.appendChild(tardeGrid);
+            eventListTime.appendChild(tardeSection);
+        }
+
+        // Mostra o painel de tempo
+        eventTimePanel.style.display = 'block';
+        eventTimePanel.querySelector('.event-date').textContent = `Horários disponíveis - ${formatarData(selectedDate)}`;
+    }
+
+    // Função para selecionar um horário
+    function selecionarHorario(horario, element) {
+        // Remove a seleção anterior
+        document.querySelectorAll('.time-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        // Adiciona a seleção ao botão clicado
+        element.classList.add('selected');
+
+        selectedTime = horario;
+        showMessage(`Horário selecionado: ${horario.aula} - ${horario.horario}`, true);
+
+        // Mostra o painel de laboratórios
+        exibirLaboratoriosDisponiveis();
+    }
+
+    // Função para exibir laboratórios disponíveis
+    async function exibirLaboratoriosDisponiveis() {
+        const laboratorios = await carregarLaboratorios();
+        eventListLab.innerHTML = ''; // Limpa a lista anterior
+
+        if (laboratorios.length === 0) {
+            eventListLab.innerHTML = '<div class="no-events">Nenhum laboratório disponível.</div>';
+            return;
+        }
+
+        laboratorios.forEach(lab => {
+            const labBtn = document.createElement('button');
+            labBtn.className = 'lab-btn';
+            labBtn.innerHTML = `
+                <span class="lab-name">${lab.nome}</span>
+                <span class="lab-info">Capacidade: ${lab.capacidade} | ${lab.localizacao}</span>
+            `;
+            labBtn.addEventListener('click', () => selecionarLaboratorio(lab, labBtn));
+            eventListLab.appendChild(labBtn);
+        });
+
+        // Mostra o painel de laboratório
+        eventLabPanel.style.display = 'block';
+        eventLabPanel.querySelector('.event-date').textContent = `Laboratório - ${formatarData(selectedDate)} ${selectedTime.horario}`;
+    }
+
+    // Função para selecionar laboratório
+    function selecionarLaboratorio(lab, element) {
+        // Remove a seleção anterior
+        document.querySelectorAll('.lab-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        // Adiciona a seleção ao botão clicado
+        element.classList.add('selected');
+
+        selectedLab = lab;
+        showMessage(`Laboratório selecionado: ${lab.nome}`, true);
+
+        // Habilita o botão de confirmar
+        if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.style.backgroundColor = '#27ae60';
+            confirmBtn.style.cursor = 'pointer';
+        }
+    }
+
+    // Função para formatar data (para exibir no painel)
+    function formatarData(date) {
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
     function renderCalendar() {
-        //Cálculos de Datas
+        // Cálculos de Datas
         const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
         const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
         const prevLastDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0);
@@ -87,10 +267,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const firstDayIndex = firstDay.getDay(); // 0 (Dom) a 6 (Sab)
         const totalDaysInMonth = lastDay.getDate();
 
-        //Alinha a semana começando na Segunda-feira
+        // Alinha a semana começando na Segunda-feira
         const daysFromPreviousMonth = (firstDayIndex + 6) % 7;
 
-        //Limita o calendário a no máximo 5 linhas
+        // Limita o calendário a no máximo 5 linhas
         const MAX_CELLS = 35;
         const totalCellsOccupied = daysFromPreviousMonth + totalDaysInMonth;
         let nextDays = 0;
@@ -99,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
             nextDays = MAX_CELLS - totalCellsOccupied;
         }
 
-        //Exibe Mês e Ano
+        // Exibe Mês e Ano
         const months = [
             "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto",
             "Setembro", "Outubro", "Novembro", "Dezembro"
@@ -108,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let days = "";
 
-        //Renderiza dias do Mês Anterior
+        // Renderiza dias do Mês Anterior
         for (let x = daysFromPreviousMonth; x > 0; x--) {
             const prevDate = prevLastDay.getDate() - x + 1;
             const dateKey = `${prevLastDay.getFullYear()}-${(prevLastDay.getMonth() + 1).toString().padStart(2, '0')}-${prevDate.toString().padStart(2, '0')}`;
@@ -117,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
             days += `<div class="day other-month${hasEvent ? ' has-events' : ''}">${prevDate}</div>`;
         }
 
-        //Renderiza dias do Mês Atual e Limita o loop para respeitar o limite de 35 células pra não aparecer mais de uma semana
+        // Renderiza dias do Mês Atual e Limita o loop para respeitar o limite de 35 células pra não aparecer mais de uma semana
         const maxCurrentDay = Math.min(totalDaysInMonth, MAX_CELLS - daysFromPreviousMonth);
 
         for (let i = 1; i <= maxCurrentDay; i++) {
@@ -127,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let dayClass = 'day';
 
-            //Marca o dia de hoje
+            // Marca o dia de hoje
             if (
                 date.getDate() === new Date().getDate() &&
                 date.getMonth() === new Date().getMonth() &&
@@ -136,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 dayClass += ' today';
             }
 
-            //Marca o dia selecionado
+            // Marca o dia selecionado
             if (
                 selectedDate &&
                 date.getDate() === selectedDate.getDate() &&
@@ -152,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function () {
             days += `<div class="${dayClass}" data-date="${dateKey}">${i}</div>`;
         }
 
-        //Renderiza dias do Próximo Mês
+        // Renderiza dias do Próximo Mês
         for (let j = 1; j <= nextDays; j++) {
             const nextMonth = currentDate.getMonth() + 2;
             const nextYear = currentDate.getFullYear();
@@ -164,13 +344,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         daysE1.innerHTML = days;
 
-        //Adiciona Event Listeners dos Dias Válidos
+        // Adiciona Event Listeners dos Dias Válidos
         document.querySelectorAll('.day:not(.other-month)').forEach(day => {
             day.addEventListener('click', async () => {
                 const dateStr = day.getAttribute('data-date');
                 const [year, month, dayNum] = dateStr.split('-').map(Number);
                 selectedDate = new Date(year, month - 1, dayNum);
-                renderCalendar(); //Atualiza a seleção no calendário
+                renderCalendar(); // Atualiza a seleção no calendário
                 
                 // Verifica agendamentos no backend
                 const agendamentosInfo = await verificarAgendamentos(dateStr);
@@ -179,14 +359,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    //Exibe a lista de eventos para a data selecionada
-    function showEvents(dateStr, agendamentosInfo) {
+    // Exibe a lista de eventos para a data selecionada
+    async function showEvents(dateStr, agendamentosInfo) {
         const [year, month, day] = dateStr.split('-').map(Number);
         const dateObj = new Date(year, month - 1, day);
 
         const months = [
             "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "D ezembro"
         ];
         const dayNames = [
             "Domingo", "Segunda-feira", "Terça-feira",
@@ -196,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const dayName = dayNames[dateObj.getDay()];
 
         eventDateE1.textContent = `${dayName}, ${day} de ${months[dateObj.getMonth()]} de ${year}`;
-        eventListE1.innerHTML = ''; //Limpa eventos anteriores
+        eventListE1.innerHTML = ''; // Limpa eventos anteriores
 
         // Mostra informações de agendamento
         if (agendamentosInfo) {
@@ -216,8 +396,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 scheduleBtn.disabled = false;
                 scheduleBtn.innerHTML = '<i class="fas fa-calendar-plus"></i> Agendar Aula';
                 scheduleBtn.onclick = () => {
-                    window.location.href = `agendar.html?data=${dateStr}`;
+                    // Busca horários disponíveis e exibe no painel de tempo
+                    buscarHorariosDisponiveis(dateStr).then(horariosData => {
+                        exibirHorariosDisponiveis(horariosData);
+                    });
                 };
+
+                // Esconde painéis de horário e laboratório inicialmente
+                eventTimePanel.style.display = 'none';
+                eventLabPanel.style.display = 'none';
+                
             } else {
                 statusDiv.innerHTML = `
                     <div class="status-indicator lotado"></div>
@@ -231,12 +419,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 scheduleBtn.disabled = true;
                 scheduleBtn.innerHTML = '<i class="fas fa-calendar-times"></i> Data Lotada';
                 scheduleBtn.onclick = null;
+
+                // Esconde painéis de horário e laboratório
+                eventTimePanel.style.display = 'none';
+                eventLabPanel.style.display = 'none';
             }
             
             eventListE1.appendChild(statusDiv);
         }
 
-        //Renderiza a lista de Eventos existentes
+        // Renderiza a lista de Eventos existentes
         if (events[dateStr]) {
             events[dateStr].forEach(event => {
                 const eventItem = document.createElement('div');
@@ -249,9 +441,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 eventListE1.appendChild(eventItem);
             });
         }
+
+        // Reseta seleções de horário e laboratório
+        selectedTime = null;
+        selectedLab = null;
+        
+        // Desabilita botão de confirmar
+        if (confirmBtn) {
+            confirmBtn.disabled = true;
+            confirmBtn.style.backgroundColor = '#bdc3c7';
+            confirmBtn.style.cursor = 'not-allowed';
+        }
     }
 
-    //Navegação e Botões
+    // Navegação e Botões
     // Mês Anterior
     prevMonthBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
@@ -260,9 +463,13 @@ document.addEventListener('DOMContentLoaded', function () {
         eventListE1.innerHTML = '<div class="no-events">Selecione uma data para verificar a disponibilidade</div>';
         scheduleBtn.disabled = true;
         scheduleBtn.innerHTML = '<i class="fas fa-calendar-day"></i> Agendar';
+        
+        // Esconde painéis adicionais
+        eventTimePanel.style.display = 'none';
+        eventLabPanel.style.display = 'none';
     });
 
-    //Próximo Mês
+    // Próximo Mês
     nextMonthBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() + 1);
         renderCalendar();
@@ -270,9 +477,13 @@ document.addEventListener('DOMContentLoaded', function () {
         eventListE1.innerHTML = '<div class="no-events">Selecione uma data para verificar a disponibilidade</div>';
         scheduleBtn.disabled = true;
         scheduleBtn.innerHTML = '<i class="fas fa-calendar-day"></i> Agendar';
+        
+        // Esconde painéis adicionais
+        eventTimePanel.style.display = 'none';
+        eventLabPanel.style.display = 'none';
     });
 
-    //Botão "Hoje"
+    // Botão "Hoje"
     todayBtn.addEventListener('click', async () => {
         currentDate = new Date();
         selectedDate = new Date();
@@ -286,8 +497,36 @@ document.addEventListener('DOMContentLoaded', function () {
         showEvents(dateStr, agendamentosInfo);
     });
 
-    //Inicializa o calendário
+    // Configura botão de confirmar
+    if (confirmBtn) {
+        confirmBtn.disabled = true;
+        confirmBtn.style.backgroundColor = '#bdc3c7';
+        confirmBtn.style.cursor = 'not-allowed';
+        
+        confirmBtn.addEventListener('click', (e) => {
+            if (!selectedDate || !selectedTime || !selectedLab) {
+                e.preventDefault();
+                showMessage('Por favor, selecione data, horário e laboratório antes de confirmar', false);
+                return;
+            }
+
+            // Armazena a seleção para usar na próxima página
+            const agendamentoData = {
+                data: selectedDate,
+                horario: selectedTime,
+                laboratorio: selectedLab
+            };
+            localStorage.setItem('agendamentoData', JSON.stringify(agendamentoData));
+            
+            showMessage('Agendamento confirmado! Redirecionando...', true);
+        });
+    }
+
+    // Inicializa o calendário
     renderCalendar();
     scheduleBtn.disabled = true;
 
+    // Esconde painéis adicionais inicialmente
+    eventTimePanel.style.display = 'none';
+    eventLabPanel.style.display = 'none';
 });

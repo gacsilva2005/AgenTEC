@@ -80,9 +80,9 @@ class Server {
       // Primeiro verifica nas contas genéricas
       if (this.#contasGenericas[email]) {
         if (this.#contasGenericas[email].senha === senha) {
-          return res.json({ 
-            success: true, 
-            usuario: this.#contasGenericas[email].usuario 
+          return res.json({
+            success: true,
+            usuario: this.#contasGenericas[email].usuario
           });
         } else {
           return res.status(401).json({ success: false, message: 'Senha incorreta' });
@@ -128,21 +128,21 @@ class Server {
     this.#app.get('/api/agendamentos/:data', async (req, res) => {
       try {
         const { data } = req.params;
-        
+
         // Validação da data
         if (!data || typeof data !== 'string') {
-          return res.status(400).json({ 
-            success: false, 
-            message: 'Data é obrigatória' 
+          return res.status(400).json({
+            success: false,
+            message: 'Data é obrigatória'
           });
         }
 
         // Tenta converter para formato de data válido
         const dataFormatada = new Date(data);
         if (isNaN(dataFormatada.getTime())) {
-          return res.status(400).json({ 
-            success: false, 
-            message: 'Data inválida' 
+          return res.status(400).json({
+            success: false,
+            message: 'Data inválida'
           });
         }
 
@@ -153,9 +153,9 @@ class Server {
 
         // VALIDAÇÃO: Verifica se a data é anterior à data atual
         if (dataFormatada < hoje) {
-          return res.json({ 
-            success: true, 
-            totalAgendamentos: 0, 
+          return res.json({
+            success: true,
+            totalAgendamentos: 0,
             podeAgendar: false,
             message: 'Não é possível agendar para datas passadas.'
           });
@@ -163,25 +163,24 @@ class Server {
 
         console.log(`Verificando agendamentos para: ${dataSQL}`);
 
-        // Query corrigida - usando data_agendamento que existe no schema
         const query = 'SELECT COUNT(*) as total_agendamentos FROM agendamentos WHERE data_agendamento = ?';
         const result = await this.#db.query(query, [dataSQL]);
-        
+
         const totalAgendamentos = result[0]?.total_agendamentos || 0;
         const podeAgendar = totalAgendamentos < 3;
-        
-        return res.json({ 
-          success: true, 
-          totalAgendamentos, 
+
+        return res.json({
+          success: true,
+          totalAgendamentos,
           podeAgendar,
-          message: podeAgendar 
-            ? `Há ${3 - totalAgendamentos} vaga(s) disponível(is) para ${dataSQL}.` 
+          message: podeAgendar
+            ? `Há ${3 - totalAgendamentos} vaga(s) disponível(is) para ${dataSQL}.`
             : `Data ${dataSQL} lotada! Máximo de 3 agendamentos por dia atingido.`
         });
       } catch (err) {
         console.error('Erro ao verificar agendamentos:', err);
-        return res.status(500).json({ 
-          success: false, 
+        return res.status(500).json({
+          success: false,
           message: 'Erro interno do servidor ao verificar disponibilidade'
         });
       }
@@ -193,7 +192,7 @@ class Server {
     this.#app.post('/api/agendamentos', async (req, res) => {
       try {
         const { data_agendamento, horario_inicio, horario_fim, laboratorio, professor_id, materia } = req.body;
-        
+
         if (!data_agendamento || !horario_inicio || !laboratorio || !professor_id || !materia) {
           return res.status(400).json({ success: false, message: 'Todos os campos são obrigatórios' });
         }
@@ -204,9 +203,9 @@ class Server {
         hoje.setHours(0, 0, 0, 0); // Zera as horas para comparar apenas a data
 
         if (dataAgendamento < hoje) {
-          return res.status(400).json({ 
-            success: false, 
-            message: 'Não é possível agendar para datas passadas.' 
+          return res.status(400).json({
+            success: false,
+            message: 'Não é possível agendar para datas passadas.'
           });
         }
 
@@ -216,11 +215,11 @@ class Server {
           const [horas, minutos] = horario_inicio.split(':').map(Number);
           const horarioAgendamento = new Date();
           horarioAgendamento.setHours(horas, minutos, 0, 0);
-          
+
           if (horarioAgendamento < agora) {
-            return res.status(400).json({ 
-              success: false, 
-              message: 'Não é possível agendar para horários passados no dia de hoje.' 
+            return res.status(400).json({
+              success: false,
+              message: 'Não é possível agendar para horários passados no dia de hoje.'
             });
           }
         }
@@ -231,7 +230,7 @@ class Server {
         // Primeiro verifica se ainda há vagas
         const countQuery = 'SELECT COUNT(*) as total FROM agendamentos WHERE data_agendamento = ?';
         const countResult = await this.#db.query(countQuery, [data_agendamento]);
-        
+
         if (countResult[0].total >= 3) {
           return res.status(400).json({ success: false, message: 'Data lotada! Máximo de 3 agendamentos por dia.' });
         }
@@ -249,12 +248,12 @@ class Server {
           )
         `;
         const duplicateResult = await this.#db.query(duplicateQuery, [
-          data_agendamento, laboratorio, 
+          data_agendamento, laboratorio,
           horario_inicio, horario_inicio,
           horarioFim, horarioFim,
           horario_inicio, horarioFim
         ]);
-        
+
         if (duplicateResult[0].total > 0) {
           return res.status(400).json({ success: false, message: 'Já existe um agendamento para este horário e laboratório.' });
         }
@@ -265,22 +264,112 @@ class Server {
           VALUES (?, ?, ?, ?, ?, ?, 'pendente')
         `;
         const insertResult = await this.#db.query(insertQuery, [
-          data_agendamento, 
-          horario_inicio, 
+          data_agendamento,
+          horario_inicio,
           horarioFim,
-          laboratorio, 
-          professor_id, 
+          laboratorio,
+          professor_id,
           materia
         ]);
 
-        return res.json({ 
-          success: true, 
+        return res.json({
+          success: true,
           message: 'Agendamento realizado com sucesso!',
           agendamentoId: insertResult.insertId
         });
       } catch (err) {
         console.error('Erro ao criar agendamento:', err);
         return res.status(500).json({ success: false, message: 'Erro ao criar agendamento' });
+      }
+    });
+
+    // -----------------------------
+    // OBTER HORÁRIOS DISPONÍVEIS POR DATA
+    // -----------------------------
+    this.#app.get('/api/horarios-disponiveis/:data', async (req, res) => {
+      try {
+        const { data } = req.params;
+
+        // Validação da data
+        if (!data || typeof data !== 'string') {
+          return res.status(400).json({
+            success: false,
+            message: 'Data é obrigatória'
+          });
+        }
+
+        // Tenta converter para formato de data válido
+        const dataFormatada = new Date(data);
+        if (isNaN(dataFormatada.getTime())) {
+          return res.status(400).json({
+            success: false,
+            message: 'Data inválida'
+          });
+        }
+
+        // Formata a data para YYYY-MM-DD
+        const dataSQL = dataFormatada.toISOString().split('T')[0];
+
+        // Define todos os horários possíveis (manhã e tarde)
+        const todosHorarios = [
+          // Manhã
+          { horario: '07:00', periodo: 'manha', aula: '1º aula' },
+          { horario: '08:00', periodo: 'manha', aula: '2º aula' },
+          { horario: '09:00', periodo: 'manha', aula: '3º aula' },
+          { horario: '10:00', periodo: 'manha', aula: '4º aula' },
+          { horario: '11:00', periodo: 'manha', aula: '5º aula' },
+          { horario: '12:00', periodo: 'manha', aula: '6º aula' },
+          // Tarde
+          { horario: '13:00', periodo: 'tarde', aula: '1º aula' },
+          { horario: '14:00', periodo: 'tarde', aula: '2º aula' },
+          { horario: '15:00', periodo: 'tarde', aula: '3º aula' },
+          { horario: '16:00', periodo: 'tarde', aula: '4º aula' },
+          { horario: '17:00', periodo: 'tarde', aula: '5º aula' },
+          { horario: '18:00', periodo: 'tarde', aula: '6º aula' }
+        ];
+
+        // Busca agendamentos existentes para esta data
+        const agendamentosQuery = `
+      SELECT horario_inicio, horario_fim, id_laboratorio 
+      FROM agendamentos 
+      WHERE data_agendamento = ? AND status != 'cancelado'
+    `;
+        const agendamentos = await this.#db.query(agendamentosQuery, [dataSQL]);
+
+        // Filtra horários disponíveis
+        const horariosDisponiveis = todosHorarios.filter(horario => {
+          // Verifica se este horário está conflitando com algum agendamento existente
+          const conflito = agendamentos.some(agendamento => {
+            const agendamentoInicio = agendamento.horario_inicio;
+            const agendamentoFim = agendamento.horario_fim;
+            const horarioAtual = horario.horario;
+
+            // Verifica se há sobreposição de horários
+            return (horarioAtual >= agendamentoInicio && horarioAtual < agendamentoFim) ||
+              (agendamentoInicio <= horarioAtual && agendamentoFim > horarioAtual);
+          });
+
+          return !conflito;
+        });
+
+        // Agrupa por período
+        const horariosManha = horariosDisponiveis.filter(h => h.periodo === 'manha');
+        const horariosTarde = horariosDisponiveis.filter(h => h.periodo === 'tarde');
+
+        return res.json({
+          success: true,
+          horariosDisponiveis,
+          horariosManha,
+          horariosTarde,
+          totalDisponiveis: horariosDisponiveis.length,
+          message: `Encontrados ${horariosDisponiveis.length} horários disponíveis para ${dataSQL}`
+        });
+      } catch (err) {
+        console.error('Erro ao obter horários disponíveis:', err);
+        return res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor ao buscar horários disponíveis'
+        });
       }
     });
 
@@ -340,10 +429,10 @@ class Server {
         const tecnicos = await this.#db.query('SELECT * FROM tecnico LIMIT 5');
         const agendamentos = await this.#db.query('SELECT * FROM agendamentos LIMIT 5');
         const laboratorios = await this.#db.query('SELECT * FROM laboratorios LIMIT 5');
-        
-        res.json({ 
-          success: true, 
-          message: 'Conexão OK', 
+
+        res.json({
+          success: true,
+          message: 'Conexão OK',
           tables: tables,
           administradores: administradores,
           professores: professores,
@@ -352,10 +441,10 @@ class Server {
           laboratorios: laboratorios
         });
       } catch (error) {
-        res.status(500).json({ 
-          success: false, 
-          message: 'Erro no banco', 
-          error: error.message 
+        res.status(500).json({
+          success: false,
+          message: 'Erro no banco',
+          error: error.message
         });
       }
     });
@@ -379,7 +468,7 @@ class Server {
     this.#app.get('/api/meus-agendamentos/:professor_id', async (req, res) => {
       try {
         const { professor_id } = req.params;
-        
+
         const query = `
           SELECT a.*, l.nome as nome_laboratorio 
           FROM agendamentos a 
@@ -388,7 +477,7 @@ class Server {
           ORDER BY a.data_agendamento DESC, a.horario_inicio DESC
         `;
         const agendamentos = await this.#db.query(query, [professor_id]);
-        
+
         res.json({ success: true, agendamentos });
       } catch (err) {
         console.error('Erro ao listar agendamentos:', err);
