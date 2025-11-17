@@ -7,11 +7,76 @@ document.addEventListener('DOMContentLoaded', function () {
     const todayBtn = document.getElementById('today-btn');
     const eventDateE1 = document.getElementById('event-date');
     const eventListE1 = document.getElementById('event-list');
+    const scheduleBtn = document.getElementById('schedule-btn');
 
     //Variáveis de Estado
     let currentDate = new Date();
     let selectedDate = null;
     const events = window.events || {}; // Carrega eventos de uma variável global
+
+    // Função para mostrar notificações
+    function showMessage(message, isSuccess = false) {
+        // Remove notificação anterior se existir
+        const existingMessage = document.getElementById('notificationMessage');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+
+        // Cria elemento de notificação
+        const messageElement = document.createElement('div');
+        messageElement.id = 'notificationMessage';
+        messageElement.textContent = message;
+        messageElement.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            background-color: ${isSuccess ? '#4CAF50' : '#f44336'};
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        `;
+
+        document.body.appendChild(messageElement);
+
+        // Animação de entrada
+        setTimeout(() => {
+            messageElement.style.opacity = '1';
+        }, 10);
+
+        // Remove após 5 segundos (ou 3 segundos para sucesso)
+        const duration = isSuccess ? 3000 : 5000;
+        setTimeout(() => {
+            messageElement.style.opacity = '0';
+            setTimeout(() => {
+                if (messageElement.parentNode) {
+                    messageElement.remove();
+                }
+            }, 300);
+        }, duration);
+    }
+
+    // Função para verificar agendamentos no backend
+    async function verificarAgendamentos(dataStr) {
+        try {
+            const response = await fetch(`http://localhost:3000/api/agendamentos/${dataStr}`);
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                return result;
+            } else {
+                throw new Error(result.message || 'Erro ao verificar agendamentos');
+            }
+        } catch (error) {
+            console.error('Erro ao verificar agendamentos:', error);
+            showMessage('Erro ao verificar disponibilidade da data', false);
+            return null;
+        }
+    }
 
     function renderCalendar() {
         //Cálculos de Datas
@@ -46,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //Renderiza dias do Mês Anterior
         for (let x = daysFromPreviousMonth; x > 0; x--) {
             const prevDate = prevLastDay.getDate() - x + 1;
-            const dateKey = `${prevLastDay.getFullYear()}-${prevLastDay.getMonth() + 1}-${prevDate}`;
+            const dateKey = `${prevLastDay.getFullYear()}-${(prevLastDay.getMonth() + 1).toString().padStart(2, '0')}-${prevDate.toString().padStart(2, '0')}`;
             const hasEvent = events[dateKey] !== undefined;
 
             days += `<div class="day other-month${hasEvent ? ' has-events' : ''}">${prevDate}</div>`;
@@ -57,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         for (let i = 1; i <= maxCurrentDay; i++) {
             const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
-            const dateKey = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${i}`;
+            const dateKey = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${i.toString().padStart(2, '0')}`;
             const hasEvent = events[dateKey] !== undefined;
 
             let dayClass = 'day';
@@ -89,7 +154,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Renderiza dias do Próximo Mês
         for (let j = 1; j <= nextDays; j++) {
-            const dateKey = `${currentDate.getFullYear()}-${currentDate.getMonth() + 2}-${j}`;
+            const nextMonth = currentDate.getMonth() + 2;
+            const nextYear = currentDate.getFullYear();
+            const dateKey = `${nextYear}-${nextMonth.toString().padStart(2, '0')}-${j.toString().padStart(2, '0')}`;
             const hasEvent = events[dateKey] !== undefined;
 
             days += `<div class="day other-month${hasEvent ? ' has-events' : ''}">${j}</div>`;
@@ -99,19 +166,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Adiciona Event Listeners dos Dias Válidos
         document.querySelectorAll('.day:not(.other-month)').forEach(day => {
-            day.addEventListener('click', () => {
+            day.addEventListener('click', async () => {
                 const dateStr = day.getAttribute('data-date');
                 const [year, month, dayNum] = dateStr.split('-').map(Number);
                 selectedDate = new Date(year, month - 1, dayNum);
                 renderCalendar(); //Atualiza a seleção no calendário
-                showEvents(dateStr); //Exibe eventos do dia
+                
+                // Verifica agendamentos no backend
+                const agendamentosInfo = await verificarAgendamentos(dateStr);
+                showEvents(dateStr, agendamentosInfo);
             });
         });
     }
 
-
     //Exibe a lista de eventos para a data selecionada
-    function showEvents(dateStr) {
+    function showEvents(dateStr, agendamentosInfo) {
         const [year, month, day] = dateStr.split('-').map(Number);
         const dateObj = new Date(year, month - 1, day);
 
@@ -126,10 +195,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const dayName = dayNames[dateObj.getDay()];
 
-        eventDateE1.textContent = `${dayName}, ${months[dateObj.getMonth()]} ${day}, ${year}`;
+        eventDateE1.textContent = `${dayName}, ${day} de ${months[dateObj.getMonth()]} de ${year}`;
         eventListE1.innerHTML = ''; //Limpa eventos anteriores
 
-        //Renderiza a lista de Eventos
+        // Mostra informações de agendamento
+        if (agendamentosInfo) {
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `agendamento-status ${agendamentosInfo.podeAgendar ? 'disponivel' : 'lotado'}`;
+            
+            if (agendamentosInfo.podeAgendar) {
+                statusDiv.innerHTML = `
+                    <div class="status-indicator disponivel"></div>
+                    <div class="status-text">
+                        <strong>Disponível para agendamento</strong>
+                        <p>${agendamentosInfo.message}</p>
+                    </div>
+                `;
+                
+                // Habilita o botão de agendar
+                scheduleBtn.disabled = false;
+                scheduleBtn.innerHTML = '<i class="fas fa-calendar-plus"></i> Agendar Aula';
+                scheduleBtn.onclick = () => {
+                    window.location.href = `agendar.html?data=${dateStr}`;
+                };
+            } else {
+                statusDiv.innerHTML = `
+                    <div class="status-indicator lotado"></div>
+                    <div class="status-text">
+                        <strong>Data Lotada</strong>
+                        <p>${agendamentosInfo.message}</p>
+                    </div>
+                `;
+                
+                // Desabilita o botão de agendar
+                scheduleBtn.disabled = true;
+                scheduleBtn.innerHTML = '<i class="fas fa-calendar-times"></i> Data Lotada';
+                scheduleBtn.onclick = null;
+            }
+            
+            eventListE1.appendChild(statusDiv);
+        }
+
+        //Renderiza a lista de Eventos existentes
         if (events[dateStr]) {
             events[dateStr].forEach(event => {
                 const eventItem = document.createElement('div');
@@ -141,8 +248,6 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
                 eventListE1.appendChild(eventItem);
             });
-        } else {
-            eventListE1.innerHTML = '<div class="no-events">Não há eventos para este dia</div>';
         }
     }
 
@@ -152,7 +257,9 @@ document.addEventListener('DOMContentLoaded', function () {
         currentDate.setMonth(currentDate.getMonth() - 1);
         renderCalendar();
         eventDateE1.textContent = 'Selecione uma data';
-        eventListE1.innerHTML = '<div class="no-events">Selecione uma data com eventos para visualizá-los aqui</div>';
+        eventListE1.innerHTML = '<div class="no-events">Selecione uma data para verificar a disponibilidade</div>';
+        scheduleBtn.disabled = true;
+        scheduleBtn.innerHTML = '<i class="fas fa-calendar-day"></i> Agendar';
     });
 
     //Próximo Mês
@@ -160,21 +267,27 @@ document.addEventListener('DOMContentLoaded', function () {
         currentDate.setMonth(currentDate.getMonth() + 1);
         renderCalendar();
         eventDateE1.textContent = 'Selecione uma data';
-        eventListE1.innerHTML = '<div class="no-events">Selecione uma data com eventos para visualizá-los aqui</div>';
+        eventListE1.innerHTML = '<div class="no-events">Selecione uma data para verificar a disponibilidade</div>';
+        scheduleBtn.disabled = true;
+        scheduleBtn.innerHTML = '<i class="fas fa-calendar-day"></i> Agendar';
     });
 
     //Botão "Hoje"
-    todayBtn.addEventListener('click', () => {
+    todayBtn.addEventListener('click', async () => {
         currentDate = new Date();
         selectedDate = new Date();
         renderCalendar();
 
         const today = new Date();
-        const dateStr = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-        showEvents(dateStr); // Exibe eventos de hoje
+        const dateStr = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+        
+        // Verifica agendamentos para hoje
+        const agendamentosInfo = await verificarAgendamentos(dateStr);
+        showEvents(dateStr, agendamentosInfo);
     });
 
     //Inicializa o calendário
     renderCalendar();
+    scheduleBtn.disabled = true;
 
 });

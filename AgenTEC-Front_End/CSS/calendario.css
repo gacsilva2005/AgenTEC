@@ -680,6 +680,58 @@ html {
     }
 }
 
+/* Adicione no seu arquivo CSS */
+.agendamento-status {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid;
+}
+
+.agendamento-status.disponivel {
+    background-color: #e8f5e8;
+    border-left-color: #4CAF50;
+}
+
+.agendamento-status.lotado {
+    background-color: #ffebee;
+    border-left-color: #f44336;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.status-indicator.disponivel {
+    background-color: #4CAF50;
+}
+
+.status-indicator.lotado {
+    background-color: #f44336;
+}
+
+.status-text strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.status-text p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.schedule-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
 #cps-rodape__redes-icones {
     display: flex;
     align-items: center;
