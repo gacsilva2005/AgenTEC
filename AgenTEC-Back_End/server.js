@@ -67,7 +67,7 @@ class Server {
     };
 
   this.#configRoutes();
-  this.#startServer(port); // Dentro da classe Server, após o constructor ou outro método
+  this.#startServer(port);
 }
 
 #calcularHorarioFim(horarioInicio) {
@@ -502,8 +502,7 @@ class Server {
   // -----------------------------
       this.#app.get('/api/vidrarias', async (req, res) => {
         try {
-          // ATENÇÃO: Verifique se este caminho está correto no seu projeto!
-          const pathJson = './AgenTEC-DataBase-(JSON)/vidrarias.json';
+          const pathJson = '../AgenTEC-DataBase-(JSON)/vidrarias.json';
   
           // Lê o arquivo JSON
           const data = fs.readFileSync(pathJson, 'utf8');

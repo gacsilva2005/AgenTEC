@@ -1,11 +1,4 @@
-/**
- * Arquivo JS para o controle de Reagentes:
- * 1. Faz a requisição dos dados de reagentes do back-end.
- * 2. Renderiza os cards de reagentes dinamicamente.
- * 3. Implementa a lógica de filtro de busca na página.
- */
-
-const BACKEND_URL = 'http://localhost:3000/api'; // Ajuste se seu servidor rodar em outra porta/URL
+const BACKEND_URL = 'http://localhost:3000/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const searchArea = document.getElementById('search-area');
@@ -14,27 +7,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Função para buscar os dados do servidor
     const fetchReagentes = async () => {
         try {
-            const response = await fetch(`${BACKEND_URL}/reagentes`);
+            const response = await fetch('../../../AgenTEC-DataBase-(JSON)/reagentes.json');
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
             const data = await response.json();
 
-            if (data.success && data.itens) {
+            // Verifica se é um array diretamente (estrutura do arquivo local)
+            if (Array.isArray(data)) {
+                renderizarCards(data);
+            }
+            // Ou se segue a estrutura da API {success: true, itens: [...]}
+            else if (data.success && data.itens) {
                 renderizarCards(data.itens);
-            } else {
-                itemsListContainer.innerHTML = '<p class="error-message">Erro ao carregar reagentes: ' + (data.message || 'Dados inválidos.') + '</p>';
+            }
+            // Ou se tem outra estrutura comum
+            else if (data.reagentes || data.items) {
+                renderizarCards(data.reagentes || data.items);
+            }
+            else {
+                console.error('Estrutura de dados inesperada:', data);
+                itemsListContainer.innerHTML = '<p class="error-message">Estrutura de dados inválida no arquivo JSON.</p>';
             }
         } catch (error) {
-            console.error('Erro na comunicação com o back-end:', error);
-            itemsListContainer.innerHTML = '<p class="error-message">Não foi possível conectar ao servidor. Verifique se o back-end (server.js) está rodando (porta 3000).</p>';
+            console.error('Erro ao carregar reagentes:', error);
+            itemsListContainer.innerHTML = '<p class="error-message">Erro ao carregar os dados dos reagentes. Verifique o console para detalhes.</p>';
         }
     };
 
     // 2. Função para renderizar os cards dinamicamente
     const renderizarCards = (reagentes) => {
-        itemsListContainer.innerHTML = ''; 
+        itemsListContainer.innerHTML = '';
 
         // Agrupa os itens pelo campo 'tipo' (Tipo do Item)
         const reagentesAgrupados = reagentes.reduce((acc, item) => {
-            const tipo = item.tipo || 'Outros'; 
+            const tipo = item.tipo || 'Outros';
             if (!acc[tipo]) {
                 acc[tipo] = [];
             }
@@ -45,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Gera o HTML para cada grupo (card)
         for (const tipo in reagentesAgrupados) {
             const itensDoTipo = reagentesAgrupados[tipo];
-            
+
             const cardHTML = document.createElement('div');
             cardHTML.classList.add('item-card');
 
@@ -91,10 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
             todosOsCards.forEach(card => {
                 let cardVisivel = false;
                 const linhas = card.querySelectorAll('.item-row');
-                
+
                 // Verifica se alguma linha dentro do card corresponde ao termo
                 linhas.forEach(linha => {
-                    const textoLinha = linha.dataset.search; 
+                    const textoLinha = linha.dataset.search;
                     if (textoLinha.includes(termoBuscado)) {
                         linha.style.display = 'flex'; // Exibe a linha
                         cardVisivel = true;
