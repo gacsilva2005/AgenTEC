@@ -6,7 +6,12 @@ import Administrador from "./administrador.js";
 import Professor from "./professor.js";
 import Tecnico from "./tecnico.js";
 import Sistema from "./sistema.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
 import fs from "fs";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 class Server {
   #app;
@@ -66,21 +71,21 @@ class Server {
       }
     };
 
-  this.#configRoutes();
-  this.#startServer(port);
-}
+    this.#configRoutes();
+    this.#startServer(port);
+  }
 
-#calcularHorarioFim(horarioInicio) {
-  const [horas, minutos] = horarioInicio.split(':').map(Number);
-  const data = new Date();
-  data.setHours(horas, minutos, 0, 0);
-  data.setHours(data.getHours() + 1); // Adiciona 1 hora
+  #calcularHorarioFim(horarioInicio) {
+    const [horas, minutos] = horarioInicio.split(':').map(Number);
+    const data = new Date();
+    data.setHours(horas, minutos, 0, 0);
+    data.setHours(data.getHours() + 1); // Adiciona 1 hora
 
-  // Formata o resultado para HH:MM
-  const novaHora = String(data.getHours()).padStart(2, '0');
-  const novoMinuto = String(data.getMinutes()).padStart(2, '0');
-  return `${novaHora}:${novoMinuto}`;
-}
+    // Formata o resultado para HH:MM
+    const novaHora = String(data.getHours()).padStart(2, '0');
+    const novoMinuto = String(data.getMinutes()).padStart(2, '0');
+    return `${novaHora}:${novoMinuto}`;
+  }
 
   #configRoutes() {
     // -----------------------------
@@ -497,25 +502,128 @@ class Server {
         res.status(500).json({ success: false, message: 'Erro ao listar agendamentos' });
       }
     });
-  // -----------------------------
-  // LISTAR VIDRARIAS (Do arquivo JSON)
-  // -----------------------------
-      this.#app.get('/api/vidrarias', async (req, res) => {
-        try {
-          const pathJson = '../AgenTEC-DataBase-(JSON)/vidrarias.json';
-  
-          // Lê o arquivo JSON
-          const data = fs.readFileSync(pathJson, 'utf8');
-          const vidrarias = JSON.parse(data);
-  
-          // Retorna os dados no formato esperado pelo front-end (success: true, itens: [])
-          res.json({ success: true, itens: vidrarias });
-        } catch (err) {
-          console.error('Erro ao ler vidrarias.json:', err);
-          res.status(500).json({ success: false, message: 'Erro ao carregar lista de vidrarias. Verifique o caminho no server.js.' });
+
+    // -----------------------------
+    // LISTAR VIDRARIAS (Do arquivo JSON)
+    // -----------------------------
+    this.#app.get('/api/vidrarias', async (req, res) => {
+    try {
+        // Caminho absoluto - ajuste conforme sua estrutura de pastas
+        const pathJson = path.join(__dirname, '..', 'AgenTEC-DataBase-(JSON)', 'vidrarias.json');
+        
+        console.log('📁 Tentando ler arquivo:', pathJson);
+
+        // Verifica se o arquivo existe
+        if (!fs.existsSync(pathJson)) {
+            console.error('❌ Arquivo não encontrado:', pathJson);
+            
+            // Lista o diretório para debug
+            const dirPath = path.join(__dirname, 'AgenTEC-DataBase-(JSON)');
+            console.log('📂 Conteúdo do diretório:', fs.existsSync(dirPath) ? fs.readdirSync(dirPath) : 'Diretório não existe');
+            
+            return res.status(404).json({ 
+                success: false, 
+                message: 'Arquivo vidrarias.json não encontrado' 
+            });
         }
+
+        const data = fs.readFileSync(pathJson, 'utf8');
+        console.log('✅ Arquivo lido com sucesso');
+        
+        const vidrarias = JSON.parse(data);
+        const vidrariasAgrupadas = processarVidrarias(vidrarias);
+
+        res.json({ 
+            success: true, 
+            itens: vidrariasAgrupadas,
+            total: vidrariasAgrupadas.length
+        });
+        
+    } catch (err) {
+        console.error('❌ Erro ao carregar vidrarias:', err);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Erro ao carregar lista de vidrarias: ' + err.message 
+        });
+    }
+});
+
+    // Função para processar e agrupar as vidrarias
+    function processarVidrarias(vidrarias) {
+      const agrupadas = {};
+
+      vidrarias.forEach(item => {
+        const nome = item.nome;
+
+        if (!agrupadas[nome]) {
+          agrupadas[nome] = {
+            nome: nome,
+            variacoes: [],
+            quantidadeTotal: 0
+          };
+        }
+
+        // Cria a descrição da capacidade
+        let descricao = '';
+        if (item.capacidade && item.unidade) {
+          descricao = `${item.capacidade} ${item.unidade}`;
+        } else if (item.capacidade) {
+          descricao = `${item.capacidade}`;
+        } else {
+          descricao = 'Padrão';
+        }
+
+        // Verifica se já existe esta variação
+        const variacaoExistente = agrupadas[nome].variacoes.find(v => v.descricao === descricao);
+
+        if (variacaoExistente) {
+          variacaoExistente.quantidade += 1;
+        } else {
+          agrupadas[nome].variacoes.push({
+            descricao: descricao,
+            capacidade: item.capacidade,
+            unidade: item.unidade,
+            quantidade: 1,
+            ids: [item.id]
+          });
+        }
+
+        agrupadas[nome].quantidadeTotal += 1;
       });
-// Inicia o servidor
+
+
+      return Object.values(agrupadas).map(item => ({
+        ...item,
+        tipo: categorizarVidraria(item.nome)
+      }));
+    }
+
+    // Função para categorizar as vidrarias por tipo
+    function categorizarVidraria(nome) {
+      const categorias = {
+        'Balão': ['Balão', 'Balão volumétrico', 'Balão de fundo'],
+        'Béquer': ['Béquer'],
+        'Proveta': ['Proveta'],
+        'Pipeta': ['Pipeta'],
+        'Funil': ['Funil'],
+        'Tubo': ['Tubo', 'Tubo de ensaio', 'Tubo de cultura'],
+        'Erlenmeyer': ['Erlenmeyer', 'Elenmeyer'],
+        'Termômetro': ['Termômetro'],
+        'Cadinho': ['Cadinho'],
+        'Placa': ['Placa', 'Placa de Petri'],
+        'Papel': ['Papel de filtro'],
+        'Outros': ['Outros']
+      };
+
+      for (const [categoria, palavras] of Object.entries(categorias)) {
+        if (palavras.some(palavra => nome.toLowerCase().includes(palavra.toLowerCase()))) {
+          return categoria;
+        }
+      }
+
+      return 'Outros';
+    }
+    // Inicia o servidor
   }
 
   #startServer(port) {

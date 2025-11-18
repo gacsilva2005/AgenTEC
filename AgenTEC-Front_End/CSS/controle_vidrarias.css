@@ -486,6 +486,124 @@ body, html {
     color: var(--primary-color); 
 }
 
+/* Estilos para as variações de vidrarias */
+
+.main-item {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--primary-color);
+}
+
+.item-total {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin: 5px 0 0 0;
+}
+
+.variations-container {
+    background-color: #fafafa;
+    border-left: 8px solid #e9ecef;
+    padding: 10px 0;
+}
+
+.variation-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px 12px 40px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+
+.variation-row:hover {
+    background-color: #f0f0f0;
+}
+
+.variation-row:last-child {
+    border-bottom: none;
+}
+
+.variation-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.variation-desc {
+    font-size: 1.5rem;
+    color: var(--dark-gray);
+    font-weight: 400;
+}
+
+.variation-qty {
+    font-size: 1.4rem;
+    color: var(--light-gray);
+    font-weight: 500;
+    background: #e9ecef;
+    padding: 4px 12px;
+    border-radius: 15px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.variation-actions {
+    margin-left: 20px;
+}
+
+.btn-edit {
+    background-color: var(--hoverCian-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-edit:hover {
+    background-color: var(--primary-color);
+}
+
+.toggle-variations {
+    color: var(--hoverCian-color);
+    cursor: pointer;
+    font-size: 1.6rem;
+    transition: transform 0.3s ease;
+}
+
+.toggle-variations:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Estados de expansão */
+.variations-container[style*="display: block"] + .item-row .toggle-variations {
+    transform: rotate(180deg);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .variation-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .variation-actions {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+    
+    .variation-row {
+        padding: 12px 15px 12px 25px;
+    }
+}
+
 /* --- ESTILOS DOS BOTÕES DE AÇÃO INFERIORES (MS.HTML / IMAGEM) --- */
 
 .action-buttons-list {

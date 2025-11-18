@@ -1,96 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchArea = document.getElementById('search-area');
     const itemsListContainer = document.querySelector('.items-list-container');
-    const tipoItem = 'vidrarias';
 
-    // Função para buscar os dados do arquivo JSON local
-    const iniciarControle = async () => {
-        // Mensagem de carregamento
-        itemsListContainer.innerHTML = `<p>Carregando ${tipoItem}...</p>`;
-
+    // Função principal para carregar vidrarias
+    const fetchVidrarias = async () => {
         try {
-            const response = await fetch('../../../AgenTEC-DataBase-(JSON)/vidrarias.json');
+            console.log('🔍 Iniciando busca de vidrarias...');
+            itemsListContainer.innerHTML = '<p>Carregando vidrarias...</p>';
+
+            const response = await fetch('http://localhost:3000/api/vidrarias');
             
             if (!response.ok) {
-                throw new Error(`Erro de rede (${response.status}) ao buscar ${tipoItem}.`);
+                throw new Error(`Erro HTTP: ${response.status}`);
             }
-            
+
             const data = await response.json();
-            
-            // DEBUG: Ver a estrutura real dos dados
-            console.log('Dados recebidos:', data);
-            
-            // Múltiplas formas de extrair os itens
-            let itens = [];
-            
-            if (Array.isArray(data)) {
-                // Se a resposta é diretamente um array
-                itens = data;
-                console.log('Encontrado array direto com', itens.length, 'itens');
-            } else if (data.success && data.itens) {
-                // Estrutura: {success: true, itens: [...]}
-                itens = data.itens;
-                console.log('Encontrado estrutura {success, itens}');
-            } else if (data.itens) {
-                // Estrutura: {itens: [...]}
-                itens = data.itens;
-                console.log('Encontrado estrutura {itens}');
-            } else if (data.items) {
-                // Estrutura: {items: [...]}
-                itens = data.items;
-                console.log('Encontrado estrutura {items}');
-            } else if (data.vidrarias) {
-                // Estrutura: {vidrarias: [...]}
-                itens = data.vidrarias;
-                console.log('Encontrado estrutura {vidrarias}');
-            } else if (data.data) {
-                // Estrutura: {data: [...]}
-                itens = data.data;
-                console.log('Encontrado estrutura {data}');
-            } else {
-                // Se for um objeto, tenta extrair valores
-                console.log('Estrutura não reconhecida, tentando extrair valores...');
-                itens = Object.values(data);
-            }
+            console.log('📦 Resposta da API:', data);
 
-            console.log('Itens extraídos:', itens);
-
-            if (!itens || itens.length === 0) {
-                itemsListContainer.innerHTML = '<p class="info-message">Nenhuma vidraria encontrada no banco de dados.</p>';
+            if (data.success && data.itens && Array.isArray(data.itens)) {
+                console.log(`✅ ${data.itens.length} tipos de vidrarias carregados`);
+                renderizarCards(data.itens);
             } else {
-                renderizarCards(itens);
+                throw new Error('Estrutura de dados inválida do servidor');
             }
-            
         } catch (error) {
-            console.error('Erro ao carregar vidrarias:', error);
-            itemsListContainer.innerHTML = `<p class="error-message">
-                **ERRO!** Não foi possível carregar as ${tipoItem}.<br> 
-                Verifique se o arquivo JSON existe no caminho especificado.<br>
-                Detalhe: ${error.message}
-            </p>`;
+            console.error('❌ Erro ao carregar vidrarias:', error);
+            itemsListContainer.innerHTML = `
+                <div class="error-message">
+                    <h3>Erro ao carregar vidrarias</h3>
+                    <p>${error.message}</p>
+                    <p>Verifique se o servidor está rodando na porta 3000.</p>
+                </div>
+            `;
         }
     };
-    
-    // Função para renderizar os cards dinamicamente
-    const renderizarCards = (itens) => {
-        itemsListContainer.innerHTML = ''; 
 
-        // Verifica se itens é um array válido
-        if (!Array.isArray(itens)) {
-            console.error('Itens não é um array:', itens);
-            itemsListContainer.innerHTML = '<p class="error-message">Erro: Dados em formato inválido.</p>';
+    // Função para renderizar os cards agrupados por tipo
+    const renderizarCards = (vidrarias) => {
+        itemsListContainer.innerHTML = '';
+
+        if (!vidrarias || vidrarias.length === 0) {
+            itemsListContainer.innerHTML = '<p class="info-message">Nenhuma vidraria encontrada no banco de dados.</p>';
             return;
         }
 
-        // 1. Agrupa os itens pelo campo 'tipo' para criar os cards por categoria
-        const itensAgrupados = itens.reduce((acc, item) => {
-            // Verifica se o item tem as propriedades mínimas necessárias
-            if (!item || typeof item !== 'object') {
-                console.warn('Item inválido ignorado:', item);
-                return acc;
-            }
-            
-            const tipo = item.tipo || item.categoria || 'Outros'; 
+        console.log('🎨 Renderizando cards...');
+
+        // Agrupa as vidrarias pelo campo 'tipo'
+        const vidrariasAgrupadas = vidrarias.reduce((acc, item) => {
+            const tipo = item.tipo || 'Outros';
             if (!acc[tipo]) {
                 acc[tipo] = [];
             }
@@ -98,35 +56,40 @@ document.addEventListener('DOMContentLoaded', () => {
             return acc;
         }, {});
 
-        console.log('Itens agrupados:', itensAgrupados);
+        console.log('📂 Grupos criados:', Object.keys(vidrariasAgrupadas));
 
-        // 2. Itera sobre os grupos para criar o HTML dos cards
-        for (const tipo in itensAgrupados) {
-            const itensDoTipo = itensAgrupados[tipo];
-            
+        // Cria um card para cada tipo
+        for (const [tipo, itensDoTipo] of Object.entries(vidrariasAgrupadas)) {
             const cardHTML = document.createElement('div');
             cardHTML.classList.add('item-card');
 
-            // Título do card (Tipo do Item)
-            let innerHTML = `<div class="table-title"><h3>${tipo}</h3></div>`;
+            // Cabeçalho do card com o tipo
+            let innerHTML = `
+                <div class="table-title">
+                    <h3>${tipo}</h3>
+                    <span class="item-count">${itensDoTipo.length} itens</span>
+                </div>
+            `;
 
-            // Linhas de itens dentro do card
+            // Adiciona cada item do tipo com suas variações
             itensDoTipo.forEach(item => {
-                const nome = item.nome || item.Nome || 'Nome não definido';
-                const observacao = item.observacoes || item.observacao || item.Observacao || 'Sem observação';
-                const quantidade = item.quantidade !== undefined ? item.quantidade : 
-                                 item.quantidad !== undefined ? item.quantidad : 'Indefinida';
-                const quantidadeTexto = quantidade !== 'Indefinida' ? `${quantidade} unidades` : 'Qtd. Indefinida';
-                const nomeCompleto = `${nome} ${tipo ? `(${tipo})` : ''} ${quantidade}`.toLowerCase();
+                const textoBusca = `${item.nome} ${tipo}`.toLowerCase();
                 
                 innerHTML += `
-                    <div class="item-row" data-search="${nomeCompleto}">
-                        <p class="item-name">${nome}</p>
-                        <div class="item-details">
-                            <p class="item-qty">${quantidadeTexto}</p>
-                            <i class="fas fa-comment-dots item-action view-obs" title="Ver Observação" data-obs="${observacao.replace(/"/g, '&quot;')}"></i>
-                            <i class="fas fa-pencil-alt item-action edit-qty" title="Editar Quantidade"></i>
+                    <div class="item-row main-item" data-search="${textoBusca}">
+                        <div class="item-info">
+                            <p class="item-name">${item.nome}</p>
+                            <p class="item-total">Total: ${item.quantidadeTotal} unidades</p>
                         </div>
+                        <div class="item-actions">
+                            <i class="fas fa-chevron-down item-action toggle-variations" 
+                               title="Ver Variações"
+                               data-item="${item.nome}">
+                            </i>
+                        </div>
+                    </div>
+                    <div class="variations-container" id="variations-${item.nome.replace(/\s+/g, '-')}" style="display: none;">
+                        ${renderizarVariacoes(item.variacoes, item.nome)}
                     </div>
                 `;
             });
@@ -134,43 +97,147 @@ document.addEventListener('DOMContentLoaded', () => {
             cardHTML.innerHTML = innerHTML;
             itemsListContainer.appendChild(cardHTML);
         }
-        
-        // Adiciona evento de clique para ver as observações
-        document.querySelectorAll('.view-obs').forEach(icon => {
+
+        // Adiciona eventos para mostrar/ocultar variações
+        document.querySelectorAll('.toggle-variations').forEach(icon => {
             icon.addEventListener('click', (e) => {
-                const obs = e.currentTarget.dataset.obs;
-                alert('Observação: ' + obs);
+                const itemNome = e.target.dataset.item;
+                const containerId = `variations-${itemNome.replace(/\s+/g, '-')}`;
+                const container = document.getElementById(containerId);
+                const icon = e.target;
+                
+                if (container.style.display === 'none') {
+                    container.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    container.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
             });
         });
 
-        console.log('Renderização concluída!');
+        // Adiciona eventos para editar quantidades
+        document.querySelectorAll('.edit-variation').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const variacaoData = e.target.dataset.variacao;
+                const [itemNome, descricao, quantidadeAtual] = variacaoData.split('|');
+                editarQuantidade(itemNome, descricao, parseInt(quantidadeAtual));
+            });
+        });
+
+        console.log('✅ Renderização concluída!');
     };
 
-    // Lógica de filtro de busca na página (client-side)
-    if (searchArea && itemsListContainer) {
-        searchArea.addEventListener('input', () => {
-            const termoBuscado = searchArea.value.toLowerCase();
-            const todosOsCards = itemsListContainer.querySelectorAll('.item-card');
+    // Função para renderizar as variações de um item
+    const renderizarVariacoes = (variacoes, itemNome) => {
+        return variacoes.map(variacao => `
+            <div class="variation-row">
+                <div class="variation-info">
+                    <span class="variation-desc">${variacao.descricao}</span>
+                    <span class="variation-qty">${variacao.quantidade} un.</span>
+                </div>
+                <div class="variation-actions">
+                    <button class="btn-edit edit-variation" 
+                            data-variacao="${itemNome}|${variacao.descricao}|${variacao.quantidade}">
+                        <i class="fas fa-pencil-alt"></i> Editar
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    };
 
-            todosOsCards.forEach(card => {
-                let cardVisivel = false;
-                const linhas = card.querySelectorAll('.item-row');
-                
+    // Função para editar quantidade de uma variação
+    const editarQuantidade = (itemNome, descricao, quantidadeAtual) => {
+        const novaQuantidade = prompt(
+            `Editar quantidade para:\n${itemNome} - ${descricao}\n\nQuantidade atual: ${quantidadeAtual}`,
+            quantidadeAtual
+        );
+
+        if (novaQuantidade !== null && !isNaN(novaQuantidade) && novaQuantidade >= 0) {
+            // Aqui você faria a requisição para o backend para atualizar a quantidade
+            // Por enquanto, vamos apenas mostrar um alerta
+            alert(`Quantidade de ${itemNome} - ${descricao} atualizada para: ${novaQuantidade}\n\n(Esta funcionalidade será integrada com o backend)`);
+            
+            // Atualizar a interface visualmente
+            const buttons = document.querySelectorAll('.edit-variation');
+            buttons.forEach(button => {
+                if (button.dataset.variacao === `${itemNome}|${descricao}|${quantidadeAtual}`) {
+                    button.dataset.variacao = `${itemNome}|${descricao}|${novaQuantidade}`;
+                    // Atualizar o texto da quantidade na interface
+                    const variationRow = button.closest('.variation-row');
+                    const qtySpan = variationRow.querySelector('.variation-qty');
+                    qtySpan.textContent = `${novaQuantidade} un.`;
+                    
+                    // Atualizar o total do item
+                    updateItemTotal(itemNome);
+                }
+            });
+        } else if (novaQuantidade !== null) {
+            alert('Por favor, insira um número válido (0 ou maior).');
+        }
+    };
+
+    // Função para atualizar o total do item
+    const updateItemTotal = (itemNome) => {
+        // Esta função seria chamada após editar as variações
+        // Para simplificar, vamos recarregar a página
+        console.log(`Total de ${itemNome} precisa ser recalculado`);
+    };
+
+    // Sistema de busca/filtro
+    const setupSearch = () => {
+        if (!searchArea || !itemsListContainer) return;
+
+        searchArea.addEventListener('input', () => {
+            const termo = searchArea.value.toLowerCase().trim();
+            const cards = itemsListContainer.querySelectorAll('.item-card');
+
+            let cardsVisiveis = 0;
+
+            cards.forEach(card => {
+                let cardTemResultado = false;
+                const linhas = card.querySelectorAll('.item-row, .variation-row');
+
                 linhas.forEach(linha => {
-                    const textoLinha = linha.dataset.search; 
-                    if (textoLinha && textoLinha.includes(termoBuscado)) {
-                        linha.style.display = 'flex'; 
-                        cardVisivel = true;
+                    const textoBusca = linha.dataset.search;
+                    if (textoBusca && textoBusca.includes(termo)) {
+                        linha.style.display = 'flex';
+                        // Mostra as variações se estiver buscando por uma variação específica
+                        if (linha.classList.contains('variation-row')) {
+                            const mainItem = linha.closest('.variations-container').previousElementSibling;
+                            mainItem.style.display = 'flex';
+                            cardTemResultado = true;
+                        } else {
+                            cardTemResultado = true;
+                        }
                     } else {
-                        linha.style.display = 'none'; 
+                        linha.style.display = 'none';
                     }
                 });
 
-                card.style.display = cardVisivel ? 'block' : 'none';
+                if (cardTemResultado) {
+                    card.style.display = 'block';
+                    cardsVisiveis++;
+                } else {
+                    card.style.display = 'none';
+                }
             });
-        });
-    }
 
-    // Inicia o carregamento dos dados quando a página estiver pronta
-    iniciarControle();
+            if (termo && cardsVisiveis === 0) {
+                itemsListContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>Nenhuma vidraria encontrada</h3>
+                        <p>Não encontramos resultados para "<strong>${termo}</strong>"</p>
+                    </div>
+                `;
+            }
+        });
+    };
+
+    // Inicializa tudo
+    setupSearch();
+    fetchVidrarias();
 });
