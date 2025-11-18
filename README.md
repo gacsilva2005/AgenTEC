@@ -95,18 +95,18 @@ O arquivo do banco está localizado em:
   </tr>
   <tr>
     <td>👨‍💼 Administrador</td>
-    <td><code>agentecadm@etec.com.br</code></td>
-    <td><code>agentecadm123</code></td>
+    <td><code>admin@adm.com</code></td>
+    <td><code>admin123</code></td>
   </tr>
   <tr>
     <td>🧪 Técnico</td>
-    <td><code>agentectecnico@etec.com.br</code></td>
-    <td><code>agentectec123</code></td>
+    <td><code>tecnico@tec.com</code></td>
+    <td><code>tec123</code></td>
   </tr>
   <tr>
     <td>👩‍🏫 Professor</td>
-    <td><code>agentecprofessor@etec.com.br</code></td>
-    <td><code>agentecprofessor123</code></td>
+    <td><code>professor@prof.com</code></td>
+    <td><code>prof123</code></td>
   </tr>
 </table>
 <br>
