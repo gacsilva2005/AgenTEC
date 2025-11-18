@@ -6,6 +6,7 @@ import Administrador from "./administrador.js";
 import Professor from "./professor.js";
 import Tecnico from "./tecnico.js";
 import Sistema from "./sistema.js";
+import fs from "fs";
 
 class Server {
   #app;
@@ -65,9 +66,21 @@ class Server {
       }
     };
 
-    this.#configRoutes();
-    this.#startServer(port);
-  }
+  this.#configRoutes();
+  this.#startServer(port); // Dentro da classe Server, após o constructor ou outro método
+}
+
+#calcularHorarioFim(horarioInicio) {
+  const [horas, minutos] = horarioInicio.split(':').map(Number);
+  const data = new Date();
+  data.setHours(horas, minutos, 0, 0);
+  data.setHours(data.getHours() + 1); // Adiciona 1 hora
+
+  // Formata o resultado para HH:MM
+  const novaHora = String(data.getHours()).padStart(2, '0');
+  const novoMinuto = String(data.getMinutes()).padStart(2, '0');
+  return `${novaHora}:${novoMinuto}`;
+}
 
   #configRoutes() {
     // -----------------------------
@@ -484,23 +497,32 @@ class Server {
         res.status(500).json({ success: false, message: 'Erro ao listar agendamentos' });
       }
     });
-
-    // Rota simples de teste
-    this.#app.get('/', (req, res) => {
-      res.json({ message: 'Servidor rodando!' });
-    });
-  }
-
-  // Método auxiliar para calcular horário_fim
-  #calcularHorarioFim(horarioInicio) {
-    const [horas, minutos] = horarioInicio.split(':').map(Number);
-    let horasFim = horas + 1;
-    if (horasFim >= 24) horasFim = 0;
-    return `${horasFim.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+  // -----------------------------
+  // LISTAR VIDRARIAS (Do arquivo JSON)
+  // -----------------------------
+      this.#app.get('/api/vidrarias', async (req, res) => {
+        try {
+          // ATENÇÃO: Verifique se este caminho está correto no seu projeto!
+          const pathJson = './AgenTEC-DataBase-(JSON)/vidrarias.json';
+  
+          // Lê o arquivo JSON
+          const data = fs.readFileSync(pathJson, 'utf8');
+          const vidrarias = JSON.parse(data);
+  
+          // Retorna os dados no formato esperado pelo front-end (success: true, itens: [])
+          res.json({ success: true, itens: vidrarias });
+        } catch (err) {
+          console.error('Erro ao ler vidrarias.json:', err);
+          res.status(500).json({ success: false, message: 'Erro ao carregar lista de vidrarias. Verifique o caminho no server.js.' });
+        }
+      });
+// Inicia o servidor
   }
 
   #startServer(port) {
-    this.#app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));
+    this.#app.listen(port, () => {
+      console.log(`Servidor rodando na porta ${port}`);
+    });
   }
 }
 

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ações de Controle - Agendamento</title>
+    <title>Ações de Controle - Vidrarias</title>
 
-    <link rel="stylesheet" href="../../CSS/controle.css">
+    <link rel="stylesheet" href="../../CSS/controle.css">z
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,10 +48,7 @@
     <link
         href="https://etecjuliodemesquita.cps.sp.gov.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fetecjuliodemesquita.cps.sp.gov.br%2F&amp;format=xml"
         rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" />
-    <!-- Previas de Posts nas redes Sociais -->
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fontes -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -275,47 +272,13 @@
             <div class="search-container">
                 <form action="#" class="form-pesquisa search-page" method="get" role="search">
                     <input id="search-area" class="search-area" name="s" placeholder="Pesquisar vidraria..." type="search">
-                    <button class="search-submit" type="submit"><i class="fas fa-search"></i></button>
+                    <span class="search-submit" style="cursor: default;"><i class="fas fa-search"></i></span>
                 </form>
             </div>
 
             <section class="items-list-container">
-                <div class="item-card">
-                    <div class="table-title">
-                        <h3>Tipo do Item (Ex: Béquer)</h3>
-                    </div>
-                    <div class="item-row">
-                        <p class="item-name">Item 1 (100ml)</p>
-                        <div class="item-details">
-                            <p class="item-qty">5 unidades</p>
-                            <i class="fas fa-comment-dots item-action" title="Ver Observação"></i>
-                            <i class="fas fa-pencil-alt item-action" title="Editar Quantidade"></i>
-                        </div>
-                    </div>
-                    <div class="item-row">
-                        <p class="item-name">Item 2 (50ml)</p>
-                        <div class="item-details">
-                            <p class="item-qty">12 unidades</p>
-                            <i class="fas fa-comment-dots item-action" title="Ver Observação"></i>
-                            <i class="fas fa-pencil-alt item-action" title="Editar Quantidade"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="item-card">
-                    <div class="table-title">
-                        <h3>Tipo do Item (Ex: Pipeta)</h3>
-                    </div>
-                    <div class="item-row">
-                        <p class="item-name">Pipeta (25ml)</p>
-                        <div class="item-details">
-                            <p class="item-qty">3 unidades</p>
-                            <i class="fas fa-comment-dots item-action" title="Ver Observação"></i>
-                            <i class="fas fa-pencil-alt item-action" title="Editar Quantidade"></i>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                <p>Carregando vidrarias...</p>
+                </section>
             
             <section class="action-buttons-list">
                 <a href="tecnicos.html" class="btn-global">voltar</a>
@@ -324,7 +287,6 @@
             </section>
             
         </main>
-        <!-- RODAPÉ CPS -->
         <button class="back-to-top">
             <img alt="Voltar ao Topo" height="66"
                 src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
@@ -332,9 +294,6 @@
         </button>
         <footer id="cps-rodape">
             <div id="cps-rodape__redes-e-infos">
-                <!-- SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-                <!-- /SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-                <!-- SE FOR SITE DE ETEC/FATEC -->
                 <div id="cps-rodape__infos">
                     <div>
                         <span>
@@ -364,11 +323,7 @@
                             title="Siga-nos no Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                    </div> <!-- #cps-rodape__redes-icones -->
-                </div> <!-- #cps-rodape__redes -->
-                <!-- SE FOR SITE CPS PRINCIPAL -->
-                <!-- SELO PNPC -->
-                <div id="cps-rodape-pnpc">
+                    </div> </div> <div id="cps-rodape-pnpc">
                     <a href="https://ugi.cps.sp.gov.br/" target="_blank">
                         <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
                             style="margin-bottom:10px;" />
@@ -380,11 +335,7 @@
                             title="Programa Nacional de Prevenção à Corrupção - Participante" />
                     </a>
                 </div>
-                <!-- /SELO PNPC -->
-            </div>
-            <!-- SE NÃO FOR SITE CPS PRINCIPAL -->
-            <!-- #cps-rodape__redes-e-infos -->
-            <!-- COPYRIGHT -->
+                </div>
             <div id="cps-rodape__creditos">
                 <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
                         target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
@@ -421,28 +372,7 @@
                 </div>
             </div>
         </section>
-        <!-- RODAPÉ CPS -->
-
-        <script>
-
-            document.addEventListener('DOMContentLoaded', function () {
-                const campoBusca = document.getElementById('campo-busca');
-                const cardsContainer = document.querySelector('.cards-container');
-                const todosOsCards = cardsContainer.querySelectorAll('.card');
-                campoBusca.addEventListener('input', function () {
-                    const termoBuscado = campoBusca.value.toLowerCase();
-                    todosOsCards.forEach(function (card) {
-                        const textoDoCard = card.textContent.toLowerCase();
-                        if (textoDoCard.includes(termoBuscado)) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-        </script>
+        <script src="../../JS (Front-End)/controle_vidrarias.js"></script>
 </body>
 
 </html>
