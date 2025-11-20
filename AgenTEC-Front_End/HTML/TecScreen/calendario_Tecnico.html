@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professores - Agendamento</title>
+    <title>Calendário  -Técnico</title>
+    <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -352,8 +353,8 @@
     </div>
 
     <div class="action-buttons-container">
-        <a href="professor.html"><button class="action-btn btn-primary">Voltar</button></a>
-        <a href="reagentes.html"><button class="action-btn btn-primary">Confirmar</button></a> 
+        <a href="tecnicos.html"><button class="action-btn btn-primary">Voltar</button></a>
+        <a href="tecnicos.html"><button class="action-btn btn-primary">Confirmar</button></a> 
     </div>
 
     <div vw="" class="enabled"
@@ -473,6 +474,15 @@
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
+    <script>
+            document.querySelector('.back-to-top').addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        </script>
+        <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
 </body>
 
 </html>

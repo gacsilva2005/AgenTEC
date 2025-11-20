@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores - Agendamento</title>
+    <title>Administradores</title>
+    <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
     <link rel="stylesheet" href="../../CSS/administradores.css">
 
@@ -124,19 +125,6 @@
                         </a>
                         <p class="govsp-social" style="min-height:auto;">/governosp</p>
                         <div id="separador-nav"></div>
-                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', 1);">
-                            <img alt="Aumentar Fonte" class="govsp-acessibilidade"
-                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-big-font.png" />
-                        </a>
-                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', -1);">
-                            <img alt="Diminuir Fonte" class="govsp-acessibilidade"
-                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-small-font.png" />
-                        </a>
-                        <a accesskey="3" class="govsp-acessibilidade" href="#" id="altocontraste"
-                            onclick="window.toggleContrast()" onkeydown="window.toggleContrast()">
-                            <img alt="Contraste" class="govsp-acessibilidade"
-                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-contrast.png" />
-                        </a>
                         <a class="govsp-acessibilidade"
                             href="http://www.saopaulo.sp.gov.br/fale-conosco/comunicar-erros/" target="_blank"
                             title="Comunicar Erros">
@@ -409,7 +397,7 @@
             </div>
         </section>
         <!-- RODAPÉ CPS -->
-
+        <!--opcoes de acessibilidade-->
         <div vw="" class="enabled"
             style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
             <div vw-access-button="" class="active">
@@ -428,6 +416,17 @@
         <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
         <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
+
+        <!--botao para subir a tela-->
+        <script>
+            document.querySelector('.back-to-top').addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         </script>
 
         <script>
@@ -488,6 +487,8 @@
                 window.location.href = '../login.html';
             } 
         </script>
+
+
 </body>
 
 </html>
