@@ -562,3 +562,72 @@ body, html {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
+
+/* --- ESTILOS ADICIONAIS PARA O COMPONENTE ACCORDION --- */
+
+/* Contêiner principal, ajustado para centralizar e dar espaçamento entre os grupos */
+.items-list-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Novo: Estilo para cada Grupo de Reagentes (o "Card" principal) */
+.accordion-group {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden; 
+    background-color: #fcfcfc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Novo: Cabeçalho Clicável (Visível, onde fica o TIPO) */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+    background-color: var(--hoverCian-color);
+}
+
+/* Novo: Ícone de Seta (>) */
+.accordion-icon {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+    color: white;
+}
+
+/* Novo: Gira o ícone para baixo quando ativo/aberto */
+.accordion-header.active .accordion-icon {
+    transform: rotate(90deg);
+}
+
+/* Novo: Corpo do Accordion (Contém os itens da lista) - Começa ESCONDIDO */
+.accordion-content {
+    display: none; /* ESSENCIAL: Oculta o conteúdo no início */
+    border-top: 1px solid #eee;
+}
+
+/* Adaptação da sua classe .item-row para usar dentro do accordion, garantindo o visual de tabela */
+.accordion-content .item-row {
+    padding: 12px 20px; 
+    font-size: 1.6rem;
+    border-bottom: 1px solid #f0f0f0; 
+}
+.accordion-content .item-row:last-child {
+    border-bottom: none;
+}
