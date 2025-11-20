@@ -562,8 +562,7 @@ body, html {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
-
-/* --- ESTILOS ADICIONAIS PARA O COMPONENTE ACCORDION --- */
+/* --- ESTILOS ADICIONAIS PARA O COMPONENTE ACCORDION (Ajustes de Layout Interno) --- */
 
 /* Contêiner principal, ajustado para centralizar e dar espaçamento entre os grupos */
 .items-list-container {
@@ -622,12 +621,61 @@ body, html {
     border-top: 1px solid #eee;
 }
 
-/* Adaptação da sua classe .item-row para usar dentro do accordion, garantindo o visual de tabela */
+/* MODIFICAÇÃO CHAVE AQUI: Layout interno limpo (estilo Vidrarias) */
 .accordion-content .item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 12px 20px; 
-    font-size: 1.6rem;
     border-bottom: 1px solid #f0f0f0; 
+    font-size: 1.6rem;
 }
+
 .accordion-content .item-row:last-child {
     border-bottom: none;
+}
+
+/* Estilo para o NOME do reagente */
+.item-name {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ocupa o máximo de espaço */
+}
+
+.item-name span:first-child {
+    font-weight: 500;
+    color: var(--dark-gray);
+    font-size: 1.7rem;
+}
+
+/* Novo: Estilo para a QUANTIDADE TOTAL abaixo do nome (igual ao 'Total' das vidrarias) */
+.item-name .item-qty {
+    font-size: 1.4rem;
+    color: var(--primary-color); 
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+/* Oculta o .item-details antigo (que continha a quantidade duplicada e os dois ícones) */
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Garante que apenas o lápis apareça no final da linha */
+.item-details .edit-qty {
+    color: var(--hoverCian-color); 
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.item-details .edit-qty:hover {
+    color: var(--primary-color); 
+}
+
+/* Esconde o ícone de observação permanentemente, conforme solicitado */
+.item-details .view-obs {
+    display: none;
 }

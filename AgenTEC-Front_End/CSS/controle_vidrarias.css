@@ -681,3 +681,187 @@ body, html {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
+
+/* --- ESTILOS DO COMPONENTE ACCORDION (PARA AGRUPAR POR TIPO) --- */
+
+/* Contêiner principal, ajustado para centralizar e dar espaçamento entre os grupos */
+.items-list-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 20px;
+    max-width: 900px; /* Limita a largura do accordion principal */
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: nowrap; /* Garante que os grupos fiquem empilhados verticalmente */
+}
+
+/* Novo: Estilo para cada Grupo de Tipos de Vidrarias (o "Card" principal) */
+.accordion-group-vidraria {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden; 
+    background-color: #ffffff; /* Fundo branco para contrastar com o cabeçalho */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%; /* Ocupa a largura máxima do container */
+    max-width: 900px;
+}
+
+/* Novo: Cabeçalho Clicável (Visível, onde fica o TIPO: Beakers) */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--primary-color); /* Azul Marinho Escuro */
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+    background-color: var(--hoverCian-color);
+}
+
+/* Novo: Ícone de Seta (>) */
+.accordion-icon {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+    color: white;
+}
+
+/* Novo: Gira o ícone para baixo quando ativo/aberto */
+.accordion-header.active .accordion-icon {
+    transform: rotate(90deg);
+}
+
+/* Novo: Corpo do Accordion (Contém os itens da lista) */
+.accordion-content {
+    /* display: none é setado inline pelo JS, mas a classe garante o estilo */
+    border-top: 1px solid #eee;
+}
+
+/* Ajustes nos estilos antigos para funcionarem dentro do novo Accordion */
+
+/* O card antigo não é mais o wrapper principal, mas sim um separador visual interno */
+.item-card-inner {
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    margin: 10px 20px; /* Espaçamento dentro do conteúdo do Accordion */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Oculta os estilos antigos de cabeçalho que não são mais usados (table-title) */
+.item-card .table-title {
+    display: none; 
+}
+.item-card {
+    /* O card principal agora é o accordion-group-vidraria */
+    display: none; 
+}
+
+/* Garante que o item principal dentro do Accordion volte a ser full width */
+.item-row.main-item {
+    border-left: none; /* Remove a barra lateral do item principal, se houver conflito */
+}
+
+/* --- ESTILOS DO COMPONENTE ACCORDION (PARA AGRUPAR POR TIPO) --- */
+
+/* Ajusta o container principal para empilhar os grupos */
+.items-list-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 20px;
+    max-width: 900px; /* Limita a largura do accordion principal */
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: nowrap;
+}
+
+/* NOVO: Estilo para cada Grupo de Tipos de Vidrarias (o "Card" principal) */
+.accordion-group-vidraria {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden; 
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 900px;
+}
+
+/* NOVO: Cabeçalho Clicável (Visível, onde fica o TIPO: Beakers) */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--primary-color); /* Azul Marinho Escuro */
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+    background-color: var(--hoverCian-color);
+}
+
+/* NOVO: Ícone de Seta (>) */
+.accordion-icon {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+    color: white;
+}
+
+/* Gira o ícone para baixo quando ativo/aberto */
+.accordion-header.active .accordion-icon {
+    transform: rotate(90deg);
+}
+
+/* NOVO: Corpo do Accordion (Contém os itens da lista) */
+.accordion-content {
+    /* O display: none é forçado pelo JS ao carregar para garantir o estado inicial */
+    border-top: 1px solid #eee;
+}
+
+/* AJUSTE DE CONFLITO: Desativa o estilo do card antigo para que não mascare o novo */
+.item-card {
+    /* Garante que o item-card antigo não seja exibido no layout do accordion */
+    display: none; 
+}
+.item-card .table-title {
+    /* Desativa o título antigo */
+    display: none; 
+}
+
+
+/* AJUSTES PARA OS ITENS INTERNOS DENTRO DO ACCORDION */
+
+.item-card-inner {
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    margin: 10px 20px; /* Espaçamento dentro do conteúdo do Accordion */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.item-row.main-item {
+    /* Mantém a barra principal dentro da nova estrutura */
+    border-left: 4px solid var(--primary-color);
+    padding: 12px 20px;
+}
+
+.item-actions .toggle-variations {
+    /* Ajusta a seta de variações para ser um ícone */
+    font-size: 2rem;
+    color: var(--hoverCian-color);
+}

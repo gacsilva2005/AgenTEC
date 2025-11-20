@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const headerHTML = document.createElement('div');
             headerHTML.classList.add('accordion-header');
             headerHTML.innerHTML = `
-                <span>${tipo}</span>
+                <span>${tipo} (${itensDoTipo.length} itens)</span>
                 <i class="fas fa-chevron-right accordion-icon"></i>
             `;
             groupHTML.appendChild(headerHTML);
@@ -98,38 +98,45 @@ document.addEventListener('DOMContentLoaded', () => {
             // 3. Cria o corpo colapsável
             const contentHTML = document.createElement('div');
             contentHTML.classList.add('accordion-content');
-            // MODIFICAÇÃO CHAVE: Força o estilo inline para garantir que comece fechado
             contentHTML.style.display = 'none'; 
 
             // 4. Adiciona os itens (suas linhas originais) dentro do corpo
             itensDoTipo.forEach(item => {
                 const observacao = item.observacoes || 'Sem observação';
                 const unidadeTexto = item.unidade ? `${item.quantidade} ${item.unidade}` : `${item.quantidade} unidades`;
-                const nomeCompleto = `${item.nome} (${unidadeTexto})`;
+                
+                const textoBuscaCompleto = `${item.nome} ${unidadeTexto}`.toLowerCase();
 
                 const itemRowHTML = document.createElement('div');
                 itemRowHTML.classList.add('item-row');
-                itemRowHTML.dataset.search = nomeCompleto.toLowerCase();
+                itemRowHTML.dataset.search = textoBuscaCompleto;
+                
+                // NOVO LAYOUT INTERNO (ESTILO VIDRARIAS)
                 itemRowHTML.innerHTML = `
-                    <p class="item-name">${nomeCompleto}</p>
+                    <div class="item-name">
+                        <span>${item.nome}</span>
+                        <p class="item-qty">Total: ${unidadeTexto}</p>
+                    </div>
                     <div class="item-details">
-                        <p class="item-qty">${unidadeTexto}</p>
-                        <i class="fas fa-comment-dots item-action view-obs" title="Ver Observação" data-obs="${observacao}"></i>
-                        <i class="fas fa-pencil-alt item-action edit-qty" title="Editar Quantidade"></i>
+                        <i class="fas fa-pencil-alt item-action edit-qty" title="Editar Quantidade" data-obs="${observacao}"></i>
                     </div>
                 `;
+                // NOTA: O data-obs foi movido para o botão de editar para manter a informação 
+                // da observação acessível em caso de clique, mesmo que o ícone de chat tenha sumido.
+                
                 contentHTML.appendChild(itemRowHTML);
             });
-            
+
+            // monta o grupo e adiciona ao container
             groupHTML.appendChild(contentHTML);
             itemsListContainer.appendChild(groupHTML);
         }
 
-        // 5. Adiciona interatividade
+        // 5. Adiciona interatividade (após inserir todos os grupos)
         setupAccordion();
 
         // Adiciona evento de clique para a observação (MANTIDO)
-        document.querySelectorAll('.view-obs').forEach(icon => {
+        itemsListContainer.querySelectorAll('.view-obs').forEach(icon => {
             icon.addEventListener('click', (e) => {
                 const obs = e.currentTarget.dataset.obs;
                 alert('Observação: ' + obs);
@@ -137,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         // Adiciona evento de clique para edição de quantidade (MANTIDO)
-        document.querySelectorAll('.edit-qty').forEach(icon => {
+        itemsListContainer.querySelectorAll('.edit-qty').forEach(icon => {
             icon.addEventListener('click', (e) => {
                 alert('Funcionalidade de Edição de Quantidade (A implementar).');
             });
