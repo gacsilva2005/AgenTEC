@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores</title>
+    <title>Técnicos</title>
     <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
-    <link rel="stylesheet" href="../../CSS/administradores.css">
+    <link rel="stylesheet" href="../../CSS/tecnicos.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,6 +125,19 @@
                         </a>
                         <p class="govsp-social" style="min-height:auto;">/governosp</p>
                         <div id="separador-nav"></div>
+                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', 1);">
+                            <img alt="Aumentar Fonte" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-big-font.png" />
+                        </a>
+                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', -1);">
+                            <img alt="Diminuir Fonte" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-small-font.png" />
+                        </a>
+                        <a accesskey="3" class="govsp-acessibilidade" href="#" id="altocontraste"
+                            onclick="window.toggleContrast()" onkeydown="window.toggleContrast()">
+                            <img alt="Contraste" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-contrast.png" />
+                        </a>
                         <a class="govsp-acessibilidade"
                             href="http://www.saopaulo.sp.gov.br/fale-conosco/comunicar-erros/" target="_blank"
                             title="Comunicar Erros">
@@ -257,13 +270,13 @@
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a>/ Administradores</span>
+                <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos <a href="tecnicos.html">/ Técnicos  </span>
             </div>
         </div>
 
         <main class="main-content">
             <div class="page-header">
-                <h1 class="page-title">Administradores</h1>
+                <h1 class="page-title">Atualizar Estoque</h1>
                 <div class="button-container">
                     <button id="btn-logout" class="button-custom">
                         <i class="fas fa-sign-out-alt"></i>
@@ -275,28 +288,20 @@
 
             <div class="cards-container">
 
-                <a href="cadastrarUser.html" class="card">
+                <a href="atualizar_vidrarias.html" class="card">
                     <div class="card-icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
-                    <p class="card-text">Cadastrar novos professores e técnicos</p>
+                    <p class="card-text">Vidrarias</p>
                 </a>
-                 <a href="controle_banco.html" class="card">
+                <a href="atualizar_reagentes.html" class="card">
                     <div class="card-icon">
-                        <i class="fas fa-box-open"></i>
+                        <i class="fas fa-wrench"></i>
                     </div>
-                    <p class="card-text">Atualizar o banco de materiais</p>
-                </a>
-
-                <a href="historico.html" class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-history"></i>
-                    </div>
-                    <p class="card-text">Ver histórico de uso de materiais</p>
+                    <p class="card-text">Reagentes</p>
                 </a>
 
             </div>
-
         </main>
         <!-- RODAPÉ CPS -->
         <button class="back-to-top">
@@ -396,7 +401,6 @@
             </div>
         </section>
         <!-- RODAPÉ CPS -->
-        <!--opcoes de acessibilidade-->
         <div vw="" class="enabled"
             style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
             <div vw-access-button="" class="active">
@@ -416,18 +420,6 @@
         <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');
         </script>
-        <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
-
-        <!--botao para subir a tela-->
-        <script>
-            document.querySelector('.back-to-top').addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        </script>
-
         <script>
 
             document.addEventListener('DOMContentLoaded', function () {
@@ -446,17 +438,6 @@
                     });
                 });
 
-            });
-
-            window.addEventListener('DOMContentLoaded', () => {
-                const params = new URLSearchParams(window.location.search);
-                if (params.get('reserva') === 'sucesso') {
-                    const notification = document.getElementById('notification');
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 5000);
-                }
             });
             const logoutButton = document.getElementById('btn-logout');
 
@@ -486,8 +467,15 @@
                 window.location.href = '../login.html';
             } 
         </script>
-
-
+        <script>
+            document.querySelector('.back-to-top').addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        </script>
+        <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
 </body>
 
 </html>

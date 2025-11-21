@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores</title>
+    <title>Controle de Reagentes</title>
     <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
-    <link rel="stylesheet" href="../../CSS/administradores.css">
+    <link rel="stylesheet" href="../../CSS/controle_reagentes.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link
         href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/plugins/getwid/vendors/fontawesome-free/css/all.min.css?ver=5.5.0"
         id="fontawesome-free-css" media="all" rel="stylesheet" type="text/css" />
@@ -49,10 +49,7 @@
     <link
         href="https://etecjuliodemesquita.cps.sp.gov.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fetecjuliodemesquita.cps.sp.gov.br%2F&amp;format=xml"
         rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" />
-    <!-- Previas de Posts nas redes Sociais -->
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fontes -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -61,11 +58,8 @@
 </head>
 
 <body>
-    <!-- DAUTONISMO -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <!-- DAUTONISMO -->
-    <!-- FACEBOOK -->
     <div class="fb_reset" id="fb-root">
         <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
             <div></div>
@@ -73,10 +67,7 @@
     </div>
     <script async="" crossorigin="anonymous" defer=""
         src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&amp;version=v5.0"></script>
-    <!-- FACEBOOK -->
-    <!-- PRINCIPAL -->
     <div class="site" id="page">
-        <!-- BARRA GOVERNO -->
         <section class="govsp-topo">
             <link
                 href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/topo-padrao-govsp.min.css"
@@ -125,6 +116,19 @@
                         </a>
                         <p class="govsp-social" style="min-height:auto;">/governosp</p>
                         <div id="separador-nav"></div>
+                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', 1);">
+                            <img alt="Aumentar Fonte" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-big-font.png" />
+                        </a>
+                        <a class="govsp-acessibilidade" href="javascript:mudaTamanho('body', -1);">
+                            <img alt="Diminuir Fonte" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-small-font.png" />
+                        </a>
+                        <a accesskey="3" class="govsp-acessibilidade" href="#" id="altocontraste"
+                            onclick="window.toggleContrast()" onkeydown="window.toggleContrast()">
+                            <img alt="Contraste" class="govsp-acessibilidade"
+                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/i-contrast.png" />
+                        </a>
                         <a class="govsp-acessibilidade"
                             href="http://www.saopaulo.sp.gov.br/fale-conosco/comunicar-erros/" target="_blank"
                             title="Comunicar Erros">
@@ -140,7 +144,7 @@
             <div class="cps-header__container">
 
                 <div class="logo-container">
-                    <a href="../index.html">
+                    <a href="index.html">
                         <img src="../../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
                     </a>
                     <a href="https://www.cps.sp.gov.br/" target="_blank">
@@ -257,48 +261,32 @@
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a>/ Administradores</span>
+                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="tecnicos.html"> Técnicos
+                    </a> / Controle de Reagentes</span>
             </div>
         </div>
 
         <main class="main-content">
-            <div class="page-header">
-                <h1 class="page-title">Administradores</h1>
-                <div class="button-container">
-                    <button id="btn-logout" class="button-custom">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Sair</span>
-                    </button>
-                </div>
-            </div>
+            <h1 class="page-title">Lista de Reagentes</h1>
             <div class="title-underline"></div>
 
-            <div class="cards-container">
-
-                <a href="cadastrarUser.html" class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <p class="card-text">Cadastrar novos professores e técnicos</p>
-                </a>
-                 <a href="controle_banco.html" class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-box-open"></i>
-                    </div>
-                    <p class="card-text">Atualizar o banco de materiais</p>
-                </a>
-
-                <a href="historico.html" class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-history"></i>
-                    </div>
-                    <p class="card-text">Ver histórico de uso de materiais</p>
-                </a>
-
+            <div class="search-container">
+                <form action="#" class="form-pesquisa search-page" method="get" role="search">
+                    <input id="search-area" class="search-area" name="s" placeholder="Pesquisar reagente..."
+                        type="search">
+                    <span class="search-submit" style="cursor: default;"><i class="fas fa-search"></i></span>
+                </form>
             </div>
 
+            <section class="items-list-container" id="reagent-accordion">
+                </section>
+  <section class="action-buttons-list">
+    <a id="global-apply-btn" href="#" class="btn-global">aplicar</a>
+    <a href="adicionar.reagentes.html" class="btn-global">adicionar reagentes</a> <a href="tecnicos.html"
+        class="btn-global">voltar</a>
+</section>
+
         </main>
-        <!-- RODAPÉ CPS -->
         <button class="back-to-top">
             <img alt="Voltar ao Topo" height="66"
                 src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
@@ -306,9 +294,6 @@
         </button>
         <footer id="cps-rodape">
             <div id="cps-rodape__redes-e-infos">
-                <!-- SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-                <!-- /SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-                <!-- SE FOR SITE DE ETEC/FATEC -->
                 <div id="cps-rodape__infos">
                     <div>
                         <span>
@@ -338,10 +323,8 @@
                             title="Siga-nos no Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                    </div> <!-- #cps-rodape__redes-icones -->
-                </div> <!-- #cps-rodape__redes -->
-                <!-- SE FOR SITE CPS PRINCIPAL -->
-                <!-- SELO PNPC -->
+                    </div>
+                </div>
                 <div id="cps-rodape-pnpc">
                     <a href="https://ugi.cps.sp.gov.br/" target="_blank">
                         <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
@@ -354,11 +337,7 @@
                             title="Programa Nacional de Prevenção à Corrupção - Participante" />
                     </a>
                 </div>
-                <!-- /SELO PNPC -->
             </div>
-            <!-- SE NÃO FOR SITE CPS PRINCIPAL -->
-            <!-- #cps-rodape__redes-e-infos -->
-            <!-- COPYRIGHT -->
             <div id="cps-rodape__creditos">
                 <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
                         target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
@@ -395,30 +374,7 @@
                 </div>
             </div>
         </section>
-        <!-- RODAPÉ CPS -->
-        <!--opcoes de acessibilidade-->
-        <div vw="" class="enabled"
-            style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-            <div vw-access-button="" class="active">
-                <img class="vp-access-button" data-src="assets/access_icon.svg"
-                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                    src="https://vlibras.gov.br/app//assets/access_icon.svg">
-                <img class="vp-pop-up" data-src="assets/access_popup.jpg"
-                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                    src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-            </div>
-            <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-                <div vp="">
-                </div>
-            </div>
-        </div>
-        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-        <script>
-            new window.VLibras.Widget('https://vlibras.gov.br/app');
-        </script>
-        <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
-
-        <!--botao para subir a tela-->
+        <script src="../../JS (Front-End)/controle_reagentes.js"></script>
         <script>
             document.querySelector('.back-to-top').addEventListener('click', () => {
                 window.scrollTo({
@@ -427,67 +383,52 @@
                 });
             });
         </script>
+        <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
 
-        <script>
+        <div id="edit-modal" class="custom-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 class="modal-title">Editar Quantidade</h3>
+            <p class="modal-item-name"></p>
+            
+            <div class="modal-info">
+                <p>Unidade: <span id="modal-unit">g</span></p>
+                <p>Quantidade Atual: <span id="modal-current-qty">0</span></p>
+            </div>
+            
+            <div class="modal-input-group">
+                <label for="new-quantity">Nova Quantidade:</label>
+                <input type="number" id="new-quantity" min="0" value="0">
+            </div>
 
-            document.addEventListener('DOMContentLoaded', function () {
-                const campoBusca = document.getElementById('campo-busca');
-                const cardsContainer = document.querySelector('.cards-container');
-                const todosOsCards = cardsContainer.querySelectorAll('.card');
-                campoBusca.addEventListener('input', function () {
-                    const termoBuscado = campoBusca.value.toLowerCase();
-                    todosOsCards.forEach(function (card) {
-                        const textoDoCard = card.textContent.toLowerCase();
-                        if (textoDoCard.includes(termoBuscado)) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-
-            });
-
-            window.addEventListener('DOMContentLoaded', () => {
-                const params = new URLSearchParams(window.location.search);
-                if (params.get('reserva') === 'sucesso') {
-                    const notification = document.getElementById('notification');
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 5000);
-                }
-            });
-            const logoutButton = document.getElementById('btn-logout');
-
-            // 2. Adiciona um "ouvinte" de clique no botão
-            if (logoutButton) {
-                logoutButton.addEventListener('click', function () {
-                    logout(); // Chama a nossa função de logout
-                });
-            }
-
-            /**
-             * Função de Logout
-             * Limpa a sessão/memória de login e redireciona para a tela inicial.
-             */
-            function logout() {
-                console.log("Deslogando usuário...");
-
-                // 3. Limpa a memória de login
-                // ASSUMIMOS que você salva o usuário em localStorage com a chave 'loggedInUserType'
-                // Se o nome da sua chave for outro (ex: 'usuario_logado'), troque abaixo.
-                localStorage.removeItem('loggedInUserType');
-
-                // Se você usar sessionStorage, descomente a linha abaixo:
-                // sessionStorage.clear(); 
-
-                // 4. Redireciona o usuário para a tela inicial (index.html)
-                window.location.href = '../login.html';
-            } 
-        </script>
-
-
+            <div class="modal-actions">
+                <button id="modal-confirm-btn" class="btn-modal btn-confirm">Confirmar</button>
+                <button id="modal-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script src="../../JS (Front-End)/controle_reagentes.js"></script>
+    </body>
+    <div id="success-modal" class="custom-modal success-modal">
+        <div class="modal-content success-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3 class="modal-title success-title">Sucesso!</h3>
+            <p class="success-message"></p>
+            <div class="modal-actions">
+                <button id="success-ok-btn" class="btn-modal btn-confirm">OK</button>
+            </div>
+        </div>
+    </div>
+    <div id="apply-confirm-modal" class="custom-modal confirm-modal">
+        <div class="modal-content confirm-content">
+            <h3 class="modal-title">Confirmar Aplicação</h3>
+            <p class="confirm-message">Tem certeza que deseja aplicar as alterações e sair desta página?</p>
+            <div class="modal-actions">
+                <button id="apply-confirm-btn" class="btn-modal btn-confirm">Aplicar e Sair</button>
+                <button id="apply-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
