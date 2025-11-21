@@ -590,8 +590,9 @@ body, html {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
+    /* REVERSÃO: Fundo Azul Marinho Escuro (var(--primary-color)) */
     background-color: var(--primary-color);
-    color: white;
+    color: white; /* Texto Branco */
     cursor: pointer;
     font-size: 2rem;
     font-weight: 500;
@@ -599,6 +600,7 @@ body, html {
 }
 
 .accordion-header:hover {
+    /* Hover Azul Claro */
     background-color: var(--hoverCian-color);
 }
 
@@ -607,6 +609,7 @@ body, html {
     font-size: 1.5rem;
     margin-left: 15px;
     transition: transform 0.3s ease;
+    /* Cor Branca (porque o fundo é escuro) */
     color: white;
 }
 
@@ -617,81 +620,131 @@ body, html {
 
 /* Novo: Corpo do Accordion (Contém os itens da lista) - Começa ESCONDIDO */
 .accordion-content {
-    display: none; /* ESSENCIAL: Oculta o conteúdo no início */
+    /* display: none;  ESSENCIAL: Oculta o conteúdo no início (Comentado porque será controlado pelo JS)*/
     border-top: 1px solid #eee;
+    padding: 10px 0; /* Adicionado padding para separar os cards internos */
 }
 
 /* MODIFICAÇÃO CHAVE AQUI: Layout interno limpo (estilo Vidrarias) */
-.accordion-content .item-row {
+.item-card-inner {
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    margin: 10px 20px; /* Espaçamento dentro do conteúdo do Accordion */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.item-row.main-item {
+    /* Mantém a barra principal dentro da nova estrutura */
+    border-left: 4px solid var(--primary-color);
+    padding: 12px 20px;
+}
+
+.item-actions .toggle-variations {
+    /* Ajusta a seta de variações para ser um ícone */
+    font-size: 2rem;
+    color: var(--hoverCian-color);
+}
+
+/* --- ESTILOS DOS ITENS INTERNOS (Linha Principal) --- */
+
+/* CÓDIGO ATUALIZADO (IGUAL A VIDRARIAS) */
+.item-info .item-name {
+    margin: 0;
+    /* ⚠️ Definido peso 400 para garantir que não fique negrito (como em vidrarias) */
+    color: var(--dark-gray);
+    font-weight: 400; 
+    font-size: 1.5rem; 
+}
+
+/* Estilo para a QUANTIDADE TOTAL (Total: 29 g) */
+.item-total {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: 500; 
+    margin: 5px 0 0 0;
+}
+
+/* --- ESTILOS DA SUB-LISTA (BLOCO EXPANDIDO) --- */
+
+/* Estilo da seta de expansão na linha principal */
+.item-actions .toggle-details { 
+    color: var(--hoverCian-color);
+    cursor: pointer;
+    font-size: 2rem; 
+    transition: transform 0.3s ease;
+}
+.item-actions .toggle-details:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Estilos da Sub-lista (Bloco expandido) */
+
+.variations-container {
+    background-color: #fafafa;
+    border-left: 8px solid #e9ecef; /* Barra lateral de indentação */
+    padding: 10px 0;
+}
+
+.variation-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px; 
-    border-bottom: 1px solid #f0f0f0; 
-    font-size: 1.6rem;
+    padding: 12px 20px 12px 40px; /* Padding ajustado para alinhamento */
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
 }
 
-.accordion-content .item-row:last-child {
-    border-bottom: none;
+.variation-row:hover {
+    background-color: #f0f0f0;
 }
 
-/* Estilo para o NOME do reagente */
-.item-name {
+.variation-info {
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Ocupa o máximo de espaço */
+    align-items: flex-start;
+    flex: 1;
 }
 
-.item-name span:first-child {
-    font-weight: 500;
-    color: var(--dark-gray);
-    font-size: 1.7rem;
+/* Estilo do resultado da conversão (Apenas o número em mg/ml/un, o primeiro texto) */
+/* CÓDIGO ATUALIZADO (IGUAL A VIDRARIAS) */
+.variation-desc {
+    /* ⚠️ Garantindo que não tenha negrito e use a cor padrão dark-gray */
+    font-size: 1.5rem;
+    color: var(--dark-gray); 
+    font-weight: 400; 
 }
 
-/* Novo: Estilo para a QUANTIDADE TOTAL abaixo do nome (igual ao 'Total' das vidrarias) */
-.item-name .item-qty {
+/* Estilo para a Quantidade em Gramas (na sub-linha) */
+.variation-qty {
     font-size: 1.4rem;
-    color: var(--primary-color); 
+    color: var(--light-gray);
     font-weight: 500;
-    margin-top: 5px;
+    background: #e9ecef;
+    padding: 4px 12px;
+    border-radius: 15px;
+    min-width: 60px;
+    text-align: center;
+    margin-right: 20px; 
 }
 
-/* Oculta o .item-details antigo (que continha a quantidade duplicada e os dois ícones) */
-.item-details {
+/* Estilo do botão Editar (igual ao de vidrarias) */
+.btn-edit {
+    background-color: var(--hoverCian-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 5px;
 }
 
-/* Garante que apenas o lápis apareça no final da linha */
-.item-details .edit-qty {
-    color: var(--hoverCian-color); 
-    font-size: 2rem;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.item-details .edit-qty:hover {
-    color: var(--primary-color); 
-}
-
-/* Esconde o ícone de observação permanentemente, conforme solicitado */
-.item-details .view-obs {
-    display: none;
-}
-
-#userwayAccessibilityIcon,
-.uwy-userway-trigger,
-.uai-trigger-container,
-div[data-account="3eFXoC4I4A"] {
-    /* Força a posição fixa */
-    position: fixed !important;
-    /* Zera a posição do topo padrão e define a nova */
-    bottom: auto !important;
-    /* Alinha à direita */
-    right: 0 !important;
-    /* Colado na direita */
-    left: auto !important;
-    /* Remove margens que o script possa adicionar */
-    margin-top: 500px !important;
+.btn-edit:hover {
+    background-color: var(--primary-color);
 }
