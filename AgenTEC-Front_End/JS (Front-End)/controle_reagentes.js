@@ -1,10 +1,72 @@
-// controle_reagentes.js (Versão Corrigida para replicar o design de expansão de vidrarias)
+// controle_reagentes.js (Versão Corrigida com Modal Customizado)
 
 const BACKEND_URL = 'http://localhost:3000/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const searchArea = document.getElementById('search-area');
     const accordionContainer = document.getElementById('reagent-accordion');
+    
+    // Elementos do Modal
+    const modal = document.getElementById('edit-modal');
+    const closeBtn = document.querySelector('.close-button');
+    const confirmBtn = document.getElementById('modal-confirm-btn');
+    const cancelBtn = document.getElementById('modal-cancel-btn');
+    const newQuantityInput = document.getElementById('new-quantity');
+    
+    // Variáveis para guardar o contexto de edição
+    let currentItemName = '';
+    let currentItemUnit = '';
+
+    // --- FUNÇÕES DE CONTROLE DO MODAL ---
+    const showModal = (itemNome, unidade, quantidadeAtual) => {
+        currentItemName = itemNome;
+        currentItemUnit = unidade;
+
+        // Preenche o modal com os dados atuais
+        document.querySelector('.modal-item-name').textContent = itemNome;
+        document.getElementById('modal-unit').textContent = unidade;
+        document.getElementById('modal-current-qty').textContent = quantidadeAtual;
+        newQuantityInput.value = quantidadeAtual; // Preenche o campo de input
+        newQuantityInput.focus(); // Foca no campo para facilitar a digitação
+        
+        modal.style.display = 'flex'; // Use 'flex' para centralizar com CSS
+    };
+
+    const hideModal = () => {
+        modal.style.display = 'none';
+        newQuantityInput.classList.remove('error');
+    };
+    
+    // --- FUNÇÃO DE EDIÇÃO (SUBSTITUI O PROMPT) ---
+    // Removemos a função editarQuantidade, pois o showModal a substitui
+    
+    // Event listeners para o Modal
+    closeBtn.addEventListener('click', hideModal);
+    cancelBtn.addEventListener('click', hideModal);
+
+    // Fechar o modal ao clicar fora
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            hideModal();
+        }
+    });
+
+    // Lógica de Confirmação
+    confirmBtn.addEventListener('click', () => {
+        const novaQuantidade = parseFloat(newQuantityInput.value);
+        
+        if (!isNaN(novaQuantidade) && novaQuantidade >= 0) {
+            alert(`Quantidade de ${currentItemName} atualizada para: ${novaQuantidade} ${currentItemUnit}\n\n(Esta funcionalidade será integrada com o backend)`);
+            updateItemTotal(currentItemName, novaQuantidade, currentItemUnit);
+            hideModal();
+        } else {
+            alert('Por favor, insira um número válido (0 ou maior).');
+            newQuantityInput.classList.add('error'); // Adiciona um visual de erro (se estilizado no CSS)
+            newQuantityInput.focus();
+        }
+    });
+    
+    // --- FUNÇÕES DE LÓGICA EXISTENTES (Mantidas/Ajustadas) ---
 
     // Funções de Accordion (MANTIDAS)
     const setupAccordion = () => {
@@ -60,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Atualiza o valor de miligramas na descrição
                     const descSpan = detailsContainer.querySelector('.variation-desc');
                     if (descSpan) {
-                        // ❌ CORREÇÃO JS 1: Removendo o negrito (**) da string no recalculo
+                        // CORREÇÃO JS 1: Removendo o negrito (**) da string no recalculo
                         descSpan.innerHTML = `Conversão (g &rarr; mg): ${miligramas.toFixed(2)} mg`;
                     }
                     // Atualiza o data-attribute do botão
@@ -71,24 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-    };
-    
-    // Função para editar quantidade de um item
-    const editarQuantidade = (itemNome, unidade, quantidadeAtual) => {
-        const novaQuantidadeStr = prompt(
-            `Editar quantidade para:\n${itemNome}\n\nUnidade: ${unidade}\nQuantidade atual: ${quantidadeAtual}`,
-            quantidadeAtual
-        );
-
-        if (novaQuantidadeStr !== null) {
-            const novaQuantidade = parseFloat(novaQuantidadeStr);
-            if (!isNaN(novaQuantidade) && novaQuantidade >= 0) {
-                alert(`Quantidade de ${itemNome} atualizada para: ${novaQuantidade} ${unidade}\n\n(Esta funcionalidade será integrada com o backend)`);
-                updateItemTotal(itemNome, novaQuantidade, unidade);
-            } else {
-                alert('Por favor, insira um número válido (0 ou maior).');
-            }
-        }
     };
     
     // 1. Função para buscar os dados (MANTIDA)
@@ -149,7 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const headerHTML = document.createElement('div');
             headerHTML.classList.add('accordion-header');
-            // MUDANÇA: O cabeçalho agora só tem o texto e o ícone. O estilo de cor será definido no CSS.
             headerHTML.innerHTML = `
                 <span>${tipo} (${itensDoTipo.length} itens)</span>
                 <i class="fas fa-chevron-right accordion-icon"></i>
@@ -258,7 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const itemQty = e.currentTarget.dataset.itemQty;
                 const itemUnit = e.currentTarget.dataset.itemUnit;
                 
-                editarQuantidade(itemName, itemUnit, parseFloat(itemQty));
+                // CHAMANDO O NOVO MODAL CUSTOMIZADO
+                showModal(itemName, itemUnit, parseFloat(itemQty));
             });
         });
     };

@@ -283,7 +283,7 @@
             <section class="action-buttons-list">
                 <a href="tecnicos.html" class="btn-global">voltar</a>
                 <a href="adicionar.reagentes.html" class="btn-global">adicionar reagentes</a> <a href="#"
-                    class="btn-global">aplicarr</a>
+                    class="btn-global">aplicar</a>
             </section>
 
         </main>
@@ -384,6 +384,31 @@
             });
         </script>
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
+
+        <div id="edit-modal" class="custom-modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 class="modal-title">Editar Quantidade</h3>
+            <p class="modal-item-name"></p>
+            
+            <div class="modal-info">
+                <p>Unidade: <span id="modal-unit">g</span></p>
+                <p>Quantidade Atual: <span id="modal-current-qty">0</span></p>
+            </div>
+            
+            <div class="modal-input-group">
+                <label for="new-quantity">Nova Quantidade:</label>
+                <input type="number" id="new-quantity" min="0" value="0">
+            </div>
+
+            <div class="modal-actions">
+                <button id="modal-confirm-btn" class="btn-modal btn-confirm">Confirmar</button>
+                <button id="modal-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script src="../../JS (Front-End)/controle_reagentes.js"></script>
+    </body>
 </body>
 
 </html>
