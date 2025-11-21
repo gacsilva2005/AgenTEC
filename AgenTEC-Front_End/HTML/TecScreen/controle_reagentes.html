@@ -280,11 +280,11 @@
 
             <section class="items-list-container" id="reagent-accordion">
                 </section>
-            <section class="action-buttons-list">
-                <a href="tecnicos.html" class="btn-global">voltar</a>
-                <a href="adicionar.reagentes.html" class="btn-global">adicionar reagentes</a> <a href="#"
-                    class="btn-global">aplicar</a>
-            </section>
+  <section class="action-buttons-list">
+    <a id="global-apply-btn" href="#" class="btn-global">aplicar</a>
+    <a href="adicionar.reagentes.html" class="btn-global">adicionar reagentes</a> <a href="tecnicos.html"
+        class="btn-global">voltar</a>
+</section>
 
         </main>
         <button class="back-to-top">
@@ -409,6 +409,26 @@
     </div>
     <script src="../../JS (Front-End)/controle_reagentes.js"></script>
     </body>
+    <div id="success-modal" class="custom-modal success-modal">
+        <div class="modal-content success-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h3 class="modal-title success-title">Sucesso!</h3>
+            <p class="success-message"></p>
+            <div class="modal-actions">
+                <button id="success-ok-btn" class="btn-modal btn-confirm">OK</button>
+            </div>
+        </div>
+    </div>
+    <div id="apply-confirm-modal" class="custom-modal confirm-modal">
+        <div class="modal-content confirm-content">
+            <h3 class="modal-title">Confirmar Aplicação</h3>
+            <p class="confirm-message">Tem certeza que deseja aplicar as alterações e sair desta página?</p>
+            <div class="modal-actions">
+                <button id="apply-confirm-btn" class="btn-modal btn-confirm">Aplicar e Sair</button>
+                <button id="apply-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

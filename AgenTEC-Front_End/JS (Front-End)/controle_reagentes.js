@@ -1,4 +1,4 @@
-// controle_reagentes.js (Versão Corrigida com Modal Customizado)
+// controle_reagentes.js (Versão Final com Modal de Confirmação de Aplicação)
 
 const BACKEND_URL = 'http://localhost:3000/api';
 
@@ -6,18 +6,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchArea = document.getElementById('search-area');
     const accordionContainer = document.getElementById('reagent-accordion');
     
-    // Elementos do Modal
-    const modal = document.getElementById('edit-modal');
-    const closeBtn = document.querySelector('.close-button');
+    // Elementos do Modal de Edição
+    const editModal = document.getElementById('edit-modal');
+    const editCloseBtn = editModal.querySelector('.close-button');
     const confirmBtn = document.getElementById('modal-confirm-btn');
     const cancelBtn = document.getElementById('modal-cancel-btn');
     const newQuantityInput = document.getElementById('new-quantity');
+    
+    // Elementos do Modal de Sucesso
+    const successModal = document.getElementById('success-modal');
+    const successMessage = successModal.querySelector('.success-message');
+    const successOkBtn = document.getElementById('success-ok-btn');
+    
+    // Elementos do Modal de Confirmação (APLICAR)
+    const applyConfirmModal = document.getElementById('apply-confirm-modal');
+    const applyConfirmBtn = document.getElementById('apply-confirm-btn');
+    const applyCancelBtn = document.getElementById('apply-cancel-btn');
+
+    // Botão Global "Aplicar" no final da página (CORRIGIDO PARA USAR O ID)
+    const globalApplyBtn = document.getElementById('global-apply-btn');
+    
+    // Variáveis para o body e html (necessário para travar o scroll)
+    const body = document.body;
+    const html = document.documentElement; // Referência ao elemento <html>
     
     // Variáveis para guardar o contexto de edição
     let currentItemName = '';
     let currentItemUnit = '';
 
-    // --- FUNÇÕES DE CONTROLE DO MODAL ---
+    // --- FUNÇÕES DE CONTROLE DO MODAL DE EDIÇÃO ---
     const showModal = (itemNome, unidade, quantidadeAtual) => {
         currentItemName = itemNome;
         currentItemUnit = unidade;
@@ -26,42 +43,91 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.modal-item-name').textContent = itemNome;
         document.getElementById('modal-unit').textContent = unidade;
         document.getElementById('modal-current-qty').textContent = quantidadeAtual;
-        newQuantityInput.value = quantidadeAtual; // Preenche o campo de input
-        newQuantityInput.focus(); // Foca no campo para facilitar a digitação
+        newQuantityInput.value = quantidadeAtual; 
+        newQuantityInput.focus(); 
         
-        modal.style.display = 'flex'; // Use 'flex' para centralizar com CSS
+        editModal.style.display = 'flex'; 
+        
+        // Trava o scroll da página
+        body.classList.add('modal-open-noscroll');
+        html.classList.add('modal-open-noscroll');
     };
 
-    const hideModal = () => {
-        modal.style.display = 'none';
+    const hideModal = (modalToHide = editModal) => {
+        modalToHide.style.display = 'none';
         newQuantityInput.classList.remove('error');
+        
+        // Libera o scroll da página se for o último modal a fechar
+        if (editModal.style.display === 'none' && successModal.style.display === 'none' && applyConfirmModal.style.display === 'none') {
+            body.classList.remove('modal-open-noscroll');
+            html.classList.remove('modal-open-noscroll');
+        }
+    };
+
+    // --- FUNÇÃO DE CONTROLE DO MODAL DE SUCESSO ---
+    const showSuccessModal = (itemName, newQty, unit) => {
+        successMessage.textContent = `Quantidade de ${itemName} atualizada para: ${newQty} ${unit}`;
+        successModal.style.display = 'flex';
+        
+        // Trava o scroll 
+        body.classList.add('modal-open-noscroll');
+        html.classList.add('modal-open-noscroll');
     };
     
-    // --- FUNÇÃO DE EDIÇÃO (SUBSTITUI O PROMPT) ---
-    // Removemos a função editarQuantidade, pois o showModal a substitui
-    
-    // Event listeners para o Modal
-    closeBtn.addEventListener('click', hideModal);
-    cancelBtn.addEventListener('click', hideModal);
+    // --- FUNÇÃO PARA MOSTRAR O MODAL DE CONFIRMAÇÃO DE APLICAÇÃO ---
+    const showApplyConfirmModal = () => {
+        applyConfirmModal.style.display = 'flex';
+        body.classList.add('modal-open-noscroll');
+        html.classList.add('modal-open-noscroll');
+    };
 
-    // Fechar o modal ao clicar fora
+    // Event listeners do Modal de Edição
+    editCloseBtn.addEventListener('click', () => hideModal(editModal));
+    cancelBtn.addEventListener('click', () => hideModal(editModal));
+    
+    // Event listener do Modal de Sucesso
+    successOkBtn.addEventListener('click', () => hideModal(successModal));
+    
+    // Event listeners do Modal de Confirmação de Aplicação
+    applyCancelBtn.addEventListener('click', () => hideModal(applyConfirmModal));
+
+    applyConfirmBtn.addEventListener('click', () => {
+        // Ação de aplicar (salvamento seria aqui)
+        console.log("Alterações aplicadas e salvando...");
+        
+        // Redireciona para tecnicos.html
+        window.location.href = 'tecnicos.html';
+    });
+
+
+    // Fechar qualquer modal ao clicar fora
     window.addEventListener('click', (event) => {
-        if (event.target == modal) {
-            hideModal();
+        if (event.target == editModal) {
+            hideModal(editModal);
+        } else if (event.target == successModal) {
+             hideModal(successModal);
+        } else if (event.target == applyConfirmModal) {
+             hideModal(applyConfirmModal);
         }
     });
 
-    // Lógica de Confirmação
+    // Lógica de Confirmação (Modal de Edição)
     confirmBtn.addEventListener('click', () => {
         const novaQuantidade = parseFloat(newQuantityInput.value);
         
         if (!isNaN(novaQuantidade) && novaQuantidade >= 0) {
-            alert(`Quantidade de ${currentItemName} atualizada para: ${novaQuantidade} ${currentItemUnit}\n\n(Esta funcionalidade será integrada com o backend)`);
+            // 1. Atualiza os dados na interface
             updateItemTotal(currentItemName, novaQuantidade, currentItemUnit);
-            hideModal();
+            
+            // 2. Esconde o modal de edição
+            hideModal(editModal);
+            
+            // 3. Mostra o modal de sucesso (Substituindo o alert)
+            showSuccessModal(currentItemName, novaQuantidade, currentItemUnit);
+
         } else {
             alert('Por favor, insira um número válido (0 ou maior).');
-            newQuantityInput.classList.add('error'); // Adiciona um visual de erro (se estilizado no CSS)
+            newQuantityInput.classList.add('error'); 
             newQuantityInput.focus();
         }
     });
@@ -122,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Atualiza o valor de miligramas na descrição
                     const descSpan = detailsContainer.querySelector('.variation-desc');
                     if (descSpan) {
-                        // CORREÇÃO JS 1: Removendo o negrito (**) da string no recalculo
+                        // Removendo o negrito (**) da string no recalculo
                         descSpan.innerHTML = `Conversão (g &rarr; mg): ${miligramas.toFixed(2)} mg`;
                     }
                     // Atualiza o data-attribute do botão
@@ -373,6 +439,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     group.style.display = 'none';
                 }
             });
+        });
+    }
+    if (globalApplyBtn) {
+        globalApplyBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Impede que o link navegue ou recarregue
+            showApplyConfirmModal(); // Abre o modal de confirmação
         });
     }
 

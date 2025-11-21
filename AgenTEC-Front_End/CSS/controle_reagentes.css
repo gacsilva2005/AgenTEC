@@ -918,3 +918,63 @@ body, html {
         width: 100%;
     }
 }
+
+/* CLASSE PARA BLOQUEAR O SCROLL DA PÁGINA QUANDO O MODAL ESTIVER ABERTO */
+.modal-open-noscroll {
+    overflow: hidden;
+}
+
+/* --- ESTILOS DO MODAL DE SUCESSO --- */
+
+.success-modal .modal-content {
+    /* Centraliza e torna o modal de sucesso menor */
+    max-width: 320px; 
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 5rem;
+    color: var(--hoverCian-color); /* Ciano para indicar sucesso */
+    margin-bottom: 15px;
+}
+
+.success-title {
+    font-size: 2.5rem;
+    color: var(--hoverCian-color);
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.success-message {
+    font-size: 1.4rem;
+    color: var(--dark-gray);
+    margin: 15px 0 30px 0;
+}
+
+/* Ajuste nos botões do modal de sucesso para ficarem centralizados */
+.success-content .modal-actions {
+    justify-content: center;
+}
+/* --- ESTILOS DO MODAL DE CONFIRMAÇÃO (APLICAR) --- */
+
+.confirm-modal .modal-content {
+    /* Torna este modal ligeiramente menor, focado na pergunta */
+    max-width: 380px;
+    text-align: center;
+}
+
+.confirm-content .modal-title {
+    color: var(--primary-color);
+    border-bottom: 2px solid #eee;
+}
+
+.confirm-message {
+    font-size: 1.4rem;
+    color: var(--dark-gray);
+    margin: 20px 0 30px 0;
+}
+
+.confirm-content .modal-actions {
+    /* Garante a centralização dos botões (já está em modal-actions, mas reforçamos) */
+    justify-content: center;
+}
