@@ -277,26 +277,6 @@ body, html {
     height: 70px; 
 }
 
-.form-section {
-    width: 100%;
-    max-width: 800px; 
-    margin: 0 auto 40px auto; 
-    padding: 25px;
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.form-section h2 {
-    font-size: 2.3rem;
-    font-weight: 500;
-    color: var(--primary-color, #004b49);
-    margin-top: 0;
-    margin-bottom: 25px;
-    border-bottom: 2px solid var(--primary-red, #008B8B);
-    padding-bottom: 10px;
-}
 
 .form-container {
     display: flex;
@@ -378,12 +358,12 @@ body, html {
 .stepper-container {
     display: flex;
     align-items: center; 
-    gap: 500px; 
+    gap: 2rem; 
 }
 
 .btn-confirm-small {
     height: 45px; 
-    width: 105px;  
+    width: 60px;  
     border: none;
     background-color: var(--primary-color, #004b49); 
     color: white;
@@ -407,7 +387,7 @@ body, html {
     margin-top: 50px;
     padding-top: 20px;
     border-top: 1px solid #eee;
-    margin-bottom: 150px;
+    margin-bottom: 1050px;
 }
 
 .action-btn {
@@ -641,3 +621,158 @@ div[data-account="3eFXoC4I4A"] {
     /* Remove margens que o script possa adicionar */
     margin-top: 500px !important;
 }
+
+/* --- ESTILOS DO ACORDEÃO (ABAS) --- */
+
+/* O container principal que segura cada aba */
+.accordion-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 20px auto; /* Espaçamento entre as abas */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* O botão que serve de cabeçalho (antigo h2) */
+.accordion-header {
+    background-color: #f9f9f9;
+    color: var(--primary-color, #004b49);
+    cursor: pointer;
+    padding: 25px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid transparent; /* Borda invisível inicialmente */
+}
+
+.accordion-header h2 {
+    font-size: 2.3rem;
+    font-weight: 500;
+    margin: 0;
+    border: none; /* Remove a borda do h2 original pois o botão controlará isso */
+    padding: 0;
+    pointer-events: none; /* O clique vai no botão pai */
+}
+
+/* Ícone de seta */
+.accordion-header i {
+    font-size: 2rem;
+    color: var(--primary-red, #970000);
+    transition: transform 0.3s ease;
+}
+
+/* Estado Ativo (Aberto) */
+.accordion-header.active, .accordion-header:hover {
+    background-color: #f1f1f1;
+}
+
+.accordion-header.active {
+    border-bottom: 2px solid var(--primary-red, #970000);
+}
+
+.accordion-header.active i {
+    transform: rotate(180deg); /* Gira a seta */
+}
+
+/* O conteúdo que abre e fecha */
+.accordion-panel {
+    padding: 0 25px;
+    background-color: #f9f9f9;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    opacity: 0;
+}
+
+/* Classe auxiliar para quando estiver aberto */
+.accordion-panel.show {
+    opacity: 1;
+    padding: 25px; /* Restaura o padding original do form-section */
+}
+
+/* --- LAYOUT DE DUAS COLUNAS --- */
+
+.page-layout {
+    display: flex;
+    gap: 30px; /* Espaço entre as colunas */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    align-items: flex-start; /* Alinha os itens ao topo */
+}
+
+/* Coluna da Esquerda (Formulários) */
+.left-column {
+    flex: 1; /* Ocupa todo o espaço disponível */
+    min-width: 0; /* Evita overflow em flex items */
+}
+
+/* Coluna da Direita (Lista de Adicionados + Ações) */
+.right-column {
+    width: 400px; /* Largura fixa para a barra lateral */
+    flex-shrink: 0; /* Não deixa encolher */
+    position: sticky; /* Faz a coluna fixar no topo ao rolar */
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* -- Ajustes nos Componentes para o novo Layout -- */
+
+/* Força os accordions a ocuparem 100% da coluna esquerda */
+.left-column .accordion-wrapper {
+    max-width: 100%; 
+    margin-bottom: 20px;
+}
+
+/* Ajusta a tabela para caber na coluna direita */
+.right-column .tabela-vidrarias-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0; /* Remove a margem automática antiga */
+    box-sizing: border-box;
+    display: block !important; /* Força visibilidade para testar layout (o JS pode controlar isso depois) */
+}
+
+/* Ajusta os botões de ação para ficarem empilhados na direita */
+.right-column .action-buttons-container {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    gap: 10px;
+}
+
+.right-column .action-btn {
+    width: 100%; /* Botões ocupam toda a largura da coluna direita */
+}
+
+/* Tabela responsiva na lateral */
+.tabela-vidrarias th, 
+.tabela-vidrarias td {
+    font-size: 1.2rem; /* Diminui um pouco a fonte para caber na lateral */
+    padding: 8px;
+}
+
+/* Responsividade para Mobile (Celular) */
+@media (max-width: 992px) {
+    .page-layout {
+        flex-direction: column; /* Empilha um embaixo do outro */
+    }
+    
+    .right-column {
+        width: 100%; /* Ocupa largura total no celular */
+        position: static; /* Remove o efeito sticky */
+    }
+}
+

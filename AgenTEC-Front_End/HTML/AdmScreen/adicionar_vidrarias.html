@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Vidrarias</title>
+    <title>Adicionar Vidrarias e reagentes</title>
     <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
     <link rel="stylesheet" href="../../CSS/adicionar_vidrarias.css">
@@ -257,72 +257,140 @@
                         vidrarias</a> / Adicionar vidrarias</span>
             </div>
         </div>
-
         <main class="main-content">
 
             <h1 class="page-title">Adicionar vidrarias</h1>
             <div class="title-underline"></div>
 
-            <div class="form-section">
-                <h2>Cadastrar Nova Vidraria</h2>
-                <div class="form-container">
-                    <div class="input-group">
-                        <label for="nome_vidraria">Nome da vidraria</label>
-                        <input type="text" id="nome_vidraria" name="nome_vidraria" placeholder="Ex: Béquer 250ml">
-                        <span class="error-message" id="nome-error"></span>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="tipo_vidraria">Tipo da Vidraria</label>
-                        <input type="text" id="tipo_vidraria" name="tipo_vidraria" placeholder="Ex: Béquer, Balão, Pipeta">
-                        <span class="error-message" id="tipo-error"></span>
-                    </div>
-                    <div class="quantity-group">
-                        <label for="quantity">Quantidade em estoque</label>
-                        <div class="stepper-container">
-                            <div class="quantity-stepper">
-                                <button type="button" class="quantity-btn btn-minus"
-                                    aria-label="Diminuir quantidade">-</button>
-                                <input type="text" id="quantity" name="quantity" value="0" readonly>
-                                <button type="button" class="quantity-btn btn-plus"
-                                    aria-label="Aumentar quantidade">+</button>
+            <div class="page-layout">
+
+                <div class="left-column">
+
+                    <div class="accordion-wrapper">
+                        <button class="accordion-header">
+                            <h2>Adicionar Vidrarias</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-panel">
+                            <div class="form-container">
+                                <div class="input-group">
+                                    <label for="nome_vidraria">Nome da vidraria</label>
+                                    <input type="text" id="nome_vidraria" name="nome_vidraria"
+                                        placeholder="Ex: Béquer 250ml">
+                                    <span class="error-message" id="nome-error"></span>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="tipo_vidraria">Tipo da Vidraria</label>
+                                    <input type="text" id="tipo_vidraria" name="tipo_vidraria"
+                                        placeholder="Ex: Béquer, Balão, Pipeta">
+                                    <span class="error-message" id="tipo-error"></span>
+                                </div>
+
+                                <div class="quantity-group">
+                                    <label for="quantity">Quantidade</label>
+                                    <div class="stepper-container">
+                                        <div class="quantity-stepper">
+                                            <button type="button" class="quantity-btn btn-minus"
+                                                aria-label="Diminuir quantidade">-</button>
+                                            <input type="text" id="quantity" name="quantity" value="0" readonly>
+                                            <button type="button" class="quantity-btn btn-plus"
+                                                aria-label="Aumentar quantidade">+</button>
+                                        </div>
+                                        <button type="button" class="btn-confirm-small btn-confirm-vidraria"
+                                            aria-label="Confirmar Vidraria">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </div>
+                                    <span class="error-message" id="quantity-error"></span>
+                                </div>
                             </div>
-                            <button type="button" class="btn-confirm-small" aria-label="Confirmar Vidraria">
-                                <i class="fas fa-check"></i>
-                            </button>
                         </div>
-                        <span class="error-message" id="quantity-error"></span>
                     </div>
+
+                    <div class="accordion-wrapper">
+                        <button class="accordion-header">
+                            <h2>Adicionar Reagentes</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-panel">
+                            <div class="form-container">
+                                <div class="input-group">
+                                    <label for="nome_reagente">Nome do Reagente</label>
+                                    <input type="text" id="nome_reagente" name="nome_reagente"
+                                        placeholder="Ex: Ácido Clorídrico">
+                                    <span class="error-message" id="nome-reagente-error"></span>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="tipo_reagente">Tipo</label>
+                                    <input type="text" id="tipo_reagente" name="tipo_reagente"
+                                        placeholder="Ex: Zinco, 100g">
+                                    <span class="error-message" id="tipo-reagente-error"></span>
+                                </div>
+
+                                <div class="quantity-group">
+                                    <label for="quantity_reagente">Quantidade</label>
+                                    <div class="stepper-container">
+                                        <div class="quantity-stepper">
+                                            <button type="button" class="quantity-btn btn-minus"
+                                                aria-label="Diminuir quantidade">-</button>
+                                            <input type="text" id="quantity_reagente" name="quantity_reagente" value="0"
+                                                readonly>
+                                            <button type="button" class="quantity-btn btn-plus"
+                                                aria-label="Aumentar quantidade">+</button>
+                                        </div>
+                                        <button type="button" class="btn-confirm-small btn-confirm-reagente"
+                                            aria-label="Confirmar Reagente">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </div>
+                                    <span class="error-message" id="quantity-reagente-error"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="right-column">
+
+                    <div class="tabela-vidrarias-container" id="tabela-vidrarias-container">
+                        <h2>Itens Adicionados</h2>
+                        <table class="tabela-vidrarias">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Qtd</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela-vidrarias-body">
+                                <tr id="row-empty">
+                                    <td colspan="3" style="text-align:center; font-size:1.2rem; color:#999;">Nenhum item
+                                        na lista</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="action-buttons-container">
+                        <button id="btn-confirmar" class="action-btn btn-primary">Confirmar Tudo</button>
+                        <a href="administradores.html"><button class="action-btn btn-primary"
+                                style="background-color: #636e72;">Voltar</button></a>
+                        <a href="administradores.html"><button class="action-btn btn-primary"
+                                style="background-color: #636e72;">Menu</button></a>
+                    </div>
+
                 </div>
             </div>
-            <div class="tabela-vidrarias-container" id="tabela-vidrarias-container" style="display: none;">
-                <h2>Vidrarias Adicionadas</h2>
-                <table class="tabela-vidrarias">
-                    <thead>
-                        <tr>
-                            <th>Nome da Vidraria</th>
-                            <th>Quantidade</th>
-                            <th>Ação</th> 
-                        </tr>
-                    </thead>
-                    <tbody id="tabela-vidrarias-body">
-                        </tbody>
-                </table>
-            </div>
-            <div class="action-buttons-container">
-                    <a href="atualizar_vidrarias.html"><button class="action-btn btn-primary">voltar</button></a>
-                    
-                    <a href="administradores.html"><button class="action-btn btn-primary">menu</button></a>
-                    
-                    <button id="btn-confirmar" class="action-btn btn-primary">confirmar</button>
-            </div>
-            
             <div class="notification" id="notification-success">
                 <i class="fas fa-check-circle"></i>
                 <span>Operação realizada com sucesso!</span>
             </div>
-            </main>
-            <!-- RODAPÉ CPS -->
+
+        </main>
+
+        <!-- RODAPÉ CPS -->
         <button class="back-to-top">
             <img alt="Voltar ao Topo" height="66"
                 src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
@@ -449,7 +517,7 @@
                 });
             });
         </script>
-        <script src="../../JS (Front-End)/adicionar_vidraria.js"></script> 
-    </body>
+        <script src="../../JS (Front-End)/adicionar_vidraria.js"></script>
+</body>
 
 </html>
