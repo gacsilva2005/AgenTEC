@@ -420,6 +420,16 @@ body, html {
     text-transform: uppercase;
     transition: background-color 0.3s, transform 0.2s;
 }
+.back-to-top {
+  position: fixed;   
+  bottom: 20px;      
+  right: 20px;       
+  border: none;      
+  background: none;  
+  cursor: pointer;   
+  z-index: 1000;     
+}
+
 
 .action-btn:hover {
     transform: translateY(-3px);
