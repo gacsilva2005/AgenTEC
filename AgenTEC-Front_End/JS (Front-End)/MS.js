@@ -253,6 +253,131 @@ document.addEventListener('DOMContentLoaded', function () {
         adicionarEventListenersRemover();
     }
 
+    // Função para carregar vidrarias selecionadas
+    async function carregarVidrariasSelecionadas() {
+        try {
+            console.log('🔍 Buscando vidrarias selecionadas do servidor...');
+
+            const response = await fetch('http://localhost:3000/api/vidrarias-selecionadas');
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log('📥 Resposta do servidor (vidrarias):', result);
+
+            if (result.success) {
+                console.log(`✅ ${result.vidrarias.length} vidrarias encontradas`);
+                exibirVidrarias(result.vidrarias);
+                return result.vidrarias;
+            } else {
+                console.warn('⚠️ Nenhuma vidraria encontrada no servidor');
+                exibirVidrarias([]);
+                return [];
+            }
+
+        } catch (error) {
+            console.error('❌ Erro ao carregar vidrarias:', error);
+            exibirVidrarias([]);
+            return [];
+        }
+    }
+
+    // Função para exibir vidrarias na lista
+    function exibirVidrarias(vidrarias) {
+        const listaVidrarias = document.getElementById('vidrarias-lista');
+
+        if (!listaVidrarias) {
+            console.error('❌ Elemento #vidrarias-lista não encontrado');
+            return;
+        }
+
+        // Limpa a lista
+        listaVidrarias.innerHTML = '';
+
+        if (!vidrarias || vidrarias.length === 0) {
+            listaVidrarias.innerHTML = `
+            <div class="item-row empty-message">
+                <p>Nenhuma vidraria selecionada</p>
+            </div>
+        `;
+            return;
+        }
+
+        // Adiciona cada vidraria à lista
+        vidrarias.forEach((vidraria, index) => {
+            const itemRow = document.createElement('div');
+            itemRow.className = 'item-row';
+            itemRow.innerHTML = `
+            <div class="item-info">
+                <p class="item-name">${vidraria.nome}</p>
+                <p class="item-details">${vidraria.capacidade} ${vidraria.unidade}</p>
+            </div>
+            <div class="item-actions">
+                <button class="btn-remover" data-id="${vidraria.id}" title="Remover vidraria">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `;
+            listaVidrarias.appendChild(itemRow);
+        });
+
+        // Adiciona event listeners aos botões de remover
+        adicionarEventListenersRemoverVidrarias();
+    }
+
+    // Função para adicionar event listeners de remoção para vidrarias
+    function adicionarEventListenersRemoverVidrarias() {
+        const botoesRemover = document.querySelectorAll('#vidrarias-lista .btn-remover');
+
+        botoesRemover.forEach(botao => {
+            botao.addEventListener('click', function () {
+                const idVidraria = this.getAttribute('data-id');
+                removerVidraria(idVidraria);
+            });
+        });
+    }
+
+    // Função para remover vidraria
+    async function removerVidraria(id) {
+        if (!confirm('Tem certeza que deseja remover esta vidraria?')) {
+            return;
+        }
+
+        try {
+            console.log(`🗑️ Removendo vidraria ID: ${id}`);
+
+            const response = await fetch(`http://localhost:3000/api/vidrarias-selecionadas/remover/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            if (result.success) {
+                showNotification('Vidraria removida com sucesso!', true);
+                console.log('✅ Vidraria removida:', result.vidrariaRemovida);
+
+                // Recarrega a lista
+                await carregarVidrariasSelecionadas();
+            } else {
+                throw new Error(result.message || 'Erro ao remover vidraria');
+            }
+
+        } catch (error) {
+            console.error('❌ Erro ao remover vidraria:', error);
+            showNotification('Erro ao remover vidraria. Tente novamente.', false);
+        }
+    }
+
+    // Na inicialização da página de materiais selecionados, adicione:
+    console.log('🔄 Carregando vidrarias selecionadas...');
+    carregarVidrariasSelecionadas();
+
     function adicionarEventListenersRemover() {
         const botoesRemover = document.querySelectorAll('.btn-remover');
 
