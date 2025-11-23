@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const serverUrl = 'http://localhost:3000/login';
 
         try {
-            showMessage('Tentando autenticar...', true);
+            showMessage('Logando...', true);
 
             const response = await fetch(serverUrl, {
                 method: 'POST',

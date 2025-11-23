@@ -20,12 +20,14 @@ class Server {
   #prof;
   #tec;
   #contasGenericas;
+  #agendamentosTemporarios;
 
   constructor(port = 3000) {
     this.#app = express();
     this.#app.use(cors());
     this.#app.use(bodyParser.json());
     this.#app.use(bodyParser.urlencoded({ extended: true }));
+    this.#agendamentosTemporarios = new Map();
 
     this.#db = new Database({
       host: 'localhost',
@@ -45,7 +47,7 @@ class Server {
       'admin@adm.com': {
         senha: 'admin123',
         usuario: {
-          id: -1,
+          id: 1,
           nome: 'Administrador Geral',
           email: 'admin@adm.com',
           tipo: 'administrador'
@@ -54,7 +56,7 @@ class Server {
       'professor@prof.com': {
         senha: 'prof123',
         usuario: {
-          id: -2,
+          id: 2,
           nome: 'Professor Demo',
           email: 'professor@prof.com',
           tipo: 'professor'
@@ -63,7 +65,7 @@ class Server {
       'tecnico@tec.com': {
         senha: 'tec123',
         usuario: {
-          id: -3,
+          id: 3,
           nome: 'Técnico Demo',
           email: 'tecnico@tec.com',
           tipo: 'tecnico'
@@ -205,7 +207,7 @@ class Server {
     });
 
     // -----------------------------
-    // CRIAR AGENDAMENTO
+    // ARMAZENAR AGENDAMENTO (SEM INSERIR NO BANCO)
     // -----------------------------
     this.#app.post('/api/agendamentos', async (req, res) => {
       try {
@@ -218,7 +220,7 @@ class Server {
         // VALIDAÇÃO: Verifica se a data não é passada
         const dataAgendamento = new Date(data_agendamento);
         const hoje = new Date();
-        hoje.setHours(0, 0, 0, 0); // Zera as horas para comparar apenas a data
+        hoje.setHours(0, 0, 0, 0);
 
         if (dataAgendamento < hoje) {
           return res.status(400).json({
@@ -242,10 +244,15 @@ class Server {
           }
         }
 
+        const agendamentoId = 'temp_' + Date.now();
+
+
+
+
         // Se horario_fim não foi fornecido, calcula como 1 hora depois do início
         const horarioFim = horario_fim || this.#calcularHorarioFim(horario_inicio);
 
-        // Primeiro verifica se ainda há vagas
+        // Apenas valida a disponibilidade, mas não insere no banco
         const countQuery = 'SELECT COUNT(*) as total FROM agendamentos WHERE data_agendamento = ?';
         const countResult = await this.#db.query(countQuery, [data_agendamento]);
 
@@ -255,16 +262,16 @@ class Server {
 
         // Verifica se já existe agendamento no mesmo horário e laboratório
         const duplicateQuery = `
-          SELECT COUNT(*) as total 
-          FROM agendamentos 
-          WHERE data_agendamento = ? 
-          AND id_laboratorio = ? 
-          AND (
-            (horario_inicio <= ? AND horario_fim > ?) OR
-            (horario_inicio < ? AND horario_fim >= ?) OR
-            (horario_inicio >= ? AND horario_fim <= ?)
-          )
-        `;
+      SELECT COUNT(*) as total 
+      FROM agendamentos 
+      WHERE data_agendamento = ? 
+      AND id_laboratorio = ? 
+      AND (
+        (horario_inicio <= ? AND horario_fim > ?) OR
+        (horario_inicio < ? AND horario_fim >= ?) OR
+        (horario_inicio >= ? AND horario_fim <= ?)
+      )
+    `;
         const duplicateResult = await this.#db.query(duplicateQuery, [
           data_agendamento, laboratorio,
           horario_inicio, horario_inicio,
@@ -276,28 +283,139 @@ class Server {
           return res.status(400).json({ success: false, message: 'Já existe um agendamento para este horário e laboratório.' });
         }
 
-        const insertQuery = `
-          INSERT INTO agendamentos 
-          (data_agendamento, horario_inicio, horario_fim, id_laboratorio, id_professor, observacoes, status) 
-          VALUES (?, ?, ?, ?, ?, ?, 'pendente')
-        `;
-        const insertResult = await this.#db.query(insertQuery, [
+        // Apenas armazena os dados em memória/variável (não insere no banco)
+        const agendamentoTemporario = {
+          id: agendamentoId,
           data_agendamento,
           horario_inicio,
-          horarioFim,
-          laboratorio,
-          professor_id,
-          materia
-        ]);
+          horario_fim: horarioFim,
+          id_laboratorio: laboratorio,
+          id_professor: professor_id,
+          observacoes: materia,
+          status: 'pendente',
+          timestamp: new Date().toISOString()
+        };
+
+        this.#agendamentosTemporarios.set(agendamentoId, agendamentoTemporario);
+
+        console.log('📋 Agendamento temporário armazenado:', agendamentoTemporario);
+        console.log('📊 Total de agendamentos temporários:', this.#agendamentosTemporarios.size);
 
         return res.json({
           success: true,
-          message: 'Agendamento realizado com sucesso!',
-          agendamentoId: insertResult.insertId
+          message: 'Agendamento validado e armazenado temporariamente!',
+          agendamentoId: agendamentoId,
+          agendamentoTemporario: agendamentoTemporario,
+          timestamp: new Date().toISOString()
+        });
+
+      } catch (err) {
+        console.error('Erro ao processar agendamento:', err);
+        return res.status(500).json({ success: false, message: 'Erro ao processar agendamento' });
+      }
+    });
+
+    // -----------------------------
+    // CONFIRMAR AGENDAMENTO (INSERIR NO BANCO)
+    // -----------------------------
+    this.#app.post('/api/agendamentos/confirmar', async (req, res) => {
+      try {
+        const { data_agendamento, horario_inicio, horario_fim, laboratorio, professor_id, materia } = req.body;
+
+        console.log('📥 Dados recebidos para confirmação:', req.body);
+
+        if (!data_agendamento || !horario_inicio || !laboratorio || !professor_id) {
+          return res.status(400).json({
+            success: false,
+            message: 'Campos obrigatórios faltando: data, horário, laboratório e professor são necessários'
+          });
+        }
+
+        // Calcula horário_fim se não fornecido
+        const horarioFimCalculado = horario_fim || this.#calcularHorarioFim(horario_inicio);
+
+        // Verifica conflitos de agendamento
+        const conflitoQuery = `
+            SELECT COUNT(*) as total 
+            FROM agendamentos 
+            WHERE data_agendamento = ? 
+            AND id_laboratorio = ? 
+            AND (
+                (horario_inicio < ? AND horario_fim > ?) OR
+                (horario_inicio < ? AND horario_fim > ?) OR
+                (horario_inicio >= ? AND horario_inicio < ?)
+            )
+            AND status != 'cancelado'
+        `;
+
+        const conflitoResult = await this.#db.query(conflitoQuery, [
+          data_agendamento, laboratorio,
+          horarioFimCalculado, horario_inicio,
+          horario_inicio, horarioFimCalculado,
+          horario_inicio, horarioFimCalculado
+        ]);
+
+        if (conflitoResult[0].total > 0) {
+          return res.status(400).json({
+            success: false,
+            message: 'Conflito de horário: já existe um agendamento para este laboratório no horário selecionado'
+          });
+        }
+
+        // Insere o agendamento no banco
+        const insertQuery = `
+            INSERT INTO agendamentos 
+            (data_agendamento, horario_inicio, horario_fim, id_laboratorio, id_professor, observacoes, status) 
+            VALUES (?, ?, ?, ?, ?, ?, 'confirmado')
+        `;
+
+        const result = await this.#db.query(insertQuery, [
+          data_agendamento,
+          horario_inicio,
+          horarioFimCalculado,
+          laboratorio,
+          professor_id,
+          materia || 'Aula prática'
+        ]);
+
+        console.log('✅ Agendamento confirmado no banco. ID:', result.insertId);
+
+        // Remove agendamentos temporários (opcional)
+        this.#agendamentosTemporarios.clear();
+
+        res.json({
+          success: true,
+          message: 'Agendamento confirmado com sucesso!',
+          agendamentoId: result.insertId
+        });
+
+      } catch (err) {
+        console.error('❌ Erro ao confirmar agendamento:', err);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno ao confirmar agendamento: ' + err.message
+        });
+      }
+    });
+
+    // -----------------------------
+    // BUSCAR AGENDAMENTOS TEMPORÁRIOS
+    // -----------------------------
+    this.#app.get('/api/agendamentos-temporarios', async (req, res) => {
+      try {
+        const agendamentosArray = Array.from(this.#agendamentosTemporarios.values());
+
+        res.json({
+          success: true,
+          agendamentos: agendamentosArray,
+          total: agendamentosArray.length
         });
       } catch (err) {
-        console.error('Erro ao criar agendamento:', err);
-        return res.status(500).json({ success: false, message: 'Erro ao criar agendamento' });
+        console.error('Erro ao buscar agendamentos temporários:', err);
+        res.status(500).json({
+          success: false,
+          message: 'Erro ao buscar agendamentos temporários'
+        });
       }
     });
 
@@ -399,14 +517,14 @@ class Server {
         console.log('📋 Buscando laboratórios no banco de dados...');
 
         const query = `
-            SELECT 
-                id_laboratorio, 
-                nome, 
-                capacidade, 
-                localizacao
-            FROM laboratorios 
-            ORDER BY nome
-        `;
+        SELECT 
+            id_laboratorio, 
+            nome, 
+            capacidade, 
+            localizacao
+        FROM laboratorios 
+        ORDER BY nome
+    `;
 
         const laboratorios = await this.#db.query(query);
 
@@ -500,19 +618,6 @@ class Server {
           message: 'Erro no banco',
           error: error.message
         });
-      }
-    });
-
-    // -----------------------------
-    // LISTAR LABORATÓRIOS
-    // -----------------------------
-    this.#app.get('/api/laboratorios', async (req, res) => {
-      try {
-        const laboratorios = await this.#db.query('SELECT * FROM laboratorios');
-        res.json({ success: true, laboratorios });
-      } catch (err) {
-        console.error('Erro ao listar laboratórios:', err);
-        res.status(500).json({ success: false, message: 'Erro ao listar laboratórios' });
       }
     });
 

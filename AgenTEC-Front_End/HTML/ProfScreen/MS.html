@@ -306,9 +306,27 @@
                     </div>
                 </div>
             </section>
+            <div id="modalConfirmacao" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Confirmar Agendamento</h2>
+                    <div class="detalhes-agendamento">
+                        <p><strong>Data:</strong> <span id="modal-data-agendamento"></span></p>
+                        <p><strong>Horário:</strong> <span id="modal-horario-agendamento"></span></p>
+                        <p><strong>Laboratório:</strong> <span id="modal-laboratorio-agendamento"></span></p>
+                        <p><strong>Matéria:</strong> <span id="modal-materia-agendamento"></span></p>
+                    </div>
+                    <div class="modal-buttons">
+                        <button id="btnCancelarAgendamento" class="btn-cancelar">Cancelar</button>
+                        <button id="btnConfirmarAgendamento" class="btn-confirmar">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTÕES DE AÇÃO -->
             <section class="action-buttons">
                 <a href="MR.html" class="btn-global">Voltar</a>
-                <a href="professor.html" class="btn-global">Confirmar e agendar agora</a>
+                <button class="btn-global" id="btnAbrirModal">Confirmar e agendar agora</button>
             </section>
         </main>
         <!-- RODAPÉ CPS -->
@@ -470,6 +488,7 @@
         <script src="../../JS (Front-End)/logout.js"></script>
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
         <script src="../../JS (Front-End)/botao_topo.js"></script>
+        <script src="../../JS (Front-End)/MS.js"></script>
 </body>
 
 </html>

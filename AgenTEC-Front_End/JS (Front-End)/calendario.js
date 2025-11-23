@@ -569,20 +569,20 @@ document.addEventListener('DOMContentLoaded', function () {
         eventListE1.innerHTML = '<div class="no-events">Selecione uma data para verificar a disponibilidade</div>';
         scheduleBtn.disabled = true;
         scheduleBtn.innerHTML = '<i class="fas fa-calendar-day"></i> Agendar';
-        
+
         // RESETAR SELEÇÕES
         selectedDate = null;
         selectedTime = null;
         selectedLab = null;
-        
+
         eventTimePanel.style.display = 'none';
         eventLabPanel.style.display = 'none';
-        
+
         const summaryElement = document.getElementById('selected-time-summary');
         if (summaryElement) {
             summaryElement.remove();
         }
-        
+
         verificarSelecaoCompleta();
     });
 
@@ -593,20 +593,20 @@ document.addEventListener('DOMContentLoaded', function () {
         eventListE1.innerHTML = '<div class="no-events">Selecione uma data para verificar a disponibilidade</div>';
         scheduleBtn.disabled = true;
         scheduleBtn.innerHTML = '<i class="fas fa-calendar-day"></i> Agendar';
-        
+
         // RESETAR SELEÇÕES
         selectedDate = null;
         selectedTime = null;
         selectedLab = null;
-        
+
         eventTimePanel.style.display = 'none';
         eventLabPanel.style.display = 'none';
-        
+
         const summaryElement = document.getElementById('selected-time-summary');
         if (summaryElement) {
             summaryElement.remove();
         }
-        
+
         verificarSelecaoCompleta();
     });
 
@@ -630,27 +630,84 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Configura botão de confirmar
     if (confirmBtn) {
-        verificarSelecaoCompleta();
+    verificarSelecaoCompleta();
 
-        confirmBtn.addEventListener('click', (e) => {
-            if (!verificarSelecaoCompleta()) {
-                e.preventDefault();
-                showMessage('Por favor, selecione data, horário e laboratório antes de confirmar', false);
-                return;
+    confirmBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        if (!verificarSelecaoCompleta()) {
+            showMessage('Por favor, selecione data, horário e laboratório antes de confirmar', false);
+            return;
+        }
+
+        try {
+            // Mostra mensagem de processamento
+            showMessage('Processando agendamento...', true);
+
+            // Tenta recuperar usuário de várias formas
+            let professorId;
+            const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+            if (usuarioLogado) {
+                professorId = usuarioLogado.id || usuarioLogado.id_professor || usuarioLogado.id_usuario;
             }
 
-            const agendamentoData = {
-                data: selectedDate,
-                horario: selectedTime,
-                laboratorio: selectedLab
-            };
-            localStorage.setItem('agendamentoData', JSON.stringify(agendamentoData));
+            // Se é conta genérica ou ID não encontrado, use um ID válido do banco
+            if (!professorId || professorId < 0) {
+                console.warn('ID do professor não encontrado ou é genérico, usando ID válido do banco');
+                // Substitua pelo ID de um professor real do seu banco
+                professorId = 1; // ou outro ID que exista na tabela professor
+            }
 
-            showMessage('Agendamento confirmado! Redirecionando...', true);
-        });
-    }
+            // Prepara os dados no formato que o backend espera
+            const agendamentoData = {
+                data_agendamento: selectedDate.toISOString().split('T')[0],
+                horario_inicio: selectedTime.horario,
+                laboratorio: selectedLab.id_laboratorio,
+                professor_id: professorId,
+                materia: `Aula - ${selectedTime.aula}`
+            };
+
+            console.log('Enviando agendamento:', agendamentoData);
+
+            // Envia para o servidor
+            const response = await fetch('http://localhost:3000/api/agendamentos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(agendamentoData)
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                const agendamentoCompleto = {
+                    ...agendamentoData,
+                    horario: selectedTime,
+                    laboratorioInfo: selectedLab,
+                    agendamentoId: result.agendamentoId
+                };
+
+                localStorage.setItem('agendamentoData', JSON.stringify(agendamentoCompleto));
+                localStorage.setItem('ultimoAgendamentoId', result.agendamentoId);
+
+                showMessage('Agendamento confirmado com sucesso!', true);
+
+                setTimeout(() => {
+                    window.location.href = 'reagentes.html';
+                }, 2000);
+            } else {
+                throw new Error(result.message || 'Erro ao confirmar agendamento');
+            }
+
+        } catch (error) {
+            console.error('Erro ao agendar:', error);
+            showMessage(`Erro ao confirmar agendamento: ${error.message}`, false);
+        }
+    });
+}
 
     // Inicializa o calendário
     renderCalendar();
