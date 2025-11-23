@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`administrador` (
   PRIMARY KEY (`id_administrador`),
   UNIQUE INDEX `email_administrador` (`email_administrador` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -46,10 +47,9 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`professor` (
   INDEX `fk_professor_administrador1_idx` (`administrador_id_administrador` ASC) VISIBLE,
   CONSTRAINT `fk_professor_administrador1`
     FOREIGN KEY (`administrador_id_administrador`)
-    REFERENCES `laboratorio_agendamentos`.`administrador` (`id_administrador`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `laboratorio_agendamentos`.`administrador` (`id_administrador`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`laboratorios` (
   `localizacao` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`id_laboratorio`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -90,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`agendamentos` (
     FOREIGN KEY (`id_laboratorio`)
     REFERENCES `laboratorio_agendamentos`.`laboratorios` (`id_laboratorio`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 12
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -108,9 +110,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`tecnico` (
   INDEX `fk_tecnico_administrador1_idx` (`administrador_id_administrador` ASC) VISIBLE,
   CONSTRAINT `fk_tecnico_administrador1`
     FOREIGN KEY (`administrador_id_administrador`)
-    REFERENCES `laboratorio_agendamentos`.`administrador` (`id_administrador`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `laboratorio_agendamentos`.`administrador` (`id_administrador`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -128,14 +128,12 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`kits` (
   PRIMARY KEY (`id_kit`),
   INDEX `criado_por` (`criado_por` ASC) VISIBLE,
   INDEX `fk_kits_tecnico1_idx` (`tecnico_id_tecnico` ASC) VISIBLE,
-  CONSTRAINT `kits_ibfk_1`
-    FOREIGN KEY (`criado_por`)
-    REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`),
   CONSTRAINT `fk_kits_tecnico1`
     FOREIGN KEY (`tecnico_id_tecnico`)
-    REFERENCES `laboratorio_agendamentos`.`tecnico` (`id_tecnico`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `laboratorio_agendamentos`.`tecnico` (`id_tecnico`),
+  CONSTRAINT `kits_ibfk_1`
+    FOREIGN KEY (`criado_por`)
+    REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -170,19 +168,15 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`reagente` (
   `divisao` VARCHAR(50) NOT NULL,
   `administrador_id_administrador` INT NOT NULL,
   `professor_id_professor` INT NOT NULL,
+  PRIMARY KEY (`id_reagente`),
   INDEX `fk_reagente_administrador1_idx` (`administrador_id_administrador` ASC) VISIBLE,
   INDEX `fk_reagente_professor1_idx` (`professor_id_professor` ASC) VISIBLE,
-  PRIMARY KEY (`id_reagente`),
   CONSTRAINT `fk_reagente_administrador1`
     FOREIGN KEY (`administrador_id_administrador`)
-    REFERENCES `laboratorio_agendamentos`.`administrador` (`id_administrador`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `laboratorio_agendamentos`.`administrador` (`id_administrador`),
   CONSTRAINT `fk_reagente_professor1`
     FOREIGN KEY (`professor_id_professor`)
-    REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 11
 DEFAULT CHARACTER SET = utf8mb4
@@ -199,19 +193,15 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`vidraria` (
   `unidade` DECIMAL(10,2) NOT NULL DEFAULT '0.00',
   `administrador_id_administrador` INT NOT NULL,
   `professor_id_professor` INT NOT NULL,
+  PRIMARY KEY (`id_vidraria`),
   INDEX `fk_vidraria_administrador1_idx` (`administrador_id_administrador` ASC) VISIBLE,
   INDEX `fk_vidraria_professor1_idx` (`professor_id_professor` ASC) VISIBLE,
-  PRIMARY KEY (`id_vidraria`),
   CONSTRAINT `fk_vidraria_administrador1`
     FOREIGN KEY (`administrador_id_administrador`)
-    REFERENCES `laboratorio_agendamentos`.`administrador` (`id_administrador`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `laboratorio_agendamentos`.`administrador` (`id_administrador`),
   CONSTRAINT `fk_vidraria_professor1`
     FOREIGN KEY (`professor_id_professor`)
-    REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 256
 DEFAULT CHARACTER SET = utf8mb4
@@ -246,6 +236,36 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`estoque` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `laboratorio_agendamentos`.`materiaisSelecionados`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`materiaisSelecionados` (
+  `idmateriaisSelecionados` INT NOT NULL AUTO_INCREMENT,
+  `professor_id_professor` INT NOT NULL,
+  `agendamentos_id_agendamento` INT NOT NULL,
+  `tipo_material` ENUM('reagente', 'vidraria') NOT NULL,
+  `nome_material` VARCHAR(150) NOT NULL,
+  `tipo_categoria` VARCHAR(100) NOT NULL,
+  `quantidade_selecionada` DECIMAL(10,2) NOT NULL,
+  `unidade` VARCHAR(45) NOT NULL,
+  `capacidade` DECIMAL(10,2) NOT NULL,
+  `data_selecao` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idmateriaisSelecionados`),
+  INDEX `fk_materiaisSelecionados_professor1_idx` (`professor_id_professor` ASC) VISIBLE,
+  INDEX `fk_materiaisSelecionados_agendamentos1_idx` (`agendamentos_id_agendamento` ASC) VISIBLE,
+  CONSTRAINT `fk_materiaisSelecionados_professor1`
+    FOREIGN KEY (`professor_id_professor`)
+    REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_materiaisSelecionados_agendamentos1`
+    FOREIGN KEY (`agendamentos_id_agendamento`)
+    REFERENCES `laboratorio_agendamentos`.`agendamentos` (`id_agendamento`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
