@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const eventLabPanel = document.getElementById('eventLab-panel');
     const eventListLab = document.getElementById('event-list-lab');
     const scheduleTimeBtn = document.getElementById('schedule-btn-time');
-    const confirmBtn = document.querySelector('.btn-primary[href*="reagentes.html"]');
+    const confirmBtn = document.querySelectorAll('.action-buttons-container .btn-primary')[1];
 
     // Variáveis de Estado
     let currentDate = new Date();
@@ -124,6 +124,35 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function verificarSelecaoCompleta() {
+        const completa = selectedDate !== null && selectedTime !== null && selectedLab !== null;
+
+        if (confirmBtn) {
+            if (completa) {
+                // Habilita o botão
+                confirmBtn.disabled = false;
+                confirmBtn.style.backgroundColor = '#27ae60';
+                confirmBtn.style.cursor = 'pointer';
+                confirmBtn.title = 'Clique para confirmar o agendamento';
+            } else {
+                // Desabilita o botão
+                confirmBtn.disabled = true;
+                confirmBtn.style.backgroundColor = '#bdc3c7';
+                confirmBtn.style.cursor = 'not-allowed';
+
+                // Tooltip explicativo
+                if (!selectedDate) {
+                    confirmBtn.title = 'Selecione uma data primeiro';
+                } else if (!selectedTime) {
+                    confirmBtn.title = 'Selecione um horário';
+                } else {
+                    confirmBtn.title = 'Selecione um laboratório';
+                }
+            }
+        }
+        return completa;
+    }
+
     // Função para exibir horários disponíveis no painel de tempo
     function exibirHorariosDisponiveis(horariosData) {
         eventListTime.innerHTML = ''; // Limpa a lista anterior
@@ -190,29 +219,24 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mostra o painel de tempo
         eventTimePanel.style.display = 'block';
         eventTimePanel.querySelector('.event-date').textContent = `Horários disponíveis - ${formatarData(selectedDate)}`;
-        
+
         // Garante que a lista de horários esteja visível
         eventListTime.style.display = 'block';
     }
 
     // Função para selecionar um horário
     function selecionarHorario(horario, element) {
-        // Remove a seleção anterior
         document.querySelectorAll('.time-btn').forEach(btn => {
             btn.classList.remove('selected');
         });
 
-        // Adiciona a seleção ao botão clicado
         element.classList.add('selected');
-
         selectedTime = horario;
-        
-        // Mostra o resumo do horário selecionado
+
         mostrarResumoHorario(horario);
-        
         showMessage(`Horário selecionado: ${horario.aula} - ${horario.horario}`, true);
 
-        // Mostra o painel de laboratórios
+        verificarSelecaoCompleta();
         exibirLaboratoriosDisponiveis();
     }
 
@@ -228,12 +252,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Determina o período (Manhã ou Tarde)
-        const periodo = horario.horario.includes('13:00') || 
-                       horario.horario.includes('14:00') || 
-                       horario.horario.includes('15:00') || 
-                       horario.horario.includes('16:00') || 
-                       horario.horario.includes('17:00') ? 'Tarde' : 'Manhã';
-        
+        const periodo = horario.horario.includes('13:00') ||
+            horario.horario.includes('14:00') ||
+            horario.horario.includes('15:00') ||
+            horario.horario.includes('16:00') ||
+            horario.horario.includes('17:00') ? 'Tarde' : 'Manhã';
+
         // Atualiza o conteúdo do resumo
         summaryElement.innerHTML = `
             <div class="time-summary-content">
@@ -250,11 +274,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Adiciona event listener para o botão de alterar horário
         document.getElementById('change-time-btn').addEventListener('click', voltarSelecaoHorarios);
-        
+
         // Esconde a lista de horários e mostra o resumo
         eventListTime.style.display = 'none';
         summaryElement.style.display = 'block';
-        
+
         // Atualiza o header do painel
         document.querySelector('#eventTime-panel .event-date').textContent = 'Horário Selecionado';
     }
@@ -263,20 +287,26 @@ document.addEventListener('DOMContentLoaded', function () {
     function voltarSelecaoHorarios() {
         const summaryElement = document.getElementById('selected-time-summary');
         const eventListTime = document.getElementById('event-list-time');
-        
-        // Esconde o resumo e mostra a lista de horários
+
         if (summaryElement) {
             summaryElement.style.display = 'none';
         }
         eventListTime.style.display = 'block';
-        
-        // Reseta a seleção
+
+        // Reseta a seleção de horário
         selectedTime = null;
         document.querySelectorAll('.time-btn').forEach(btn => {
             btn.classList.remove('selected');
         });
-        
-        // Atualiza o header
+
+        selectedLab = null;
+        document.querySelectorAll('.lab-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        eventLabPanel.style.display = 'none';
+        verificarSelecaoCompleta();
+
         document.querySelector('#eventTime-panel .event-date').textContent = `Horários disponíveis - ${formatarData(selectedDate)}`;
     }
 
@@ -308,23 +338,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função para selecionar laboratório
     function selecionarLaboratorio(lab, element) {
-        // Remove a seleção anterior
         document.querySelectorAll('.lab-btn').forEach(btn => {
             btn.classList.remove('selected');
         });
 
-        // Adiciona a seleção ao botão clicado
         element.classList.add('selected');
-
         selectedLab = lab;
         showMessage(`Laboratório selecionado: ${lab.nome}`, true);
 
-        // Habilita o botão de confirmar
-        if (confirmBtn) {
-            confirmBtn.disabled = false;
-            confirmBtn.style.backgroundColor = '#27ae60';
-            confirmBtn.style.cursor = 'pointer';
-        }
+        verificarSelecaoCompleta();
     }
 
     // Função para formatar data (para exibir no painel)
@@ -428,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const [year, month, dayNum] = dateStr.split('-').map(Number);
                 selectedDate = new Date(year, month - 1, dayNum);
                 renderCalendar(); // Atualiza a seleção no calendário
-                
+
                 // Verifica agendamentos no backend
                 const agendamentosInfo = await verificarAgendamentos(dateStr);
                 showEvents(dateStr, agendamentosInfo);
@@ -447,19 +469,18 @@ document.addEventListener('DOMContentLoaded', function () {
         ];
         const dayNames = [
             "Domingo", "Segunda-feira", "Terça-feira",
-            "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"
+            "Quarta-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"
         ];
 
         const dayName = dayNames[dateObj.getDay()];
 
         eventDateE1.textContent = `${dayName}, ${day} de ${months[dateObj.getMonth()]} de ${year}`;
-        eventListE1.innerHTML = ''; // Limpa eventos anteriores
+        eventListE1.innerHTML = '';
 
-        // Mostra informações de agendamento
         if (agendamentosInfo) {
             const statusDiv = document.createElement('div');
             statusDiv.className = `agendamento-status ${agendamentosInfo.podeAgendar ? 'disponivel' : 'lotado'}`;
-            
+
             if (agendamentosInfo.podeAgendar) {
                 statusDiv.innerHTML = `
                     <div class="status-indicator disponivel"></div>
@@ -468,21 +489,18 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p>${agendamentosInfo.message}</p>
                     </div>
                 `;
-                
-                // Habilita o botão de agendar
+
                 scheduleBtn.disabled = false;
                 scheduleBtn.innerHTML = '<i class="fas fa-calendar-plus"></i> Agendar Aula';
                 scheduleBtn.onclick = () => {
-                    // Busca horários disponíveis e exibe no painel de tempo
                     buscarHorariosDisponiveis(dateStr).then(horariosData => {
                         exibirHorariosDisponiveis(horariosData);
                     });
                 };
 
-                // Esconde painéis de horário e laboratório inicialmente
                 eventTimePanel.style.display = 'none';
                 eventLabPanel.style.display = 'none';
-                
+
             } else {
                 statusDiv.innerHTML = `
                     <div class="status-indicator lotado"></div>
@@ -491,21 +509,18 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p>${agendamentosInfo.message}</p>
                     </div>
                 `;
-                
-                // Desabilita o botão de agendar
+
                 scheduleBtn.disabled = true;
                 scheduleBtn.innerHTML = '<i class="fas fa-calendar-times"></i> Data Lotada';
                 scheduleBtn.onclick = null;
 
-                // Esconde painéis de horário e laboratório
                 eventTimePanel.style.display = 'none';
                 eventLabPanel.style.display = 'none';
             }
-            
+
             eventListE1.appendChild(statusDiv);
         }
 
-        // Renderiza a lista de Eventos existentes
         if (events[dateStr]) {
             events[dateStr].forEach(event => {
                 const eventItem = document.createElement('div');
@@ -519,16 +534,30 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Reseta seleções de horário e laboratório
+        // MODIFICAÇÃO: Resetar TODAS as seleções quando mudar a data
         selectedTime = null;
         selectedLab = null;
-        
-        // Desabilita botão de confirmar
-        if (confirmBtn) {
-            confirmBtn.disabled = true;
-            confirmBtn.style.backgroundColor = '#bdc3c7';
-            confirmBtn.style.cursor = 'not-allowed';
+
+        // Resetar seleções visuais
+        document.querySelectorAll('.time-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        document.querySelectorAll('.lab-btn').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        // Esconder painéis
+        eventTimePanel.style.display = 'none';
+        eventLabPanel.style.display = 'none';
+
+        // Remover resumo se existir
+        const summaryElement = document.getElementById('selected-time-summary');
+        if (summaryElement) {
+            summaryElement.remove();
         }
+
+        // ATUALIZAR VERIFICAÇÃO
+        verificarSelecaoCompleta();
     }
 
     // Navegação e Botões
@@ -541,18 +570,22 @@ document.addEventListener('DOMContentLoaded', function () {
         scheduleBtn.disabled = true;
         scheduleBtn.innerHTML = '<i class="fas fa-calendar-day"></i> Agendar';
         
-        // Esconde painéis adicionais
+        // RESETAR SELEÇÕES
+        selectedDate = null;
+        selectedTime = null;
+        selectedLab = null;
+        
         eventTimePanel.style.display = 'none';
         eventLabPanel.style.display = 'none';
         
-        // Remove o resumo se existir
         const summaryElement = document.getElementById('selected-time-summary');
         if (summaryElement) {
             summaryElement.remove();
         }
+        
+        verificarSelecaoCompleta();
     });
 
-    // Próximo Mês
     nextMonthBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() + 1);
         renderCalendar();
@@ -561,15 +594,20 @@ document.addEventListener('DOMContentLoaded', function () {
         scheduleBtn.disabled = true;
         scheduleBtn.innerHTML = '<i class="fas fa-calendar-day"></i> Agendar';
         
-        // Esconde painéis adicionais
+        // RESETAR SELEÇÕES
+        selectedDate = null;
+        selectedTime = null;
+        selectedLab = null;
+        
         eventTimePanel.style.display = 'none';
         eventLabPanel.style.display = 'none';
         
-        // Remove o resumo se existir
         const summaryElement = document.getElementById('selected-time-summary');
         if (summaryElement) {
             summaryElement.remove();
         }
+        
+        verificarSelecaoCompleta();
     });
 
     // Botão "Hoje"
@@ -580,11 +618,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const today = new Date();
         const dateStr = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
-        
+
         // Verifica agendamentos para hoje
         const agendamentosInfo = await verificarAgendamentos(dateStr);
         showEvents(dateStr, agendamentosInfo);
-        
+
         // Remove o resumo se existir
         const summaryElement = document.getElementById('selected-time-summary');
         if (summaryElement) {
@@ -594,25 +632,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Configura botão de confirmar
     if (confirmBtn) {
-        confirmBtn.disabled = true;
-        confirmBtn.style.backgroundColor = '#bdc3c7';
-        confirmBtn.style.cursor = 'not-allowed';
-        
+        verificarSelecaoCompleta();
+
         confirmBtn.addEventListener('click', (e) => {
-            if (!selectedDate || !selectedTime || !selectedLab) {
+            if (!verificarSelecaoCompleta()) {
                 e.preventDefault();
                 showMessage('Por favor, selecione data, horário e laboratório antes de confirmar', false);
                 return;
             }
 
-            // Armazena a seleção para usar na próxima página
             const agendamentoData = {
                 data: selectedDate,
                 horario: selectedTime,
                 laboratorio: selectedLab
             };
             localStorage.setItem('agendamentoData', JSON.stringify(agendamentoData));
-            
+
             showMessage('Agendamento confirmado! Redirecionando...', true);
         });
     }
@@ -620,8 +655,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializa o calendário
     renderCalendar();
     scheduleBtn.disabled = true;
-
-    // Esconde painéis adicionais inicialmente
     eventTimePanel.style.display = 'none';
     eventLabPanel.style.display = 'none';
+
+    verificarSelecaoCompleta();
 });
