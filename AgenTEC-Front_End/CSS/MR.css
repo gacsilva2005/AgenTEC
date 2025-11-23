@@ -434,15 +434,6 @@ html {
 
 }
 
-.button-back {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    gap: 3px;
-    color: var(--hoverCian-color);
-}
-
 .button-custom {
     display: flex;
     align-items: center;
