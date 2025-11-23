@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Técnicos</title>
+    <title>Técnicos - Corrigir Estoque</title>
     <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
-    <link rel="stylesheet" href="../../CSS/tecnicos.css">
+    <link rel="stylesheet" href="../../CSS/correcao.estoque.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,23 +49,19 @@
     <link
         href="https://etecjuliodemesquita.cps.sp.gov.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fetecjuliodemesquita.cps.sp.gov.br%2F&amp;format=xml"
         rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" />
-    <!-- Previas de Posts nas redes Sociais -->
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fontes -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;700&amp;family=Roboto:wght@300;400;500&amp;family=Pixelify+Sans&amp;display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=redo" />
 </head>
 
 <body>
-    <!-- DAUTONISMO -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <!-- DAUTONISMO -->
-    <!-- FACEBOOK -->
     <div class="fb_reset" id="fb-root">
         <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
             <div></div>
@@ -73,10 +69,7 @@
     </div>
     <script async="" crossorigin="anonymous" defer=""
         src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&amp;version=v5.0"></script>
-    <!-- FACEBOOK -->
-    <!-- PRINCIPAL -->
     <div class="site" id="page">
-        <!-- BARRA GOVERNO -->
         <section class="govsp-topo">
             <link
                 href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/topo-padrao-govsp.min.css"
@@ -170,7 +163,7 @@
 
         <nav class="main-menu-container" role="navigation">
             <ul class="menu">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
 
                 <li class="dropdown">
                     <a>Institucional <i class="fas fa-chevron-down"></i></a>
@@ -264,13 +257,18 @@
                 </li>
 
                 <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
-                <li><a href="login.html">Agendamentos</a></li>
+                <li><a href="../login.html">Agendamentos</a></li>
             </ul>
         </nav>
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos <a href="tecnicos.html">/ Técnicos  </span>
+                <span>
+                    <a href="#">Home</a> 
+                    <a href="../login.html">/ Agendamentos</a> 
+                    <a href="tecnicos.html">/ Técnicos</a> 
+                    / Corrigir Estoque
+                </span>
             </div>
         </div>
 
@@ -278,6 +276,10 @@
             <div class="page-header">
                 <h1 class="page-title">Corrigir Estoque</h1>
                 <div class="button-container">
+                    <a class="button-custom" href="tecnicos.html">
+                        <span class="material-symbols-outlined">redo</span>
+                        <span>Voltar</span>
+                    </a>
                     <button id="btn-logout" class="button-custom">
                         <i class="fas fa-sign-out-alt"></i>
                         <span>Sair</span>
@@ -290,20 +292,19 @@
 
                 <a href="adicionar.vidrarias.html" class="card">
                     <div class="card-icon">
-                        <i class="fas fa-calendar-alt"></i>
+                        <i class="fa-solid fa-flask"></i>
                     </div>
                     <p class="card-text">Vidrarias</p>
                 </a>
                 <a href="adicionar.reagentes.html" class="card">
                     <div class="card-icon">
-                        <i class="fas fa-wrench"></i>
+                        <i class="fa-solid fa-vial"></i>
                     </div>
                     <p class="card-text">Reagentes</p>
                 </a>
 
             </div>
         </main>
-        <!-- RODAPÉ CPS -->
         <button class="back-to-top">
             <img alt="Voltar ao Topo" height="66"
                 src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
@@ -311,9 +312,6 @@
         </button>
         <footer id="cps-rodape">
             <div id="cps-rodape__redes-e-infos">
-                <!-- SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-                <!-- /SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-                <!-- SE FOR SITE DE ETEC/FATEC -->
                 <div id="cps-rodape__infos">
                     <div>
                         <span>
@@ -343,11 +341,7 @@
                             title="Siga-nos no Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                    </div> <!-- #cps-rodape__redes-icones -->
-                </div> <!-- #cps-rodape__redes -->
-                <!-- SE FOR SITE CPS PRINCIPAL -->
-                <!-- SELO PNPC -->
-                <div id="cps-rodape-pnpc">
+                    </div> </div> <div id="cps-rodape-pnpc">
                     <a href="https://ugi.cps.sp.gov.br/" target="_blank">
                         <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
                             style="margin-bottom:10px;" />
@@ -359,11 +353,7 @@
                             title="Programa Nacional de Prevenção à Corrupção - Participante" />
                     </a>
                 </div>
-                <!-- /SELO PNPC -->
-            </div>
-            <!-- SE NÃO FOR SITE CPS PRINCIPAL -->
-            <!-- #cps-rodape__redes-e-infos -->
-            <!-- COPYRIGHT -->
+                </div>
             <div id="cps-rodape__creditos">
                 <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
                         target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
@@ -400,7 +390,6 @@
                 </div>
             </div>
         </section>
-        <!-- RODAPÉ CPS -->
         <div vw="" class="enabled"
             style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
             <div vw-access-button="" class="active">

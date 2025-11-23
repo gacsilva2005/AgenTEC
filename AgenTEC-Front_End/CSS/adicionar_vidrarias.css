@@ -180,11 +180,55 @@ body, html {
     padding: 0 20px;
 }
 
+/* HEADER DA PÁGINA (Título e Botão Sair) */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .page-title {
     font-size: 4rem;
     color: #005C6D;
-    margin-bottom: 10px;
+    margin: 0; /* Remove margem para alinhar com o botão */
     font-weight: 700;
+    white-space: nowrap; /* Evita quebra de linha */
+}
+
+/* Container dos botões */
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 50px; /* Espaço entre os botões */
+}
+
+/* Estilo dos botões (Voltar e Sair) */
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: var(--hoverCian-color);
+    padding: 0;
+    font-size: 1.60rem;
+    font-weight: 300;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button-custom:hover {
+    color: var(--primary-color);
+}
+
+.button-custom:active {
+    color: var(--primary-color);
 }
 
 .title-underline {
@@ -204,7 +248,7 @@ body, html {
     line-height: 2.5rem;
     overflow-wrap: break-word;
     word-break: break-word;
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0;
     box-sizing: inherit;
     display: inline-block;
@@ -770,5 +814,3 @@ div[data-account="3eFXoC4I4A"] {
         position: static; /* Remove o efeito sticky */
     }
 }
-
-

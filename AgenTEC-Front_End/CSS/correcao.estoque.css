@@ -2,9 +2,24 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Roboto', sans-serif;
     background-color: #ffffff;
     color: #333;
+}
+
+:root{
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
 }
 
 .govsp-topo {
@@ -16,9 +31,9 @@ body, html {
 }
 
 .govsp-portal img {
-    height: 10px;  
-    width: 200px;   
-    display: flex; 
+    height: 30px;  
+    width: auto;   
+    display: block; 
 }
 
 .govsp-portal {
@@ -56,7 +71,6 @@ body, html {
     padding: 20px;
     border-bottom: 1px solid #eee;
 }
-
 .cps-header__container {
     max-width: 1200px;
     margin: 0 auto;
@@ -85,7 +99,7 @@ body, html {
     border: none; 
     outline: none; 
     padding: 15px 50px; 
-    font-size: 2rem; 
+    font-size: 1rem; 
     background-color: transparent; 
 }
 
@@ -117,7 +131,6 @@ body, html {
     background-color: #c41e15; 
     padding: 0 20px;
 }
-
 .main-menu-container .menu {
     max-width: 1200px;
     margin: 0 auto;
@@ -140,19 +153,16 @@ body, html {
 }
 
 #breadcrumb {
-    background-color: #666666;
+    background-color: var(--light-gray);
     padding: 12px 20px 12px 90px; 
     border-bottom: 1px solid #e9ecef;
 }
-
 .breadcrumb-container {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
     color: #ffffff;
-    font-weight: 200;
 }
-
 .breadcrumb-container a {
     color: #ffffff;
     text-decoration: none;
@@ -171,7 +181,7 @@ body, html {
     color: var(--hoverCian-color);
     margin: 0; /* Remove margem para alinhar com o botão */
     font-weight: 700;
-    white-space: nowrap; /* Evita quebra de linha */
+    white-space: nowrap; /* Impede que o título quebre a linha */
 }
 
 /* HEADER DA PÁGINA (Título e Botão Sair) - NOVO */
@@ -245,193 +255,44 @@ body, html {
     margin-bottom: 10px;
 }
 
-.container-central {
+.cards-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 700px;
-    margin: 0 auto;
-    padding: 20px;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
     margin-bottom: 180px;
 }
 
-.form-container {
-    background-color: #f9f9f9;
-    padding: 30px 40px; /* Increased padding to give more space on sides */
+.card {
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 
-                10px 0 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
-
-
-.input-group {
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    padding: 0 5px;
-    color: #666;
-    font-size: 1.6rem;
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
-
-:root{
-    --primary-color: #243E63; 
-    --hoverCian-color: #005C6D; 
-    --low-hoverCian: #005d6d5b; 
-    --hoverLight-color: #00C1CF;
-    --primary-red: #b20000;
-    --secondary-red: #ff2020;
-    --hoverSecRed-color: #e70000;
-    --hoverRed-color: #831c16ef; 
-    --light-gray: #636e72; 
-    --dark-gray: #333333; 
-    --text-white: #ffffff;
-    --dark: #000000;
-    --secondaryLight-gray: #7c7c7c;
-    --event-panel-bg: #f8f9fa;
-    --day-selected: #e70000d7;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 15px;
-    font-size: 1.5rem;
-    border: solid 1px #ccc;
-    background-color: white;
+    width: 230px;
+    padding: 40px 20px;
+    text-align: center;
+    text-decoration: none;
     color: #333;
-    outline: none;
-    transition: all 0.3s ease;
-    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.input-group input::-ms-reveal,
-.input-group input::-ms-clear {
-    filter: invert(100%); 
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.input-group input:focus ~ label,
-.input-group input:not(:placeholder-shown) ~ label {
-    top: 0;
-    transform: translateY(-50%) scale(0.9);
-    background-color: #f9f9f9;
-    color: #b20000;
-    font-size: 1.3rem;
+.card-icon {
+    font-size: 7rem;
+    color: #008B8B; 
+    margin-bottom: 25px;
 }
 
-.input-group input:hover {
-    border-color: #b20000;
+.card-text {
+    font-size: 2rem;
+    font-weight: 500;
+    min-height: 50px;
 }
 
-.input-group input:focus {
-    border-color: #b20000;  
-}
-
-.function-selector{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-}
-
-.function-selector .function-title {
-    margin-bottom: 20px;
-    font-weight: 600;
-    color: var(--dark);
-}
-
-.custom-select{
-    display: flex;
-    text-decoration: none;
-    color: var(--dark);
-    gap: 30px;
-}
-
-.custom-select a {
-    display: flex;
-    text-align: center;
-    align-items: center; 
-    justify-content: center;  
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    min-width: 100px;
-    border-radius: 25px;
-    text-decoration: none;
-    color: var(--dark);
-    transition: background-color 0.3s, color 0.3s;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-.custom-select a:hover {
-    background-color: var(--hoverCian-color);
-    color: #fff;
-    transform: translateY(-3px);
-}
-
-.custom-select a:active {
-    transform: translateY(1px);
-}
-
-.custom-select a {
-    background-color: var(--light-gray);
-    border: 1px solid var(--light-gray);
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.custom-select .selected{
-    border: 1px solid var(--hoverCian-color);
-    background-color: var(--hoverCian-color);
-}
-
-.form-container .button-container {
-    display: flex;
-    gap: 40px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.voltar-button{
-    text-decoration: none;
-}
-
-.submit-button, .voltar-button {
-    min-width: 100px;
-    text-align: center;
-    justify-content: space-between;
-    padding: 12px;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    font-size: 1.8rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-    transition: all 0.3s ease;
-}
-
-.submit-button:hover, .voltar-button:hover{
-    background-color: var(--hoverCian-color);
-    transform: translateY(-3px);
-}
-
-.submit-button:active, .voltar-button:active {
-    transform: translateY(1px);
-}
 
 @media (max-width: 768px) {
     .cps-header__container {
@@ -560,36 +421,19 @@ body, html {
     transform: rotate(180deg);
 }
 
-/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+    }
 
-.notification {
-    position: fixed; /* Fica fixo na tela mesmo com scroll */
-    top: 20px;
-    right: 20px;
-    background-color: #28a745; /* Verde para sucesso */
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaço entre o ícone e o texto */
-    z-index: 1000; /* Garante que fique por cima de outros elementos */
+    .modal-actions {
+        flex-direction: column;
+    }
 
-    /* Animação */
-    transform: translateX(120%); /* Começa fora da tela */
-    opacity: 0;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-/* Classe que será adicionada via JS para mostrar a notificação */
-.notification.show {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.notification i {
-    font-size: 1.4rem;
+    .button-confirm,
+    .button-cancel {
+        width: 100%;
+    }
 }
 
 #cps-rodape__redes-icones a {
@@ -620,6 +464,7 @@ body, html {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
+
 #userwayAccessibilityIcon,
 .uwy-userway-trigger,
 .uai-trigger-container,

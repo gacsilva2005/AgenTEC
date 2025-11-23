@@ -201,6 +201,7 @@ body, html {
     line-height: 1.2;             
     color: var(--hoverCian-color);
     font-weight: 700;
+    white-space: nowrap; /* Esse é o comando que proíbe a quebra de linha */
 }
 
 .page-title h1{
