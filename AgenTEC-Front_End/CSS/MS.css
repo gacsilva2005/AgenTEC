@@ -240,7 +240,7 @@ body, html {
 .table-title h3 {
     margin: 0;
     font-size: 1.4em;
-    color: #333;
+    color: #333;color: var(--primary-color);
     font-weight: 500;
 }
 
@@ -443,6 +443,103 @@ body, html {
 .btn-confirmar:disabled {
     background-color: #bdc3c7;
     cursor: not-allowed;
+}
+
+/* Estilos para a lista de reagentes e vidrarias */
+#reagentes-lista,
+#vidrarias-lista {
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 10px 0;
+}
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 15px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+
+.item-row:hover {
+    background-color: #f8f9fa;
+}
+
+.item-row:last-child {
+    border-bottom: none;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: 600;
+    color: rgb(32, 32, 32);
+    margin: 0 0 4px 0;
+    font-size: 0.9em;
+}
+
+.item-details {
+    color: #7f8c8d;
+    margin: 0;
+    font-size: 0.7em;
+}
+
+.item-actions {
+    margin-left: 15px;
+}
+
+.btn-remover {
+    background: #e74c3c;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: 0.7em;
+}
+
+.btn-remover:hover {
+    background-color: #af3b2e;
+    color: white;
+    transform: scale(1.1);
+}
+
+.empty-message {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 30px 15px;
+}
+
+.empty-message p {
+    margin: 0;
+}
+
+/* Scrollbar personalizada */
+#reagentes-lista::-webkit-scrollbar,
+#vidrarias-lista::-webkit-scrollbar {
+    width: 6px;
+}
+
+#reagentes-lista::-webkit-scrollbar-track,
+#vidrarias-lista::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#reagentes-lista::-webkit-scrollbar-thumb,
+#vidrarias-lista::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+#reagentes-lista::-webkit-scrollbar-thumb:hover,
+#vidrarias-lista::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
 
 /* Media Query para telas menores */

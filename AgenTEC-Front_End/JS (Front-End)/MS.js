@@ -16,179 +16,82 @@ document.addEventListener('DOMContentLoaded', function () {
         btnAbrirModal: !!btnAbrirModal
     });
 
-    // Função para mostrar popup personalizado
+    // Função para mostrar popup com informações importantes do agendamento
     function showCustomPopup(message, isSuccess = false) {
         console.log(`Popup: ${message}`);
 
-        // Remove popup existente se houver
+        // Remove popup existente
         const existingPopup = document.getElementById('customPopup');
         if (existingPopup) existingPopup.remove();
 
-        // Remove estilos antigos se existirem
-        const oldStyles = document.getElementById('customPopupStyles');
-        if (oldStyles) oldStyles.remove();
-
-        // Cria o elemento do popup COM ESTILOS ISOLADOS
+        // Cria popup simplificado
         const popupElement = document.createElement('div');
         popupElement.id = 'customPopup';
-
-        // Estilos inline para evitar conflitos
         popupElement.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 9999;
+        background: rgba(0, 0, 0, 0.5);
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: Arial, sans-serif;
+        z-index: 9999;
+        padding: 20px;
+        box-sizing: border-box;
     `;
 
-        const overlay = document.createElement('div');
-        overlay.style.cssText = `
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-    `;
-
-        const content = document.createElement('div');
-        content.style.cssText = `
-        position: relative;
-        background: white;
-        padding: 0;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        max-width: 400px;
-        width: 90%;
-        animation: customPopupFadeIn 0.3s ease-out;
-        z-index: 10000;
-    `;
-
-        // Cria estilos específicos apenas para este popup
-        const styles = document.createElement('style');
-        styles.id = 'customPopupStyles';
-        styles.textContent = `
-        :root{
-            --primary-red: #970000;
-            --primary-color: #243E63; 
-            --hoverCian-color: #005C6D;
-        }
-
-        @keyframes customPopupFadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(-20px) scale(0.95); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0) scale(1); 
-            }
-        }
-        @keyframes customPopupFadeOut {
-            from { 
-                opacity: 1; 
-                transform: translateY(0) scale(1); 
-            }
-            to { 
-                opacity: 0; 
-                transform: translateY(-20px) scale(0.95); 
-            }
-        }
-        .custom-popup-header {
-            background: ${isSuccess ? '#4CAF50' : 'var(--primary-red)'};
-            color: white;
-            padding: 15px 20px;
-            border-radius: 8px 8px 0 0;
-            margin: 0;
-        }
-        .custom-popup-header h3 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-        }
-        .custom-popup-body {
-            padding: 20px;
-            color: #333;
-            line-height: 1.5;
-            font-size: 14px;
-        }
-        .custom-popup-footer {
-            padding: 15px 20px;
-            text-align: right;
-            border-top: 1px solid #eee;
-        }
-        .custom-popup-button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-        .custom-popup-button:hover {
-            background: var(--hoverCian-color);
-        }
-    `;
-
-        // Estrutura do popup
-        content.innerHTML = `
-        <div class="custom-popup-header">
-            <h3>${isSuccess ? 'Sucesso' : 'Atenção'}</h3>
-        </div>
-        <div class="custom-popup-body">
-            <p>${message}</p>
-        </div>
-        <div class="custom-popup-footer">
-            <button id="popupOkButton" class="custom-popup-button">OK</button>
+        const popupContent = `
+        <div style="
+            background: white;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        ">
+            <div style="
+                background: ${isSuccess ? '#4CAF50' : '#970000'};
+                color: white;
+                padding: 15px 20px;
+            ">
+                <h3 style="margin: 0; font-size: 18px;">${isSuccess ? 'Sucesso' : 'Atenção'}</h3>
+            </div>
+            <div style="padding: 20px;">
+                <p style="margin: 0; line-height: 1.5;">${message}</p>
+            </div>
+            <div style="
+                padding: 15px 20px;
+                text-align: right;
+                border-top: 1px solid #eee;
+            ">
+                <button id="popupOkBtn" style="
+                    background: #243E63;
+                    color: white;
+                    border: none;
+                    padding: 8px 20px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                ">OK</button>
+            </div>
         </div>
     `;
 
-        // Monta a estrutura
-        popupElement.appendChild(overlay);
-        popupElement.appendChild(content);
-        document.head.appendChild(styles);
+        popupElement.innerHTML = popupContent;
         document.body.appendChild(popupElement);
 
-        // Adiciona evento para fechar o popup
-        const okButton = document.getElementById('popupOkButton');
-
-        const closePopup = function () {
-            content.style.animation = 'customPopupFadeOut 0.3s ease-out forwards';
-            setTimeout(() => {
-                if (popupElement.parentNode) {
-                    popupElement.remove();
-                }
-                if (styles.parentNode) {
-                    styles.remove();
-                }
-            }, 300);
+        // Evento para fechar
+        document.getElementById('popupOkBtn').onclick = function () {
+            document.body.removeChild(popupElement);
         };
 
-        if (okButton) {
-            okButton.addEventListener('click', closePopup);
-        }
-
-        overlay.addEventListener('click', closePopup);
-
-        // Fecha com ESC key
-        const handleEscKey = function (e) {
-            if (e.key === 'Escape') {
-                closePopup();
-                document.removeEventListener('keydown', handleEscKey);
+        // Fechar clicando fora
+        popupElement.onclick = function (e) {
+            if (e.target === popupElement) {
+                document.body.removeChild(popupElement);
             }
         };
-        document.addEventListener('keydown', handleEscKey);
-
-        // Remove o event listener quando o popup é fechado
-        popupElement._closePopup = closePopup;
     }
 
     // Função para mostrar notificações (mantida para outros casos)
@@ -227,6 +130,42 @@ document.addEventListener('DOMContentLoaded', function () {
         }, isSuccess ? 3000 : 5000);
     }
 
+    // Função para mostrar notificação (nova função para reagentes)
+    function showNotification(message, isSuccess = true) {
+        console.log(`Notificação: ${message}`);
+
+        const existingMessage = document.getElementById('customNotification');
+        if (existingMessage) existingMessage.remove();
+
+        const messageElement = document.createElement('div');
+        messageElement.id = 'customNotification';
+        messageElement.textContent = message;
+        messageElement.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            background-color: ${isSuccess ? '#4CAF50' : '#f44336'};
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        `;
+
+        document.body.appendChild(messageElement);
+
+        setTimeout(() => messageElement.style.opacity = '1', 10);
+        setTimeout(() => {
+            messageElement.style.opacity = '0';
+            setTimeout(() => {
+                if (messageElement.parentNode) messageElement.remove();
+            }, 300);
+        }, 3000);
+    }
+
     // Função para formatar data
     function formatarData(dataStr) {
         if (!dataStr) return 'Data não informada';
@@ -242,7 +181,125 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${novaHora.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
     }
 
-    // BUSCAR DADOS DO AGENDAMENTO DO SERVIDOR (não do localStorage)
+    async function carregarReagentesSelecionados() {
+        try {
+            console.log('🔍 Buscando reagentes selecionados do servidor...');
+
+            const response = await fetch('http://localhost:3000/api/reagentes-selecionados');
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log('📥 Resposta do servidor:', result);
+
+            if (result.success) {
+                console.log(`✅ ${result.reagentes.length} reagentes encontrados`);
+                exibirReagentes(result.reagentes);
+                return result.reagentes;
+            } else {
+                console.warn('⚠️ Nenhum reagente encontrado no servidor');
+                exibirReagentes([]);
+                return [];
+            }
+
+        } catch (error) {
+            console.error('❌ Erro ao carregar reagentes:', error);
+            exibirReagentes([]);
+            return [];
+        }
+    }
+
+    function exibirReagentes(reagentes) {
+        const listaReagentes = document.getElementById('reagentes-lista');
+
+        if (!listaReagentes) {
+            console.error('❌ Elemento #reagentes-lista não encontrado');
+            return;
+        }
+
+        // Limpa a lista
+        listaReagentes.innerHTML = '';
+
+        if (!reagentes || reagentes.length === 0) {
+            listaReagentes.innerHTML = `
+                <div class="item-row empty-message">
+                    <p>Nenhum reagente selecionado</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Adiciona cada reagente à lista
+        reagentes.forEach((reagente, index) => {
+            const itemRow = document.createElement('div');
+            itemRow.className = 'item-row';
+            itemRow.innerHTML = `
+                <div class="item-info">
+                    <p class="item-name">${reagente.nome}</p>
+                    <p class="item-details">${reagente.tipo} • ${reagente.quantidade_escolhida} ${reagente.unidade}</p>
+                </div>
+                <div class="item-actions">
+                    <button class="btn-remover" data-id="${reagente.id}" title="Remover reagente">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            listaReagentes.appendChild(itemRow);
+        });
+
+        // Adiciona event listeners aos botões de remover
+        adicionarEventListenersRemover();
+    }
+
+    function adicionarEventListenersRemover() {
+        const botoesRemover = document.querySelectorAll('.btn-remover');
+
+        botoesRemover.forEach(botao => {
+            botao.addEventListener('click', function () {
+                const idReagente = this.getAttribute('data-id');
+                removerReagente(idReagente);
+            });
+        });
+    }
+
+    // Função para remover reagente
+    async function removerReagente(id) {
+        if (!confirm('Tem certeza que deseja remover este reagente?')) {
+            return;
+        }
+
+        try {
+            console.log(`🗑️ Removendo reagente ID: ${id}`);
+
+            const response = await fetch(`http://localhost:3000/api/reagentes-selecionados/remover/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            if (result.success) {
+                showNotification('Reagente removido com sucesso!', true);
+                console.log('✅ Reagente removido:', result.reagenteRemovido);
+
+                // Recarrega a lista
+                await carregarReagentesSelecionados();
+            } else {
+                throw new Error(result.message || 'Erro ao remover reagente');
+            }
+
+        } catch (error) {
+            console.error('❌ Erro ao remover reagente:', error);
+            showNotification('Erro ao remover reagente. Tente novamente.', false);
+        }
+    }
+
+    // BUSCAR DADOS DO AGENDAMENTO DO SERVIDOR
     async function buscarAgendamentoServidor() {
         try {
             console.log('🌐 Buscando agendamento do servidor...');
@@ -515,7 +572,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // =========================================================================
+    // INICIALIZAÇÃO - CARREGAR REAGENTES QUANDO A PÁGINA ABRIR
+    // =========================================================================
+
     console.log('🎉 Configuração do modal completa!');
+
+    // CARREGA OS REAGENTES SELECIONADOS DO SERVIDOR
+    console.log('🔄 Carregando reagentes selecionados...');
+    carregarReagentesSelecionados();
 
     // Logout functionality
     const btnLogout = document.getElementById('btn-logout');
