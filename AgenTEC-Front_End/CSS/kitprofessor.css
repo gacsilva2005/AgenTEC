@@ -1,19 +1,353 @@
-/* Importa estilos globais do modelo anterior */
-@import url('vidrarias.css');
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+}
+
+:root {
+  --primary-color: #243E63;
+  --hoverCian-color: #005C6D;
+  --low-hoverCian: #005d6d5b;
+  --hoverLight-color: #00C1CF;
+  --primary-red: #970000;
+  --secondary-red: #c70000;
+  --hoverRed-color: #5d0500ef;
+  --light-gray: #636e72;
+  --dark-gray: #333333;
+  --text-white: #ffffff;
+  --dark: #000000;
+  --secondaryLight-gray: #7c7c7c;
+}
+
+.govsp-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.govsp-portal img {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+.govsp-portal {
+  background-color: #000;
+  padding: 8px 25px 8px 15px;
+  border-radius: 0 50px 50px 0;
+}
+
+.govsp-topo .govsp-portal img {
+  height: 38px;
+}
+
+.govsp-topo .govsp-navbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.govsp-navbar :hover {
+  transform: translate(0.2px, 0.2px);
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}
+
+
+.govsp-topo .govsp-navbar img {
+  height: 23px;
+  ;
+}
+
+.govsp-topo .govsp-social {
+  display: inline-block;
+}
+
+#cps-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.cps-header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cps-header__logo img {
+  max-height: 65px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  /* Centraliza verticalmente */
+}
+
+/* 2. Controla o tamanho das imagens */
+.logo-container img {
+  height: 120px;
+  /* AUMENTE AQUI se quiser maior (ex: 150px) */
+  width: auto;
+  /* Mantém a proporção correta */
+  max-width: 100%;
+  /* Evita que estoure a tela em celulares */
+}
+
+/* Ajuste fino para telas pequenas (Celular) */
+@media (max-width: 768px) {
+  .logo-container img {
+    height: 80px;
+  }
+}
+
+.cps-header__container img {
+  max-height: 80px;
+  width: auto;
+  display: block;
+}
+
+.form-pesquisa {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  overflow: hidden;
+  max-width: 400px;
+  background-color: white;
+}
+
+.campo-de-busca {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 15px 50px;
+  font-size: 1rem;
+  background-color: transparent;
+}
+
+.campo-de-busca::placeholder {
+  color: #999;
+}
+
+.busca-submit {
+  border: none;
+  border-left: 1px solid #ccc;
+  background-color: transparent;
+  padding: 10px 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.busca-submit .fa-search {
+  color: #b20000;
+  font-size: 1.1rem;
+}
+
+.busca-submit:hover {
+  background-color: #f5f5f5;
+}
+
+.main-menu-container {
+  background-color: #c41e15;
+  padding: 0 20px;
+}
+
+.main-menu-container .menu {
+  max-width: 1200px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0 0 0 65px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-menu-container .menu li a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.main-menu-container .menu li a:hover {
+  background-color: #831c16ef;
+}
+
+#breadcrumb {
+  background-color: #666666;
+  padding: 12px 20px 12px 90px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.breadcrumb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.breadcrumb-container a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Contêiner principal da navegação */
+.govsp-navbar {
+  display: flex;
+  /* Alinha todos os itens na horizontal */
+  align-items: center;
+  /* Centraliza os itens verticalmente */
+  padding: 10px;
+}
+
+/* Estilo para todos os links (que servem como 'caixa' para os ícones) */
+.govsp-navbar a {
+  display: inline-flex;
+  /* Permite centralizar o ícone dentro do link */
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  /* Largura da caixa */
+  height: 28px;
+  /* Altura da caixa */
+  background-color: #ffffff;
+  /* Fundo cinza claro */
+  margin: -3px;
+  /* Espaçamento entre os ícones */
+  border-radius: 3px;
+  /* Bordas levemente arredondadas */
+  text-decoration: none;
+  /* Remove o sublinhado do link */
+}
+
+/* Estilo para os ícones (<i>) dentro dos links */
+.govsp-navbar a i {
+  color: #ffffff;
+  /* Cor cinza escura para o ícone */
+  font-size: 1.2rem;
+  /* Tamanho do ícone */
+}
+
+/* Estilo para o texto "/governosp" */
+.govsp-text {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0px;
+  /* Espaçamento antes e depois do texto */
+}
+
+/* Estilo para a linha separadora */
+.separator {
+  height: 25px;
+  /* Altura da linha */
+  border-left: 1px solid #ccc;
+  /* Cria a linha vertical */
+  margin: 0 10px;
+  /* Espaçamento antes e depois da linha */
+}
+
+/* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
+
+/* Garante que o item principal do menu seja posicionado corretamente */
+.menu li.dropdown {
+  position: relative;
+}
+
+/* Esconde o submenu por padrão */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style: none;
+  padding: 0;
+  /* margin-top: 10px; FOI REMOVIDO PARA CORRIGIR O PROBLEMA DE FECHAMENTO */
+  border-top: 3px solid #b20000;
+}
+
+/* Estilo dos links dentro do submenu */
+/* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
+.main-menu-container .menu .dropdown-content li a {
+  color: #555;
+  /* Define a cor escura para o texto */
+  font-weight: normal;
+  /* Garante que o texto não fique em negrito como o menu principal */
+  padding: 12px 16px;
+  text-align: left;
+  /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
+  background-color: transparent;
+}
+
+/* Efeito de hover nos links do submenu */
+.main-menu-container .menu .dropdown-content li a:hover {
+  background-color: #f1f1f1;
+  color: #b20000;
+}
+
+/* Mostra o submenu quando o mouse passa por cima do item principal */
+.menu li.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Estilo para a setinha */
+.dropdown a .fa-chevron-down {
+  font-size: 0.7em;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+/* Gira a setinha para cima quando o menu está aberto */
+.menu li.dropdown:hover a .fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+@media (min-width: 375px) and (max-width: 767px) {}
 
 /* Ajuste de título igual à página de Vidrarias */
 .main-content {
+  position: relative;
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
   text-align: center;
 }
 
+
 .button-container {
+  position: absolute; /* Tira do fluxo */
+  top: 10px;          /* Ajuste a altura aqui */
+  right: 20px;        /* Cola na direita */
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-back {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  gap: 3px;
+  color: var(--hoverCian-color);
 }
 
 .button-custom {
@@ -23,10 +357,10 @@
   gap: 8px;
   flex-direction: row-reverse;
   background-color: transparent;
-  color: #005C6D;
+  color: var(--hoverCian-color);
   padding: 0;
-  font-size: 1.6rem;
-  font-weight: 510;
+  font-size: 1.60rem;
+  font-weight: 300;
   border-radius: 0;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -34,35 +368,66 @@
   border: none;
 }
 
-:root{
-  --primary-color: #243E63; 
-  --hoverCian-color: #005C6D; 
-  --low-hoverCian: #005d6d5b; 
-  --hoverLight-color: #00C1CF;
-  --primary-red: #970000;
-  --secondary-red: #c70000;
-  --hoverRed-color: #5d0500ef; 
-  --light-gray: #636e72; 
-  --dark-gray: #333333; 
-  --text-white: #ffffff;
-  --dark: #000000;
-  --secondaryLight-gray: #7c7c7c;
+.button-custom:hover {
+  color: var(--primary-color);
 }
+
+.button-custom:active {
+  color: var(--primary-color);
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .button-confirm,
+  .button-cancel {
+    width: 100%;
+  }
+}
+
 
 .page-title {
   font-size: 4rem;
   color: var(--hoverCian-color);
-  margin-bottom: 10px;
   font-weight: 700;
+  margin: 0 0 10px 0; /* Margem apenas embaixo */
+  text-align: left;   /* Garante que fique na esquerda */
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+}
+
+.page-header .page-title {
+  margin: 0;
+}
+
+.page-header .button-container {
+  margin: 0;
+  padding: 0;
 }
 
 .title-underline {
-  width: 320px;
-  height: 4px;
-  border-radius: 5px;
-  background-color: #c41e15;
-  margin: 0 auto 40px;
+  display: block;
+  width: 100%;
+  height: 15px;
+  /* Isso garante que a linha comece na esquerda */
+  background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left top no-repeat;
+  margin: 0 0 40px 0;
+  padding: 0;
 }
+
+
 
 /* Caixa dos kits */
 .kits-boxes {
@@ -132,46 +497,86 @@ textarea {
   transform: translateY(-3px);
 }
 
+/* Container para separar o input do resto */
+.popup-input-container {
+  margin: 20px 0;
+  text-align: left;
+  /* Alinha o label à esquerda */
+  width: 100%;
+}
+
+/* Estilo do Rótulo (Label) */
+.popup-input-container label {
+  display: block;
+  font-size: 1.9rem;
+  color: var(--hoverCian-color);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Estilo do Campo de Texto */
+.popup-input-container input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.3rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  /* Garante que o padding não estoure a largura */
+  outline: none;
+  transition: border-color 0.3s;
+  background-color: #f9f9f9;
+}
+
+/* Efeito ao clicar no campo */
+.popup-input-container input:focus {
+  border-color: var(--primary-color, #243E63);
+  /* Usa sua cor azul ou um fallback */
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(36, 62, 99, 0.2);
+}
+
 #cps-rodape__redes-icones a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    transition: transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: transform 0.3s ease;
 }
 
 #cps-rodape__redes-icones a i {
-    color: #2ddae0d7;
-    font-size: 3.5rem ;
-    line-height: 1;
+  color: #2ddae0d7;
+  font-size: 3.5rem;
+  line-height: 1;
 }
 
-#cps-rodape__redes-icones a:hover i{
-    color: #ffffff;
-    scale: 1.2;
-    transition: 0.7s;
+#cps-rodape__redes-icones a:hover i {
+  color: #ffffff;
+  scale: 1.2;
+  transition: 0.7s;
 }
 
 #cps-rodape__redes h6 {
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 0 0 10px 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
 }
+
 #userwayAccessibilityIcon,
 .uwy-userway-trigger,
 .uai-trigger-container,
 div[data-account="3eFXoC4I4A"] {
-    /* Força a posição fixa */
-    position: fixed !important;
-    /* Zera a posição do topo padrão e define a nova */
-    bottom: auto !important;
-    /* Alinha à direita */
-    right: 0 !important;
-    /* Colado na direita */
-    left: auto !important;
-    /* Remove margens que o script possa adicionar */
-    margin-top: 230px !important;
+  /* Força a posição fixa */
+  position: fixed !important;
+  /* Zera a posição do topo padrão e define a nova */
+  bottom: auto !important;
+  /* Alinha à direita */
+  right: 0 !important;
+  /* Colado na direita */
+  left: auto !important;
+  /* Remove margens que o script possa adicionar */
+  top: 270px !important;
 }

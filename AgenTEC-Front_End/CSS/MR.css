@@ -241,6 +241,7 @@ html {
     gap: 30px;
     flex-wrap: wrap;
     margin-top: 20px;
+    margin-bottom: 180;
 }
 
 /* Card com funções das telas*/

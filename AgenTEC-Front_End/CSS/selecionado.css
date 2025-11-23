@@ -1,7 +1,21 @@
 /* Importação dos estilos base (Menu, Header, Topo GovSP) */
 @import url('professor.css'); 
 
-/* Estilos específicos para o conteúdo da página de Agendamento Selecionado */
+
+:root{
+  --primary-color: #243E63; 
+  --hoverCian-color: #005C6D; 
+  --low-hoverCian: #005d6d5b; 
+  --hoverLight-color: #00C1CF;
+  --primary-red: #970000;
+  --secondary-red: #c70000;
+  --hoverRed-color: #5d0500ef; 
+  --light-gray: #636e72; 
+  --dark-gray: #333333; 
+  --text-white: #ffffff;
+  --dark: #000000;
+  --secondaryLight-gray: #7c7c7c;
+}
 
 .main-content {
     max-width: 800px;
@@ -12,12 +26,10 @@
 
 /* Título e Subtítulo padrão */
 .page-title {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 10px;
-    font-weight: 700;
-    text-align: left; 
-    display: none; /* OCULTA o título principal, pois a página tem um subtítulo centralizado */
+  font-size: 4rem;
+  color: var(--hoverCian-color);
+  margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .title-underline {
