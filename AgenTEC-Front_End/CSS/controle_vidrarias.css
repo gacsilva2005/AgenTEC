@@ -879,5 +879,15 @@ div[data-account="3eFXoC4I4A"] {
     /* Colado na direita */
     left: auto !important;
     /* Remove margens que o script possa adicionar */
-    margin-top: 500px !important;
+    margin-top: 300px !important;
+}
+#userwayAccessibilityIcon,
+.uwy-userway-trigger,
+.uai-trigger-container,
+div[data-account="3eFXoC4I4A"] {
+    position: fixed !important;
+    bottom: auto !important;
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 230px !important;
 }

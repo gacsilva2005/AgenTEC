@@ -392,6 +392,42 @@ class Server {
     });
 
     // -----------------------------
+    // LISTAR LABORATÓRIOS
+    // -----------------------------
+    this.#app.get('/api/laboratorios', async (req, res) => {
+      try {
+        console.log('📋 Buscando laboratórios no banco de dados...');
+
+        const query = `
+            SELECT 
+                id_laboratorio, 
+                nome, 
+                capacidade, 
+                localizacao
+            FROM laboratorios 
+            ORDER BY nome
+        `;
+
+        const laboratorios = await this.#db.query(query);
+
+        console.log(`✅ Encontrados ${laboratorios.length} laboratórios`);
+
+        res.json({
+          success: true,
+          laboratorios,
+          total: laboratorios.length
+        });
+
+      } catch (err) {
+        console.error('❌ Erro ao listar laboratórios:', err);
+        res.status(500).json({
+          success: false,
+          message: 'Erro ao listar laboratórios: ' + err.message
+        });
+      }
+    });
+
+    // -----------------------------
     // CADASTRAR USUÁRIO
     // -----------------------------
     this.#app.post('/api/cadastrar-usuario', async (req, res) => {
@@ -507,46 +543,46 @@ class Server {
     // LISTAR VIDRARIAS (Do arquivo JSON)
     // -----------------------------
     this.#app.get('/api/vidrarias', async (req, res) => {
-    try {
+      try {
         // Caminho absoluto - ajuste conforme sua estrutura de pastas
         const pathJson = path.join(__dirname, '..', 'AgenTEC-DataBase-(JSON)', 'vidrarias.json');
-        
+
         console.log('📁 Tentando ler arquivo:', pathJson);
 
         // Verifica se o arquivo existe
         if (!fs.existsSync(pathJson)) {
-            console.error('❌ Arquivo não encontrado:', pathJson);
-            
-            // Lista o diretório para debug
-            const dirPath = path.join(__dirname, 'AgenTEC-DataBase-(JSON)');
-            console.log('📂 Conteúdo do diretório:', fs.existsSync(dirPath) ? fs.readdirSync(dirPath) : 'Diretório não existe');
-            
-            return res.status(404).json({ 
-                success: false, 
-                message: 'Arquivo vidrarias.json não encontrado' 
-            });
+          console.error('❌ Arquivo não encontrado:', pathJson);
+
+          // Lista o diretório para debug
+          const dirPath = path.join(__dirname, 'AgenTEC-DataBase-(JSON)');
+          console.log('📂 Conteúdo do diretório:', fs.existsSync(dirPath) ? fs.readdirSync(dirPath) : 'Diretório não existe');
+
+          return res.status(404).json({
+            success: false,
+            message: 'Arquivo vidrarias.json não encontrado'
+          });
         }
 
         const data = fs.readFileSync(pathJson, 'utf8');
         console.log('✅ Arquivo lido com sucesso');
-        
+
         const vidrarias = JSON.parse(data);
         const vidrariasAgrupadas = processarVidrarias(vidrarias);
 
-        res.json({ 
-            success: true, 
-            itens: vidrariasAgrupadas,
-            total: vidrariasAgrupadas.length
+        res.json({
+          success: true,
+          itens: vidrariasAgrupadas,
+          total: vidrariasAgrupadas.length
         });
-        
-    } catch (err) {
+
+      } catch (err) {
         console.error('❌ Erro ao carregar vidrarias:', err);
-        res.status(500).json({ 
-            success: false, 
-            message: 'Erro ao carregar lista de vidrarias: ' + err.message 
+        res.status(500).json({
+          success: false,
+          message: 'Erro ao carregar lista de vidrarias: ' + err.message
         });
-    }
-});
+      }
+    });
 
     // Função para processar e agrupar as vidrarias
     function processarVidrarias(vidrarias) {

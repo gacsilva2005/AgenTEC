@@ -504,14 +504,9 @@ body, html {
 .uwy-userway-trigger,
 .uai-trigger-container,
 div[data-account="3eFXoC4I4A"] {
-    /* Força a posição fixa */
     position: fixed !important;
-    /* Zera a posição do topo padrão e define a nova */
     bottom: auto !important;
-    /* Alinha à direita */
     right: 0 !important;
-    /* Colado na direita */
     left: auto !important;
-    /* Remove margens que o script possa adicionar */
-    margin-top: 500px !important;
+    margin-top: 230px !important;
 }

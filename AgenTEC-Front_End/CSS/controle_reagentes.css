@@ -978,3 +978,13 @@ body, html {
     /* Garante a centralização dos botões (já está em modal-actions, mas reforçamos) */
     justify-content: center;
 }
+#userwayAccessibilityIcon,
+.uwy-userway-trigger,
+.uai-trigger-container,
+div[data-account="3eFXoC4I4A"] {
+    position: fixed !important;
+    bottom: auto !important;
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 230px !important;
+}

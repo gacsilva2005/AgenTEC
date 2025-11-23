@@ -1,1133 +1,1128 @@
-body,
-html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow-x: hidden;
-    font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;
-    color: #333;
-}
-
-:root{
-    --primary-color: #243E63; 
-    --hoverCian-color: #005C6D; 
-    --low-hoverCian: #005d6d5b; 
-    --hoverLight-color: #00C1CF;
-    --primary-red: #b20000;
-    --secondary-red: #ff2020;
-    --hoverSecRed-color: #e70000;
-    --hoverRed-color: #831c16ef; 
-    --light-gray: #636e72; 
-    --dark-gray: #333333; 
-    --text-white: #ffffff;
-    --dark: #000000;
-    --secondaryLight-gray: #7c7c7c;
-    --event-panel-bg: #f8f9fa;
-    --day-selected: #e70000d7;
-}
-
-/* --- Topo Governo SP --- */
-.govsp-topo {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    background-color: #ffffff;
-    border-bottom: 1px solid #ddd; 
-}
-
-.govsp-portal {
-    background-color: #000;
-    padding: 8px 25px 8px 15px;
-    border-radius: 0 50px 50px 0;
-}
-
-.govsp-portal img {
-    height: 10px;  
-    width: 200px;  
-    display: flex; 
-}
-
-.govsp-navbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-right: 20px;
-}
-
-.govsp-topo .govsp-portal img {
-    height: 38px;
-}
-
-.govsp-navbar a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    background-color: #ffffff;
-    margin: -3px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-}
-
-.govsp-navbar a:hover {
-    transform: scale(1.1);
-}
-
-.govsp-navbar a i {
-    color: #ffffff;
-    font-size: 1.2rem;
-}
-
-.govsp-text {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0px;
-}
-
-.separator {
-    height: 25px;
-    border-left: 1px solid #ccc;
-    margin: 0 10px;
-}
-
-/* --- Cabeçalho CPS --- */
-#cps-header {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.cps-header__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.logo-container img {
-    max-height: 50px;
-    margin: 0 5px;
-}
-
-.form-pesquisa {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    overflow: hidden;
-    max-width: 400px;
-    background-color: white;
-}
-
-.campo-de-busca {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 15px 20px;
-    font-size: 1rem;
-    background-color: transparent;
-}
-
-.busca-submit {
-    border: none;
-    border-left: 1px solid #ccc;
-    background-color: transparent;
-    padding: 10px 18px;
-    cursor: pointer;
-}
-
-.busca-submit .fa-search {
-    color: var(--primary-red);
-    font-size: 1.1rem;
-}
-
-/* --- Menu Principal --- */
-.main-menu-container {
-    background-color: #c41e15;
-    padding: 0 20px;
-}
-
-.main-menu-container .menu {
-    max-width: 1200px;
-    margin: 0 auto;
-    list-style: none;
-    padding: 0 0 0 50px; 
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.main-menu-container .menu li a {
-    display: block;
-    padding: 15px 20px;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s;
-}
-
-.main-menu-container .menu li a:hover {
-    background-color: #831c16ef;
-}
-
-/* --- Menu Dropdown --- */
-.menu li.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    list-style: none;
-    padding: 0;
-    border-top: 3px solid var(--primary-red);
-}
-
-.main-menu-container .menu .dropdown-content li a {
-    color: #555;
-    font-weight: normal;
-    padding: 12px 16px;
-    background-color: transparent;
-}
-
-.main-menu-container .menu .dropdown-content li a:hover {
-    background-color: #f1f1f1;
-    color: var(--primary-red);
-}
-
-.menu li.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown a .fa-chevron-down {
-    font-size: 0.7em;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-}
-
-.menu li.dropdown:hover a .fa-chevron-down {
-    transform: rotate(180deg);
-}
-
-/* --- Breadcrumb --- */
-#breadcrumb {
-    background-color: #666666;
-    padding: 12px 20px 12px 100px;  
-    border-bottom: 1px solid #e9ecef;
-}
-
-.breadcrumb-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    font-size: 14px;
-    color: #ffffff;
-}
-
-.breadcrumb-container a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* --- ESTILOS DO CALENDÁRIO --- */
-
-.main-content {
-    min-height: calc(100vh - 100px);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding-bottom: 40px;
-    margin: 0 auto;
-}
-
-.container{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    max-width: 1200px;
-    width: 100%;
-    align-items: center;
-    margin: 0 auto;
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-@media (min-width: 768px) {
-    .container{
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 30px;
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+        font-family: 'Roboto', sans-serif;
+        background-color: #ffffff;
+        color: #333;
     }
-}
 
-.calendar-container{
-    position: relative;
-    background: var(--text-white);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    flex: 0 0 700px;
-    width: 100%;
-    margin: 0;
-    max-width: 700px;
-    overflow: hidden;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    transition: all 0.3s ease;
-}
-
-.calendar-container:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-.calendar-container,
-.event-panel {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.calendar-header{
-    background: linear-gradient(135deg, var(--hoverCian-color) 0%,
-     var(--secondary-red) 100%);
-    color: var(--text-white);
-    padding: 1.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.calendar-header::before{
-    content: '';
-    position: absolute;
-    top: -50%;  
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%,
-     rgba(255, 255, 255, 0) 70%);
-    transform: rotate(30deg);
-}
-
-.month-year {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    position: relative;
-}
-
-.nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    width: 95%;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%); 
-    padding: 1rem 1rem;
-    z-index: 1;
-}
-
-.nav-btn{
-    background: rgba(255, 255, 255, 0.17);
-    color: rgb(255, 255, 255);
-    border: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-btn:hover{
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-}
-
-.weekdays{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    padding: 0.5rem 1rem;
-    background: rgba(74, 107, 223, 0.1);
-    font-weight: 600;
-    color: var(--primary);
-}
-
-.weekday{
-    text-align: center;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-}
-
-.days{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    padding: 1rem;
-}
-
-.day{
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    color: var(--dark);
-}
-
-.day:hover{
-    background: rgba(74, 107, 223, 0.1);
-    transform: scale(1.1);
-}
-
-.day.today{
-    background: var(--light-gray);
-    color: white;
-    font-weight: bold;
-}
-
-.day.selected{
-    background: var(--primary-red);
-    color: white;
-    font-weight: bold;
-    animation: pop 0.3s ease;
-}  
-
-@keyframes pop {
-    0% {
-        transform: scale(1);
+    :root{
+        --primary-color: #243E63; 
+        --hoverCian-color: #005C6D; 
+        --low-hoverCian: #005d6d5b; 
+        --hoverLight-color: #00C1CF;
+        --primary-red: #b20000;
+        --secondary-red: #ff2020;
+        --hoverSecRed-color: #e70000;
+        --hoverRed-color: #831c16ef; 
+        --light-gray: #636e72; 
+        --dark-gray: #333333; 
+        --text-white: #ffffff;
+        --dark: #000000;
+        --secondaryLight-gray: #7c7c7c;
+        --event-panel-bg: #f8f9fa;
+        --day-selected: #e70000d7;
     }
-    50%{
-        transform: scale(1);
+
+    /* --- Topo Governo SP --- */
+    .govsp-topo {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center; 
+        background-color: #ffffff;
+        border-bottom: 1px solid #ddd; 
     }
-    100% {
-        transform: scale(1);
+
+    .govsp-portal {
+        background-color: #000;
+        padding: 8px 25px 8px 15px;
+        border-radius: 0 50px 50px 0;
     }
-}
 
-.day.other-month{
-    color: var(--text);
-    opacity: 0.5;
-}
+    .govsp-portal img {
+        height: 10px;  
+        width: 200px;  
+        display: flex; 
+    }
 
-.day.has-event::after{
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    width: 5px;
-    height: 5px;
-    background: var(--primary-red);
-    border-radius: 50%;
-}
-
-.calendar-footer{
-    padding: 1rem;
-    text-align: center;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-}
-
-.today-btn{
-    background: linear-gradient(135deg, var(--primary-color) 0%,
-    var(--hoverCian-color) 100%);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.today-btn:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
-}
-
-.schedule-btn{
-    background: linear-gradient(135deg, var(--primary-color) 0%,
-    var(--hoverCian-color) 100%);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.schedule-btn:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
-}
-
-.delete-btn{
-    background: linear-gradient(135deg, var(--primary-color) 0%,
-    var(--hoverCian-color) 100%);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.delete-btn:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
-}
-
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-}
-
-.event-indicator{
-    font-size: 1.4rem;
-    color: var(--hoverCian-color);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.event-panel{
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    flex: 1 1 170px;
-    width: 100%;
-    max-width: 450px;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.container .all-event{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.event-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--low-hoverCian);
-}
-
-.event-date{
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--hoverCian-color);
-}
-
-.event-list{
-    max-height: 350px;
-    overflow-y: auto;
-}
-
-.event-item{
-    padding: 1rem;
-    margin-bottom: 0.8rem;
-    background: var(--event-panel-bg);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2 ease;
-}
-
-.event-item:hover{
-    transform: translateX(5px);
-}
-
-.event-color{
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--hoverLight-color);
-    flex-shrink: 0;
-}
-
-.event-time{
-    font-weight: 600;
-    color: var(--hoverCian-color);
-    min-width: 80px;
-}
-
-.event-text{
-    flex: 1;
-}
-
-.no-events{
-    text-align: center;
-    color: var(--text);
-    padding: 1.37rem 1rem;
-    font-style: italic;
-    font-size: 1.7rem;
-}
-
-.event-icon{
-    font-size: 2rem;
-    color: var(--hoverCian-color);
-    margin: 0 10px;
-}
-
-.all-event {
-    display: flex;
-    flex-wrap: wrap; /* permite quebra em linha em telas menores */
-    gap: 10px;
-    justify-content: flex-start;
-    align-items: stretch;
-}
-
-.action-buttons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-    padding: 20px 0;
-    flex-wrap: wrap;
-}
-
-.action-btn {
-    padding: 15px 30px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.action-btn:hover {
-    background-color: var(--hoverCian-color);
-    transform: translateY(-3px);
-}
-
-.action-btn:active {
-    transform: translateY(2px);
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
-}
-
-@media(max-width: 767px){
-
-    .container{
-        flex-direction: column;
+    .govsp-navbar {
+        display: flex;
         align-items: center;
-        gap: 15px;
-    }
-
-    .calendar-container {
-        width: 90%;
-        max-width: 500px;
-        margin: 0 auto;
-        right: 0;
-        flex: 0 0 auto;
-        height: auto;
-        transform: none;
-    }
-
-    .event-panel {
-        width: 90%;
-        max-width: 500px;
-        margin: 0 auto;
-        order: 2;
-        flex: 0 0 auto;
-        height: auto;
-    }
-
-        .event-date{
-        font-size: 1.3rem;
-    
-    }
-
-    .action-buttons-container {
-        margin-top: auto;
-        flex-direction: column;
-        gap: 15px;
-    }
-}
-
-/* Adicione no seu arquivo CSS */
-.agendamento-status {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border-left: 4px solid;
-}
-
-.agendamento-status.disponivel {
-    background-color: #e8f5e8;
-    border-left-color: #4CAF50;
-}
-
-.agendamento-status.lotado {
-    background-color: #ffebee;
-    border-left-color: #f44336;
-}
-
-.status-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 12px;
-}
-
-.status-indicator.disponivel {
-    background-color: #4CAF50;
-}
-
-.status-indicator.lotado {
-    background-color: #f44336;
-}
-
-.status-text strong {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.status-text p {
-    margin: 0;
-    font-size: 0.9em;
-    color: #666;
-}
-
-.schedule-btn:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
-
-/* Estilos para os painéis de horário e laboratório */
-.time-section {
-    margin-bottom: 20px;
-}
-
-.time-section h4 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-weight: 600;
-    border-bottom: 1px solid #ecf0f1;
-    padding-bottom: 5px;
-}
-
-.time-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.lab-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-}
-
-.time-btn, .lab-btn {
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    background: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: left;
-    font-family: inherit;
-}
-
-.time-btn:hover, .lab-btn:hover {
-    border-color: #3498db;
-    background: #f8f9fa;
-}
-
-.time-btn.selected, .lab-btn.selected {
-    border-color: #27ae60;
-    background: #e8f5e8;
-}
-
-.aula-label {
-    display: block;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 4px;
-}
-
-.horario {
-    display: block;
-    color: #7f8c8d;
-    font-size: 0.9em;
-}
-
-.lab-name {
-    display: block;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 4px;
-}
-
-.lab-info {
-    display: block;
-    color: #7f8c8d;
-    font-size: 0.85em;
-}
-
-/* Estilos para o painel de eventos (horários e laboratórios) */
-.event-panel {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-}
-
-.event-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.event-date {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #2c3e50;
-}
-
-.event-list {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.no-events {
-    text-align: center;
-    color: #7f8c8d;
-    font-style: italic;
-    padding: 20px;
-}
-
-/* Estilos para o status de agendamento */
-.agendamento-status {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.status-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.status-indicator.disponivel {
-    background: #27ae60;
-}
-
-.status-indicator.lotado {
-    background: #e74c3c;
-}
-
-
-/* Ajustes de responsividade */
-@media (max-width: 768px) {
-    .time-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .action-buttons-container {
-        flex-direction: column;
         gap: 10px;
+        padding-right: 20px;
+    }
+
+    .govsp-topo .govsp-portal img {
+        height: 38px;
+    }
+
+    .govsp-navbar a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background-color: #ffffff;
+        margin: -3px;
+        border-radius: 3px;
+        text-decoration: none;
+        transition: transform 0.2s ease;
+    }
+
+    .govsp-navbar a:hover {
+        transform: scale(1.1);
+    }
+
+    .govsp-navbar a i {
+        color: #ffffff;
+        font-size: 1.2rem;
+    }
+
+    .govsp-text {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 0px;
+    }
+
+    .separator {
+        height: 25px;
+        border-left: 1px solid #ccc;
+        margin: 0 10px;
+    }
+
+    /* --- Cabeçalho CPS --- */
+    #cps-header {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .cps-header__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .logo-container img {
+        max-height: 50px;
+        margin: 0 5px;
+    }
+
+    .form-pesquisa {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 50px;
+        overflow: hidden;
+        max-width: 400px;
+        background-color: white;
+    }
+
+    .campo-de-busca {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 15px 20px;
+        font-size: 1rem;
+        background-color: transparent;
+    }
+
+    .busca-submit {
+        border: none;
+        border-left: 1px solid #ccc;
+        background-color: transparent;
+        padding: 10px 18px;
+        cursor: pointer;
+    }
+
+    .busca-submit .fa-search {
+        color: var(--primary-red);
+        font-size: 1.1rem;
+    }
+
+    /* --- Menu Principal --- */
+    .main-menu-container {
+        background-color: #c41e15;
+        padding: 0 20px;
+    }
+
+    .main-menu-container .menu {
+        max-width: 1200px;
+        margin: 0 auto;
+        list-style: none;
+        padding: 0 0 0 50px; 
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .main-menu-container .menu li a {
+        display: block;
+        padding: 15px 20px;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+
+    .main-menu-container .menu li a:hover {
+        background-color: #831c16ef;
+    }
+
+    /* --- Menu Dropdown --- */
+    .menu li.dropdown {
+        position: relative;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #f9f9f9;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        list-style: none;
+        padding: 0;
+        border-top: 3px solid var(--primary-red);
+    }
+
+    .main-menu-container .menu .dropdown-content li a {
+        color: #555;
+        font-weight: normal;
+        padding: 12px 16px;
+        background-color: transparent;
+    }
+
+    .main-menu-container .menu .dropdown-content li a:hover {
+        background-color: #f1f1f1;
+        color: var(--primary-red);
+    }
+
+    .menu li.dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown a .fa-chevron-down {
+        font-size: 0.7em;
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+
+    .menu li.dropdown:hover a .fa-chevron-down {
+        transform: rotate(180deg);
+    }
+
+    /* --- Breadcrumb --- */
+    #breadcrumb {
+        background-color: #666666;
+        padding: 12px 20px 12px 100px;  
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .breadcrumb-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-size: 14px;
+        color: #ffffff;
+    }
+
+    .breadcrumb-container a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    /* --- ESTILOS DO CALENDÁRIO --- */
+
+    .main-content {
+        min-height: calc(100vh - 100px);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding-bottom: 40px;
+        margin: 0 auto;
+    }
+
+    .container{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        max-width: 1200px;
+        width: 100%;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+        .container{
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 30px;
+        }
+    }
+
+    .calendar-container{
+        position: relative;
+        background: var(--text-white);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        flex: 0 0 700px;
+        width: 100%;
+        margin: 0;
+        max-width: 700px;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        transition: all 0.3s ease;
+    }
+
+    .calendar-container:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .calendar-container,
+    .event-panel {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .calendar-header{
+        background: linear-gradient(135deg, var(--hoverCian-color) 0%,
+        var(--secondary-red) 100%);
+        color: var(--text-white);
+        padding: 1.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .calendar-header::before{
+        content: '';
+        position: absolute;
+        top: -50%;  
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 70%);
+        transform: rotate(30deg);
+    }
+
+    .month-year {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        position: relative;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        width: 95%;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%); 
+        padding: 1rem 1rem;
+        z-index: 1;
+    }
+
+    .nav-btn{
+        background: rgba(255, 255, 255, 0.17);
+        color: rgb(255, 255, 255);
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-btn:hover{
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+    }
+
+    .weekdays{
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        padding: 0.5rem 1rem;
+        background: rgba(74, 107, 223, 0.1);
+        font-weight: 600;
+        color: var(--primary);
+    }
+
+    .weekday{
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .days{
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+        padding: 1rem;
+    }
+
+    .day{
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        color: var(--dark);
+    }
+
+    .day:hover{
+        background: rgba(74, 107, 223, 0.1);
+        transform: scale(1.1);
+    }
+
+    .day.today{
+        background: var(--light-gray);
+        color: white;
+        font-weight: bold;
+    }
+
+    .day.selected{
+        background: var(--primary-red);
+        color: white;
+        font-weight: bold;
+        animation: pop 0.3s ease;
+    }  
+
+    @keyframes pop {
+        0% {
+            transform: scale(1);
+        }
+        50%{
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .day.other-month{
+        color: var(--text);
+        opacity: 0.5;
+    }
+
+    .day.has-event::after{
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        width: 5px;
+        height: 5px;
+        background: var(--primary-red);
+        border-radius: 50%;
+    }
+
+    .calendar-footer{
+        padding: 1rem;
+        text-align: center;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .today-btn{
+        background: linear-gradient(135deg, var(--primary-color) 0%,
+        var(--hoverCian-color) 100%);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .today-btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
+    }
+
+    .schedule-btn{
+        background: linear-gradient(135deg, var(--primary-color) 0%,
+        var(--hoverCian-color) 100%);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .schedule-btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
+    }
+
+    .delete-btn{
+        background: linear-gradient(135deg, var(--primary-color) 0%,
+        var(--hoverCian-color) 100%);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .delete-btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 206, 201, 0.3);
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .event-indicator{
+        font-size: 1.4rem;
+        color: var(--hoverCian-color);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .event-panel{
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        flex: 1 1 170px;
+        width: 100%;
+        max-width: 450px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .container .all-event{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .event-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--low-hoverCian);
+    }
+
+    .event-date{
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--hoverCian-color);
+    }
+
+    .event-list{
+        max-height: 350px;
+        overflow-y: auto;
+    }
+
+    .event-item{
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+        background: var(--event-panel-bg);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2 ease;
+    }
+
+    .event-item:hover{
+        transform: translateX(5px);
+    }
+
+    .event-color{
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--hoverLight-color);
+        flex-shrink: 0;
+    }
+
+    .event-time{
+        font-weight: 600;
+        color: var(--hoverCian-color);
+        min-width: 80px;
+    }
+
+    .event-text{
+        flex: 1;
+    }
+
+    .no-events{
+        text-align: center;
+        color: var(--text);
+        padding: 1.37rem 1rem;
+        font-style: italic;
+        font-size: 1.7rem;
+    }
+
+    .event-icon{
+        font-size: 2rem;
+        color: var(--hoverCian-color);
+        margin: 0 10px;
+    }
+
+    .all-event {
+        display: flex;
+        flex-wrap: wrap; /* permite quebra em linha em telas menores */
+        gap: 10px;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+
+    .action-buttons-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        padding: 20px 0;
+        flex-wrap: wrap;
     }
 
     .action-btn {
-        width: 100%;
+        padding: 15px 30px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        transition: background-color 0.3s, transform 0.2s;
     }
-}
 
-#notificationMessage {
-    position: fixed;
-    top: 150px;
-    right: 20px;
-    padding: 15px 20px;
-    border-radius: 8px;
-    color: white;
-    font-weight: bold;
-    z-index: 10000;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    word-wrap: break-word;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.govsp-topo,
-#cps-header,
-.main-menu-container {
-    position: relative;
-    z-index: 9999; /* Menor que a notificação */
-}
-
-/* Ajustes específicos para a notificação de sucesso */
-#notificationMessage[style*="background-color: #4CAF50"] {
-    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
-    border-left: 4px solid #2e7d32;
-}
-
-/* Ajustes específicos para a notificação de erro */
-#notificationMessage[style*="background-color: #f44336"] {
-    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%) !important;
-    border-left: 4px solid #b71c1c;
-}
-
-/* Animações melhoradas para a notificação */
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
+    .action-btn:hover {
+        background-color: var(--hoverCian-color);
+        transform: translateY(-3px);
     }
-    to {
-        opacity: 1;
-        transform: translateX(0);
+
+    .action-btn:active {
+        transform: translateY(2px);
     }
-}
 
-@keyframes slideOutRight {
-    from {
-        opacity: 1;
-        transform: translateX(0);
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+        box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
     }
-    to {
-        opacity: 0;
-        transform: translateX(100%);
+
+    @media(max-width: 767px){
+
+        .container{
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .calendar-container {
+            width: 90%;
+            max-width: 500px;
+            margin: 0 auto;
+            right: 0;
+            flex: 0 0 auto;
+            height: auto;
+            transform: none;
+        }
+
+        .event-panel {
+            width: 90%;
+            max-width: 500px;
+            margin: 0 auto;
+            order: 2;
+            flex: 0 0 auto;
+            height: auto;
+        }
+
+            .event-date{
+            font-size: 1.3rem;
+        
+        }
+
+        .action-buttons-container {
+            margin-top: auto;
+            flex-direction: column;
+            gap: 15px;
+        }
     }
-}
 
-#notificationMessage {
-    animation: slideInRight 0.3s ease-out forwards;
-}
+    /* Adicione no seu arquivo CSS */
+    .agendamento-status {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border-left: 4px solid;
+    }
 
-#notificationMessage.fade-out {
-    animation: slideOutRight 0.3s ease-in forwards;
-}
+    .agendamento-status.disponivel {
+        background-color: #e8f5e8;
+        border-left-color: #4CAF50;
+    }
 
-@media (max-width: 768px) {
+    .agendamento-status.lotado {
+        background-color: #ffebee;
+        border-left-color: #f44336;
+    }
+
+    .status-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 12px;
+    }
+
+    .status-indicator.disponivel {
+        background-color: #4CAF50;
+    }
+
+    .status-indicator.lotado {
+        background-color: #f44336;
+    }
+
+    .status-text strong {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .status-text p {
+        margin: 0;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .schedule-btn:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
+    /* Estilos para os painéis de horário e laboratório */
+    .time-section {
+        margin-bottom: 20px;
+    }
+
+    .time-section h4 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+        font-weight: 600;
+        border-bottom: 1px solid #ecf0f1;
+        padding-bottom: 5px;
+    }
+
+    .time-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .lab-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .time-btn, .lab-btn {
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: left;
+        font-family: inherit;
+    }
+
+    .time-btn:hover, .lab-btn:hover {
+        border-color: #3498db;
+        background: #f8f9fa;
+    }
+
+    .time-btn.selected, .lab-btn.selected {
+        border-color: #27ae60;
+        background: #e8f5e8;
+    }
+
+    .aula-label {
+        display: block;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 4px;
+    }
+
+    .horario {
+        display: block;
+        color: #7f8c8d;
+        font-size: 0.9em;
+    }
+
+    .lab-name {
+        display: block;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 4px;
+    }
+
+    .lab-info {
+        display: block;
+        color: #7f8c8d;
+        font-size: 0.85em;
+    }
+
+    /* Estilos para o painel de eventos (horários e laboratórios) */
+    .event-panel {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .event-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .event-date {
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .event-list {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .no-events {
+        text-align: center;
+        color: #7f8c8d;
+        font-style: italic;
+        padding: 20px;
+    }
+
+    /* Estilos para o status de agendamento */
+    .agendamento-status {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .status-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .status-indicator.disponivel {
+        background: #27ae60;
+    }
+
+    .status-indicator.lotado {
+        background: #e74c3c;
+    }
+
+
+    /* Ajustes de responsividade */
+    @media (max-width: 768px) {
+        .time-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .action-buttons-container {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .action-btn {
+            width: 100%;
+        }
+    }
+
     #notificationMessage {
-        top: 120px;
-        right: 10px;
-        left: 10px;
-        max-width: none;
-        margin: 0 10px;
+        position: fixed;
+        top: 150px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        z-index: 10000;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        word-wrap: break-word;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
-}
 
-.calendar-container {
-    position: relative;
-    z-index: 1;
-}
+    .govsp-topo,
+    #cps-header,
+    .main-menu-container {
+        position: relative;
+        z-index: 9999; /* Menor que a notificação */
+    }
 
-.event-panel {
-    position: relative;
-    z-index: 1;
-}
+    /* Ajustes específicos para a notificação de sucesso */
+    #notificationMessage[style*="background-color: #4CAF50"] {
+        background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
+        border-left: 4px solid #2e7d32;
+    }
 
-.selected-time-summary {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-}
+    /* Ajustes específicos para a notificação de erro */
+    #notificationMessage[style*="background-color: #f44336"] {
+        background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%) !important;
+        border-left: 4px solid #b71c1c;
+    }
 
-.time-summary-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-}
+    /* Animações melhoradas para a notificação */
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 
-.period-badge {
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    text-transform: uppercase;
-}
+    @keyframes slideOutRight {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    }
 
-.period-badge.manha {
-    background-color: #fff3cd;
-    color: #0c5460;
-}
+    #notificationMessage {
+        animation: slideInRight 0.3s ease-out forwards;
+    }
 
-.period-badge.tarde {
-    background-color: #d1ecf1;
-    color: #0c5460;
-}
+    #notificationMessage.fade-out {
+        animation: slideOutRight 0.3s ease-in forwards;
+    }
 
-.time-details {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
+    @media (max-width: 768px) {
+        #notificationMessage {
+            top: 120px;
+            right: 10px;
+            left: 10px;
+            max-width: none;
+            margin: 0 10px;
+        }
+    }
 
-.selected-aula {
-    font-weight: 600;
-    color: #2c3e50;
-    font-size: 1.5rem;
-}
+    .calendar-container {
+        position: relative;
+        z-index: 1;
+    }
 
-.selected-horario {
-    color: #7f8c8d;
-    font-size: 1.3rem;
-}
+    .event-panel {
+        position: relative;
+        z-index: 1;
+    }
 
-.change-time-btn {
-    background: none;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
-    padding: 8px;
-    color: #7f8c8d;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+    .selected-time-summary {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
 
-.change-time-btn:hover {
-    background-color: #f8f9fa;
-    border-color: var(--hoverCian-color);
-    color: var(--hoverCian-color);
-}
+    .time-summary-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
 
-.time-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    margin-top: 10px;
-}
+    .period-badge {
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
 
-.time-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 15px;
-    border: 1px solid #bdc3c7;
-    border-radius: 8px;
-    background: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+    .period-badge.manha {
+        background-color: #fff3cd;
+        color: #0c5460;
+    }
 
-.time-btn:hover {
-    border-color: var(--hoverCian-color);
-    background-color: #f8f9fa;
-}
+    .period-badge.tarde {
+        background-color: #d1ecf1;
+        color: #0c5460;
+    }
 
-.time-btn.selected {
-    border-color: #27ae60;
-    background-color: #d5f4e6;
-}
+    .time-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
 
-.aula-label {
-    font-weight: 600;
-    color: #2c3e50;
-}
+    .selected-aula {
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 1.5rem;
+    }
 
-.horario {
-    color: #7f8c8d;
-    font-size: 0.9rem;
-}
+    .selected-horario {
+        color: #7f8c8d;
+        font-size: 1.3rem;
+    }
+
+    .change-time-btn {
+        background: none;
+        border: 1px solid #bdc3c7;
+        border-radius: 5px;
+        padding: 8px;
+        color: #7f8c8d;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .change-time-btn:hover {
+        background-color: #f8f9fa;
+        border-color: var(--hoverCian-color);
+        color: var(--hoverCian-color);
+    }
+
+    .time-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .time-btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 15px;
+        border: 1px solid #bdc3c7;
+        border-radius: 8px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .time-btn:hover {
+        border-color: var(--hoverCian-color);
+        background-color: #f8f9fa;
+    }
+
+    .time-btn.selected {
+        border-color: #27ae60;
+        background-color: #d5f4e6;
+    }
+
+    .aula-label {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .horario {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+    }
 
 
 
-.main-menu-container .menu {
-    position: relative;
-    z-index: 5;
-}
+    .main-menu-container .menu {
+        position: relative;
+        z-index: 5;
+    }
 
-.dropdown-content {
-    z-index: 9998;
-}
+    .dropdown-content {
+        z-index: 9998;
+    }
 
-#cps-rodape__redes-icones {
-    display: flex;
-    align-items: center;
-    gap: 1px;
-}
+    #cps-rodape__redes-icones {
+        display: flex;
+        align-items: center;
+        gap: 1px;
+    }
 
-#cps-rodape__redes-icones a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-}
+    #cps-rodape__redes-icones a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
 
-#cps-rodape__redes-icones a i {
-    color: #2ddae0d7;
-    font-size: 3.5rem ;
-    line-height: 1;
-}
+    #cps-rodape__redes-icones a i {
+        color: #2ddae0d7;
+        font-size: 3.5rem ;
+        line-height: 1;
+    }
 
-#cps-rodape__redes-icones a:hover i{
-    color: #ffffff;
-    scale: 1.2;
-    transition: 0.7s;
-}
+    #cps-rodape__redes-icones a:hover i{
+        color: #ffffff;
+        scale: 1.2;
+        transition: 0.7s;
+    }
 
-#cps-rodape__redes h6 {
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 0 0 10px 0;
-}
-#userwayAccessibilityIcon,
-.uwy-userway-trigger,
-.uai-trigger-container,
-div[data-account="3eFXoC4I4A"] {
-    /* Força a posição fixa */
-    position: fixed !important;
-    /* Zera a posição do topo padrão e define a nova */
-    bottom: auto !important;
-    /* Alinha à direita */
-    right: 0 !important;
-    /* Colado na direita */
-    left: auto !important;
-    /* Remove margens que o script possa adicionar */
-    margin-top: 500px !important;
-}
+    #cps-rodape__redes h6 {
+        color: #ffffff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+    }
+    #userwayAccessibilityIcon,
+    .uwy-userway-trigger,
+    .uai-trigger-container,
+    div[data-account="3eFXoC4I4A"] {
+        position: fixed !important;
+        bottom: auto !important;
+        right: 0 !important;
+        left: auto !important;
+        margin-top: 230px !important;
+    }

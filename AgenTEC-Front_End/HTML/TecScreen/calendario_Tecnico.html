@@ -62,7 +62,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- CSS do vanilla-js-calendar -->
     <link href="https://cdn.jsdelivr.net/npm/vanilla-js-calendar@1.1.0/dist/js-calendar.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../CSS/calendario.css">
+    <link rel="stylesheet" href="../../CSS/calendario_tecnico.css">
 </head>
 
 <body>
@@ -318,7 +318,7 @@
                         <div class="no-events">Escolha uma data com evento para vê-lo aqui.</div>
                     </div>
                     <div class="button-container">
-                        <button class="schedule-btn" id="schedule-btn"><i class="fas fa-calendar-day"></i> Agendar
+                        <button class="schedule-btn" id="schedule-btn"><i class="fas fa-calendar-day"></i> Verificar
                         </button>
                         <button class="delete-btn" id="delete-btn"> Deletar </button>
                     </div>
@@ -337,7 +337,7 @@
                         <div class="event-date" id="event-date">Escolha um Laboratório</div>
                         <i class="fas fa-calendar-alt event-icon"></i>
                     </div>
-                    <div class="event-list" id="event-list">
+                    <div class="event-list-lab" id="event-list-lab">
                         <div class="no-events">Escolha um laboratório para o evento para vê-lo aqui.</div>
                     </div>
                     <div class="button-container">
@@ -355,22 +355,6 @@
     <div class="action-buttons-container">
         <a href="tecnicos.html"><button class="action-btn btn-primary">Voltar</button></a>
         <a href="tecnicos.html"><button class="action-btn btn-primary">Confirmar</button></a> 
-    </div>
-
-    <div vw="" class="enabled"
-        style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-        <div vw-access-button="" class="active">
-            <img class="vp-access-button" data-src="assets/access_icon.svg"
-                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                src="https://vlibras.gov.br/app//assets/access_icon.svg">
-            <img class="vp-pop-up" data-src="assets/access_popup.jpg"
-                alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                src="https://vlibras.gov.br/app//assets/access_popup.jpg">
-        </div>
-        <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-            <div vp="">
-            </div>
-        </div>
     </div>
     <!-- RODAPÉ CPS -->
         <button class="back-to-top">
@@ -470,18 +454,27 @@
             </div>
         </section>
         <!-- RODAPÉ CPS -->
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
-    <script>
-            document.querySelector('.back-to-top').addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
+        <div vw="" class="enabled"
+            style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+            <div vw-access-button="" class="active">
+                <img class="vp-access-button" data-src="assets/access_icon.svg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_icon.svg">
+                <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+            </div>
+            <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+                <div vp="">
+                </div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
         </script>
+        <script src="../../JS (Front-End)/logout.js"></script>
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
+        <script src="../../JS (Front-End)/botao_topo.js"></script>
 </body>
 </html>

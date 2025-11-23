@@ -269,24 +269,25 @@
         <main class="main-content">
             <h1 class="page-title">Lista de Vidrarias</h1>
             <div class="title-underline"></div>
-            
+
             <div class="search-container">
                 <form action="#" class="form-pesquisa search-page" method="get" role="search">
-                    <input id="search-area" class="search-area" name="s" placeholder="Pesquisar vidraria..." type="search">
+                    <input id="search-area" class="search-area" name="s" placeholder="Pesquisar vidraria..."
+                        type="search">
                     <span class="search-submit" style="cursor: default;"><i class="fas fa-search"></i></span>
                 </form>
             </div>
 
-           <section class="items-list-container" id="vidrarias-accordion">
+            <section class="items-list-container" id="vidrarias-accordion">
                 <p>Carregando vidrarias...</p>
             </section>
-            
+
             <section class="action-buttons-list">
                 <a href="tecnicos.html" class="btn-global">voltar</a>
                 <a href="controle_reagentes.html" class="btn-global">ajustar reagentes</a>
                 <a href="#" class="btn-global">confirmar</a>
             </section>
-            
+
         </main>
         <button class="back-to-top">
             <img alt="Voltar ao Topo" height="66"
@@ -324,7 +325,9 @@
                             title="Siga-nos no Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                    </div> </div> <div id="cps-rodape-pnpc">
+                    </div>
+                </div>
+                <div id="cps-rodape-pnpc">
                     <a href="https://ugi.cps.sp.gov.br/" target="_blank">
                         <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
                             style="margin-bottom:10px;" />
@@ -336,7 +339,7 @@
                             title="Programa Nacional de Prevenção à Corrupção - Participante" />
                     </a>
                 </div>
-                </div>
+            </div>
             <div id="cps-rodape__creditos">
                 <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
                         target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
@@ -374,15 +377,28 @@
             </div>
         </section>
         <script src="../../JS (Front-End)/controle_vidraria.js"></script>
-        <script>
-            document.querySelector('.back-to-top').addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        </script>
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
+        <script src="../../JS (Front-End)/botao_topo.js"></script>
+        <div vw="" class="enabled"
+            style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+            <div vw-access-button="" class="active">
+                <img class="vp-access-button" data-src="assets/access_icon.svg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_icon.svg">
+                <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+            </div>
+            <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+                <div vp="">
+                </div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <script src="../../JS (Front-End)/logout.js"></script>
 </body>
 
 </html>

@@ -1253,4 +1253,14 @@ body.fb_hidden {
 .wp-container-core-columns-is-layout-9d6595d7 {
   flex-wrap: nowrap;
 }
+#userwayAccessibilityIcon,
+.uwy-userway-trigger,
+.uai-trigger-container,
+div[data-account="3eFXoC4I4A"] {
+    position: fixed !important;
+    bottom: auto !important;
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 230px !important;
+}
 

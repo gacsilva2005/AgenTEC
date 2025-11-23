@@ -354,12 +354,26 @@
                     <a class="button-custom" href="criar_kit.html">Ver Kits</a>
                 </div>
             </div>
-
-            <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-            <script>
-                new window.VLibras.Widget('https://vlibras.gov.br/app');
-            </script>
-            </section>
+        <div vw="" class="enabled"
+            style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
+            <div vw-access-button="" class="active">
+                <img class="vp-access-button" data-src="assets/access_icon.svg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_icon.svg">
+                <img class="vp-pop-up" data-src="assets/access_popup.jpg"
+                    alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
+                    src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+            </div>
+            <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
+                <div vp="">
+                </div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <script src="../../JS (Front-End)/logout.js"></script>
         </main>
         <!-- RODAPÉ CPS -->
         <button class="back-to-top">
@@ -494,15 +508,8 @@
             });
         </script>
         <script src="../../JS (Front-End)/logout.js"></script>
-        <script>
-            document.querySelector('.back-to-top').addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        </script>
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
+        <script src="../../JS (Front-End)/botao_topo.js"></script>
 </body>
 
 </html>
