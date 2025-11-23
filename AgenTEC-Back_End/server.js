@@ -21,6 +21,7 @@ class Server {
   #tec;
   #contasGenericas;
   #agendamentosTemporarios;
+  #reagentesSelecionados;
 
   constructor(port = 3000) {
     this.#app = express();
@@ -28,6 +29,7 @@ class Server {
     this.#app.use(bodyParser.json());
     this.#app.use(bodyParser.urlencoded({ extended: true }));
     this.#agendamentosTemporarios = new Map();
+    this.#reagentesSelecionados = [];
 
     this.#db = new Database({
       host: 'localhost',
@@ -505,6 +507,43 @@ class Server {
         return res.status(500).json({
           success: false,
           message: 'Erro interno do servidor ao buscar horários disponíveis'
+        });
+      }
+    });
+
+     this.#app.post('/api/reagentes-selecionados/adicionar', async (req, res) => {
+      try {
+        const reagenteData = req.body;
+
+        console.log('Recebendo reagente para adicionar ao array:', reagenteData);
+
+        // Verifica se o reagente já existe no array
+        const indexExistente = this.#reagentesSelecionados.findIndex(r => r.id === reagenteData.id);
+
+        if (indexExistente !== -1) {
+          // Atualiza a quantidade se já existir
+          this.#reagentesSelecionados[indexExistente].quantidade_escolhida = reagenteData.quantidade_escolhida;
+          this.#reagentesSelecionados[indexExistente].data_selecao = reagenteData.data_selecao;
+
+          console.log('Reagente atualizado no array:', this.#reagentesSelecionados[indexExistente]);
+        } else {
+          // Adiciona novo reagente ao array
+          this.#reagentesSelecionados.push(reagenteData);
+          console.log('Novo reagente adicionado ao array:', reagenteData);
+        }
+
+        res.json({
+          success: true,
+          message: 'Reagente adicionado ao array com sucesso',
+          data: reagenteData,
+          totalReagentes: this.#reagentesSelecionados.length
+        });
+
+      } catch (error) {
+        console.error('Erro ao adicionar reagente ao array:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor'
         });
       }
     });

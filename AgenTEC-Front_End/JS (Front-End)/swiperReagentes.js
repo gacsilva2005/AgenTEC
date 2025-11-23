@@ -93,20 +93,118 @@ document.addEventListener('DOMContentLoaded', async function () {
         modal.classList.remove('show');
     };
 
-    window.confirmarAdicao = function () {
+    // Função para enviar reagente para o array no servidor
+    async function enviarReagenteParaArray(reagenteData) {
+        try {
+            console.log('📤 Enviando reagente para array no servidor:', reagenteData);
+            
+            const response = await fetch('http://localhost:3000/api/reagentes-selecionados/adicionar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(reagenteData)
+            });
+
+            console.log('📥 Resposta do servidor - Status:', response.status);
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log('✅ Reagente adicionado ao array com sucesso:', result);
+            return result;
+
+        } catch (error) {
+            console.error('❌ Erro ao enviar reagente para o servidor:', error);
+            throw error;
+        }
+    }
+
+    // Função para mostrar notificação
+    function showNotification(message, isSuccess = true) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: ${isSuccess ? '#4CAF50' : '#f44336'};
+            color: white;
+            border-radius: 5px;
+            z-index: 10000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: slideIn 0.3s ease-out;
+        `;
+        
+        notification.textContent = message;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease-in forwards';
+            setTimeout(() => {
+                if (notification.parentNode) notification.remove();
+            }, 300);
+        }, 3000);
+    }
+
+    // Adiciona os estilos de animação
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+
+    window.confirmarAdicao = async function () {
         const quantidade = parseFloat(quantidadeInput.value);
+        
         if (!quantidade || quantidade <= 0) {
-            alert('Por favor, insira uma quantidade válida.');
+            showNotification('Por favor, insira uma quantidade válida.', false);
             return;
         }
 
         if (quantidade > currentReagente.quantidade) {
-            alert(`Quantidade indisponível! Máximo: ${currentReagente.quantidade}${currentReagente.unidade}`);
+            showNotification(`Quantidade indisponível! Máximo: ${currentReagente.quantidade}${currentReagente.unidade}`, false);
             return;
         }
 
-        console.log(`Adicionado: ${currentReagente.nome} - ${quantidade}${currentReagente.unidade}`);
-        fecharModal();
+        try {
+            // Prepara os dados do reagente
+            const reagenteData = {
+                id: currentReagente.id || Date.now(),
+                nome: currentReagente.nome,
+                tipo: currentReagente.tipo,
+                quantidade_escolhida: quantidade,
+                unidade: currentReagente.unidade,
+                quantidade_disponivel: currentReagente.quantidade,
+                data_selecao: new Date().toISOString()
+            };
+
+            console.log('🔄 Enviando reagente para array no servidor...', reagenteData);
+
+            // Envia para o servidor para adicionar ao array
+            await enviarReagenteParaArray(reagenteData);
+
+            // Feedback visual de sucesso
+            showNotification(`${currentReagente.nome} adicionado com sucesso!`);
+
+            console.log(`✅ Adicionado ao array: ${currentReagente.nome} - ${quantidade}${currentReagente.unidade}`);
+            
+            // Fecha o modal
+            fecharModal();
+
+        } catch (error) {
+            console.error('❌ Erro ao adicionar reagente ao array:', error);
+            showNotification('Erro ao adicionar reagente. Tente novamente.', false);
+        }
     };
 
     const searchInput = document.getElementById('search-area');
