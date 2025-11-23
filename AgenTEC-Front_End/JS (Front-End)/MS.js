@@ -16,7 +16,182 @@ document.addEventListener('DOMContentLoaded', function () {
         btnAbrirModal: !!btnAbrirModal
     });
 
-    // Função para mostrar notificações
+    // Função para mostrar popup personalizado
+    function showCustomPopup(message, isSuccess = false) {
+        console.log(`Popup: ${message}`);
+
+        // Remove popup existente se houver
+        const existingPopup = document.getElementById('customPopup');
+        if (existingPopup) existingPopup.remove();
+
+        // Remove estilos antigos se existirem
+        const oldStyles = document.getElementById('customPopupStyles');
+        if (oldStyles) oldStyles.remove();
+
+        // Cria o elemento do popup COM ESTILOS ISOLADOS
+        const popupElement = document.createElement('div');
+        popupElement.id = 'customPopup';
+
+        // Estilos inline para evitar conflitos
+        popupElement.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+    `;
+
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    `;
+
+        const content = document.createElement('div');
+        content.style.cssText = `
+        position: relative;
+        background: white;
+        padding: 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 90%;
+        animation: customPopupFadeIn 0.3s ease-out;
+        z-index: 10000;
+    `;
+
+        // Cria estilos específicos apenas para este popup
+        const styles = document.createElement('style');
+        styles.id = 'customPopupStyles';
+        styles.textContent = `
+        :root{
+            --primary-red: #970000;
+            --primary-color: #243E63; 
+            --hoverCian-color: #005C6D;
+        }
+
+        @keyframes customPopupFadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        @keyframes customPopupFadeOut {
+            from { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+            to { 
+                opacity: 0; 
+                transform: translateY(-20px) scale(0.95); 
+            }
+        }
+        .custom-popup-header {
+            background: ${isSuccess ? '#4CAF50' : 'var(--primary-red)'};
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            margin: 0;
+        }
+        .custom-popup-header h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        .custom-popup-body {
+            padding: 20px;
+            color: #333;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        .custom-popup-footer {
+            padding: 15px 20px;
+            text-align: right;
+            border-top: 1px solid #eee;
+        }
+        .custom-popup-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .custom-popup-button:hover {
+            background: var(--hoverCian-color);
+        }
+    `;
+
+        // Estrutura do popup
+        content.innerHTML = `
+        <div class="custom-popup-header">
+            <h3>${isSuccess ? 'Sucesso' : 'Atenção'}</h3>
+        </div>
+        <div class="custom-popup-body">
+            <p>${message}</p>
+        </div>
+        <div class="custom-popup-footer">
+            <button id="popupOkButton" class="custom-popup-button">OK</button>
+        </div>
+    `;
+
+        // Monta a estrutura
+        popupElement.appendChild(overlay);
+        popupElement.appendChild(content);
+        document.head.appendChild(styles);
+        document.body.appendChild(popupElement);
+
+        // Adiciona evento para fechar o popup
+        const okButton = document.getElementById('popupOkButton');
+
+        const closePopup = function () {
+            content.style.animation = 'customPopupFadeOut 0.3s ease-out forwards';
+            setTimeout(() => {
+                if (popupElement.parentNode) {
+                    popupElement.remove();
+                }
+                if (styles.parentNode) {
+                    styles.remove();
+                }
+            }, 300);
+        };
+
+        if (okButton) {
+            okButton.addEventListener('click', closePopup);
+        }
+
+        overlay.addEventListener('click', closePopup);
+
+        // Fecha com ESC key
+        const handleEscKey = function (e) {
+            if (e.key === 'Escape') {
+                closePopup();
+                document.removeEventListener('keydown', handleEscKey);
+            }
+        };
+        document.addEventListener('keydown', handleEscKey);
+
+        // Remove o event listener quando o popup é fechado
+        popupElement._closePopup = closePopup;
+    }
+
+    // Função para mostrar notificações (mantida para outros casos)
     function showMessage(message, isSuccess = false) {
         console.log(`Notificação: ${message}`);
 
@@ -188,11 +363,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 return true;
             } else {
                 console.warn('⚠️ Dados de agendamento incompletos ou não encontrados no servidor');
-                showMessage('Erro: Nenhum agendamento encontrado no servidor. Volte e faça o agendamento primeiro.', false);
+                // AGORA USA O POPUP PERSONALIZADO EM VEZ DA MENSAGEM DE ERRO
+                showCustomPopup('Ainda não foi realizado um agendamento, por gentileza, retorne e escolha uma data', false);
                 return false;
             }
         } catch (error) {
             console.error('❌ Erro ao carregar dados do agendamento:', error);
+            // Para erros de rede, ainda usa a mensagem padrão
             showMessage('Erro ao carregar dados do agendamento do servidor.', false);
             return false;
         }
@@ -213,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
             showMessage('Dados carregados com sucesso!', true);
             console.log('✅ Modal aberto com dados reais do servidor');
         } else {
-            showMessage('Erro: Não foi possível carregar os dados do agendamento do servidor.', false);
+            // Não precisa mais mostrar mensagem aqui, pois o popup já foi mostrado em carregarDadosAgendamento()
             console.error('❌ Falha ao carregar dados do servidor para o modal');
         }
     }

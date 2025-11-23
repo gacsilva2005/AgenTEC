@@ -645,6 +645,16 @@ body, html {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
+
+#vlibras* {
+    z-index: 100000 !important;
+    position: relative !important;
+}
+
+.widget-vlibras, .access-button {
+    z-index: 100001 !important;
+}
+
 #userwayAccessibilityIcon,
 .uwy-userway-trigger,
 .uai-trigger-container,
