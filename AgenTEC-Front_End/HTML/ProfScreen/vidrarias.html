@@ -294,182 +294,176 @@
                 </button>
             </div>
             <div class="title-underline"></div>
-            <div vw="" class="enabled"
-                style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
-                <div vw-access-button="" class="active">
-                    <img class="vp-access-button" data-src="assets/access_icon.svg"
-                        alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                        src="https://vlibras.gov.br/app//assets/access_icon.svg">
-                    <img class="vp-pop-up" data-src="assets/access_popup.jpg"
-                        alt="Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga."
-                        src="https://vlibras.gov.br/app//assets/access_popup.jpg">
+
+    </div>
+
+    <div class="main-container">
+        <div class="search-container">
+            <form action="#" class="form-pesquisa" method="get" role="search">
+                <input id="search-area" class="search-area" name="s" placeholder="Buscar Vidrarias" type="search">
+                <button class="search-submit" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+
+        <div class="container swiper">
+            <div class="card-wrapper">
+                <ul class="card-list swiper-wrapper">
+
+                </ul>
+
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <div id="reagenteModal" class="modal-backdrop">
+
+            <div class="modal-content">
+
+                <h3 class="modal-title" id="modalReagenteTitle">Adicionar Vidraria</h3>
+                <p>Informe o tamanho do recipiente (ml):</p>
+
+                <div class="input-group">
+                    <label for="quantidade-vidraria" class="unit">Qtd</label>
+                    <select id="quantidade-vidraria" name="quantidade-vidraria" required>
+                        <option value="" disabled selected>20ml</option>
+                        <option value="1">50ml</option>
+                        <option value="2">100ml</option>
+                        <option value="5">150ml</option>
+                        <option value="10">200ml</option>
+                    </select>
                 </div>
-                <div vw-plugin-wrapper="" class="" style="background: rgb(235, 235, 235);">
-                    <div vp="">
-                    </div>
+
+                <div class="modal-actions">
+                    <a class="button-cancel" onclick="fecharModal()">Cancelar</a>
+                    <a class="button-confirm" onclick="confirmarAdicao()">Confirmar</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a class="button-custom" href="MR.html">Voltar</a>
+            <a class="button-custom" id="buttom-confirm" href="MS.html">Confirmar</a>
+            <a class="button-custom" href="kitprofessor.html">Ver Kits</a>
+        </div>
+    </div>
+    </main>
+    <!-- RODAPÉ CPS -->
+    <button class="back-to-top">
+        <img alt="Voltar ao Topo" height="66"
+            src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png" width="66" />
+    </button>
+    <footer id="cps-rodape">
+        <div id="cps-rodape__redes-e-infos">
+            <!-- SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
+            <!-- /SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
+            <!-- SE FOR SITE DE ETEC/FATEC -->
+            <div id="cps-rodape__infos">
+                <div>
+                    <span>
+                        <h6>Etec Júlio de Mesquita</h6>Rua Prefeito Justino Paixão, 150 - Centro - Santo André/SP -
+                        CEP: 09020-130
+                    </span>
+                    <span>
+                        <h6>Telefone:</h6> (11) 4990-2577 / (11) 4990-2644
+                    </span>
+                    <span>
+                        <h6>Horário de funcionamento:</h6> Seg. a Sex. das 07:00 às 22:50
+                    </span>
                 </div>
             </div>
-
-            <div class="main-container">
-                <div class="search-container">
-                    <form action="#" class="form-pesquisa" method="get" role="search">
-                        <input id="search-area" class="search-area" name="s" placeholder="Buscar Vidrarias"
-                            type="search">
-                        <button class="search-submit" type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-
-                <div class="container swiper">
-                    <div class="card-wrapper">
-                        <ul class="card-list swiper-wrapper">
-
-                        </ul>
-
-                        <div class="swiper-pagination"></div>
-                    </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-
-                <div id="reagenteModal" class="modal-backdrop">
-
-                    <div class="modal-content">
-
-                        <h3 class="modal-title" id="modalReagenteTitle">Adicionar Vidraria</h3>
-                        <p>Informe o tamanho do recipiente (ml):</p>
-
-                        <div class="input-group">
-                            <label for="quantidade-vidraria" class="unit">Qtd</label>
-                            <select id="quantidade-vidraria" name="quantidade-vidraria" required>
-                                <option value="" disabled selected>20ml</option>
-                                <option value="1">50ml</option>
-                                <option value="2">100ml</option>
-                                <option value="5">150ml</option>
-                                <option value="10">200ml</option>
-                            </select>
-                        </div>
-
-                        <div class="modal-actions">
-                            <a class="button-cancel" onclick="fecharModal()">Cancelar</a>
-                            <a class="button-confirm" onclick="confirmarAdicao()">Confirmar</a>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="button-container">
-                    <a class="button-custom" href="MR.html">Voltar</a>
-                    <a class="button-custom" id="buttom-confirm" href="professor.html">Confirmar</a>
-                    <a class="button-custom" href="kitprofessor.html">Ver Kits</a>
-                </div>
-            </div>
-        </main>
-        <!-- RODAPÉ CPS -->
-        <button class="back-to-top">
-            <img alt="Voltar ao Topo" height="66"
-                src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
-                width="66" />
-        </button>
-        <footer id="cps-rodape">
-            <div id="cps-rodape__redes-e-infos">
-                <!-- SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-                <!-- /SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-                <!-- SE FOR SITE DE ETEC/FATEC -->
-                <div id="cps-rodape__infos">
-                    <div>
-                        <span>
-                            <h6>Etec Júlio de Mesquita</h6>Rua Prefeito Justino Paixão, 150 - Centro - Santo André/SP -
-                            CEP: 09020-130
-                        </span>
-                        <span>
-                            <h6>Telefone:</h6> (11) 4990-2577 / (11) 4990-2644
-                        </span>
-                        <span>
-                            <h6>Horário de funcionamento:</h6> Seg. a Sex. das 07:00 às 22:50
-                        </span>
-                    </div>
-                </div>
-                <div id="cps-rodape__redes">
-                    <h6>Redes</h6>
-                    <div id="cps-rodape__redes-icones">
-                        <a href="https://twitter.com/etecjm" target="blank" title="Siga-nos no X">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </a>
-
-                        <a href="https://facebook.com/etecjuliodemesquita" target="blank" title="Siga-nos no Facebook">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-
-                        <a href="https://www.instagram.com/etecjuliodemesquita" target="blank"
-                            title="Siga-nos no Instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </div> <!-- #cps-rodape__redes-icones -->
-                </div> <!-- #cps-rodape__redes -->
-                <!-- SE FOR SITE CPS PRINCIPAL -->
-                <!-- SELO PNPC -->
-                <div id="cps-rodape-pnpc">
-                    <a href="https://ugi.cps.sp.gov.br/" target="_blank">
-                        <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
-                            style="margin-bottom:10px;" />
+            <div id="cps-rodape__redes">
+                <h6>Redes</h6>
+                <div id="cps-rodape__redes-icones">
+                    <a href="https://twitter.com/etecjm" target="blank" title="Siga-nos no X">
+                        <i class="fa-brands fa-x-twitter"></i>
                     </a>
-                    <a href="https://sites.tcu.gov.br/verifique-adesao-pnpc/" target="_blank">
-                        <img alt="Programa Nacional de Prevenção à Corrupção - Participante"
-                            class="programa-contra-corrupcao"
-                            src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2023/04/logo-PNPC.png"
-                            title="Programa Nacional de Prevenção à Corrupção - Participante" />
-                    </a>
-                </div>
-                <!-- /SELO PNPC -->
-            </div>
-            <!-- SE NÃO FOR SITE CPS PRINCIPAL -->
-            <!-- #cps-rodape__redes-e-infos -->
-            <!-- COPYRIGHT -->
-            <div id="cps-rodape__creditos">
-                <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
-                        target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
-                <p>Para mais informações de como os dados pessoais são tratados em nosso site acesse <a
-                        href="https://www.cps.sp.gov.br/aviso-de-privacidade/" target="_blank"
-                        title="Aviso de Privacidade">Aviso de
-                        Privacidade</a>.</p>
-            </div>
-        </footer>
-        <link
-            href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/rodape-padrao-govsp.min.css"
-            rel="stylesheet" type="text/css" />
-        <section id="govsp-rodape">
-            <div class="container">
-                <div class="linha-botoes">
-                    <div class="coluna-4">
-                        <a class="btn btn-model" href="https://fala.sp.gov.br/">Ouvidoria</a>
-                    </div>
-                    <div class="coluna-4">
-                        <a class="btn btn-model" href="http://www.transparencia.sp.gov.br/">Transparência</a>
-                    </div>
-                    <div class="coluna-4">
-                        <a class="btn btn-model" href="http://www.sic.sp.gov.br/">SIC</a>
-                    </div>
-                </div>
-            </div>
-            <div class="container rodape">
-                <div class="logo-rodape">
-                    <a href="https://www.saopaulo.sp.gov.br/">
-                        <img alt="site do Governo de São Paulo" height="38"
-                            src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-rodape-governo-do-estado-sp.png"
-                            width="206" />
-                    </a>
-                </div>
-            </div>
-        </section>
-        <!-- RODAPÉ CPS -->
 
-        <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-        <script src="../../JS (Front-End)/swiperVidrarias.js"></script>
-        <script src="../../JS (Front-End)/logout.js"></script>
-        <script>
-        </script>
-        <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
-        <script src="../../JS (Front-End)/botao_topo.js"></script>
+                    <a href="https://facebook.com/etecjuliodemesquita" target="blank" title="Siga-nos no Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/etecjuliodemesquita" target="blank"
+                        title="Siga-nos no Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div> <!-- #cps-rodape__redes-icones -->
+            </div> <!-- #cps-rodape__redes -->
+            <!-- SE FOR SITE CPS PRINCIPAL -->
+            <!-- SELO PNPC -->
+            <div id="cps-rodape-pnpc">
+                <a href="https://ugi.cps.sp.gov.br/" target="_blank">
+                    <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
+                        style="margin-bottom:10px;" />
+                </a>
+                <a href="https://sites.tcu.gov.br/verifique-adesao-pnpc/" target="_blank">
+                    <img alt="Programa Nacional de Prevenção à Corrupção - Participante"
+                        class="programa-contra-corrupcao"
+                        src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2023/04/logo-PNPC.png"
+                        title="Programa Nacional de Prevenção à Corrupção - Participante" />
+                </a>
+            </div>
+            <!-- /SELO PNPC -->
+        </div>
+        <!-- SE NÃO FOR SITE CPS PRINCIPAL -->
+        <!-- #cps-rodape__redes-e-infos -->
+        <!-- COPYRIGHT -->
+        <div id="cps-rodape__creditos">
+            <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
+                    target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
+            <p>Para mais informações de como os dados pessoais são tratados em nosso site acesse <a
+                    href="https://www.cps.sp.gov.br/aviso-de-privacidade/" target="_blank"
+                    title="Aviso de Privacidade">Aviso de
+                    Privacidade</a>.</p>
+        </div>
+    </footer>
+    <link
+        href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/rodape-padrao-govsp.min.css"
+        rel="stylesheet" type="text/css" />
+    <section id="govsp-rodape">
+        <div class="container">
+            <div class="linha-botoes">
+                <div class="coluna-4">
+                    <a class="btn btn-model" href="https://fala.sp.gov.br/">Ouvidoria</a>
+                </div>
+                <div class="coluna-4">
+                    <a class="btn btn-model" href="http://www.transparencia.sp.gov.br/">Transparência</a>
+                </div>
+                <div class="coluna-4">
+                    <a class="btn btn-model" href="http://www.sic.sp.gov.br/">SIC</a>
+                </div>
+            </div>
+        </div>
+        <div class="container rodape">
+            <div class="logo-rodape">
+                <a href="https://www.saopaulo.sp.gov.br/">
+                    <img alt="site do Governo de São Paulo" height="38"
+                        src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-rodape-governo-do-estado-sp.png"
+                        width="206" />
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- RODAPÉ CPS -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="../../JS (Front-End)/swiperVidrarias.js"></script>
+    <script src="../../JS (Front-End)/logout.js"></script>
+    <script>
+    </script>
+    <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
+    <script src="../../JS (Front-End)/botao_topo.js"></script>
 </body>
 
 </html>

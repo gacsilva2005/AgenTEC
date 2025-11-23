@@ -956,6 +956,42 @@ html {
     margin: 0 0 10px 0;
 }
 
+/* VLibras Widget - Posicionamento Correto */
+.vlibras-wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+}
+
+.vw-plugin-top-wrapper {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 10000 !important;
+}
+
+/* Garantir que o botão do VLibras fique no canto */
+vw-access-button {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 10000 !important;
+}
+
+/* Estilo personalizado opcional para o botão */
+.vw-access-button {
+    background: #2c3e50 !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+.vw-access-button:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4) !important;
+}
+
 #userwayAccessibilityIcon,
 .uwy-userway-trigger,
 .uai-trigger-container,
