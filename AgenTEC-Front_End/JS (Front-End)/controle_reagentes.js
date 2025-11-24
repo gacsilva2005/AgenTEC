@@ -1,4 +1,4 @@
-// controle_reagentes.js (Versão Final com Modal de Confirmação de Aplicação)
+// controle_reagentes.js (Versão Final com Modal de Confirmação de Aplicação e Correção de Scroll)
 
 const BACKEND_URL = 'http://localhost:3000/api';
 
@@ -26,13 +26,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // Botão Global "Aplicar" no final da página (CORRIGIDO PARA USAR O ID)
     const globalApplyBtn = document.getElementById('global-apply-btn');
     
-    // Variáveis para o body e html (necessário para travar o scroll)
-    const body = document.body;
-    const html = document.documentElement; // Referência ao elemento <html>
-    
     // Variáveis para guardar o contexto de edição
     let currentItemName = '';
     let currentItemUnit = '';
+
+    // --- CORREÇÃO: Contador para rastrear quantos modais estão abertos ---
+    let openModalCount = 0;
+
+    // Variáveis para o body e html (necessário para travar o scroll)
+    const body = document.body;
+    const html = document.documentElement; // Referência ao elemento <html>
+
+    // --- FUNÇÃO CORE: VERIFICA E LIBERA O SCROLL (AGORA BASEADO NO CONTADOR) ---
+    const checkAndReleaseScroll = () => {
+        // Se o contador for zero, remove as classes de bloqueio.
+        if (openModalCount <= 0) {
+            // Garante que o contador nunca seja negativo.
+            openModalCount = 0; 
+            body.classList.remove('modal-open-noscroll');
+            html.classList.remove('modal-open-noscroll');
+        } else {
+            // Se o contador for > 0, garante que o bloqueio esteja ativo.
+            body.classList.add('modal-open-noscroll');
+            html.classList.add('modal-open-noscroll');
+        }
+    };
 
     // --- FUNÇÕES DE CONTROLE DO MODAL DE EDIÇÃO ---
     const showModal = (itemNome, unidade, quantidadeAtual) => {
@@ -48,20 +66,27 @@ document.addEventListener('DOMContentLoaded', () => {
         
         editModal.style.display = 'flex'; 
         
-        // Trava o scroll da página
-        body.classList.add('modal-open-noscroll');
-        html.classList.add('modal-open-noscroll');
+        // CORREÇÃO: Incrementa o contador e trava o scroll
+        openModalCount++;
+        checkAndReleaseScroll();
     };
 
+    // FUNÇÃO hideModal ATUALIZADA para usar o contador
     const hideModal = (modalToHide = editModal) => {
-        modalToHide.style.display = 'none';
-        newQuantityInput.classList.remove('error');
-        
-        // Libera o scroll da página se for o último modal a fechar
-        if (editModal.style.display === 'none' && successModal.style.display === 'none' && applyConfirmModal.style.display === 'none') {
-            body.classList.remove('modal-open-noscroll');
-            html.classList.remove('modal-open-noscroll');
+        // Verifica se o modal estava realmente visível antes de decrementar
+        if (modalToHide.style.display !== 'none') {
+             openModalCount--;
         }
+
+        modalToHide.style.display = 'none';
+        
+        // Remove a classe de erro se existir
+        if (modalToHide === editModal) {
+            newQuantityInput.classList.remove('error');
+        }
+        
+        // Chama a função de verificação para liberar o scroll, se for o último a fechar
+        checkAndReleaseScroll();
     };
 
     // --- FUNÇÃO DE CONTROLE DO MODAL DE SUCESSO ---
@@ -69,16 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
         successMessage.textContent = `Quantidade de ${itemName} atualizada para: ${newQty} ${unit}`;
         successModal.style.display = 'flex';
         
-        // Trava o scroll 
-        body.classList.add('modal-open-noscroll');
-        html.classList.add('modal-open-noscroll');
+        // CORREÇÃO: Incrementa o contador e trava o scroll
+        openModalCount++;
+        checkAndReleaseScroll();
     };
     
     // --- FUNÇÃO PARA MOSTRAR O MODAL DE CONFIRMAÇÃO DE APLICAÇÃO ---
     const showApplyConfirmModal = () => {
         applyConfirmModal.style.display = 'flex';
-        body.classList.add('modal-open-noscroll');
-        html.classList.add('modal-open-noscroll');
+        // CORREÇÃO: Incrementa o contador e trava o scroll
+        openModalCount++;
+        checkAndReleaseScroll();
     };
 
     // Event listeners do Modal de Edição
@@ -94,6 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
     applyConfirmBtn.addEventListener('click', () => {
         // Ação de aplicar (salvamento seria aqui)
         console.log("Alterações aplicadas e salvando...");
+        
+        // Esconde o modal de confirmação antes de redirecionar
+        hideModal(applyConfirmModal); 
         
         // Redireciona para tecnicos.html
         window.location.href = 'tecnicos.html';
@@ -119,10 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Atualiza os dados na interface
             updateItemTotal(currentItemName, novaQuantidade, currentItemUnit);
             
-            // 2. Esconde o modal de edição
+            // 2. Esconde o modal de edição (decrementa o contador)
             hideModal(editModal);
             
-            // 3. Mostra o modal de sucesso (Substituindo o alert)
+            // 3. Mostra o modal de sucesso (incrementa o contador)
             showSuccessModal(currentItemName, novaQuantidade, currentItemUnit);
 
         } else {
@@ -188,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Atualiza o valor de miligramas na descrição
                     const descSpan = detailsContainer.querySelector('.variation-desc');
                     if (descSpan) {
-                        // Removendo o negrito (**) da string no recalculo
+                        // O texto "Conversão (g -> mg): " está embutido no HTML, então só atualizamos o valor
                         descSpan.innerHTML = `Conversão (g &rarr; mg): ${miligramas.toFixed(2)} mg`;
                     }
                     // Atualiza o data-attribute do botão
@@ -313,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="variation-row">
                             <div class="variation-info" style="flex-direction: column; align-items: flex-start;">
                                 <span class="variation-desc">
-                                    ${miligramas.toFixed(2)} mg
+                                    Conversão (g &rarr; mg): ${miligramas.toFixed(2)} mg
                                 </span>
                             </div>
                             <span class="variation-qty">${unidadeComQtd}</span>
