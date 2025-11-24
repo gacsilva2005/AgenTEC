@@ -31,6 +31,7 @@ class Server {
     this.#app.use(bodyParser.urlencoded({ extended: true }));
     this.#agendamentosTemporarios = new Map();
     this.#reagentesSelecionados = [];
+    this.#vidrariasSelecionadas = []; // Inicializando o array para vidrarias
 
     this.#db = new Database({
       host: 'localhost',
@@ -94,7 +95,7 @@ class Server {
 
   #configRoutes() {
     // -----------------------------
-    // LOGIN
+    // LOGIN - CORRIGIDA
     // -----------------------------
     this.#app.post('/login', async (req, res) => {
       const { email, senha } = req.body;
@@ -103,10 +104,36 @@ class Server {
       // Primeiro verifica nas contas genéricas
       if (this.#contasGenericas[email]) {
         if (this.#contasGenericas[email].senha === senha) {
-          return res.json({
-            success: true,
-            usuario: this.#contasGenericas[email].usuario
-          });
+          // Tenta buscar o ID real do banco para contas genéricas
+          try {
+            let idReal = this.#contasGenericas[email].usuario.id;
+
+            // Para professor, tenta buscar do banco
+            if (email === 'professor@prof.com') {
+              const professorDB = await this.#db.query('SELECT id_professor FROM professor WHERE email_professor = ?', [email]);
+              if (professorDB.length > 0) {
+                idReal = professorDB[0].id_professor;
+                console.log(`✅ Usando ID real do banco para professor: ${idReal}`);
+              }
+            }
+
+            const usuario = {
+              ...this.#contasGenericas[email].usuario,
+              id: idReal // Usa o ID real do banco quando disponível
+            };
+
+            return res.json({
+              success: true,
+              usuario: usuario
+            });
+          } catch (dbError) {
+            console.log('⚠️ Usando ID da conta genérica:', dbError.message);
+            // Se der erro, usa o ID da conta genérica
+            return res.json({
+              success: true,
+              usuario: this.#contasGenericas[email].usuario
+            });
+          }
         } else {
           return res.status(401).json({ success: false, message: 'Senha incorreta' });
         }
@@ -143,7 +170,7 @@ class Server {
         console.error('Erro no login:', error);
         return res.status(500).json({ success: false, message: 'Erro interno no servidor' });
       }
-    });
+    }); // FECHAMENTO CORRETO DA ROTA LOGIN
 
     // -----------------------------
     // VERIFICAR AGENDAMENTOS POR DATA
@@ -331,6 +358,23 @@ class Server {
           });
         }
 
+        // VERIFICA SE O PROFESSOR EXISTE
+        try {
+          const professorExiste = await this.#db.query('SELECT id_professor FROM professor WHERE id_professor = ?', [professor_id]);
+          if (professorExiste.length === 0) {
+            return res.status(400).json({
+              success: false,
+              message: `Professor com ID ${professor_id} não encontrado no banco de dados`
+            });
+          }
+        } catch (error) {
+          console.error('❌ Erro ao verificar professor:', error);
+          return res.status(500).json({
+            success: false,
+            message: 'Erro ao verificar dados do professor'
+          });
+        }
+
         // Calcula horário_fim se não fornecido
         const horarioFimCalculado = horario_fim || this.#calcularHorarioFim(horario_inicio);
 
@@ -380,7 +424,7 @@ class Server {
 
         console.log('✅ Agendamento confirmado no banco. ID:', result.insertId);
 
-        // Remove agendamentos temporários (opcional)
+        // Remove agendamentos temporários
         this.#agendamentosTemporarios.clear();
 
         res.json({
@@ -391,9 +435,15 @@ class Server {
 
       } catch (err) {
         console.error('❌ Erro ao confirmar agendamento:', err);
+
+        let mensagemErro = 'Erro interno ao confirmar agendamento';
+        if (err.code === 'ER_NO_REFERENCED_ROW_2') {
+          mensagemErro = 'Erro: Professor não encontrado no banco de dados. Faça login novamente.';
+        }
+
         res.status(500).json({
           success: false,
-          message: 'Erro interno ao confirmar agendamento: ' + err.message
+          message: mensagemErro + ': ' + err.message
         });
       }
     });
@@ -420,7 +470,7 @@ class Server {
     });
 
     // =========================================================================
-    // ROTAS PARA REAGENTES SELECIONADOS (TODAS AS ROTAS NECESSÁRIAS)
+    // ROTAS PARA REAGENTES SELECIONADOS
     // =========================================================================
 
     // Rota para adicionar reagente ao array
@@ -766,11 +816,8 @@ class Server {
     });
 
     // =========================================================================
-    // ROTAS PARA VIDRARIAS SELECIONADAS (EM MEMÓRIA - IGUAL AOS REAGENTES)
+    // ROTAS PARA VIDRARIAS SELECIONADAS
     // =========================================================================
-
-    // Array para armazenar vidrarias selecionadas (em memória)
-    this.#vidrariasSelecionadas = [];
 
     // Rota para adicionar vidraria ao array
     this.#app.post('/api/vidrarias-selecionadas', (req, res) => {
@@ -885,6 +932,196 @@ class Server {
         res.status(500).json({
           success: false,
           message: 'Erro interno do servidor'
+        });
+      }
+    });
+
+    // Rota para debug - verificar professores no banco
+    this.#app.get('/api/debug/professores', async (req, res) => {
+      try {
+        const professores = await this.#db.query('SELECT * FROM professor');
+
+        res.json({
+          success: true,
+          professores: professores,
+          total: professores.length
+        });
+      } catch (error) {
+        console.error('Erro ao buscar professores:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro ao buscar professores'
+        });
+      }
+    });
+
+    // =========================================================================
+    // ROTAS PARA MATERIAIS SELECIONADOS (BANCO DE DADOS)
+    // =========================================================================
+
+    // Rota para salvar materiais selecionados no banco
+    // Rota para salvar materiais selecionados no banco - VERSÃO CORRIGIDA
+    this.#app.post('/api/materiais-selecionados/salvar', async (req, res) => {
+      try {
+        const { professor_id, agendamento_id, reagentes, vidrarias } = req.body;
+
+        console.log('💾 Salvando materiais no banco de dados...');
+
+        if (!professor_id) {
+          return res.status(400).json({
+            success: false,
+            message: 'ID do professor é obrigatório'
+          });
+        }
+
+        let materiaisSalvos = [];
+
+        // 🔧 SALVAR REAGENTES (SEM CAPACIDADE)
+        if (reagentes && reagentes.length > 0) {
+          for (const reagente of reagentes) {
+            const query = `
+                    INSERT INTO materiaisSelecionados 
+                    (professor_id_professor, agendamentos_id_agendamento, tipo_material, nome_material, tipo_categoria, quantidade_selecionada, unidade)
+                    VALUES (?, ?, 'reagente', ?, ?, ?, ?)
+                `;
+
+            const result = await this.#db.query(query, [
+              professor_id,
+              agendamento_id || null,
+              reagente.nome,
+              reagente.tipo || 'Reagente',
+              reagente.quantidade_escolhida || reagente.quantidade || 1,
+              reagente.unidade || 'un'
+            ]);
+
+            materiaisSalvos.push({
+              id: result.insertId,
+              tipo: 'reagente',
+              ...reagente
+            });
+
+            console.log(`✅ Reagente salvo: ${reagente.nome}`);
+          }
+        }
+
+        // 🔧 SALVAR VIDRARIAS (COM CAPACIDADE)
+        if (vidrarias && vidrarias.length > 0) {
+          for (const vidraria of vidrarias) {
+            // Garantir que a capacidade existe
+            const capacidade = vidraria.capacidade || vidraria.descricao || 'Não especificada';
+            const unidade = vidraria.unidade || 'un';
+
+            const query = `
+                    INSERT INTO materiaisSelecionados 
+                    (professor_id_professor, agendamentos_id_agendamento, tipo_material, nome_material, tipo_categoria, quantidade_selecionada, unidade, capacidade)
+                    VALUES (?, ?, 'vidraria', ?, ?, ?, ?, ?)
+                `;
+
+            const result = await this.#db.query(query, [
+              professor_id,
+              agendamento_id || null,
+              vidraria.nome,
+              'Vidraria', // categoria
+              1, // quantidade sempre 1 para vidrarias
+              unidade,
+              capacidade
+            ]);
+
+            materiaisSalvos.push({
+              id: result.insertId,
+              tipo: 'vidraria',
+              ...vidraria
+            });
+
+            console.log(`✅ Vidraria salva: ${vidraria.nome} - ${capacidade}`);
+          }
+        }
+
+        console.log(`✅ ${materiaisSalvos.length} materiais salvos no banco`);
+
+        res.json({
+          success: true,
+          message: 'Materiais salvos com sucesso no banco de dados',
+          materiaisSalvos: materiaisSalvos,
+          total: materiaisSalvos.length
+        });
+
+      } catch (error) {
+        console.error('❌ Erro ao salvar materiais no banco:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor ao salvar materiais: ' + error.message
+        });
+      }
+    });
+
+    // Rota para buscar materiais selecionados do banco
+    this.#app.get('/api/materiais-selecionados/:professor_id', async (req, res) => {
+      try {
+        const { professor_id } = req.params;
+
+        console.log(`🔍 Buscando materiais do professor ID: ${professor_id}`);
+
+        const query = `
+            SELECT * FROM materiaisSelecionados 
+            WHERE professor_id_professor = ? 
+            ORDER BY data_selecao DESC, tipo_material, nome_material
+        `;
+
+        const materiais = await this.#db.query(query, [professor_id]);
+
+        // Separar em reagentes e vidrarias
+        const reagentes = materiais.filter(m => m.tipo_material === 'reagente');
+        const vidrarias = materiais.filter(m => m.tipo_material === 'vidraria');
+
+        console.log(`✅ ${materiais.length} materiais encontrados no banco`);
+
+        res.json({
+          success: true,
+          materiais: materiais,
+          reagentes: reagentes,
+          vidrarias: vidrarias,
+          total: materiais.length
+        });
+
+      } catch (error) {
+        console.error('❌ Erro ao buscar materiais do banco:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor ao buscar materiais'
+        });
+      }
+    });
+
+    // Rota para remover material selecionado do banco
+    this.#app.delete('/api/materiais-selecionados/remover/:id', async (req, res) => {
+      try {
+        const { id } = req.params;
+
+        console.log(`🗑️ Removendo material do banco, ID: ${id}`);
+
+        const query = 'DELETE FROM materiaisSelecionados WHERE id_material_selecionado = ?';
+        const result = await this.#db.query(query, [id]);
+
+        if (result.affectedRows === 0) {
+          return res.status(404).json({
+            success: false,
+            message: 'Material não encontrado no banco'
+          });
+        }
+
+        console.log('✅ Material removido do banco');
+
+        res.json({
+          success: true,
+          message: 'Material removido com sucesso do banco de dados'
+        });
+
+      } catch (error) {
+        console.error('❌ Erro ao remover material do banco:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor ao remover material'
         });
       }
     });

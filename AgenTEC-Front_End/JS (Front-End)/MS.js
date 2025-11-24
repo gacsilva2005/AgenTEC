@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Na inicialização da página de materiais selecionados, adicione:
+    // Na ação da página de materiais selecionados, adicione:
     console.log('🔄 Carregando vidrarias selecionadas...');
     carregarVidrariasSelecionadas();
 
@@ -507,6 +507,168 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // =========================================================================
+    // FUNÇÕES PARA BANCO DE DADOS
+    // =========================================================================
+
+    // Função para salvar materiais no banco
+    // Função para salvar materiais no banco (APENAS QUANDO CONFIRMAR)
+    async function salvarMateriaisNoBanco(professor_id, agendamento_id = null) {
+        try {
+            console.log('💾 Iniciando processo de salvamento no banco...');
+
+            // Busca os materiais da memória do servidor
+            let reagentesData = [];
+            let vidrariasData = [];
+
+            try {
+                const reagentesResponse = await fetch('http://localhost:3000/api/reagentes-selecionados');
+                if (reagentesResponse.ok) {
+                    const reagentesResult = await reagentesResponse.json();
+                    reagentesData = reagentesResult.success ? reagentesResult.reagentes : [];
+                }
+            } catch (error) {
+                console.error('❌ Erro ao buscar reagentes:', error);
+            }
+
+            try {
+                const vidrariasResponse = await fetch('http://localhost:3000/api/vidrarias-selecionadas');
+                if (vidrariasResponse.ok) {
+                    const vidrariasResult = await vidrariasResponse.json();
+                    vidrariasData = vidrariasResult.success ? vidrariasResult.vidrarias : [];
+                }
+            } catch (error) {
+                console.error('❌ Erro ao buscar vidrarias:', error);
+            }
+
+            const dados = {
+                professor_id: professor_id,
+                agendamento_id: agendamento_id,
+                reagentes: reagentesData,
+                vidrarias: vidrariasData
+            };
+
+            console.log('💾 Enviando materiais para o banco:', {
+                professor_id: professor_id,
+                agendamento_id: agendamento_id,
+                total_reagentes: reagentesData.length,
+                total_vidrarias: vidrariasData.length
+            });
+
+            // Salva no banco
+            const response = await fetch('http://localhost:3000/api/materiais-selecionados/salvar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dados)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            if (result.success) {
+                console.log('✅ Materiais salvos no banco:', result.materiaisSalvos);
+
+                // Limpa os arrays em memória APENAS se salvou com sucesso
+                try {
+                    await fetch('http://localhost:3000/api/reagentes-selecionados/limpar', { method: 'DELETE' });
+                    await fetch('http://localhost:3000/api/vidrarias-selecionadas/limpar', { method: 'DELETE' });
+                    console.log('🧹 Arrays de memória limpos');
+                } catch (cleanError) {
+                    console.warn('⚠️ Erro ao limpar arrays de memória:', cleanError);
+                }
+
+                return true;
+            } else {
+                throw new Error(result.message || 'Erro ao salvar materiais no banco');
+            }
+
+        } catch (error) {
+            console.error('❌ Erro ao salvar materiais no banco:', error);
+            showNotification('Erro ao salvar materiais no banco. Tente novamente.', false);
+            return false;
+        }
+    }
+
+    // Função para carregar materiais do banco
+    async function carregarMateriaisDoBanco(professor_id) {
+        try {
+            console.log(`🔍 Buscando materiais do banco para professor: ${professor_id}`);
+
+            const response = await fetch(`http://localhost:3000/api/materiais-selecionados/${professor_id}`);
+            const result = await response.json();
+
+            if (result.success) {
+                console.log(`✅ ${result.materiais.length} materiais carregados do banco`);
+                return result;
+            } else {
+                console.warn('⚠️ Nenhum material encontrado no banco');
+                return { reagentes: [], vidrarias: [] };
+            }
+
+        } catch (error) {
+            console.error('❌ Erro ao carregar materiais do banco:', error);
+            return { reagentes: [], vidrarias: [] };
+        }
+    }
+
+    // Função para confirmar o agendamento E SALVAR NO BANCO
+    // Função para confirmar o agendamento E SALVAR NO BANCO
+    async function confirmarAgendamento() {
+        try {
+            if (!window.agendamentoAtual) {
+                throw new Error('Dados do agendamento não disponíveis');
+            }
+
+            showMessage('Confirmando agendamento...', true);
+
+            const agendamentoData = window.agendamentoAtual;
+
+            // OBTER O ID DO PROFESSOR LOGADO DO LOCALSTORAGE
+            const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+            let professor_id;
+
+            if (usuarioLogado && usuarioLogado.id) {
+                professor_id = usuarioLogado.id;
+                console.log('👨‍🏫 Usando ID do professor logado:', professor_id);
+            } else {
+                // Fallback - usar ID 1 ou buscar de outra forma
+                professor_id = 1;
+                console.warn('⚠️ Usando ID fallback do professor:', professor_id);
+            }
+
+            // Dados para enviar ao servidor
+            const dadosConfirmacao = {
+                data_agendamento: agendamentoData.data_agendamento,
+                horario_inicio: agendamentoData.horario_inicio,
+                horario_fim: agendamentoData.horario_fim,
+                laboratorio: agendamentoData.id_laboratorio,
+                professor_id: professor_id, // USAR O ID CORRETO AQUI
+                materia: agendamentoData.observacoes
+            };
+
+            console.log('📤 Enviando para confirmação:', dadosConfirmacao);
+
+            // 1. Primeiro confirma o agendamento
+            const response = await fetch('http://localhost:3000/api/agendamentos/confirmar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dadosConfirmacao)
+            });
+
+            // ... resto do código permanece igual ...
+        } catch (error) {
+            console.error('❌ Erro ao confirmar agendamento:', error);
+            showMessage(`Erro ao confirmar: ${error.message}`, false);
+        }
+    }
+
     // Carregar dados do agendamento (DO SERVIDOR)
     async function carregarDadosAgendamento() {
         try {
@@ -583,7 +745,7 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.style.display = 'none';
     }
 
-    // Função para confirmar o agendamento
+    // Função para confirmar o agendamento E SALVAR MATERIAIS
     async function confirmarAgendamento() {
         try {
             if (!window.agendamentoAtual) {
@@ -594,19 +756,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const agendamentoData = window.agendamentoAtual;
 
+            // OBTER O ID DO PROFESSOR LOGADO DO LOCALSTORAGE
+            const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+            let professor_id;
+
+            if (usuarioLogado && usuarioLogado.id) {
+                professor_id = usuarioLogado.id;
+                console.log('👨‍🏫 Usando ID do professor logado:', professor_id);
+            } else {
+                professor_id = 1;
+                console.warn('⚠️ Usando ID fallback do professor:', professor_id);
+            }
+
             // Dados para enviar ao servidor
             const dadosConfirmacao = {
                 data_agendamento: agendamentoData.data_agendamento,
                 horario_inicio: agendamentoData.horario_inicio,
                 horario_fim: agendamentoData.horario_fim,
                 laboratorio: agendamentoData.id_laboratorio,
-                professor_id: agendamentoData.id_professor || 1, // Fallback se não existir
+                professor_id: professor_id,
                 materia: agendamentoData.observacoes
             };
 
             console.log('📤 Enviando para confirmação:', dadosConfirmacao);
 
-            // Envia para o servidor com tratamento de erro melhorado
+            // 1. Primeiro confirma o agendamento
             const response = await fetch('http://localhost:3000/api/agendamentos/confirmar', {
                 method: 'POST',
                 headers: {
@@ -631,6 +805,18 @@ document.addEventListener('DOMContentLoaded', function () {
             if (response.ok && result.success) {
                 showMessage('Agendamento confirmado com sucesso!', true);
 
+                // ✅✅✅ CORREÇÃO: SALVAR OS MATERIAIS NO BANCO APÓS CONFIRMAR O AGENDAMENTO
+                const agendamentoId = result.agendamentoId;
+                console.log('💾 Salvando materiais para o agendamento ID:', agendamentoId);
+
+                const materiaisSalvos = await salvarMateriaisNoBanco(professor_id, agendamentoId);
+
+                if (materiaisSalvos) {
+                    showMessage('Materiais salvos com sucesso!', true);
+                } else {
+                    showMessage('Agendamento confirmado, mas houve erro ao salvar materiais', false);
+                }
+
                 // Limpa qualquer dado temporário
                 localStorage.removeItem('agendamentoData');
                 delete window.agendamentoAtual;
@@ -650,7 +836,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let mensagemErro = `Erro ao confirmar: ${error.message}`;
 
-            // Mensagens mais amigáveis para erros comuns
             if (error.message.includes('Failed to fetch')) {
                 mensagemErro = 'Erro de conexão: Não foi possível conectar ao servidor. Verifique se o servidor está rodando.';
             } else if (error.message.includes('404')) {
@@ -717,4 +902,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+    console.log('🎉 Configuração do modal completa!');
+
+    // CARREGA OS REAGENTES E VIDRARIAS SELECIONADOS DA MEMÓRIA DO SERVIDOR
+    console.log('🔄 Carregando reagentes selecionados...');
+    carregarReagentesSelecionados();
+
+    console.log('🔄 Carregando vidrarias selecionadas...');
+    carregarVidrariasSelecionadas();
 });
