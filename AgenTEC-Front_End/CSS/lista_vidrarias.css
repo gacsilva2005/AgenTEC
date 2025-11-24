@@ -289,6 +289,179 @@ body, html {
     min-height: 50px;
 }
 
+* Contêiner principal, esconde o modal por padrão */
+.custom-modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fixado na tela */
+    z-index: 100; /* Acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6); /* Fundo escuro semi-transparente */
+    backdrop-filter: blur(3px); /* Efeito de desfoque (opcional, moderno) */
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Animação simples de fade in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Conteúdo do Modal (Centralização Horizontal e Vertical Corrigida) */
+.modal-content {
+    background-color: #fefefe;
+    /* Centralização Mágica: Remove a margin-top e usa transform */
+    margin: auto; /* Permite centralização horizontal automática */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%; 
+    /* ⚠️ AJUSTE FINAL: Largura máxima aumentada de 350px para 450px */
+    max-width: 450px; 
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    animation: slideDown 0.3s ease-out;
+
+    /* Mantém a centralização perfeita */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.modal-item-name {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--dark-gray);
+    margin-bottom: 15px;
+}
+.modal-info p {
+    font-size: 1.4rem;
+    color: var(--light-gray);
+    margin: 5px 0;
+    margin-bottom: 12px; 
+}
+
+.modal-info span {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.modal-input-group {
+    margin: 20px 0;
+}
+
+.modal-input-group label {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--dark-gray);
+}
+
+#new-quantity {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+#new-quantity:focus {
+    border-color: var(--hoverCian-color);
+    outline: none;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center; 
+    gap: 15px;
+    margin-top: 25px;   
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-confirm {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-confirm:hover {
+    background-color: var(--hoverCian-color);
+}
+
+.btn-cancel {
+    background-color: #e0e0e0;
+    color: var(--dark-gray);
+}
+
+.btn-cancel:hover {
+    background-color: #ccc;
+}
+
+/* Botão de fechar (X) */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Responsividade básica para o modal */
+@media (max-width: 500px) {
+    .modal-content {
+        margin: 10% auto;
+        padding: 20px;
+    }
+    .modal-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn-modal {
+        width: 100%;
+    }
+}
+
+/* CLASSE PARA BLOQUEAR O SCROLL DA PÁGINA QUANDO O MODAL ESTIVER ABERTO */
+.modal-open-noscroll {
+    overflow: hidden;
+}
+
 
 @media (max-width: 768px) {
     .cps-header__container {
@@ -722,6 +895,7 @@ body, html {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
+
 
 /* --- ESTILOS DO COMPONENTE ACCORDION (PARA AGRUPAR POR TIPO) --- */
 

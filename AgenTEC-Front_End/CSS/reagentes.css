@@ -189,18 +189,19 @@ html {
 }
 
 .button-custom {
-    flex-direction: column;
     text-align: center;
     display: flex;
-    max-width: 200px;
+    justify-content: center;
+    align-items: center; 
     background-color: var(--primary-color);
-    padding: 20px 60px;
+    padding: 20px 40px;
     text-decoration: none;
     color: white;
     border-radius: 50px;
     font-size: 2rem;
     transition: all 0.3s ease;
-    cursor: pointer
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 .button-custom:hover {
@@ -845,3 +846,4 @@ div[data-account="3eFXoC4I4A"] {
     /* Remove margens que o script possa adicionar */
     margin-top: 230px !important;
 }
+

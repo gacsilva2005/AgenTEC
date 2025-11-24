@@ -1,0 +1,846 @@
+:root{
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+  }
+
+/* CSS Reset e Estilos Globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.govsp-topo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd; 
+}
+
+.govsp-portal img {
+    height: 10px;  
+    width: 200px;   
+    display: block; 
+}
+
+.govsp-portal {
+    background-color: #000; 
+    padding: 8px 25px 8px 15px; 
+    border-radius: 0 50px 50px 0; 
+}
+
+.govsp-topo .govsp-portal img {
+    height: 38px;
+}
+
+.govsp-topo .govsp-navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.govsp-navbar :hover {
+    transform: translate(0.2px, 0.2px);
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}       
+
+
+.govsp-topo .govsp-navbar img {
+    height: 23px;;
+}
+
+.govsp-topo .govsp-social {
+    display: inline-block;
+}
+
+/* --- Estilos para o Header (Logos e Busca) --- */
+#cps-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+.cps-header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cps-header__logo img {
+    max-height: 50px;
+}
+
+.form-pesquisa {
+    display: flex; 
+    align-items: center; 
+    border: 1px solid #ccc; 
+    border-radius: 50px; 
+    overflow: hidden; 
+    max-width: 400px; 
+    background-color: white;
+}
+
+.campo-de-busca {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    padding: 15px 50px; 
+    font-size: 1rem; 
+    background-color: transparent; 
+}
+
+.campo-de-busca::placeholder {
+    color: #999; 
+}
+
+.busca-submit {
+    border: none; 
+    border-left: 1px solid #ccc; 
+    background-color: transparent; 
+    padding: 10px 18px; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.busca-submit .fa-search {
+    color: #b20000; 
+    font-size: 1.1rem; 
+}
+
+.busca-submit:hover {
+    background-color: #f5f5f5; 
+}
+
+/* --- Estilos do Menu Principal --- */
+.main-menu-container {
+    background-color: #b20000; 
+    padding: 0 20px;
+}
+.main-menu-container .menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0 0 0 65px; 
+    display: flex;
+    flex-wrap: wrap;
+}
+.main-menu-container .menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.main-menu-container .menu li a:hover {
+    background-color: #831c16ef; 
+}
+
+/* --- Estilos do Breadcrumb --- */
+#breadcrumb {
+    background-color: #666666;
+    padding: 12px 20px 12px 90px; 
+    border-bottom: 1px solid #e9ecef;
+}
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.breadcrumb-container a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* --- Conteúdo Principal e Título --- */
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* HEADER DA PÁGINA (Título e Botão Sair) */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 4rem;
+    color: #005C6D;
+    margin: 0; /* Remove margem para alinhar com o botão */
+    font-weight: 700;
+    white-space: nowrap; /* Evita quebra de linha */
+}
+
+/* Container dos botões */
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 50px; /* Espaço entre os botões */
+}
+
+/* Estilo dos botões (Voltar e Sair) */
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: var(--hoverCian-color);
+    padding: 0;
+    font-size: 1.60rem;
+    font-weight: 300;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button-custom:hover {
+    color: var(--primary-color);
+}
+
+.button-custom:active {
+    color: var(--primary-color);
+}
+
+.title-underline {
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--huge: 42px;
+    --progress-bar-width: 200px;
+    --progress-bar-height: 200px;
+    --font-size: 25px;
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    font-family: Roboto, Arial, sans-sreif;
+    color: #333;
+    font-weight: 300;
+    line-height: 2.5rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 10px 0 0 0;
+    padding: 0;
+    box-sizing: inherit;
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+/* --- Menu Dropdown --- */
+.menu li.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    border-top: 3px solid #b20000;
+}
+
+.main-menu-container .menu .dropdown-content li a {
+    color: #555; 
+    font-weight: normal; 
+    padding: 12px 16px;
+    text-align: left;
+    background-color: transparent; 
+}
+
+.main-menu-container .menu .dropdown-content li a:hover {
+    background-color: #f1f1f1;
+    color: #b20000;
+}
+
+.menu li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown a .fa-chevron-down {
+    font-size: 1.1em;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.menu li.dropdown:hover a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* --- Estilos da Seção Adicionar Vidrarias --- */
+.logo-container {
+    display: flex;          
+    align-items: center;    
+    gap: 40 px;              
+}
+
+.logo-container img {
+    height: 80px; 
+    width: auto;     
+}
+
+.logo-cps {
+    height: 70px; 
+}
+
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group, .quantity-group {
+    width: 100%;
+    position: relative; 
+}
+
+.input-group label, .quantity-group label {
+    display: block;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+.input-group input[type="text"]:focus {
+    border-color: var(--secondary-red,);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,139,139,0.3);
+}
+
+.quantity-stepper {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--primary-color, #004b49);
+    transition: background-color 0.2s ease;
+}
+.quantity-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.btn-minus {
+    border-radius: 5px 0 0 5px;
+}
+
+.btn-plus {
+    border-radius: 0 5px 5px 0;
+}
+
+.quantity-stepper input[type="text"] {
+    width: 70px;
+    height: 45px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.stepper-container {
+    display: flex;
+    align-items: center; 
+    gap: 2rem; 
+}
+
+.btn-confirm-small {
+    height: 45px; 
+    width: 60px;  
+    border: none;
+    background-color: var(--primary-color, #004b49); 
+    color: white;
+    font-size: 2rem; 
+    border-radius: 5px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-confirm-small:hover {
+    background-color: var(--hoverCian-color, #008B8B); 
+}
+
+/* Modificação aqui para garantir que não haja conflito com o Flexbox */
+.action-buttons-container { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    margin-bottom: 1050px;
+}
+
+.action-btn {
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+    /* Remover a largura total aqui permite que o justify-content funcione */
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+}
+
+.action-btn:active {
+    transform: translateY(2px);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
+}
+
+.btn-primary:hover {
+    background-color: var(--hoverCian-color);
+}
+
+/* Media queries para responsividade */
+@media (max-width: 992px) {
+    .selection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .item-cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Manter a direção da coluna para telas pequenas */
+    .action-buttons-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .action-btn {
+        width: 100%; /* Em telas pequenas, queremos largura total */
+    }
+}
+
+/* --- ESTILOS PARA A TABELA DE VIDRARIAS --- */
+
+.tabela-vidrarias-container {
+    width: 100%;
+    max-width: 800px; 
+    margin: 40px auto; 
+    padding: 25px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tabela-vidrarias-container h2 {
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--primary-color, #004b49);
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-red, #008B8B);
+    padding-bottom: 10px;
+}
+
+.tabela-vidrarias {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+.tabela-vidrarias thead {
+    background-color: var(--primary-color, #004b49);
+    color: white;
+}
+
+.tabela-vidrarias th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.tabela-vidrarias tbody tr:nth-child(even) {
+    background-color: #f0f0f0; 
+}
+
+.tabela-vidrarias td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+/* ATUALIZADO: Ajuste para centralizar o botão de Ação */
+.tabela-vidrarias th:nth-child(2),
+.tabela-vidrarias td:nth-child(2) {
+    text-align: right;
+}
+
+.tabela-vidrarias th:last-child,
+.tabela-vidrarias td:last-child {
+    text-align: center; /* Centraliza o cabeçalho e o botão */
+    width: 80px; /* Largura pequena para a coluna de ação */
+}
+
+/* --- NOVO ESTILO PARA O BOTÃO DE REMOÇÃO --- */
+.btn-remover-item {
+    background: none;
+    border: none;
+    color: var(--primary-red, #970000); /* Cor vermelha para destaque */
+    cursor: pointer;
+    font-size: 1.8rem;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-remover-item:hover {
+    background-color: var(--primary-red, #970000);
+    color: var(--text-white, #ffffff); /* Inverte as cores no hover */
+}
+
+.btn-remover-item:active {
+    transform: translateY(1px);
+}
+
+/* --- ESTILO PARA MENSAGENS DE ERRO INLINE --- */
+.error-message {
+    display: block; 
+    color: var(--primary-red, #b20000); 
+    font-size: 1.3rem;
+    margin-top: 5px;
+    visibility: hidden; 
+    height: 0; 
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.error-message.visible {
+    visibility: visible;
+    height: auto;
+    margin-top: 8px;
+    padding: 5px 10px;
+    background-color: rgba(178, 0, 0, 0.1); 
+    border-radius: 4px;
+}
+
+/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO FLUTUANTE (Mantida) --- */
+.notification {
+    position: fixed; 
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; 
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    
+    visibility: hidden; 
+    opacity: 0;
+    
+    transition: opacity 0.4s ease-in-out, visibility 0.4s; 
+    z-index: 1000; 
+    
+    display: flex; 
+    align-items: center;
+    gap: 10px;
+}
+
+.notification.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.notification i {
+    font-size: 1.5rem;
+}
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem ;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i{
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+#userwayAccessibilityIcon,
+.uwy-userway-trigger,
+.uai-trigger-container,
+div[data-account="3eFXoC4I4A"] {
+    position: fixed !important;
+    bottom: auto !important;
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 230px !important;
+}
+
+/* --- ESTILOS DO ACORDEÃO (ABAS) --- */
+
+/* O container principal que segura cada aba */
+.accordion-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 20px auto; /* Espaçamento entre as abas */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* O botão que serve de cabeçalho (antigo h2) */
+.accordion-header {
+    background-color: #f9f9f9;
+    color: var(--primary-color, #004b49);
+    cursor: pointer;
+    padding: 25px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid transparent; /* Borda invisível inicialmente */
+}
+
+.accordion-header h2 {
+    font-size: 2.3rem;
+    font-weight: 500;
+    margin: 0;
+    border: none; /* Remove a borda do h2 original pois o botão controlará isso */
+    padding: 0;
+    pointer-events: none; /* O clique vai no botão pai */
+}
+
+/* Ícone de seta */
+.accordion-header i {
+    font-size: 2rem;
+    color: var(--primary-red, #970000);
+    transition: transform 0.3s ease;
+}
+
+/* Estado Ativo (Aberto) */
+.accordion-header.active, .accordion-header:hover {
+    background-color: #f1f1f1;
+}
+
+.accordion-header.active {
+    border-bottom: 2px solid var(--primary-red, #970000);
+}
+
+.accordion-header.active i {
+    transform: rotate(180deg); /* Gira a seta */
+}
+
+/* O conteúdo que abre e fecha */
+.accordion-panel {
+    padding: 0 25px;
+    background-color: #f9f9f9;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    opacity: 0;
+}
+
+/* Classe auxiliar para quando estiver aberto */
+.accordion-panel.show {
+    opacity: 1;
+    padding: 25px; /* Restaura o padding original do form-section */
+}
+
+/* --- LAYOUT DE DUAS COLUNAS --- */
+
+.page-layout {
+    display: flex;
+    gap: 30px; /* Espaço entre as colunas */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    align-items: flex-start; /* Alinha os itens ao topo */
+}
+
+/* Coluna da Esquerda (Formulários) */
+.left-column {
+    flex: 1; /* Ocupa todo o espaço disponível */
+    min-width: 0; /* Evita overflow em flex items */
+}
+
+/* Coluna da Direita (Lista de Adicionados + Ações) */
+.right-column {
+    width: 400px; /* Largura fixa para a barra lateral */
+    flex-shrink: 0; /* Não deixa encolher */
+    position: sticky; /* Faz a coluna fixar no topo ao rolar */
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* -- Ajustes nos Componentes para o novo Layout -- */
+
+/* Força os accordions a ocuparem 100% da coluna esquerda */
+.left-column .accordion-wrapper {
+    max-width: 100%; 
+    margin-bottom: 20px;
+}
+
+/* Ajusta a tabela para caber na coluna direita */
+.right-column .tabela-vidrarias-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0; /* Remove a margem automática antiga */
+    box-sizing: border-box;
+    display: block !important; 
+}
+
+/* NOVO BLOCO - Alinhamento horizontal e centralização */
+.action-buttons-list {
+    display: flex; /* Habilita o Flexbox */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center;
+    gap: 20px; /* Espaço entre os botões */
+    
+    /* Regras do container pai */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* REMOVER REGRAS CONFLITANTES DA COLUNA DIREITA NO RIGHT-COLUMN */
+.right-column .action-buttons-container {
+    flex-direction: row; /* Altera para row, mas a lista de botões já está em flexbox */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    gap: 10px;
+}
+
+/* AJUSTE ESSENCIAL: Remove width: 100% dos botões dentro da coluna da direita */
+/* A regra que forçava os botões a ocupar 100% foi removida para que eles fiquem em linha e centralizados */
+.right-column .action-btn {
+    width: auto; /* Permite que o botão se ajuste ao conteúdo */
+}
+
+
+/* Tabela responsiva na lateral */
+.tabela-vidrarias th, 
+.tabela-vidrarias td {
+    font-size: 1.2rem; /* Diminui um pouco a fonte para caber na lateral */
+    padding: 8px;
+}
+
+/* Responsividade para Mobile (Celular) */
+@media (max-width: 992px) {
+    .page-layout {
+        flex-direction: column; /* Empilha um embaixo do outro */
+    }
+    
+    .right-column {
+        width: 100%; /* Ocupa largura total no celular */
+        position: static; /* Remove o efeito sticky */
+    }
+
+    /* No mobile, voltamos a ocupar 100% e empilhamos para melhor toque */
+    .action-buttons-list {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .right-column .action-btn {
+        width: 100%; /* Botões ocupam toda a largura da coluna direita em mobile */
+    }
+}

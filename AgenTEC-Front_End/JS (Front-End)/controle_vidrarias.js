@@ -1,680 +1,311 @@
-// controle_vidraria.js
-
-const BACKEND_URL = 'http://localhost:3000/api';
-
 document.addEventListener('DOMContentLoaded', () => {
-    // ======================================================
-    // INÍCIO: Lógica dos Formulários de Adicionar (Vidrarias e Reagentes)
-    // ======================================================
-
-    // 1. Lógica para os botões de + e - (Genérico para qualquer formulário)
-    const setupFormSteppers = () => {
-        const increaseButtons = document.querySelectorAll('.btn-plus');
-        const decreaseButtons = document.querySelectorAll('.btn-minus');
-
-        const handleStep = (btn, increment) => {
-            // Clona o botão para remover ouvintes antigos e evitar cliques duplos
-            const newBtn = btn.cloneNode(true);
-            btn.parentNode.replaceChild(newBtn, btn);
-
-            newBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // Previne comportamentos estranhos de form
-                const container = e.target.closest('.quantity-stepper');
-                const input = container.querySelector('input');
-
-                if (input) {
-                    let value = parseInt(input.value) || 0;
-                    if (increment) {
-                        input.value = value + 1;
-                    } else {
-                        if (value > 0) input.value = value - 1;
-                    }
-                }
-            });
-        };
-
-        increaseButtons.forEach(btn => handleStep(btn, true));
-        decreaseButtons.forEach(btn => handleStep(btn, false));
-    };
-
-    // 2. Lógica do Acordeão (Abrir/Fechar abas de "Adicionar")
-    const setupAddAccordion = () => {
-        // ======================================================
-        // INÍCIO: Lógica para ADICIONAR NA TABELA (Vidrarias e Reagentes)
-        // ======================================================
-
-        const tabelaBody = document.getElementById('tabela-vidrarias-body');
-        const notificationSuccess = document.getElementById('notification-success');
-
-        // Função auxiliar para mostrar notificação
-        const showNotification = (msg) => {
-            const span = notificationSuccess.querySelector('span');
-            if (span) span.textContent = msg;
-            notificationSuccess.classList.add('show');
-            setTimeout(() => {
-                notificationSuccess.classList.remove('show');
-            }, 3000);
-        };
-
-        // Função que cria a linha na tabela HTML
-        const adicionarNaTabela = (nome, tipo, quantidade) => {
-            // 1. Remove a linha de "Nenhum item na lista" se ela existir
-            const emptyRow = document.getElementById('row-empty');
-            if (emptyRow) {
-                emptyRow.remove();
-            }
-
-            // 2. Cria a nova linha (TR)
-            const tr = document.createElement('tr');
-
-            tr.innerHTML = `
-            <td>
-                <strong>${nome}</strong><br>
-                <span style="font-size: 0.9em; color: #666;">${tipo}</span>
-            </td>
-            <td style="text-align: center;">${quantidade}</td>
-            <td style="text-align: center;">
-                <button class="btn-remover-item">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </td>
-        `;
-
-            // 3. Adiciona funcionalidade ao botão de remover desta nova linha
-            const btnRemove = tr.querySelector('.btn-remover-item');
-            btnRemove.addEventListener('click', function () {
-                tr.remove();
-                // Se não sobrar nada, coloca a mensagem de vazio de volta
-                if (tabelaBody.children.length === 0) {
-                    tabelaBody.innerHTML = `
-                    <tr id="row-empty">
-                        <td colspan="3" style="text-align:center; font-size:1.2rem; color:#999;">Nenhum item na lista</td>
-                    </tr>
-                `;
-                }
-            });
-
-            // 4. Insere a linha na tabela
-            tabelaBody.appendChild(tr);
-        };
-
-        // --- EVENTO 1: Confirmar VIDRARIA ---
-        const btnConfirmVidraria = document.querySelector('.btn-confirm-vidraria');
-
-        if (btnConfirmVidraria) {
-            btnConfirmVidraria.addEventListener('click', (e) => {
-                e.preventDefault(); // Evita comportamento padrão
-
-                // Pega os valores dos inputs
-                const nomeInput = document.getElementById('nome_vidraria');
-                const tipoInput = document.getElementById('tipo_vidraria');
-                const qtdInput = document.getElementById('quantity');
-
-                const nome = nomeInput.value.trim();
-                const tipo = tipoInput.value.trim();
-                const qtd = parseInt(qtdInput.value);
-
-                // Validação simples
-                if (!nome) {
-                    alert("Por favor, digite o nome da vidraria.");
-                    return;
-                }
-                if (qtd <= 0) {
-                    alert("A quantidade deve ser maior que zero.");
-                    return;
-                }
-
-                // Adiciona na tabela
-                adicionarNaTabela(nome, tipo, qtd);
-                showNotification("Vidraria adicionada à lista!");
-
-                // Limpa os campos
-                nomeInput.value = '';
-                tipoInput.value = '';
-                qtdInput.value = '0';
-            });
-        }
-
-        // --- EVENTO 2: Confirmar REAGENTE ---
-        const btnConfirmReagente = document.querySelector('.btn-confirm-reagente');
-
-        if (btnConfirmReagente) {
-            btnConfirmReagente.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                // Pega os valores dos inputs (IDs diferentes para reagentes)
-                const nomeInput = document.getElementById('nome_reagente');
-                const tipoInput = document.getElementById('tipo_reagente');
-                const qtdInput = document.getElementById('quantity_reagente');
-
-                const nome = nomeInput.value.trim();
-                const tipo = tipoInput.value.trim();
-                const qtd = parseInt(qtdInput.value);
-
-                // Validação
-                if (!nome) {
-                    alert("Por favor, digite o nome do reagente.");
-                    return;
-                }
-                if (qtd <= 0) {
-                    alert("A quantidade deve ser maior que zero.");
-                    return;
-                }
-
-                // Adiciona na tabela
-                adicionarNaTabela(nome, tipo, qtd);
-                showNotification("Reagente adicionado à lista!");
-
-                // Limpa os campos
-                nomeInput.value = '';
-                tipoInput.value = '';
-                qtdInput.value = '0';
-            });
-        }
-        const accordionHeaders = document.querySelectorAll('.accordion-wrapper .accordion-header');
-
-        accordionHeaders.forEach(acc => {
-            // Removemos clones antigos para segurança
-            const newAcc = acc.cloneNode(true);
-            acc.parentNode.replaceChild(newAcc, acc);
-
-            newAcc.addEventListener("click", function (e) {
-                e.preventDefault();
-                this.classList.toggle("active");
-
-                // Ícone de seta
-                const icon = this.querySelector('i');
-                if (icon) icon.style.transform = this.classList.contains("active") ? "rotate(180deg)" : "rotate(0deg)";
-
-                const panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                    panel.classList.remove("show");
-                } else {
-                    panel.classList.add("show");
-                    // O "+ 50" garante que os botões grandes não sejam cortados
-                    panel.style.maxHeight = (panel.scrollHeight + 60) + "px";
-                }
-            });
-        });
-    };
-
-    // Executa as funções imediatamente
-    setupFormSteppers();
-    setupAddAccordion();
-
-    // ======================================================
-    // FIM: Lógica dos Formulários
-    // ======================================================
     const searchArea = document.getElementById('search-area');
-    const accordionContainer = document.getElementById('vidrarias-accordion');
+    const itemsListContainer = document.getElementById('vidrarias-accordion');
 
-    // Elementos do Modal de Edição
+    // ================== ELEMENTOS DOS MODAIS E NOTIFICAÇÕES ==================
+    const notificationElement = document.getElementById('custom-notification');
+    const notificationIcon = document.getElementById('notification-icon');
+    const notificationMessage = document.getElementById('notification-message');
+
     const editModal = document.getElementById('edit-modal');
     const editCloseBtn = editModal.querySelector('.close-button');
     const confirmBtn = document.getElementById('modal-confirm-btn');
     const cancelBtn = document.getElementById('modal-cancel-btn');
     const newQuantityInput = document.getElementById('new-quantity');
 
-    // Elementos do Modal de Sucesso
     const successModal = document.getElementById('success-modal');
     const successMessage = successModal.querySelector('.success-message');
     const successOkBtn = document.getElementById('success-ok-btn');
 
-    // Elementos do Modal de Confirmação (APLICAR)
     const applyConfirmModal = document.getElementById('apply-confirm-modal');
     const applyConfirmBtn = document.getElementById('apply-confirm-btn');
     const applyCancelBtn = document.getElementById('apply-cancel-btn');
 
-    // Variáveis para o body e html (necessário para travar o scroll)
+    const globalApplyBtn = document.getElementById('global-apply-btn');
+    const logoutBtn = document.getElementById('btn-logout');
+
+    let currentItemName = '';
+    let currentItemUnit = '';
+    let openModalCount = 0;
     const body = document.body;
     const html = document.documentElement;
 
-    // Variáveis para guardar o contexto de edição
-    let currentItemName = '';
-    let currentItemDesc = ''; // Nova variável para a descrição específica (ex: 100ml)
-    let currentItemUnit = '';
+    // ================== FUNÇÕES DE NOTIFICAÇÃO E MODAL ==================
+    const showNotification = (message, type = 'success', duration = 3000) => {
+        notificationElement.classList.remove('error');
+        notificationIcon.className = 'fas';
 
-    // --- LÓGICA DOS BOTÕES + E - (Adicionar Vidrarias e Reagentes) ---
-    // Esta função detecta qual botão foi clicado e altera o input vizinho a ele
+        if (type === 'success') {
+            notificationIcon.classList.add('fa-check-circle');
+        } else if (type === 'error') {
+            notificationElement.classList.add('error');
+            notificationIcon.classList.add('fa-times-circle');
+        }
 
-    // CHAME A FUNÇÃO IMEDIATAMENTE PARA ATIVAR OS BOTÕES
-    setupFormSteppers();
+        notificationMessage.textContent = message;
+        notificationElement.classList.add('show');
 
-    // Lógica para abrir/fechar os formulários de Adicionar
-    const accordionHeaders = document.querySelectorAll('.accordion-wrapper .accordion-header');
-    accordionHeaders.forEach(acc => {
-        acc.addEventListener("click", function () {
-            this.classList.toggle("active");
-            const panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-                panel.classList.remove("show");
-            } else {
-                panel.classList.add("show");
-                panel.style.maxHeight = (panel.scrollHeight + 50) + "px";
-            }
-        });
-    });
+        setTimeout(() => notificationElement.classList.remove('show'), duration);
+    };
 
-    // --- FUNÇÕES DE CONTROLE DO MODAL DE EDIÇÃO ---
-    const showModal = (itemNome, itemDescricao, unidade, quantidadeAtual) => {
+    const checkAndReleaseScroll = () => {
+        if (openModalCount <= 0) {
+            openModalCount = 0;
+            body.classList.remove('modal-open-noscroll');
+            html.classList.remove('modal-open-noscroll');
+        } else {
+            body.classList.add('modal-open-noscroll');
+            html.classList.add('modal-open-noscroll');
+        }
+    };
+
+    const showModal = (itemNome, unidade, quantidadeAtual) => {
         currentItemName = itemNome;
-        currentItemDesc = itemDescricao;
         currentItemUnit = unidade;
 
-        // Preenche o modal com os dados atuais
         document.querySelector('.modal-item-name').textContent = itemNome;
-        document.getElementById('modal-desc').textContent = itemDescricao; // Novo campo
         document.getElementById('modal-unit').textContent = unidade;
         document.getElementById('modal-current-qty').textContent = quantidadeAtual;
         newQuantityInput.value = quantidadeAtual;
         newQuantityInput.focus();
 
         editModal.style.display = 'flex';
-
-        // Trava o scroll da página
-        body.classList.add('modal-open-noscroll');
-        html.classList.add('modal-open-noscroll');
+        openModalCount++;
+        checkAndReleaseScroll();
     };
 
-    const hideModal = (modalToHide = editModal) => {
-        modalToHide.style.display = 'none';
-        newQuantityInput.classList.remove('error');
-
-        // Libera o scroll da página se for o último modal a fechar
-        if (editModal.style.display === 'none' && successModal.style.display === 'none' && applyConfirmModal.style.display === 'none') {
-            body.classList.remove('modal-open-noscroll');
-            html.classList.remove('modal-open-noscroll');
-        }
+    const hideModal = (modal = editModal) => {
+        if (modal.style.display !== 'none') openModalCount--;
+        modal.style.display = 'none';
+        if (modal === editModal) newQuantityInput.classList.remove('error');
+        checkAndReleaseScroll();
     };
 
-    // --- FUNÇÃO DE CONTROLE DO MODAL DE SUCESSO ---
-    const showSuccessModal = (itemName, itemDesc, newQty, unit) => {
-        successMessage.textContent = `Quantidade de ${itemName} (${itemDesc}) atualizada para: ${newQty} ${unit}`;
+    const showSuccessModal = (itemName, newQty, unit) => {
+        successMessage.textContent = `Quantidade de ${itemName} atualizada para: ${newQty} ${unit}`;
         successModal.style.display = 'flex';
-
-        // Trava o scroll 
-        body.classList.add('modal-open-noscroll');
-        html.classList.add('modal-open-noscroll');
+        openModalCount++;
+        checkAndReleaseScroll();
+        showNotification(`Alteração de ${itemName} registrada.`, 'success');
     };
 
-    // --- FUNÇÃO PARA MOSTRAR O MODAL DE CONFIRMAÇÃO DE APLICAÇÃO ---
     const showApplyConfirmModal = () => {
         applyConfirmModal.style.display = 'flex';
-        body.classList.add('modal-open-noscroll');
-        html.classList.add('modal-open-noscroll');
+        openModalCount++;
+        checkAndReleaseScroll();
     };
 
-    // Event listeners dos Modais
-    editCloseBtn.addEventListener('click', () => hideModal(editModal));
-    cancelBtn.addEventListener('click', () => hideModal(editModal));
-    successOkBtn.addEventListener('click', () => hideModal(successModal));
-    applyCancelBtn.addEventListener('click', () => hideModal(applyConfirmModal));
+    // ================== EVENTOS DOS MODAIS ==================
+    editCloseBtn.onclick = cancelBtn.onclick = () => {
+        hideModal(editModal);
+        showNotification('Edição cancelada.', 'error', 2500);
+    };
 
-    applyConfirmBtn.addEventListener('click', () => {
-        // Ação de aplicar (salvamento seria aqui)
-        console.log("Alterações aplicadas e salvando...");
+    successOkBtn.onclick = () => hideModal(successModal);
+    applyCancelBtn.onclick = () => {
+        hideModal(applyConfirmModal);
+        showNotification('Aplicação cancelada.', 'error', 2500);
+    };
 
-        // Redireciona para tecnicos.html
-        window.location.href = 'tecnicos.html';
+    applyConfirmBtn.onclick = () => {
+        showNotification('Alterações aplicadas com sucesso!', 'success', 3000);
+        hideModal(applyConfirmModal);
+        setTimeout(() => window.location.href = 'tecnicos.html', 1000);
+    };
+
+    globalApplyBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showApplyConfirmModal();
     });
 
-
-    // Fechar qualquer modal ao clicar fora
-    window.addEventListener('click', (event) => {
-        if (event.target == editModal) {
-            hideModal(editModal);
-        } else if (event.target == successModal) {
-            hideModal(successModal);
-        } else if (event.target == applyConfirmModal) {
-            hideModal(applyConfirmModal);
-        }
+    logoutBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showNotification('Você foi desconectado.', 'error', 2500);
+        setTimeout(() => window.location.href = 'login.html', 1500);
     });
 
-    // Lógica de Confirmação (Modal de Edição)
-    confirmBtn.addEventListener('click', () => {
-        const novaQuantidade = parseInt(newQuantityInput.value);
+    window.addEventListener('click', (e) => {
+        if (e.target === editModal) { hideModal(editModal); showNotification('Edição cancelada.', 'error', 2500); }
+        else if (e.target === successModal) hideModal(successModal);
+        else if (e.target === applyConfirmModal) { hideModal(applyConfirmModal); showNotification('Aplicação cancelada.', 'error', 2500); }
+    });
 
+    confirmBtn.onclick = () => {
+        const novaQuantidade = parseFloat(newQuantityInput.value);
         if (!isNaN(novaQuantidade) && novaQuantidade >= 0) {
-            // 1. Atualiza os dados na interface
-            updateItemQuantity(currentItemName, currentItemDesc, novaQuantidade, currentItemUnit);
-
-            // 2. Esconde o modal de edição
+            updateVariationTotal(currentItemName, novaQuantidade, currentItemUnit);
             hideModal(editModal);
-
-            // 3. Mostra o modal de sucesso 
-            showSuccessModal(currentItemName, currentItemDesc, novaQuantidade, currentItemUnit);
-
+            showSuccessModal(currentItemName, novaQuantidade, currentItemUnit);
         } else {
-            alert('Por favor, insira um número inteiro válido (0 ou maior).');
+            showNotification('Insira um número válido.', 'error', 3500);
             newQuantityInput.classList.add('error');
             newQuantityInput.focus();
         }
-    });
-
-    // --- FUNÇÕES DE LÓGICA DE VIDRARIAS (ADAPTADAS) ---
-
-    // Função para atualizar a quantidade do item específico (vidraria)
-    const updateItemQuantity = (nome, descricao, novaQuantidade, unidade) => {
-        console.log(`Atualizando ${nome} (${descricao}) para: ${novaQuantidade}`);
-
-        // Encontra a linha de variação específica
-        const variationRows = document.querySelectorAll('.variation-row');
-        variationRows.forEach(row => {
-            const rowItemName = row.closest('.accordion-group-vidraria').dataset.groupName;
-            const rowItemDesc = row.querySelector('.variation-desc').textContent.trim();
-
-            // Acha a combinação exata (Nome do Grupo + Descrição da Variação)
-            if (rowItemName.toLowerCase() === nome.toLowerCase() && rowItemDesc === descricao) {
-                const qtyElement = row.querySelector('.variation-qty');
-                const editButton = row.querySelector('.btn-edit');
-
-                if (qtyElement) {
-                    qtyElement.textContent = `${novaQuantidade} ${unidade}`;
-                    editButton.dataset.itemQty = novaQuantidade; // Atualiza o dataset do botão
-                }
-
-                // 1. ATUALIZA O TOTAL DA LINHA PRINCIPAL/GRUPO
-                updateGroupTotal(row);
-
-                // 2. Atualiza o texto de busca para refletir o novo valor (opcional, mas bom)
-                const mainItemRow = row.closest('.item-card-inner').querySelector('.main-item');
-                if (mainItemRow) {
-                    const oldSearch = mainItemRow.dataset.search;
-                    const newSearch = oldSearch.replace(
-                        new RegExp(`\\b${unidade}s\\b`, 'i'),
-                        `${novaQuantidade} ${unidade}s`
-                    );
-                    mainItemRow.dataset.search = newSearch;
-                }
-            }
-        });
     };
 
-    // Função para recalcular o total do grupo
-    const updateGroupTotal = (variationRow) => {
-        // 1. Encontra o contêiner principal do grupo
-        const groupContainer = variationRow.closest('.accordion-group-vidraria');
-        if (!groupContainer) return;
+    // ================== LÓGICA DE VIDRARIAS COM VARIAÇÕES ==================
+    const renderizarVariacoes = (variacoes, itemNome) => {
+        return variacoes.map(v => `
+            <div class="variation-row">
+                <div class="variation-info">
+                    <span class="variation-desc">${v.descricao}</span>
+                    <span class="variation-qty">${v.quantidade} un.</span>
+                </div>
+                <div class="variation-actions">
+                    <button class="btn-edit edit-variation"
+                            data-item="${itemNome}"
+                            data-desc="${v.descricao}"
+                            data-qty="${v.quantidade}">
+                        Editar
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    };
 
+    const updateVariationTotal = (itemNome, novaQty, unidade) => {
+        const buttons = document.querySelectorAll(`.edit-variation[data-item="${itemNome}"]`);
         let total = 0;
-        const totalQtyElement = groupContainer.querySelector('.item-total');
 
-        // 2. Itera sobre TODAS as linhas de variação para recalcular o total
-        groupContainer.querySelectorAll('.variation-row').forEach(row => {
-            const qtySpan = row.querySelector('.variation-qty');
-            if (qtySpan) {
-                // Remove a unidade e converte para número
-                const qtyText = qtySpan.textContent.replace(/[^\d]/g, '').trim();
-                total += parseInt(qtyText || 0);
-            }
-        });
-
-        // 3. Atualiza o texto do Total
-        if (totalQtyElement) {
-            // Assume que vidrarias usam "unidades" no total
-            totalQtyElement.textContent = `Total: ${total} unidades`;
-        }
-    };
-
-    // Funções de Accordion (MANTIDAS)
-    const setupAccordion = () => {
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                const isActive = header.classList.contains('active');
-
-                header.classList.toggle('active');
-
-                if (isActive) {
-                    content.style.display = 'none';
-                } else {
-                    content.style.display = 'block';
+        buttons.forEach(btn => {
+            if (btn.dataset.desc === document.querySelector(`button[data-item="${itemNome}"][data-qty]`)?.closest('.variation-row')?.querySelector('.variation-desc')?.textContent.trim()) {
+                if (parseInt(btn.dataset.qty) === parseInt(document.querySelector(`button[data-qty="${btn.dataset.qty}"]`)?.dataset.qty)) {
+                    btn.dataset.qty = novaQty;
+                    btn.closest('.variation-row').querySelector('.variation-qty').textContent = `${novaQty} un.`;
                 }
-            });
+            }
+            total += parseInt(btn.dataset.qty);
         });
+
+        const totalSpan = document.querySelector(`.main-item[data-search*="${itemNome.toLowerCase()}"] .item-total`);
+        if (totalSpan) totalSpan.textContent = `Total: ${total} unidades`;
     };
 
-    // 1. Função para buscar os dados de Vidrarias
     const fetchVidrarias = async () => {
-        accordionContainer.innerHTML = '<p style="text-align:center; font-size:1.6rem; color:#666;">Carregando vidrarias...</p>';
-
         try {
-            const response = await fetch('../../../AgenTEC-DataBase-(JSON)/vidrarias.json');
-            // ... (código fallback) ...
-            if (!response.ok) {
-                const fallbackResponse = await fetch('vidrarias.json');
-                if (!fallbackResponse.ok) {
-                    throw new Error(`Erro HTTP: ${response.status}`);
-                }
-                const data = await fallbackResponse.json();
-                renderizarCards(data);
-                return;
-            }
+            itemsListContainer.innerHTML = '<p style="text-align:center; font-size:1.6rem; color:#666;">Carregando vidrarias...</p>';
+            const res = await fetch('http://localhost:3000/api/vidrarias');
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-            const data = await response.json();
-            const vidrarias = Array.isArray(data) ? data : data.vidrarias || data.items || data.itens || [];
+            const data = await res.json();
+            if (!data.success || !Array.isArray(data.itens)) throw new Error('Dados inválidos');
 
-            if (vidrarias.length === 0) {
-                accordionContainer.innerHTML = '<p class="error-message">Nenhuma vidraria encontrada ou estrutura de dados inválida.</p>';
-                return;
-            }
-
-            renderizarCards(vidrarias);
-
-        } catch (error) {
-            console.error('Erro ao carregar vidrarias:', error);
-            accordionContainer.innerHTML = '<p class="error-message" style="text-align:center; color:var(--primary-red);">Erro ao carregar os dados das vidrarias. Verifique o console para detalhes.</p>';
+            renderizarCards(data.itens);
+        } catch (err) {
+            console.error(err);
+            itemsListContainer.innerHTML = `<div class="error-message"><h3>Erro ao carregar vidrarias</h3><p>${err.message}</p></div>`;
         }
     };
 
-    // 2. Função para renderizar os cards COMO ACCORDION (VIDRARIAS)
     const renderizarCards = (vidrarias) => {
-        const itemsListContainer = document.getElementById('vidrarias-accordion');
         itemsListContainer.innerHTML = '';
-
-        // Agrupa os itens pelo campo 'tipo' (ex: Beakers, Balões Volumétricos)
-        const vidrariasAgrupadas = vidrarias.reduce((acc, item) => {
-            const tipo = item.tipo || 'Outras';
-            if (!acc[tipo]) {
-                acc[tipo] = [];
-            }
-            acc[tipo].push(item);
+        const agrupados = vidrarias.reduce((acc, i) => {
+            const t = i.tipo || 'Outros';
+            acc[t] ??= [];
+            acc[t].push(i);
             return acc;
         }, {});
 
-        // Gera o HTML para cada grupo (Accordion Group)
-        for (const tipo in vidrariasAgrupadas) {
-            const itensDoTipo = vidrariasAgrupadas[tipo];
-            let totalUnidades = 0; // Para calcular o total do grupo
+        for (const [tipo, itens] of Object.entries(agrupados)) {
+            const group = document.createElement('div');
+            group.className = 'accordion-group-vidraria';
+            group.dataset.group = tipo.toLowerCase();
 
-            const groupHTML = document.createElement('div');
-            groupHTML.classList.add('accordion-group-vidraria');
-            groupHTML.dataset.groupName = tipo;
+            const header = document.createElement('div');
+            header.className = 'accordion-header';
+            header.innerHTML = `<span>${tipo} (${itens.length} itens)</span><i class="fas fa-chevron-right accordion-icon"></i>`;
+            group.appendChild(header);
 
-            const headerHTML = document.createElement('div');
-            headerHTML.classList.add('accordion-header');
-            headerHTML.innerHTML = `
-                <span>${tipo}</span>
-                <i class="fas fa-chevron-right accordion-icon"></i>
-            `;
-            groupHTML.appendChild(headerHTML);
+            const content = document.createElement('div');
+            content.className = 'accordion-content';
+            content.style.display = 'none';
 
-            const contentHTML = document.createElement('div');
-            contentHTML.classList.add('accordion-content');
-            contentHTML.style.display = 'none';
+            itens.forEach(item => {
+                const formatted = item.nome.replace(/[^a-zA-Z0-9]/g, '_');
+                const searchText = `${item.nome} ${tipo}`.toLowerCase();
+                const total = item.variacoes.reduce((s, v) => s + v.quantidade, 0);
 
-            // 4. ADICIONA OS ITENS DE VARIAÇÃO DENTRO DE UM ÚNICO item-card-inner
-
-            const itemInnerCard = document.createElement('div');
-            itemInnerCard.classList.add('item-card-inner');
-
-            // Cria a linha principal (o nome do item, ex: "Béquer")
-            const itemPrincipal = itensDoTipo[0].nome; // Assume que o nome é o mesmo dentro do grupo
-            const itemNomeFormatted = itemPrincipal.replace(/[^a-zA-Z0-9]/g, '_');
-
-            let itemRowHTML = `
-                <div class="item-row main-item" 
-                    data-search="${itemPrincipal.toLowerCase()}"
-                    data-item-name="${itemPrincipal}">
-                    <div class="item-info">
-                        <p class="item-name">${itemPrincipal}</p>
-                        <p class="item-total">Total: 0 unidades</p>
+                const card = document.createElement('div');
+                card.className = 'item-card-inner';
+                card.innerHTML = `
+                    <div class="item-row main-item" data-search="${searchText}">
+                        <div class="item-info">
+                            <p class="item-name">${item.nome}</p>
+                            <p class="item-total">Total: ${total} unidades</p>
+                        </div>
+                        <div class="item-actions">
+                            <i class="fas fa-chevron-down toggle-variations" data-item="${formatted}"></i>
+                        </div>
                     </div>
-                </div>
-            `;
-
-            // Container para as variações (detalhes)
-            const detailsContainer = document.createElement('div');
-            detailsContainer.classList.add('variations-container');
-            detailsContainer.id = `details-${itemNomeFormatted}`; // Usando o nome principal para o ID
-
-            itensDoTipo.forEach(item => {
-                const unidadeTexto = item.unidade || 'unid.';
-                const quantidade = item.quantidade || 0;
-
-                totalUnidades += parseInt(quantidade);
-
-                // Variáveis para a descrição/conversão
-                const variationDescText = item.descricao || item.capacidade || '';
-                const unidadeComQtd = `${quantidade} ${unidadeTexto}`;
-
-                // Atualiza o texto de busca para incluir as variações
-                itemRowHTML = itemRowHTML.replace(`data-search="${itemPrincipal.toLowerCase()}"`, `data-search="${itemPrincipal.toLowerCase()} ${variationDescText.toLowerCase()} ${quantidade} ${unidadeTexto}"`);
-
-                // Adiciona a linha de variação
-                const variationRow = document.createElement('div');
-                variationRow.classList.add('variation-row');
-                variationRow.innerHTML = `
-                    <div class="variation-info">
-                        <span class="variation-desc">${variationDescText}</span>
-                    </div>
-                    <span class="variation-qty">${unidadeComQtd}</span>
-                    <div class="variation-actions">
-                        <button class="btn-edit edit-qty" 
-                                data-item-name="${itemPrincipal}"
-                                data-item-desc="${variationDescText}"
-                                data-item-qty="${quantidade}"
-                                data-item-unit="${unidadeTexto}">
-                            <i class="fas fa-pencil-alt"></i> Ajustar
-                        </button>
+                    <div class="variations-container" id="variations-${formatted}" style="display:none;">
+                        ${renderizarVariacoes(item.variacoes, item.nome)}
                     </div>
                 `;
-                detailsContainer.appendChild(variationRow);
+                content.appendChild(card);
             });
 
-            itemInnerCard.innerHTML = itemRowHTML;
-            itemInnerCard.appendChild(detailsContainer);
-
-            // Atualiza o total do grupo na linha principal (agora que calculamos)
-            itemInnerCard.querySelector('.item-total').textContent = `Total: ${totalUnidades} unidades`;
-
-            contentHTML.appendChild(itemInnerCard);
-            groupHTML.appendChild(contentHTML);
-            itemsListContainer.appendChild(groupHTML);
+            group.appendChild(content);
+            itemsListContainer.appendChild(group);
         }
 
-        // --- Configurações de Interatividade ---
-        setupAccordion();
+        // Accordion de tipo
+        document.querySelectorAll('.accordion-header').forEach(h => {
+            h.onclick = () => {
+                const content = h.nextElementSibling;
+                h.classList.toggle('active');
+                content.style.display = h.classList.contains('active') ? 'block' : 'none';
+            };
+        });
 
-        // Evento de clique para edição
-        itemsListContainer.querySelectorAll('.btn-edit.edit-qty').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const itemName = e.currentTarget.dataset.itemName;
-                const itemDesc = e.currentTarget.dataset.itemDesc; // Nova variável
-                const itemQty = e.currentTarget.dataset.itemQty;
-                const itemUnit = e.currentTarget.dataset.itemUnit;
+        // Toggle variações
+        document.querySelectorAll('.toggle-variations').forEach(icon => {
+            icon.onclick = () => {
+                const id = `variations-${icon.dataset.item}`;
+                const container = document.getElementById(id);
+                const isOpen = container.style.display === 'block';
+                container.style.display = isOpen ? 'none' : 'block';
+                icon.classList.toggle('fa-chevron-down', isOpen);
+                icon.classList.toggle('fa-chevron-up', !isOpen);
+            };
+        });
 
-                // CHAMANDO O NOVO MODAL CUSTOMIZADO
-                showModal(itemName, itemDesc, itemUnit, parseInt(itemQty));
-            });
+        // Botões de editar variação → abre modal
+        document.querySelectorAll('.edit-variation').forEach(btn => {
+            btn.onclick = () => {
+                const nome = btn.dataset.item;
+                const desc = btn.dataset.desc;
+                const qty = btn.dataset.qty;
+                showModal(`${nome} - ${desc}`, 'un.', qty);
+            };
         });
     };
 
-    // 3. Lógica de filtro de busca na página (AJUSTADA para Vidrarias)
-    if (searchArea && accordionContainer) {
-        searchArea.addEventListener('input', () => {
-            const termoBuscado = searchArea.value.toLowerCase().trim();
-            const todosOsGrupos = accordionContainer.querySelectorAll('.accordion-group-vidraria');
+    // ================== BUSCA ==================
+    searchArea?.addEventListener('input', () => {
+        const termo = searchArea.value.toLowerCase().trim();
+        document.querySelectorAll('.accordion-group-vidraria').forEach(group => {
+            const header = group.querySelector('.accordion-header');
+            const content = group.querySelector('.accordion-content');
+            let temMatch = false;
 
-            todosOsGrupos.forEach(group => {
-                let grupoVisivel = false;
-                const content = group.querySelector('.accordion-content');
-                const header = group.querySelector('.accordion-header');
-
-                const innerCards = group.querySelectorAll('.item-card-inner');
-
-                // Lógica de retorno ao estado FECHADO quando a busca está vazia
-                if (termoBuscado === '') {
-                    innerCards.forEach(innerCard => {
-                        innerCard.style.display = 'block';
-                        // Garante que o container de detalhes esteja visível ou não conforme o design original
-                        innerCard.querySelector('.variations-container').style.display = 'block';
-                    });
-                    group.style.display = 'block';
-                    content.style.display = 'none';
-                    header.classList.remove('active');
-                    return;
-                }
-
-                // Lógica de busca: 
-                innerCards.forEach(innerCard => {
-                    let innerCardVisivel = false;
-                    const mainItemRow = innerCard.querySelector('.main-item');
-                    const detailsContainer = innerCard.querySelector('.variations-container');
-
-                    const itemText = mainItemRow.dataset.search;
-
-                    // Busca no texto principal e nas variações
-                    if (itemText && itemText.includes(termoBuscado)) {
-                        innerCardVisivel = true;
-                        // Expande o bloco de detalhes se o termo de busca for encontrado
-                        detailsContainer.style.display = 'block';
-                    } else {
-                        detailsContainer.style.display = 'none';
-                    }
-
-                    if (innerCardVisivel) {
-                        innerCard.style.display = 'block';
-                        grupoVisivel = true;
-                    } else {
-                        innerCard.style.display = 'none';
-                    }
-                });
-
-                // 3. Controla a exibição e estado do Accordion (Grupo)
-                if (grupoVisivel) {
-                    group.style.display = 'block';
-                    content.style.display = 'block';
-                    header.classList.add('active');
-                } else {
-                    group.style.display = 'none';
-                }
+            group.querySelectorAll('.main-item, .variation-desc').forEach(el => {
+                const texto = el.getAttribute('data-search') || el.textContent.toLowerCase();
+                const visivel = texto.includes(termo);
+                if (visivel) temMatch = true;
+                el.closest('.item-card-inner, .variation-row')?.style.setProperty('display', visivel || termo === '' ? 'block' : 'none');
             });
+
+            group.style.display = temMatch || termo === '' ? 'block' : 'none';
+            if (temMatch && termo !== '') {
+                content.style.display = 'block';
+                header.classList.add('active');
+            } else if (termo === '') {
+                content.style.display = 'none';
+                header.classList.remove('active');
+            }
         });
-    }
+    });
 
-
-    // Configura o botão global "Confirmar"
-    const globalConfirmBtn = document.getElementById('btn-confirmar'); 
-    if (globalConfirmBtn) {
-        globalConfirmBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Impede que o link navegue ou recarregue
-            showApplyConfirmModal(); // Abre o modal de confirmação
-        });
-    }
-
-    // NOVO: Configura o botão "Voltar" no final da página 
-    const btnVoltarInferior = document.getElementById('btn-voltar-inferior'); 
-    if (btnVoltarInferior) {
-        btnVoltarInferior.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Redireciona para a página de administradores
-            window.location.href = 'administradores.html'; 
-        });
-    }
-
-    // Inicia o carregamento dos dados
+    // ================== INICIA ==================
     fetchVidrarias();
 });

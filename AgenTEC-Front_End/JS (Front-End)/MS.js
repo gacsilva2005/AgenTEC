@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 color: white;
                 padding: 15px 20px;
             ">
-                <h3 style="margin: 0; font-size: 18px;">${isSuccess ? 'Sucesso' : 'Atenção'}</h3>
+                <h3 style="margin: 0; font-size: 18px; color: white;">${isSuccess ? 'Sucesso' : 'Atenção'}</h3>
             </div>
             <div style="padding: 20px;">
                 <p style="margin: 0; line-height: 1.5;">${message}</p>

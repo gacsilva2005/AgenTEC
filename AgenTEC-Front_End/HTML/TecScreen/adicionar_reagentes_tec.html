@@ -7,7 +7,7 @@
     <title>Adicionar Itens</title>
     <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
-    <link rel="stylesheet" href="../../CSS/adicionar_vidrarias.css">
+    <link rel="stylesheet" href="../../CSS/adicionar_reagentes_adm.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,8 +256,8 @@
         <div id="breadcrumb">
             <div class="breadcrumb-container">
                 <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/
-                    <a href="administradores.html"> Administradores </a> / <a href="atualizar_vidrarias.html"> Atualizar
-                        vidrarias</a> / Adicionar vidrarias</span>
+                    <a href="tecnicos.html"> Técnico </a> / <a href="atualizar_reagentes.html"> Atualizar
+                        reagentes</a> / reagentes</span>
             </div>
         </div>
         <main class="main-content">
@@ -276,49 +276,6 @@
             <div class="page-layout">
 
                 <div class="left-column">
-
-                    <div class="accordion-wrapper">
-                        <button class="accordion-header">
-                            <h2>Adicionar Vidrarias</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="accordion-panel">
-                            <div class="form-container">
-                                <div class="input-group">
-                                    <label for="nome_vidraria">Nome da vidraria</label>
-                                    <input type="text" id="nome_vidraria" name="nome_vidraria"
-                                        placeholder="Ex: Béquer 250ml">
-                                    <span class="error-message" id="nome-error"></span>
-                                </div>
-
-                                <div class="input-group">
-                                    <label for="tipo_vidraria">Tipo da Vidraria</label>
-                                    <input type="text" id="tipo_vidraria" name="tipo_vidraria"
-                                        placeholder="Ex: Béquer, Balão, Pipeta">
-                                    <span class="error-message" id="tipo-error"></span>
-                                </div>
-
-                                <div class="quantity-group">
-                                    <label for="quantity">Quantidade</label>
-                                    <div class="stepper-container">
-                                        <div class="quantity-stepper">
-                                            <button type="button" class="quantity-btn btn-minus"
-                                                aria-label="Diminuir quantidade">-</button>
-                                            <input type="text" id="quantity" name="quantity" value="0" readonly>
-                                            <button type="button" class="quantity-btn btn-plus"
-                                                aria-label="Aumentar quantidade">+</button>
-                                        </div>
-                                        <button type="button" class="btn-confirm-small btn-confirm-vidraria"
-                                            aria-label="Confirmar Vidraria">
-                                            <i class="fas fa-check"></i>
-                                        </button>
-                                    </div>
-                                    <span class="error-message" id="quantity-error"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="accordion-wrapper">
                         <button class="accordion-header">
                             <h2>Adicionar Reagentes</h2>
@@ -386,7 +343,7 @@
 
                     <div class="action-buttons-list">
                         <button id="btn-confirmar" class="action-btn btn-primary">Confirmar Tudo</button>
-                        <a id="btn-voltar-inferior" href="administradores.html" class="action-btn btn-primary">Voltar</a>
+                        <a id="btn-voltar-inferior" href="controle_reagentes.html" class="action-btn btn-primary">Voltar</a>
                     </div>
 
                 </div>
