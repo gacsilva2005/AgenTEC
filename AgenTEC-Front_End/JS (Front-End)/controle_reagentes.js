@@ -1,4 +1,4 @@
-// controle_reagentes.js (Versão Final com Modal de Confirmação de Aplicação e Correção de Scroll)
+// controle_reagentes.js (Versão Final com Conversão Inteligente g/mL e Notificações)
 
 const BACKEND_URL = 'http://localhost:3000/api';
 
@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchArea = document.getElementById('search-area');
     const accordionContainer = document.getElementById('reagent-accordion');
     
+    // --- 1. Elementos da Notificação ---
+    const notificationElement = document.getElementById('custom-notification');
+    const notificationIcon = document.getElementById('notification-icon');
+    const notificationMessage = document.getElementById('notification-message');
+    // ------------------------------------------
+
     // Elementos do Modal de Edição
     const editModal = document.getElementById('edit-modal');
     const editCloseBtn = editModal.querySelector('.close-button');
@@ -30,34 +36,53 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentItemName = '';
     let currentItemUnit = '';
 
-    // --- CORREÇÃO: Contador para rastrear quantos modais estão abertos ---
+    // --- Contador para rastrear quantos modais estão abertos ---
     let openModalCount = 0;
 
     // Variáveis para o body e html (necessário para travar o scroll)
     const body = document.body;
     const html = document.documentElement; // Referência ao elemento <html>
+    
+    // --- FUNÇÃO: EXIBE A NOTIFICAÇÃO (TOAST) ---
+    const showNotification = (message, type = 'success', duration = 3000) => {
+        notificationElement.classList.remove('error');
+        notificationIcon.className = 'fas'; 
+        
+        if (type === 'success') {
+            notificationElement.classList.remove('error');
+            notificationIcon.classList.add('fa-check-circle');
+        } else if (type === 'error') {
+            notificationElement.classList.add('error');
+            notificationIcon.classList.add('fa-times-circle');
+        }
 
-    // --- FUNÇÃO CORE: VERIFICA E LIBERA O SCROLL (AGORA BASEADO NO CONTADOR) ---
+        notificationMessage.textContent = message;
+
+        notificationElement.classList.add('show');
+
+        setTimeout(() => {
+            notificationElement.classList.remove('show');
+        }, duration);
+    };
+
+
+    // --- FUNÇÃO CORE: VERIFICA E LIBERA O SCROLL (BASEADO NO CONTADOR) ---
     const checkAndReleaseScroll = () => {
-        // Se o contador for zero, remove as classes de bloqueio.
         if (openModalCount <= 0) {
-            // Garante que o contador nunca seja negativo.
             openModalCount = 0; 
             body.classList.remove('modal-open-noscroll');
             html.classList.remove('modal-open-noscroll');
         } else {
-            // Se o contador for > 0, garante que o bloqueio esteja ativo.
             body.classList.add('modal-open-noscroll');
             html.classList.add('modal-open-noscroll');
         }
     };
 
-    // --- FUNÇÕES DE CONTROLE DO MODAL DE EDIÇÃO ---
+    // --- FUNÇÕES DE CONTROLE DO MODAL ---
     const showModal = (itemNome, unidade, quantidadeAtual) => {
         currentItemName = itemNome;
         currentItemUnit = unidade;
 
-        // Preenche o modal com os dados atuais
         document.querySelector('.modal-item-name').textContent = itemNome;
         document.getElementById('modal-unit').textContent = unidade;
         document.getElementById('modal-current-qty').textContent = quantidadeAtual;
@@ -66,66 +91,68 @@ document.addEventListener('DOMContentLoaded', () => {
         
         editModal.style.display = 'flex'; 
         
-        // CORREÇÃO: Incrementa o contador e trava o scroll
         openModalCount++;
         checkAndReleaseScroll();
     };
 
-    // FUNÇÃO hideModal ATUALIZADA para usar o contador
     const hideModal = (modalToHide = editModal) => {
-        // Verifica se o modal estava realmente visível antes de decrementar
         if (modalToHide.style.display !== 'none') {
              openModalCount--;
         }
 
         modalToHide.style.display = 'none';
         
-        // Remove a classe de erro se existir
         if (modalToHide === editModal) {
             newQuantityInput.classList.remove('error');
         }
         
-        // Chama a função de verificação para liberar o scroll, se for o último a fechar
         checkAndReleaseScroll();
     };
 
-    // --- FUNÇÃO DE CONTROLE DO MODAL DE SUCESSO ---
     const showSuccessModal = (itemName, newQty, unit) => {
         successMessage.textContent = `Quantidade de ${itemName} atualizada para: ${newQty} ${unit}`;
         successModal.style.display = 'flex';
         
-        // CORREÇÃO: Incrementa o contador e trava o scroll
         openModalCount++;
         checkAndReleaseScroll();
+        
+        showNotification(`Alteração de ${itemName} registrada.`, 'success', 3000);
     };
     
-    // --- FUNÇÃO PARA MOSTRAR O MODAL DE CONFIRMAÇÃO DE APLICAÇÃO ---
     const showApplyConfirmModal = () => {
         applyConfirmModal.style.display = 'flex';
-        // CORREÇÃO: Incrementa o contador e trava o scroll
         openModalCount++;
         checkAndReleaseScroll();
     };
 
-    // Event listeners do Modal de Edição
-    editCloseBtn.addEventListener('click', () => hideModal(editModal));
-    cancelBtn.addEventListener('click', () => hideModal(editModal));
+    // --- EVENT LISTENERS E INTEGRAÇÃO DE NOTIFICAÇÃO ---
+
+    editCloseBtn.addEventListener('click', () => {
+        hideModal(editModal);
+        showNotification('Edição cancelada.', 'error', 2500);
+    });
+    cancelBtn.addEventListener('click', () => {
+        hideModal(editModal);
+        showNotification('Edição cancelada.', 'error', 2500);
+    });
     
-    // Event listener do Modal de Sucesso
     successOkBtn.addEventListener('click', () => hideModal(successModal));
     
-    // Event listeners do Modal de Confirmação de Aplicação
-    applyCancelBtn.addEventListener('click', () => hideModal(applyConfirmModal));
+    applyCancelBtn.addEventListener('click', () => {
+        hideModal(applyConfirmModal);
+        showNotification('Aplicação cancelada.', 'error', 2500);
+    });
 
     applyConfirmBtn.addEventListener('click', () => {
-        // Ação de aplicar (salvamento seria aqui)
         console.log("Alterações aplicadas e salvando...");
         
-        // Esconde o modal de confirmação antes de redirecionar
+        showNotification('Alterações aplicadas com sucesso!', 'success', 3000);
+
         hideModal(applyConfirmModal); 
         
-        // Redireciona para tecnicos.html
-        window.location.href = 'tecnicos.html';
+        setTimeout(() => {
+            window.location.href = 'tecnicos.html';
+        }, 1000); 
     });
 
 
@@ -133,10 +160,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('click', (event) => {
         if (event.target == editModal) {
             hideModal(editModal);
+            showNotification('Edição cancelada.', 'error', 2500);
         } else if (event.target == successModal) {
              hideModal(successModal);
         } else if (event.target == applyConfirmModal) {
              hideModal(applyConfirmModal);
+             showNotification('Aplicação cancelada.', 'error', 2500);
         }
     });
 
@@ -145,25 +174,43 @@ document.addEventListener('DOMContentLoaded', () => {
         const novaQuantidade = parseFloat(newQuantityInput.value);
         
         if (!isNaN(novaQuantidade) && novaQuantidade >= 0) {
-            // 1. Atualiza os dados na interface
             updateItemTotal(currentItemName, novaQuantidade, currentItemUnit);
             
-            // 2. Esconde o modal de edição (decrementa o contador)
             hideModal(editModal);
             
-            // 3. Mostra o modal de sucesso (incrementa o contador)
             showSuccessModal(currentItemName, novaQuantidade, currentItemUnit);
 
         } else {
-            alert('Por favor, insira um número válido (0 ou maior).');
+            showNotification('Erro: Por favor, insira um número válido.', 'error', 3500);
             newQuantityInput.classList.add('error'); 
             newQuantityInput.focus();
         }
     });
     
-    // --- FUNÇÕES DE LÓGICA EXISTENTES (Mantidas/Ajustadas) ---
+    // Botão Sair (Logout)
+    const logoutBtn = document.getElementById('btn-logout');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            showNotification('Você foi desconectado.', 'error', 2500);
+            
+            setTimeout(() => {
+                window.location.href = 'login.html'; 
+            }, 1500); 
+        });
+    }
 
-    // Funções de Accordion (MANTIDAS)
+    // Lógica de botões inferiores
+    if (globalApplyBtn) {
+        globalApplyBtn.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            showApplyConfirmModal(); // Abre o modal de confirmação
+        });
+    }
+
+
+    // --- FUNÇÕES DE LÓGICA EXISTENTES (MANTIDAS/AJUSTADAS) ---
+
     const setupAccordion = () => {
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
@@ -181,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
-    // Função para atualizar o total do item
+    // FUNÇÃO ATUALIZADA COM LÓGICA INTELIGENTE DE CONVERSÃO g/mL
     const updateItemTotal = (itemNome, novaQuantidade, unidade) => {
         console.log(`Recalculando total para: ${itemNome}. Nova Quantidade: ${novaQuantidade}`);
         
@@ -196,31 +243,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (qtyElement) {
                     qtyElement.textContent = `Total: ${novaQuantidade} ${unidadeTexto}`;
                     
-                    // Atualiza os data-attributes da linha
                     row.dataset.itemQty = novaQuantidade;
                     const novoSearch = `${itemNome} ${novaQuantidade} ${unidadeTexto}`.toLowerCase();
                     row.dataset.search = novoSearch;
                 }
                 
-                // ATUALIZA O CONTEÚDO EXPANDIDO (para refletir o novo cálculo)
                 const itemNomeFormatted = itemNome.replace(/[^a-zA-Z0-9]/g, '_');
                 const detailsContainer = document.getElementById(`details-${itemNomeFormatted}`);
                 if (detailsContainer) {
-                    // Recalcula mg
-                    const miligramas = (unidadeTexto.toLowerCase() === 'g') ? (novaQuantidade * 1000) : novaQuantidade;
                     
-                    // Atualiza a quantidade em gramas na sub-linha
+                    // --- NOVA LÓGICA DE CONVERSÃO ---
+                    const unidadeBase = unidadeTexto.toLowerCase();
+                    let valorConvertido = novaQuantidade;
+                    let textoConversao = '';
+                    
+                    if (unidadeBase === 'g') {
+                        valorConvertido = novaQuantidade * 1000;
+                        // g -> mg
+                        textoConversao = `Conversão (g &rarr; mg): ${valorConvertido.toFixed(2)} mg`;
+                    } else if (unidadeBase === 'ml') {
+                        valorConvertido = novaQuantidade * 1000;
+                        // mL -> µL (Microlitros)
+                        textoConversao = `Conversão (mL &rarr; µL): ${valorConvertido.toFixed(2)} µL`;
+                    } else {
+                        // Unidades que não são g ou mL (ex: 'unidades', 'caixas')
+                        textoConversao = `Conversão: ${valorConvertido.toFixed(2)} ${unidadeBase}`;
+                    }
+                    // --- FIM DA NOVA LÓGICA ---
+
                     const qtyGramasSpan = detailsContainer.querySelector('.variation-qty');
                     if (qtyGramasSpan) {
                          qtyGramasSpan.textContent = `${novaQuantidade} ${unidadeTexto}`;
                     }
-                    // Atualiza o valor de miligramas na descrição
                     const descSpan = detailsContainer.querySelector('.variation-desc');
                     if (descSpan) {
-                        // O texto "Conversão (g -> mg): " está embutido no HTML, então só atualizamos o valor
-                        descSpan.innerHTML = `Conversão (g &rarr; mg): ${miligramas.toFixed(2)} mg`;
+                        // Usa o novo texto de conversão
+                        descSpan.innerHTML = textoConversao;
                     }
-                    // Atualiza o data-attribute do botão
                     const editButton = detailsContainer.querySelector('.btn-edit');
                     if (editButton) {
                         editButton.dataset.itemQty = novaQuantidade;
@@ -230,13 +289,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
-    // 1. Função para buscar os dados (MANTIDA)
     const fetchReagentes = async () => {
         accordionContainer.innerHTML = '<p style="text-align:center; font-size:1.6rem; color:#666;">Carregando reagentes...</p>';
         
         try {
             const response = await fetch('../../../AgenTEC-DataBase-(JSON)/reagentes.json');
-            // ... (código fallback) ...
              if (!response.ok) {
                 const fallbackResponse = await fetch('reagentes.json');
                 if (!fallbackResponse.ok) {
@@ -263,12 +320,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 2. Função para renderizar os cards COMO ACCORDION
+    // FUNÇÃO ATUALIZADA COM LÓGICA INTELIGENTE DE CONVERSÃO g/mL (Para o carregamento inicial)
     const renderizarCards = (reagentes) => {
         const itemsListContainer = document.getElementById('reagent-accordion') || document.querySelector('.items-list-container');
         itemsListContainer.innerHTML = '';
 
-        // Agrupa os itens pelo campo 'tipo' (MANTIDO)
         const reagentesAgrupados = reagentes.reduce((acc, item) => {
             const tipo = item.tipo || 'Outros';
             if (!acc[tipo]) {
@@ -278,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return acc;
         }, {});
 
-        // Gera o HTML para cada grupo (Accordion Group)
         for (const tipo in reagentesAgrupados) {
             const itensDoTipo = reagentesAgrupados[tipo];
 
@@ -298,7 +353,6 @@ document.addEventListener('DOMContentLoaded', () => {
             contentHTML.classList.add('accordion-content');
             contentHTML.style.display = 'none'; 
 
-            // 4. ADICIONA OS ITENS COM SUB-BLOCO DE DETALHES/CONVERSÃO
             itensDoTipo.forEach(item => {
                 const unidadeTexto = item.unidade || 'unidades'; 
                 const quantidade = item.quantidade || 0;
@@ -307,14 +361,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 const unidadeComQtd = `${quantidade} ${unidadeTexto}`;
                 const textoBuscaCompleto = `${item.nome} ${unidadeComQtd} ${unidadeTexto.toLowerCase() === 'g' ? 'miligramas' : ''}`.toLowerCase();
                 
-                // Conversão para miligramas
-                const miligramas = (unidadeTexto.toLowerCase() === 'g') ? (quantidade * 1000) : quantidade;
-                
-                // --- INÍCIO DA ESTRUTURA ANINHADA DO ITEM (item-card-inner) ---
+                // --- NOVA LÓGICA DE CONVERSÃO NO RENDER ---
+                const unidadeBase = unidadeTexto.toLowerCase();
+                let valorConvertido = quantidade;
+                let textoConversao = '';
+
+                if (unidadeBase === 'g') {
+                    valorConvertido = quantidade * 1000;
+                    textoConversao = `Conversão (g &rarr; mg): ${valorConvertido.toFixed(2)} mg`;
+                } else if (unidadeBase === 'ml') {
+                    valorConvertido = quantidade * 1000;
+                    textoConversao = `Conversão (mL &rarr; µL): ${valorConvertido.toFixed(2)} µL`;
+                } else {
+                    textoConversao = `Conversão: ${valorConvertido.toFixed(2)} ${unidadeBase}`;
+                }
+                // --- FIM DA NOVA LÓGICA NO RENDER ---
+
                 const itemInnerCard = document.createElement('div');
                 itemInnerCard.classList.add('item-card-inner');
 
-                // 4a. Linha Principal (MANTIDA)
                 let itemRowHTML = `
                     <div class="item-row main-item" 
                         data-search="${textoBuscaCompleto}"
@@ -334,7 +399,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
                 
-                // 4b. Container Colapsável (Sub-lista/Detalhes)
                 const detailsContainer = `
                     <div class="variations-container reagent-details-container" 
                          id="details-${itemNomeFormatted}" 
@@ -342,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="variation-row">
                             <div class="variation-info" style="flex-direction: column; align-items: flex-start;">
                                 <span class="variation-desc">
-                                    Conversão (g &rarr; mg): ${miligramas.toFixed(2)} mg
+                                    ${textoConversao} 
                                 </span>
                             </div>
                             <span class="variation-qty">${unidadeComQtd}</span>
@@ -366,10 +430,8 @@ document.addEventListener('DOMContentLoaded', () => {
             itemsListContainer.appendChild(groupHTML);
         }
 
-        // ... (Mantenha o restante das funções de interatividade) ...
         setupAccordion();
         
-        // Evento de EXPANDIR/COLAPSAR
         document.querySelectorAll('.toggle-details').forEach(icon => {
             icon.addEventListener('click', (e) => {
                 const itemNomeFormatted = e.target.dataset.item; 
@@ -389,20 +451,17 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
-        // Evento de clique para edição
         itemsListContainer.querySelectorAll('.btn-edit.edit-qty').forEach(button => {
             button.addEventListener('click', (e) => {
                 const itemName = e.currentTarget.dataset.itemName;
                 const itemQty = e.currentTarget.dataset.itemQty;
                 const itemUnit = e.currentTarget.dataset.itemUnit;
                 
-                // CHAMANDO O NOVO MODAL CUSTOMIZADO
                 showModal(itemName, itemUnit, parseFloat(itemQty));
             });
         });
     };
 
-    // 3. Lógica de filtro de busca na página (AJUSTADA)
     if (searchArea && accordionContainer) {
         searchArea.addEventListener('input', () => {
             const termoBuscado = searchArea.value.toLowerCase().trim();
@@ -415,7 +474,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const innerCards = group.querySelectorAll('.item-card-inner');
 
-                // Lógica de retorno ao estado FECHADO quando a busca está vazia
                 if (termoBuscado === '') {
                     innerCards.forEach(innerCard => {
                         innerCard.style.display = 'block';
@@ -429,7 +487,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Lógica de busca: 
                 innerCards.forEach(innerCard => {
                     let innerCardVisivel = false;
                     const mainItemRow = innerCard.querySelector('.main-item');
@@ -441,7 +498,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (itemText && itemText.includes(termoBuscado)) {
                         innerCardVisivel = true;
                         
-                        // Expande o bloco se o termo de busca for encontrado
                         detailsContainer.style.display = 'block'; 
                         toggleIcon.classList.remove('fa-chevron-down');
                         toggleIcon.classList.add('fa-chevron-up');
@@ -459,7 +515,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                // 3. Controla a exibição e estado do Accordion (Grupo)
                 if (grupoVisivel) {
                     group.style.display = 'block';
                     content.style.display = 'block'; 
@@ -468,12 +523,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     group.style.display = 'none';
                 }
             });
-        });
-    }
-    if (globalApplyBtn) {
-        globalApplyBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Impede que o link navegue ou recarregue
-            showApplyConfirmModal(); // Abre o modal de confirmação
         });
     }
 
