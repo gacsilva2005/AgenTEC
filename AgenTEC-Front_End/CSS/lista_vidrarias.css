@@ -289,53 +289,43 @@ body, html {
     min-height: 50px;
 }
 
-* Contêiner principal, esconde o modal por padrão */
-.custom-modal {
-    display: none; /* Escondido por padrão */
-    position: fixed; /* Fixado na tela */
-    z-index: 100; /* Acima de tudo */
+/* =============== MODAIS CORRIGIDOS =============== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.6); /* Fundo escuro semi-transparente */
-    backdrop-filter: blur(3px); /* Efeito de desfoque (opcional, moderno) */
-    animation: fadeIn 0.3s ease-out;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
 }
 
-/* Animação simples de fade in */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-
-/* Conteúdo do Modal (Centralização Horizontal e Vertical Corrigida) */
 .modal-content {
     background-color: #fefefe;
-    /* Centralização Mágica: Remove a margin-top e usa transform */
-    margin: auto; /* Permite centralização horizontal automática */
+    margin: auto;
     padding: 30px;
     border: 1px solid #888;
-    width: 90%; 
-    /* ⚠️ AJUSTE FINAL: Largura máxima aumentada de 350px para 450px */
-    max-width: 450px; 
+    width: 90%;
+    max-width: 450px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     position: relative;
-    animation: slideDown 0.3s ease-out;
-
-    /* Mantém a centralização perfeita */
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    animation: modalSlideIn 0.3s ease-out;
 }
 
-@keyframes slideDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .modal-title {
@@ -352,6 +342,7 @@ body, html {
     color: var(--dark-gray);
     margin-bottom: 15px;
 }
+
 .modal-info p {
     font-size: 1.4rem;
     color: var(--light-gray);
@@ -364,11 +355,11 @@ body, html {
     color: var(--primary-color);
 }
 
-.modal-input-group {
+.form-group {
     margin: 20px 0;
 }
 
-.modal-input-group label {
+.form-group label {
     display: block;
     font-size: 1.4rem;
     font-weight: 500;
@@ -378,52 +369,75 @@ body, html {
 
 #new-quantity {
     width: 100%;
-    padding: 10px;
-    font-size: 1.5rem;
-    border: 2px solid #ccc;
+    padding: 12px 15px;
+    font-size: 1.6rem;
+    border: 2px solid #ddd;
     border-radius: 5px;
+    transition: border-color 0.3s ease;
     box-sizing: border-box;
-    transition: border-color 0.2s;
 }
 
 #new-quantity:focus {
     border-color: var(--hoverCian-color);
     outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 193, 207, 0.1);
 }
 
-.modal-actions {
+#new-quantity.error {
+    border-color: var(--primary-red);
+    background-color: #fff5f5;
+}
+
+.modal-buttons {
     display: flex;
-    justify-content: center; 
+    justify-content: flex-end;
     gap: 15px;
-    margin-top: 25px;   
+    margin-top: 25px;
 }
 
-.btn-modal {
-    padding: 10px 20px;
+.btn-primary {
+    background-color: var(--hoverCian-color);
+    color: white;
     border: none;
+    padding: 12px 25px;
     border-radius: 5px;
     font-size: 1.4rem;
     cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
 }
 
-.btn-confirm {
+.btn-primary:hover {
     background-color: var(--primary-color);
-    color: white;
-}
-
-.btn-confirm:hover {
-    background-color: var(--hoverCian-color);
 }
 
 .btn-cancel {
     background-color: #e0e0e0;
     color: var(--dark-gray);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btn-cancel:hover {
     background-color: #ccc;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #218838;
 }
 
 /* Botão de fechar (X) */
@@ -434,6 +448,9 @@ body, html {
     font-weight: bold;
     cursor: pointer;
     line-height: 1;
+    position: absolute;
+    top: 15px;
+    right: 20px;
 }
 
 .close-button:hover,
@@ -442,26 +459,72 @@ body, html {
     text-decoration: none;
 }
 
+/* Garante que o body não scroll quando modal aberto */
+body.modal-open-noscroll, 
+html.modal-open-noscroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* NOTIFICAÇÃO TOAST - Correções */
+.custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+    border-left: 4px solid #28a745;
+}
+
+.custom-notification.show {
+    transform: translateX(0);
+}
+
+.custom-notification.error {
+    border-left-color: var(--primary-red);
+}
+
+.custom-notification i {
+    font-size: 1.8rem;
+}
+
+.custom-notification.success i {
+    color: #28a745;
+}
+
+.custom-notification.error i {
+    color: var(--primary-red);
+}
+
+/* Remove estilos conflitantes */
+.custom-modal {
+    display: none;
+}
+
 /* Responsividade básica para o modal */
 @media (max-width: 500px) {
     .modal-content {
         margin: 10% auto;
         padding: 20px;
     }
-    .modal-actions {
+    .modal-buttons {
         flex-direction: column;
         gap: 15px;
     }
-    .btn-modal {
+    .btn-primary, .btn-cancel, .btn-success {
         width: 100%;
     }
 }
-
-/* CLASSE PARA BLOQUEAR O SCROLL DA PÁGINA QUANDO O MODAL ESTIVER ABERTO */
-.modal-open-noscroll {
-    overflow: hidden;
-}
-
 
 @media (max-width: 768px) {
     .cps-header__container {
@@ -557,7 +620,6 @@ body, html {
 }
 
 /* Estilo dos links dentro do submenu */
-/* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
 .main-menu-container .menu .dropdown-content li a {
     color: #555; /* Define a cor escura para o texto */
     font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
@@ -589,8 +651,6 @@ body, html {
 .menu li.dropdown:hover a .fa-chevron-down {
     transform: rotate(180deg);
 }
-
-/* --- ESTILOS DE LISTA DE ITENS (INSPIRAÇÃO: MS.HTML / IMAGEM) --- */
 
 /* Barra de Pesquisa (Centralizada) */
 .search-container {
