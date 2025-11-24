@@ -267,7 +267,15 @@
         </div>
 
         <main class="main-content">
-            <h1 class="page-title">Lista de Reagentes</h1>
+            <div class="page-header">
+                <h1 class="page-title">Lista de Reagentes</h1>
+                <div class="button-container">
+                    <button id="btn-logout" class="button-custom">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </button>
+                </div>
+            </div>
             <div class="title-underline"></div>
 
             <div class="search-container">
@@ -279,12 +287,13 @@
             </div>
 
             <section class="items-list-container" id="reagent-accordion">
-                </section>
-  <section class="action-buttons-list">
-    <a id="global-apply-btn" href="#" class="btn-global">aplicar</a>
-    <a href="adicionar.reagentes.html" class="btn-global">adicionar reagentes</a> <a href="tecnicos.html"
-        class="btn-global">voltar</a>
-</section>
+            </section>
+
+            <section class="action-buttons-list">
+                <a href="tecnicos.html" class="btn-global">voltar</a>
+                <a id="global-apply-btn" href="#" class="btn-global">aplicar</a>
+                <a href="adicionar.reagentes.html" class="btn-global">adicionar reagentes</a>
+            </section>
 
         </main>
         <button class="back-to-top">
@@ -378,29 +387,29 @@
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
 
         <div id="edit-modal" class="custom-modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h3 class="modal-title">Editar Quantidade</h3>
-            <p class="modal-item-name"></p>
-            
-            <div class="modal-info">
-                <p>Unidade: <span id="modal-unit">g</span></p>
-                <p>Quantidade Atual: <span id="modal-current-qty">0</span></p>
-            </div>
-            
-            <div class="modal-input-group">
-                <label for="new-quantity">Nova Quantidade:</label>
-                <input type="number" id="new-quantity" min="0" value="0">
-            </div>
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3 class="modal-title">Editar Quantidade</h3>
+                <p class="modal-item-name"></p>
 
-            <div class="modal-actions">
-                <button id="modal-confirm-btn" class="btn-modal btn-confirm">Confirmar</button>
-                <button id="modal-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
+                <div class="modal-info">
+                    <p>Unidade: <span id="modal-unit">g</span></p>
+                    <p>Quantidade Atual: <span id="modal-current-qty">0</span></p>
+                </div>
+
+                <div class="modal-input-group">
+                    <label for="new-quantity">Nova Quantidade:</label>
+                    <input type="number" id="new-quantity" min="0" value="0">
+                </div>
+
+                <div class="modal-actions">
+                    <button id="modal-confirm-btn" class="btn-modal btn-confirm">Confirmar</button>
+                    <button id="modal-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="../../JS (Front-End)/controle_reagentes.js"></script>
-    <script src="../../JS (Front-End)/botao_topo.js"></script>
+        <script src="../../JS (Front-End)/controle_reagentes.js"></script>
+        <script src="../../JS (Front-End)/botao_topo.js"></script>
         <div vw="" class="enabled"
             style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
             <div vw-access-button="" class="active">
@@ -421,27 +430,27 @@
             new window.VLibras.Widget('https://vlibras.gov.br/app');
         </script>
         <script src="../../JS (Front-End)/logout.js"></script>
-    </body>
-    <div id="success-modal" class="custom-modal success-modal">
-        <div class="modal-content success-content">
-            <i class="fas fa-check-circle success-icon"></i>
-            <h3 class="modal-title success-title">Sucesso!</h3>
-            <p class="success-message"></p>
-            <div class="modal-actions">
-                <button id="success-ok-btn" class="btn-modal btn-confirm">OK</button>
-            </div>
+</body>
+<div id="success-modal" class="custom-modal success-modal">
+    <div class="modal-content success-content">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h3 class="modal-title success-title">Sucesso!</h3>
+        <p class="success-message"></p>
+        <div class="modal-actions">
+            <button id="success-ok-btn" class="btn-modal btn-confirm">OK</button>
         </div>
     </div>
-    <div id="apply-confirm-modal" class="custom-modal confirm-modal">
-        <div class="modal-content confirm-content">
-            <h3 class="modal-title">Confirmar Aplicação</h3>
-            <p class="confirm-message">Tem certeza que deseja aplicar as alterações e sair desta página?</p>
-            <div class="modal-actions">
-                <button id="apply-confirm-btn" class="btn-modal btn-confirm">Aplicar e Sair</button>
-                <button id="apply-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
-            </div>
+</div>
+<div id="apply-confirm-modal" class="custom-modal confirm-modal">
+    <div class="modal-content confirm-content">
+        <h3 class="modal-title">Confirmar Aplicação</h3>
+        <p class="confirm-message">Tem certeza que deseja aplicar as alterações e sair desta página?</p>
+        <div class="modal-actions">
+            <button id="apply-confirm-btn" class="btn-modal btn-confirm">Aplicar e Sair</button>
+            <button id="apply-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
         </div>
     </div>
+</div>
 </body>
 
 </html>

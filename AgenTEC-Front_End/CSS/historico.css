@@ -32,9 +32,9 @@ html {
 }
 
 .govsp-portal img {
-    height: 60px;
-    width: auto;
-    display: block;
+    height: 10px;
+    width: 200px;
+    display: flex;
 }
 
 .govsp-portal {
@@ -59,10 +59,8 @@ html {
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
 }
 
-
 .govsp-topo .govsp-navbar img {
     height: 23px;
-    ;
 }
 
 .govsp-topo .govsp-social {
@@ -187,10 +185,12 @@ html {
 .page-title {
     font-size: 4rem;
     color: var(--hoverCian-color);
-    margin-bottom: 10px;
+    margin: 0; /* Margem removida para alinhar */
     font-weight: 700;
+    white-space: nowrap; /* Evita quebra de linha */
 }
 
+/* HEADER DA PÁGINA (Título e Botão Sair) */
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -198,13 +198,39 @@ html {
     width: 100%;
 }
 
-.page-header .page-title {
-    margin: 0;
+/* Container dos botões */
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 50px; /* Espaço entre os botões */
 }
 
-.page-header .button-container {
-    margin: 0;
+/* Estilo dos botões (Voltar e Sair) */
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: var(--hoverCian-color);
     padding: 0;
+    font-size: 1.60rem;
+    font-weight: 300;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button-custom:hover {
+    color: var(--primary-color);
+}
+
+.button-custom:active {
+    color: var(--primary-color);
 }
 
 .title-underline {
@@ -224,7 +250,7 @@ html {
     line-height: 2.5rem;
     overflow-wrap: break-word;
     word-break: break-word;
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0;
     box-sizing: inherit;
     display: inline-block;
@@ -241,15 +267,15 @@ html {
     gap: 30px;
     flex-wrap: wrap;
     margin-top: 20px;
-    margin-bottom: 180;
+    margin-bottom: 180px;
 }
 
-/* Card com funções das telas*/
 .card {
     background-color: #f7f7f7;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    width: 230px;
+    width: 300px;
+    height: 270px;
     padding: 40px 20px;
     text-align: center;
     text-decoration: none;
@@ -386,80 +412,6 @@ html {
     border-top: 3px solid #b20000;
 }
 
-/* Estilo dos links dentro do submenu */
-/* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
-.main-menu-container .menu .dropdown-content li a {
-    color: #555;
-    /* Define a cor escura para o texto */
-    font-weight: normal;
-    /* Garante que o texto não fique em negrito como o menu principal */
-    padding: 12px 16px;
-    text-align: left;
-    /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
-    background-color: transparent;
-}
-
-/* Efeito de hover nos links do submenu */
-.main-menu-container .menu .dropdown-content li a:hover {
-    background-color: #f1f1f1;
-    color: #b20000;
-}
-
-/* Mostra o submenu quando o mouse passa por cima do item principal */
-.menu li.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Estilo para a setinha */
-.dropdown a .fa-chevron-down {
-    font-size: 0.7em;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-}
-
-/* Gira a setinha para cima quando o menu está aberto */
-.menu li.dropdown:hover a .fa-chevron-down {
-    transform: rotate(180deg);
-}
-
-@media (min-width: 375px) and (max-width: 767px) {}
-
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 160px;
-    gap: 50px;
-
-}
-
-.button-custom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex-direction: row-reverse;
-    background-color: transparent;
-    color: var(--hoverCian-color);
-    padding: 0;
-    font-size: 1.60rem;
-    font-weight: 300;
-    border-radius: 0;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
-}
-
-.button-custom:hover {
-    color: var(--primary-color);
-}
-
-.button-custom:active {
-    color: var(--primary-color);
-}
-
 @media (max-width: 480px) {
     .modal-content {
         padding: 20px;
@@ -473,49 +425,6 @@ html {
     .button-cancel {
         width: 100%;
     }
-}
-
-/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
-
-.notification {
-    position: fixed;
-    /* Fica fixo na tela mesmo com scroll */
-    top: 20px;
-    right: 20px;
-    background-color: #28a745;
-    /* Verde para sucesso */
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    /* Espaço entre o ícone e o texto */
-    z-index: 1000;
-    /* Garante que fique por cima de outros elementos */
-
-    /* Animação */
-    transform: translateX(120%);
-    /* Começa fora da tela */
-    opacity: 0;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-/* Classe que será adicionada via JS para mostrar a notificação */
-.notification.show {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.notification i {
-    font-size: 1.4rem;
-}
-
-#cps-rodape__redes-icones {
-    display: flex;
-    align-items: center;
-    gap: 1px;
 }
 
 #cps-rodape__redes-icones a {
@@ -546,13 +455,19 @@ html {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
+
 #userwayAccessibilityIcon,
 .uwy-userway-trigger,
 .uai-trigger-container,
 div[data-account="3eFXoC4I4A"] {
+    /* Força a posição fixa */
     position: fixed !important;
+    /* Zera a posição do topo padrão e define a nova */
     bottom: auto !important;
+    /* Alinha à direita */
     right: 0 !important;
+    /* Colado na direita */
     left: auto !important;
+    /* Remove margens que o script possa adicionar */
     margin-top: 230px !important;
-}
+}   

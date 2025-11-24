@@ -176,11 +176,52 @@ body, html {
     padding: 0 20px;
 }
 
+/* HEADER DA PÁGINA (Título e Botão Sair) - NOVO */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .page-title {
     font-size: 4rem;
     color: var(--hoverCian-color);
-    margin-bottom: 10px;
+    margin: 0; /* Remove margem para alinhar com o botão */
     font-weight: 700;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 50px;
+}
+
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: var(--hoverCian-color);
+    padding: 0;
+    font-size: 1.60rem;
+    font-weight: 300;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button-custom:hover {
+    color: var(--primary-color);
+}
+
+.button-custom:active {
+    color: var(--primary-color);
 }
 
 .title-underline {
