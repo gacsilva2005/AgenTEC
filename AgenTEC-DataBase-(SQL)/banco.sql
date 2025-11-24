@@ -250,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`materiaisSelecionados` (
   `tipo_categoria` VARCHAR(100) NOT NULL,
   `quantidade_selecionada` DECIMAL(10,2) NOT NULL,
   `unidade` VARCHAR(45) NOT NULL,
-  `capacidade` DECIMAL(10,2) NOT NULL,
+  `capacidade` VARCHAR(40) NULL,
   `data_selecao` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idmateriaisSelecionados`),
   INDEX `fk_materiaisSelecionados_professor1_idx` (`professor_id_professor` ASC) VISIBLE,
