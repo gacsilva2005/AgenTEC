@@ -424,7 +424,8 @@ body, html {
     background-color: var(--hoverCian-color, #008B8B); 
 }
 
-.action-buttons-container {
+/* Modificação aqui para garantir que não haja conflito com o Flexbox */
+.action-buttons-container { 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -443,6 +444,7 @@ body, html {
     font-weight: 500;
     text-transform: uppercase;
     transition: background-color 0.3s, transform 0.2s;
+    /* Remover a largura total aqui permite que o justify-content funcione */
 }
 
 .action-btn:hover {
@@ -473,13 +475,14 @@ body, html {
         grid-template-columns: 1fr;
     }
 
+    /* Manter a direção da coluna para telas pequenas */
     .action-buttons-container {
         flex-direction: column;
         gap: 15px;
     }
 
     .action-btn {
-        width: 100%;
+        width: 100%; /* Em telas pequenas, queremos largura total */
     }
 }
 
@@ -779,12 +782,26 @@ div[data-account="3eFXoC4I4A"] {
     max-width: 100%;
     margin: 0; /* Remove a margem automática antiga */
     box-sizing: border-box;
-    display: block !important; /* Força visibilidade para testar layout (o JS pode controlar isso depois) */
+    display: block !important; 
 }
 
-/* Ajusta os botões de ação para ficarem empilhados na direita */
+/* NOVO BLOCO - Alinhamento horizontal e centralização */
+.action-buttons-list {
+    display: flex; /* Habilita o Flexbox */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center;
+    gap: 20px; /* Espaço entre os botões */
+    
+    /* Regras do container pai */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* REMOVER REGRAS CONFLITANTES DA COLUNA DIREITA NO RIGHT-COLUMN */
 .right-column .action-buttons-container {
-    flex-direction: column;
+    flex-direction: row; /* Altera para row, mas a lista de botões já está em flexbox */
     width: 100%;
     margin: 0;
     padding: 0;
@@ -792,9 +809,12 @@ div[data-account="3eFXoC4I4A"] {
     gap: 10px;
 }
 
+/* AJUSTE ESSENCIAL: Remove width: 100% dos botões dentro da coluna da direita */
+/* A regra que forçava os botões a ocupar 100% foi removida para que eles fiquem em linha e centralizados */
 .right-column .action-btn {
-    width: 100%; /* Botões ocupam toda a largura da coluna direita */
+    width: auto; /* Permite que o botão se ajuste ao conteúdo */
 }
+
 
 /* Tabela responsiva na lateral */
 .tabela-vidrarias th, 
@@ -812,5 +832,15 @@ div[data-account="3eFXoC4I4A"] {
     .right-column {
         width: 100%; /* Ocupa largura total no celular */
         position: static; /* Remove o efeito sticky */
+    }
+
+    /* No mobile, voltamos a ocupar 100% e empilhamos para melhor toque */
+    .action-buttons-list {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .right-column .action-btn {
+        width: 100%; /* Botões ocupam toda a largura da coluna direita em mobile */
     }
 }

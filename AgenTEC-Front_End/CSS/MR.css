@@ -187,8 +187,12 @@ html {
 .page-title {
     font-size: 4rem;
     color: var(--hoverCian-color);
-    margin-bottom: 10px;
+    /* Removido margin-bottom: 10px; da regra geral */
     font-weight: 700;
+    /* Adicionado para forçar que o texto permaneça na mesma linha */
+    white-space: nowrap; 
+    width: fit-content; /* Permite que o elemento se ajuste ao conteúdo, se necessário */
+    margin: 0; /* Ajuste para centralizar com o divisor, se aplicável */
 }
 
 .page-header {
@@ -241,7 +245,8 @@ html {
     gap: 30px;
     flex-wrap: wrap;
     margin-top: 20px;
-    margin-bottom: 180;
+    /* Reduz a margem inferior do contêiner dos cards */
+    margin-bottom: 20px;
 }
 
 /* Card com funções das telas*/
@@ -555,4 +560,67 @@ div[data-account="3eFXoC4I4A"] {
     right: 0 !important;
     left: auto !important;
     margin-top: 230px !important;
+}
+
+/* ================================================= */
+/* NOVO ESTILO PARA O BOTÃO CENTRALIZADO (COPIADO DO CONTROLE_BANCO.CSS) */
+/* ================================================= */
+
+/* Contêiner que centraliza o botão na largura total da página */
+.centered-button-container-full {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente o conteúdo (o botão) */
+    width: 100%; 
+    max-width: 1200px; /* Alinha com a largura máxima do main-content */
+    margin: 40px auto 40px auto; /* Mantém o espaçamento perfeito */
+    padding: 0 20px; 
+    box-sizing: border-box;
+}
+
+/* Estilo do botão: Largura ajustada e texto centralizado */
+.action-btn {
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+    
+    /* CORREÇÃO: Centraliza o texto e/ou ícones DENTRO do botão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* CORREÇÃO: Largura ajustada para ser esticado de forma elegante */
+    width: 30%; /* Mantido o 30% ajustado */
+    min-width: 200px; 
+    max-width: 300px; 
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+}
+
+.action-btn:active {
+    transform: translateY(2px);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
+}
+
+.btn-primary:hover {
+    background-color: var(--hoverCian-color);
+}
+
+/* Media Query para telas menores: o botão ocupa maior parte da largura */
+@media (max-width: 768px) {
+    /* Ocupa a largura total em mobile */
+    .action-btn {
+        width: 90%; 
+    }
 }

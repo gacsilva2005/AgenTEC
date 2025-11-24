@@ -740,3 +740,174 @@ div[data-account="3eFXoC4I4A"] {
     /* Remove margens que o script possa adicionar */
     margin-top: 230px !important;
 }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif !important;
+    background-color: #ffffff;
+    color: #333;
+}
+
+:root{
+    --primary-color: #243E63; /* Azul Marinho Escuro - Novo padrão para o botão Voltar/Histórico */
+    --hoverCian-color: #005C6D; /* Azul/Ciano (Mantido, mas não usado nos botões flutuantes) */
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF; 
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+}
+/* ... (Estilos de topo, header, menu, breadcrumb - MANTIDOS) ... */
+
+/* Conteúdo Principal */
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+/* ... (Estilos de page-title, page-header, title-underline - MANTIDOS) ... */
+
+.kit-manager-container {
+    display: flex;
+    position: relative;
+    /* Reduzida a margem que empurrava o footer */
+    margin-bottom: 20px; 
+}
+
+.kit-list-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 250px;
+    padding-right: 30px;
+    gap: 15px !important;
+    align-items: center; 
+    /* Margem inferior reduzida para não criar grande espaço */
+    margin-bottom: 20px;
+}
+
+/* --- BOTÕES DE KIT (VERMELHO) --- */
+.kit-btn {
+    background-color: #a00000; 
+    color: white;
+    border: none;
+    padding: 14px 0;
+    font-size: 2rem;
+    font-weight: 500;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.kit-btn:hover {
+    background-color: #7a0000; 
+    transform: scale(1.03);
+}
+
+/* ... (Estilos de kit-btn.active, vertical-separator, kit-main-view, kit-item - MANTIDOS) ... */
+/* ... (Estilos de kit-actions, action-btn, popup-overlay, popup - MANTIDOS) ... */
+/* ... (Estilos de kit-main-view, kit-main-view .placeholder, popup input - MANTIDOS) ... */
+
+/* ================================================= */
+/* NOVO CONTÊINER PARA CENTRALIZAÇÃO DOS BOTÕES DE AÇÃO */
+/* ================================================= */
+.kit-actions-footer {
+    display: flex;
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    align-items: center;
+    gap: 30px; /* Espaço entre os dois botões */
+    width: 100%;
+    margin-top: 40px; 
+    margin-bottom: 40px; /* Garante um espaço decente entre os botões e o rodapé */
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* ================================================= */
+/* AJUSTE DOS BOTÕES FLUTUANTES PARA O NOVO CONTÊINER */
+/* ================================================= */
+
+.floating-btn {
+    /* REMOVIDO: position: fixed, bottom, right */
+    position: static; 
+    bottom: auto;
+    right: auto;
+    background-color: var(--primary-color); 
+    color: #fff;
+    border: none;
+    width: auto; /* Permite que o botão Voltar seja alongado */
+    height: 60px; /* Altura padrão para ambos */
+    font-size: 1.6rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    padding: 0 25px; /* Padding para o botão alongado */
+    border-radius: 50px; /* Arredondamento para ambos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.floating-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--hoverCian-color); 
+    color: var(--text-white); 
+}
+
+/* Estilo do botão Histórico (o círculo) */
+#history-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    padding: 0; 
+    border-radius: 50%;
+}
+
+/* Estilo do botão Voltar (o alongado) */
+#back-to-professor-float {
+    width: 160px; 
+    height: 60px;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+/* Estilo do ícone dentro do botão Histórico */
+#history-btn i {
+    line-height: 1;
+}
+
+/* ... (Outros estilos - MANTIDOS) ... */
+
+/* Media Query para responsividade do contêiner de botões */
+@media (max-width: 600px) {
+    .kit-actions-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+    /* Estica os botões em telas pequenas para melhor toque */
+    #back-to-professor-float, #history-btn {
+        width: 80%;
+        max-width: 300px;
+    }
+    /* Histórico volta a ser um círculo no mobile, se estiver separado.
+    Ajustamos para que ele se comporte como um botão de largura total, se necessário, 
+    ou mantemos o círculo se for visualmente melhor.*/
+    #history-btn {
+        width: 80%; 
+        height: 50px; /* Alinha altura com o Voltar */
+        border-radius: 50px;
+        padding: 0 20px;
+        /* Adicione texto "Histórico" ao HTML se quiser que ele estique, ou mantenha o círculo: */
+        /* width: 50px; height: 50px; border-radius: 50%; padding: 0; */
+    }
+}
