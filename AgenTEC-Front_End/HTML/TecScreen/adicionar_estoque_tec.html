@@ -264,47 +264,47 @@
         <div id="breadcrumb">
             <div class="breadcrumb-container">
                 <span>
-                    <a href="#">Home</a> 
-                    <a href="../login.html">/ Agendamentos</a> 
-                    <a href="tecnicos.html">/ Técnico </a> 
+                    <a href="#">Home</a>
+                    <a href="../login.html">/ Agendamentos</a>
+                    <a href="tecnicos.html">/ Técnico </a>
                     / Adicionar Materiais
                 </span>
             </div>
         </div>
 
         <main class="main-content">
-    <div class="page-header">
-        <h1 class="page-title">Adicionar Materiais</h1>
-        <div class="button-container">
-            <a class="button-custom" href="tecnicos.html">
+            <div class="page-header">
+                <h1 class="page-title">Adicionar Materiais</h1>
+                <div class="button-container">
+                    <a class="button-custom" href="tecnicos.html">
                         <span class="material-symbols-outlined">redo</span>
                         <span>Voltar</span>
                     </a>
-            <button id="btn-logout" class="button-custom">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Sair</span>
-            </button>
-        </div>
-    </div>
-    <div class="title-underline"></div>
-
-    <div class="cards-container">
-        <a href="adicionar_reagentes_tec.html" class="card">
-            <div class="card-icon">
-                <i class="fa-solid fa-vial"></i> 
+                    <button id="btn-logout" class="button-custom">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </button>
+                </div>
             </div>
-            <p class="card-text">Adicionar Reagentes</p>
-        </a>
-        <a href="adicionar_vidrarias_tec.html" class="card">
-            <div class="card-icon">
-                <i class="fa-solid fa-flask"></i>
+            <div class="title-underline"></div>
+
+            <div class="cards-container">
+                <a href="adicionar_reagentes_tec.html" class="card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-vial"></i>
+                    </div>
+                    <p class="card-text">Adicionar Reagentes</p>
+                </a>
+                <a href="adicionar_vidrarias_tec.html" class="card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <p class="card-text">Adicionar Vidrarias</p>
+                </a>
             </div>
-            <p class="card-text">Adicionar Vidrarias</p>
-        </a>
-    </div>
 
 
-</main>
+        </main>
 
         </main>
         <button class="back-to-top">
@@ -343,7 +343,9 @@
                             title="Siga-nos no Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                    </div> </div> <div id="cps-rodape-pnpc">
+                    </div>
+                </div>
+                <div id="cps-rodape-pnpc">
                     <a href="https://ugi.cps.sp.gov.br/" target="_blank">
                         <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
                             style="margin-bottom:10px;" />
@@ -355,7 +357,7 @@
                             title="Programa Nacional de Prevenção à Corrupção - Participante" />
                     </a>
                 </div>
-                </div>
+            </div>
             <div id="cps-rodape__creditos">
                 <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
                         target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
@@ -456,6 +458,73 @@
         </script>
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
         <script src="../../JS (Front-End)/botao_topo.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const btnConfirmar = document.getElementById('btn-confirmar-inferior');
+
+                if (btnConfirmar) {
+                    btnConfirmar.addEventListener('click', function (e) {
+                        // 1. Impede que o link abra imediatamente
+                        e.preventDefault();
+
+                        // 2. Exibe a sua notificação (Verde/Sucesso)
+                        showMessage('Itens adicionados com sucesso!', true);
+
+                        // 3. Aguarda 1.5 segundos (1500ms) para o usuário ler e depois redireciona
+                        setTimeout(() => {
+                            // Pega o link que está no href do botão e vai para lá
+                            window.location.href = btnConfirmar.getAttribute('href');
+                        }, 1500);
+                    });
+                }
+            });
+
+            // --- Sua Função de Notificação (Com pequenas correções para funcionar a animação) ---
+            function showMessage(message, isSuccess = false) {
+                // Remove notificação anterior se existir
+                const existingMessage = document.getElementById('notificationMessage');
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+
+                // Cria elemento de notificação
+                const messageElement = document.createElement('div');
+                messageElement.id = 'notificationMessage';
+                messageElement.textContent = message;
+
+                messageElement.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        z-index: 1000;
+        opacity: 0; 
+        transition: opacity 0.3s ease-in-out;
+        background-color: ${isSuccess ? '#4CAF50' : '#f44336'};
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: 'Roboto', sans-serif; /* Garante que a fonte combine com seu site */
+    `;
+
+                // Adiciona ao corpo da página
+                document.body.appendChild(messageElement);
+
+                // Pequeno delay para permitir que o navegador renderize antes de mudar a opacidade (para o fade-in funcionar)
+                setTimeout(() => {
+                    messageElement.style.opacity = '1';
+                }, 10);
+
+                // Remove automaticamente após 3 segundos (caso não haja redirecionamento)
+                setTimeout(() => {
+                    if (messageElement.parentNode) {
+                        messageElement.style.opacity = '0';
+                        setTimeout(() => messageElement.remove(), 300);
+                    }
+                }, 3000);
+            }
+        </script>
 </body>
 
 </html>

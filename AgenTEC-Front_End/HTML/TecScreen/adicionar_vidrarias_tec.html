@@ -686,7 +686,8 @@
 
                         <a id="btn-voltar-inferior" href="adicionar_estoque_tec.html" class="action-btn btn-primary">Voltar</a>
 
-                        <button id="btn-confirmar" class="action-btn btn-primary">Confirmar Tudo</button>
+                        <a id="btn-confirmar-inferior" href="/AgenTEC-Front_End/HTML/TecScreen/tecnicos.html"
+                            class="action-btn btn-primary">Confirmar tudo</a>
 
                     </div>
 
@@ -927,6 +928,73 @@
         <script src="../../JS (Front-End)/adicionar_vidraria.js"></script>
 
         <script src="../../JS (Front-End)/botao_topo.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const btnConfirmar = document.getElementById('btn-confirmar-inferior');
+
+                if (btnConfirmar) {
+                    btnConfirmar.addEventListener('click', function (e) {
+                        // 1. Impede que o link abra imediatamente
+                        e.preventDefault();
+
+                        // 2. Exibe a sua notificação (Verde/Sucesso)
+                        showMessage('Itens adicionados com sucesso!', true);
+
+                        // 3. Aguarda 1.5 segundos (1500ms) para o usuário ler e depois redireciona
+                        setTimeout(() => {
+                            // Pega o link que está no href do botão e vai para lá
+                            window.location.href = btnConfirmar.getAttribute('href');
+                        }, 1500);
+                    });
+                }
+            });
+
+            // --- Sua Função de Notificação (Com pequenas correções para funcionar a animação) ---
+            function showMessage(message, isSuccess = false) {
+                // Remove notificação anterior se existir
+                const existingMessage = document.getElementById('notificationMessage');
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+
+                // Cria elemento de notificação
+                const messageElement = document.createElement('div');
+                messageElement.id = 'notificationMessage';
+                messageElement.textContent = message;
+
+                messageElement.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        z-index: 1000;
+        opacity: 0; 
+        transition: opacity 0.3s ease-in-out;
+        background-color: ${isSuccess ? '#4CAF50' : '#f44336'};
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: 'Roboto', sans-serif; /* Garante que a fonte combine com seu site */
+    `;
+
+                // Adiciona ao corpo da página
+                document.body.appendChild(messageElement);
+
+                // Pequeno delay para permitir que o navegador renderize antes de mudar a opacidade (para o fade-in funcionar)
+                setTimeout(() => {
+                    messageElement.style.opacity = '1';
+                }, 10);
+
+                // Remove automaticamente após 3 segundos (caso não haja redirecionamento)
+                setTimeout(() => {
+                    if (messageElement.parentNode) {
+                        messageElement.style.opacity = '0';
+                        setTimeout(() => messageElement.remove(), 300);
+                    }
+                }, 3000);
+            }
+        </script>
 
 </body>
 
