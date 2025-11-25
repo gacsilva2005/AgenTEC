@@ -1,17 +1,18 @@
-'<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Itens</title>
+    <title>Adicionar Materiais</title>
     <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
-    <link rel="stylesheet" href="../../CSS/adicionar_vidrarias.css">
+    <link rel="stylesheet" href="../../CSS/adicionar_estoque_tec.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link
         href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/plugins/getwid/vendors/fontawesome-free/css/all.min.css?ver=5.5.0"
         id="fontawesome-free-css" media="all" rel="stylesheet" type="text/css" />
@@ -54,7 +55,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;700&amp;family=Roboto:wght@300;400;500&amp;family=Pixelify+Sans&amp;display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=redo" />
 </head>
@@ -144,6 +144,7 @@
 
         <header id="cps-header">
             <div class="cps-header__container">
+
                 <div class="logo-container">
                     <a href="../index.html">
                         <img src="../../Assets/etec2.png" alt="Logo Etec Júlio de Mesquita" class="logo-etec">
@@ -163,6 +164,7 @@
         <nav class="main-menu-container" role="navigation">
             <ul class="menu">
                 <li><a href="../index.html">Home</a></li>
+
                 <li class="dropdown">
                     <a>Institucional <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-content">
@@ -173,6 +175,7 @@
                         <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/a-escola/quem-somos/">Quem Somos</a></li>
                     </ul>
                 </li>
+
                 <li class="dropdown">
                     <a href="#">Inst. Auxiliares <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-content">
@@ -181,7 +184,9 @@
                                 Estudantil</a></li>
                     </ul>
                 </li>
+
                 <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/cursos">Cursos</a></li>
+
                 <li class="dropdown">
                     <a href="#">Alunos <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-content">
@@ -211,6 +216,7 @@
                         <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/alunos/soe/">SOE</a></li>
                     </ul>
                 </li>
+
                 <li class="dropdown">
                     <a href="#">Professores <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-content">
@@ -227,6 +233,7 @@
                         <li><a href="https://sigurh.cps.sp.gov.br/" target="_blank">SIGURH – CPS</a></li>
                     </ul>
                 </li>
+
                 <li class="dropdown">
                     <a href="#">Biblioteca <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-content">
@@ -248,6 +255,7 @@
                                 target="_blank">Política de Desenvolvimento de Acervo</a></li>
                     </ul>
                 </li>
+
                 <li><a href="https://etecjuliodemesquita.cps.sp.gov.br/contatos">Contatos</a></li>
                 <li><a href="../login.html">Agendamentos</a></li>
             </ul>
@@ -255,149 +263,49 @@
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/
-                    <a href="administradores.html"> Administradores </a> / <a href="atualizar_vidrarias.html"> Atualizar
-                        vidrarias</a> / Adicionar vidrarias</span>
+                <span>
+                    <a href="#">Home</a> 
+                    <a href="../login.html">/ Agendamentos</a> 
+                    <a href="tecnicos.html">/ Tecnico </a> 
+                    / Adicionar Materiais
+                </span>
             </div>
         </div>
+
         <main class="main-content">
+    <div class="page-header">
+        <h1 class="page-title">Adicionar Materiais</h1>
+        <div class="button-container">
+            <button id="btn-logout" class="button-custom">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+    </div>
+    <div class="title-underline"></div>
 
-            <div class="page-header">
-                <h1 class="page-title">Adicionar Itens</h1>
-                <div class="button-container">
-                    <button id="btn-logout" class="button-custom">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Sair</span>
-                    </button>
-                </div>
+    <div class="cards-container">
+        <a href="adicionar_reagentes_tec.html" class="card">
+            <div class="card-icon">
+                <i class="fa-solid fa-vial"></i> 
             </div>
-            <div class="title-underline"></div>
-
-            <div class="page-layout">
-
-                <div class="left-column">
-
-                    <div class="accordion-wrapper">
-                        <button class="accordion-header">
-                            <h2>Adicionar Vidrarias</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="accordion-panel">
-                            <div class="form-container">
-                                <div class="input-group">
-                                    <label for="nome_vidraria">Nome da vidraria</label>
-                                    <input type="text" id="nome_vidraria" name="nome_vidraria"
-                                        placeholder="Ex: Béquer 250ml">
-                                    <span class="error-message" id="nome-error"></span>
-                                </div>
-
-                                <div class="input-group">
-                                    <label for="tipo_vidraria">Tipo da Vidraria</label>
-                                    <input type="text" id="tipo_vidraria" name="tipo_vidraria"
-                                        placeholder="Ex: Béquer, Balão, Pipeta">
-                                    <span class="error-message" id="tipo-error"></span>
-                                </div>
-
-                                <div class="quantity-group">
-                                    <label for="quantity">Quantidade</label>
-                                    <div class="stepper-container">
-                                        <div class="quantity-stepper">
-                                            <button type="button" class="quantity-btn btn-minus"
-                                                aria-label="Diminuir quantidade">-</button>
-                                            <input type="text" id="quantity" name="quantity" value="0" readonly>
-                                            <button type="button" class="quantity-btn btn-plus"
-                                                aria-label="Aumentar quantidade">+</button>
-                                        </div>
-                                        <button type="button" class="btn-confirm-small btn-confirm-vidraria"
-                                            aria-label="Confirmar Vidraria">
-                                            <i class="fas fa-check"></i>
-                                        </button>
-                                    </div>
-                                    <span class="error-message" id="quantity-error"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-wrapper">
-                        <button class="accordion-header">
-                            <h2>Adicionar Reagentes</h2>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="accordion-panel">
-                            <div class="form-container">
-                                <div class="input-group">
-                                    <label for="nome_reagente">Nome do Reagente</label>
-                                    <input type="text" id="nome_reagente" name="nome_reagente"
-                                        placeholder="Ex: Ácido Clorídrico">
-                                    <span class="error-message" id="nome-reagente-error"></span>
-                                </div>
-
-                                <div class="input-group">
-                                    <label for="tipo_reagente">Tipo</label>
-                                    <input type="text" id="tipo_reagente" name="tipo_reagente"
-                                        placeholder="Ex: Zinco, 100g">
-                                    <span class="error-message" id="tipo-reagente-error"></span>
-                                </div>
-
-                                <div class="quantity-group">
-                                    <label for="quantity_reagente">Quantidade</label>
-                                    <div class="stepper-container">
-                                        <div class="quantity-stepper">
-                                            <button type="button" class="quantity-btn btn-minus"
-                                                aria-label="Diminuir quantidade">-</button>
-                                            <input type="text" id="quantity_reagente" name="quantity_reagente" value="0"
-                                                readonly>
-                                            <button type="button" class="quantity-btn btn-plus"
-                                                aria-label="Aumentar quantidade">+</button>
-                                        </div>
-                                        <button type="button" class="btn-confirm-small btn-confirm-reagente"
-                                            aria-label="Confirmar Reagente">
-                                            <i class="fas fa-check"></i>
-                                        </button>
-                                    </div>
-                                    <span class="error-message" id="quantity-reagente-error"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="right-column">
-
-                    <div class="tabela-vidrarias-container" id="tabela-vidrarias-container">
-                        <h2>Itens Adicionados</h2>
-                        <table class="tabela-vidrarias">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Qtd</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabela-vidrarias-body">
-                                <tr id="row-empty">
-                                    <td colspan="3" style="text-align:center; font-size:1.2rem; color:#999;">Nenhum item
-                                        na lista</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="action-buttons-list">
-                        <button id="btn-confirmar" class="action-btn btn-primary">Confirmar Tudo</button>
-                        <a id="btn-voltar-inferior" href="administradores.html" class="action-btn btn-primary">Voltar</a>
-                    </div>
-
-                </div>
+            <p class="card-text">Adicionar Reagentes</p>
+        </a>
+        <a href="adicionar_vidrarias_tec.html" class="card">
+            <div class="card-icon">
+                <i class="fa-solid fa-flask"></i>
             </div>
-            <div class="notification" id="notification-success">
-                <i class="fas fa-check-circle"></i>
-                <span>Operação realizada com sucesso!</span>
-            </div>
+            <p class="card-text">Adicionar Vidrarias</p>
+        </a>
+    </div>
+
+    <div class="centered-button-container-full">
+        <a id="btn-voltar-inferior" href="tecnicos.html" class="action-btn btn-primary">Voltar</a>
+    </div>
+
+</main>
 
         </main>
-
         <button class="back-to-top">
             <img alt="Voltar ao Topo" height="66"
                 src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
@@ -434,9 +342,7 @@
                             title="Siga-nos no Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                    </div>
-                </div>
-                <div id="cps-rodape-pnpc">
+                    </div> </div> <div id="cps-rodape-pnpc">
                     <a href="https://ugi.cps.sp.gov.br/" target="_blank">
                         <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
                             style="margin-bottom:10px;" />
@@ -448,13 +354,14 @@
                             title="Programa Nacional de Prevenção à Corrupção - Participante" />
                     </a>
                 </div>
-            </div>
+                </div>
             <div id="cps-rodape__creditos">
                 <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
                         target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
                 <p>Para mais informações de como os dados pessoais são tratados em nosso site acesse <a
                         href="https://www.cps.sp.gov.br/aviso-de-privacidade/" target="_blank"
-                        title="Aviso de Privacidade">Aviso de Privacidade</a>.</p>
+                        title="Aviso de Privacidade">Aviso de
+                        Privacidade</a>.</p>
             </div>
         </footer>
         <link
@@ -502,10 +409,51 @@
         <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
         <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <script>
 
+            document.addEventListener('DOMContentLoaded', function () {
+                const campoBusca = document.getElementById('campo-busca');
+                const cardsContainer = document.querySelector('.cards-container');
+                const todosOsCards = cardsContainer.querySelectorAll('.card');
+                campoBusca.addEventListener('input', function () {
+                    const termoBuscado = campoBusca.value.toLowerCase();
+                    todosOsCards.forEach(function (card) {
+                        const textoDoCard = card.textContent.toLowerCase();
+                        if (textoDoCard.includes(termoBuscado)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+
+            });
+            const logoutButton = document.getElementById('btn-logout');
+
+            // 2. Adiciona um "ouvinte" de clique no botão
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function () {
+                    logout(); // Chama a nossa função de logout
+                });
+            }
+
+            /**
+             * Função de Logout
+             * Limpa a sessão/memória de login e redireciona para a tela inicial.
+             */
+            function logout() {
+                console.log("Deslogando usuário...");
+
+                // 3. Limpa a memória de login
+                // ASSUMIMOS que você salva o usuário em localStorage com a chave 'loggedInUserType'
+                // Se o nome da sua chave for outro (ex: 'usuario_logado'), troque abaixo.
+                localStorage.removeItem('loggedInUserType');
+
+                window.location.href = '../login.html';
+            } 
         </script>
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
-        <script src="../../JS (Front-End)/adicionar_vidraria.js"></script>
         <script src="../../JS (Front-End)/botao_topo.js"></script>
 </body>
 
