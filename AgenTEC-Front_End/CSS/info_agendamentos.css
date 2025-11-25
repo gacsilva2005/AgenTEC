@@ -1,0 +1,634 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f5f7fa;
+}
+
+:root {
+    --primary-color: #243E63;
+    --hoverCian-color: #005C6D;
+    --low-hoverCian: #005d6d5b;
+    --hoverLight-color: #00C1CF;
+    --primary-red: #b20000;
+    --secondary-red: #ff2020;
+    --hoverSecRed-color: #e70000;
+    --hoverRed-color: #831c16ef;
+    --light-gray: #636e72;
+    --dark-gray: #333333;
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+    --event-panel-bg: #f8f9fa;
+    --day-selected: #e70000d7;
+}
+
+/* --- Topo Governo SP --- */
+.govsp-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+.govsp-portal {
+    background-color: #000;
+    padding: 8px 25px 8px 15px;
+    border-radius: 0 50px 50px 0;
+}
+
+.govsp-portal img {
+    height: 10px;
+    width: 200px;
+    display: flex;
+}
+
+.govsp-navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 20px;
+}
+
+.govsp-topo .govsp-portal img {
+    height: 38px;
+}
+
+.govsp-navbar a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: #ffffff;
+    margin: -3px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.govsp-navbar a:hover {
+    transform: scale(1.1);
+}
+
+.govsp-navbar a i {
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.govsp-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0px;
+}
+
+.separator {
+    height: 25px;
+    border-left: 1px solid #ccc;
+    margin: 0 10px;
+}
+
+/* --- Cabeçalho CPS --- */
+#cps-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.cps-header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logo-container img {
+    max-height: 50px;
+    margin: 0 5px;
+}
+
+.form-pesquisa {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    overflow: hidden;
+    max-width: 400px;
+    background-color: white;
+}
+
+.campo-de-busca {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.page-title {
+    font-size: 4rem;
+    color: var(--hoverCian-color);
+    margin: 0;
+    font-weight: 700;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.title-underline {
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--huge: 42px;
+    --progress-bar-width: 200px;
+    --progress-bar-height: 200px;
+    --font-size: 25px;
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    font-family: Roboto, Arial, sans-sreif;
+    color: #333;
+    font-weight: 300;
+    line-height: 2.5rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.busca-submit {
+    border: none;
+    border-left: 1px solid #ccc;
+    background-color: transparent;
+    padding: 10px 18px;
+    cursor: pointer;
+}
+
+.busca-submit .fa-search {
+    color: var(--primary-red);
+    font-size: 1.1rem;
+}
+
+/* --- Menu Principal --- */
+.main-menu-container {
+    background-color: #c41e15;
+    padding: 0 20px;
+}
+
+.main-menu-container .menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0 0 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-menu-container .menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.main-menu-container .menu li a:hover {
+    background-color: #831c16ef;
+}
+
+/* --- Menu Dropdown --- */
+.menu li.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    border-top: 3px solid var(--primary-red);
+}
+
+.main-menu-container .menu .dropdown-content li a {
+    color: #555;
+    font-weight: normal;
+    padding: 12px 16px;
+    background-color: transparent;
+}
+
+.main-menu-container .menu .dropdown-content li a:hover {
+    background-color: #f1f1f1;
+    color: var(--primary-red);
+}
+
+.menu li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown a .fa-chevron-down {
+    font-size: 0.7em;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.menu li.dropdown:hover a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* --- Breadcrumb --- */
+#breadcrumb {
+    background-color: #666666;
+    padding: 12px 20px 12px 100px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.breadcrumb-container a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* O elemento raiz que envolve tudo (o tema CPS usa #page) */
+#page {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100vh;
+}
+
+/* Conteúdo principal cresce e empurra o rodapé para baixo */
+.container,
+.main-content {
+    flex: 1 0 auto;                    /* ESSA LINHA É A CHAVE */
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* REMOVE TODAS AS MARGENS QUE ESTAVAM QUEBRANDO */
+.container e botões */
+.container,
+.main-content,
+.action-buttons,
+.action-buttons button,
+.action-buttons a,
+.item-table {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Garante que o rodapé fique sempre no final */
+#cps-rodape,
+#govsp-rodape,
+footer {
+    flex-shrink: 0;
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+}
+
+/* Remove margens internas do próprio rodapé CPS */
+#cps-rodape__redes-e-infos,
+#cps-rodape__creditos,
+#govsp-rodape .container {
+    margin: 0 !important;
+    padding: 20px !important;
+}
+
+/* Botão voltar ao topo fixo */
+.back-to-top {
+    position: fixed !important;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: var(--hoverCian-color);
+    padding: 0;
+    font-size: 1.60rem;
+    font-weight: 300;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button-custom:hover {
+    color: var(--primary-color);
+}
+
+.button-custom:active {
+    color: var(--primary-color);
+}
+
+.filters {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filters input,
+.filters select,
+.filters button {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.filters button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.filters button:hover {
+    background: #1a2d4a;
+}
+
+.agendamentos-list {
+    display: grid;
+    gap: 20px;
+}
+
+.agendamento-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.agendamento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background: var(--primary);
+    color: white;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.status-confirmado {
+    background: #27ae6040;
+    color: var(--success);
+}
+
+.status-pendente {
+    background: #f39c1240;
+    color: var(--warning);
+}
+
+.status-cancelado {
+    background: #e74c3c40;
+    color: var(--danger);
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+}
+
+.info-item i {
+    color: var(--primary);
+    width: 20px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #555;
+    min-width: 120px;
+}
+
+.materiais-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.materiais-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.materiais-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+}
+
+.material-item {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.material-item.reagente {
+    border-left-color: #27ae60;
+}
+
+.material-item.vidraria {
+    border-left-color: #3498db;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #777;
+    font-size: 18px;
+}
+
+.empty-state i {
+    font-size: 64px;
+    color: #ddd;
+    margin-bottom: 20px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.main-menu-container .menu {
+    position: relative;
+    z-index: 5;
+}
+
+.dropdown-content {
+    z-index: 9998;
+}
+
+#cps-rodape__redes-icones {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+}
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i {
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.site, #page {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Faz o conteúdo crescer e empurrar o rodapé */
+    min-height: 100vh;
+}
+
+/* Garante que o footer CPS e o govsp fiquem no final */
+#cps-rodape,
+#govsp-rodape {
+    margin-top: auto !important;  /* ESSA LINHA É A MÁGICA */
+    width: 100%;
+}
+
+#userwayAccessibilityIcon,
+.uwy-userway-trigger,
+.uai-trigger-container,
+div[data-account="3eFXoC4I4A"] {
+    position: fixed !important;
+    bottom: auto !important;
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 230px !important;
+}

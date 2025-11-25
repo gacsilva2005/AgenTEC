@@ -1056,6 +1056,106 @@ class Server {
       }
     });
 
+    this.#app.post('/api/agendamentos/confirmar', async (req, res) => {
+      const {
+        data_agendamento,      // "2025-04-15"
+        horario_inicio,         // "07:30:00"
+        horario_fim,            // "08:20:00" (ou você calcula no front)
+        laboratorio,            // id_laboratorio (ex: 3)
+        professor_id,           // ID do professor logado
+        materia                 // observacoes (ex: "Experimento de Química Orgânica")
+      } = req.body;
+
+      // Validação básica
+      if (!data_agendamento || !horario_inicio || !laboratorio || !professor_id) {
+        return res.status(400).json({
+          success: false,
+          message: 'Dados incompletos para o agendamento'
+        });
+      }
+
+      const connection = await db.getConnection();
+      try {
+        await connection.beginTransaction();
+
+        // 1. Insere o agendamento na tabela agendamentos
+        const [result] = await connection.query(`
+              INSERT INTO agendamentos 
+                  (data_agendamento, horario_inicio, horario_fim, id_laboratorio, id_professor, observacoes, status)
+              VALUES 
+                  (?, ?, ?, ?, ?, ?, 'confirmado')
+          `, [
+          data_agendamento,
+          horario_inicio,
+          horario_fim || null,
+          laboratorio,
+          professor_id,
+          materia || null
+        ]);
+
+        const agendamentoId = result.insertId;
+
+        // 2. Pega os materiais temporários do professor (em memória ou sessão)
+        const [reagentesResp] = await connection.query(`
+              SELECT reagente_id, quantidade_escolhida, unidade 
+              FROM reagentes_selecionados 
+              WHERE professor_id = ?
+          `, [professor_id]);
+
+        const [vidrariasResp] = await connection.query(`
+              SELECT vidraria_id, quantidade 
+              FROM vidrarias_selecionadas 
+              WHERE professor_id = ?
+          `, [professor_id]);
+
+        // 3. Salva os reagentes no banco (tabela definitiva)
+        if (reagentesResp.length > 0) {
+          const valoresReagentes = reagentesResp.map(r => [
+            agendamentoId, r.reagente_id, r.quantidade_escolhida, r.unidade
+          ]);
+          await connection.query(`
+                  INSERT INTO materiais_agendamento 
+                      (agendamento_id, tipo, item_id, quantidade, unidade) 
+                  VALUES ?
+              `, [valoresReagentes.map(v => [v[0], 'reagente', v[1], v[2], v[3]])]);
+        }
+
+        // 4. Salva as vidrarias no banco
+        if (vidrariasResp.length > 0) {
+          const valoresVidrarias = vidrariasResp.map(v => [
+            agendamentoId, v.vidraria_id, v.quantidade
+          ]);
+          await connection.query(`
+                  INSERT INTO materiais_agendamento 
+                      (agendamento_id, tipo, item_id, quantidade) 
+                  VALUES ?
+              `, [valoresVidrarias.map(v => [v[0], 'vidraria', v[1], v[2]])]);
+        }
+
+        // 5. Limpa os materiais temporários do professor
+        await connection.query(`DELETE FROM reagentes_selecionados WHERE professor_id = ?`, [professor_id]);
+        await connection.query(`DELETE FROM vidrarias_selecionadas WHERE professor_id = ?`, [professor_id]);
+
+        await connection.commit();
+
+        res.json({
+          success: true,
+          message: 'Agendamento confirmado com sucesso!',
+          agendamentoId: agendamentoId
+        });
+
+      } catch (error) {
+        await connection.rollback();
+        console.error('Erro ao confirmar agendamento:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno ao confirmar agendamento'
+        });
+      } finally {
+        connection.release();
+      }
+    });
+
     // -----------------------------
     // LISTAR AGENDAMENTOS DO PROFESSOR
     // -----------------------------

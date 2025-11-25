@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 statusDiv.innerHTML = `
                     <div class="status-indicator disponivel"></div>
                     <div class="status-text">
-                        <strong>Disponível para agendamento</strong>
+                        <strong>Reservas Agendadas</strong>
                         <p>${agendamentosInfo.message}</p>
                     </div>
                 `;
@@ -628,6 +628,7 @@ document.addEventListener('DOMContentLoaded', function () {
             showMessage('Agendamento confirmado! Redirecionando...', true);
         });
     }
+
 
     // Inicializa o calendário
     renderCalendar();
