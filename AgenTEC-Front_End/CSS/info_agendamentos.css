@@ -187,6 +187,129 @@ body {
     cursor: pointer;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+.filters {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.filters input, .filters select, .filters button {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+.filters button {
+    justify-content: center;
+}
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.5rem;
+}
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+.card-header {
+    padding: 1.2rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+.card-header h3 {
+    font-size: 1.3rem;
+}
+.status {
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.status.confirmado { background: #d5f5e3; color: var(--success); }
+.status.pendente { background: #fef9e7; color: var(--warning); }
+.status.cancelado { background: #fadbd8; color: var(--danger); }
+.card-body {
+    padding: 1.5rem;
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+}
+.info-item i {
+    color: var(--primary);
+    font-size: 1.3rem;
+    width: 30px;
+}
+.info-label {
+    font-weight: bold;
+    color: var(--dark);
+}
+.materiais-section h4 {
+    margin: 1rem 0 0.8rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.materiais-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+.material-item {
+    padding: 0.5rem 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    border-left: 4px solid var(--primary);
+}
+.material-item.reagente { border-left-color: #e74c3c; }
+.material-item.vidraria { border-left-color: #3498db; }
+.empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #777;
+    font-size: 1.3rem;
+}
+.empty i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #ddd;
+}
+
+.button-buscar{
+    color: var(--primary-color);
+}
+
 .busca-submit .fa-search {
     color: var(--primary-red);
     font-size: 1.1rem;

@@ -346,6 +346,85 @@ class Server {
       }
     });
 
+    this.#app.use((req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+      res.header('Access-Control-Allow-Headers', 'Content-Type');
+      next();
+    });
+
+    this.#app.get('/api/agendamentos/completos', async (req, res) => {
+      const { data, laboratorio, status } = req.query;
+
+      try {
+        let query = `
+                SELECT 
+                    a.id_agendamento,
+                    a.data_agendamento,
+                    a.horario_inicio,
+                    a.horario_fim,
+                    a.observacoes,
+                    a.status,
+                    l.nome AS laboratorio_nome,
+                    p.nome AS professor_nome
+                FROM agendamentos a
+                LEFT JOIN laboratorios l ON a.id_laboratorio = l.id_laboratorio
+                LEFT JOIN professor p ON a.id_professor = p.id_professor
+                WHERE 1=1
+            `;
+
+        const params = [];
+
+        // Só adiciona filtro se o valor existir e não for string vazia
+        if (data && data.trim() !== '') {
+          query += ` AND a.data_agendamento = ?`;
+          params.push(data.trim());
+        }
+        if (laboratorio && laboratorio.trim() !== '') {
+          query += ` AND l.nome LIKE ?`;
+          params.push(`%${laboratorio.trim()}%`);
+        }
+        if (status && status.trim() !== '' && status !== 'Todos') {
+          query += ` AND a.status = ?`;
+          params.push(status.trim());
+        }
+
+        query += ` ORDER BY a.data_agendamento DESC, a.horario_inicio DESC`;
+
+        const [agendamentos] = await this.#db.query(query, params);
+
+        // Busca materiais para cada agendamento
+        for (let ag of agendamentos) {
+          const [materiais] = await this.#db.query(`
+                    SELECT 
+                        m.tipo,
+                        m.quantidade,
+                        m.unidade,
+                        COALESCE(r.nome, v.nome) AS nome
+                    FROM materiais_agendamento m
+                    LEFT JOIN reagentes r ON m.item_id = r.id_reagente AND m.tipo = 'reagente'
+                    LEFT JOIN vidrarias v ON m.item_id = v.id_vidraria AND m.tipo = 'vidraria'
+                    WHERE m.agendamento_id = ?
+                `, [ag.id_agendamento]);
+
+          ag.materiais = materiais || [];
+        }
+
+        res.json({
+          success: true,
+          agendamentos
+        });
+
+      } catch (error) {
+        console.error('Erro na rota /api/agendamentos/completos:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor',
+          detalhes: error.message
+        });
+      }
+    });
+
     // -----------------------------
     // CONFIRMAR AGENDAMENTO (INSERIR NO BANCO)
     // -----------------------------

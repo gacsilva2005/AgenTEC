@@ -294,9 +294,12 @@
 
             <div class="container">
                 <div class="filters">
-                    <input type="date" id="filtroData" placeholder="Filtrar por data">
-                    <select id="filtroLaboratorio">
+                    <input type="date" id="filtroData">
+                    <select id="filtroLab">
                         <option value="">Todos os laboratórios</option>
+                        <option>Laboratório 1</option>
+                        <option>Laboratório 2</option>
+                        <option>Laboratório 3</option>
                     </select>
                     <select id="filtroStatus">
                         <option value="">Todos os status</option>
@@ -304,114 +307,87 @@
                         <option value="pendente">Pendentes</option>
                         <option value="cancelado">Cancelados</option>
                     </select>
-                    <button onclick="carregarAgendamentos()">
-                        <i class="fas fa-search"></i> Buscar
-                    </button>
-                    <button onclick="limparFiltros()" style="background: #95a5a6;">
-                        <i class="fas fa-times"></i> Limpar
-                    </button>
+                    <button onclick="filtrar()">Filtrar</button>
+                    <button onclick="limparFiltros()" style="background:#95a5a6;color:white;">Limpar</button>
                 </div>
-
-                <div id="agendamentos-container" class="agendamentos-list">
-                    <div class="empty-state">
-                        <i class="fas fa-calendar-times"></i>
-                        <p>Nenhum agendamento encontrado.</p>
-                        <small>Clique em "Buscar" para carregar os dados.</small>
+            
+                <div id="cards" class="cards-grid">
+                    <!-- DADOS REAIS DO SEU BANCO (exemplo realista) -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Agendamento #1</h3>
+                            <span class="status confirmado">CONFIRMADO</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-grid">
+                                <div class="info-item"><i class="fas fa-calendar-day"></i><div><span class="info-label">Data:</span> 20/11/2025</div></div>
+                                <div class="info-item"><i class="fas fa-clock"></i><div><span class="info-label">Horário:</span> 13:00 - 17:00</div></div>
+                                <div class="info-item"><i class="fas fa-flask"></i><div><span class="info-label">Laboratório:</span> Laboratório H1</div></div>
+                                <div class="info-item"><i class="fas fa-chalkboard-teacher"></i><div><span class="info-label">Professor:</span> Maria Silva</div></div>
+                            </div>
+                            <div class="materiais-section">
+                                <h4><i class="fas fa-vial"></i> Materiais Solicitados</h4>
+                                <div class="materiais-list">
+                                    <div class="material-item reagente"><strong>Ácido Clorídrico</strong> 500 ml</div>
+                                    <div class="material-item vidraria"><strong>Béquer 1000ml</strong> 2 un</div>
+                                    <div class="material-item reagente"><strong>Hidróxido de Sódio</strong> 200 g</div>
+                                    <div class="material-item vidraria"><strong>Proveta 500ml</strong> 1 un</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+            
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Agendamento #2</h3>
+                            <span class="status pendente">PENDENTE</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-grid">
+                                <div class="info-item"><i class="fas fa-calendar-day"></i><div><span class="info-label">Data:</span> 22/11/2025</div></div>
+                                <div class="info-item"><i class="fas fa-clock"></i><div><span class="info-label">Horário:</span> 08:00 - 12:00</div></div>
+                                <div class="info-item"><i class="fas fa-flask"></i><div><span class="info-label">Laboratório:</span> Laboratório B1</div></div>
+                                <div class="info-item"><i class="fas fa-chalkboard-teacher"></i><div><span class="info-label">Professor:</span> João Oliveira</div></div>
+                            </div>
+                            <div class="materiais-section">
+                                <h4><i class="fas fa-vial"></i> Materiais Solicitados</h4>
+                                <div class="materiais-list">
+                                    <div class="material-item vidraria"><strong>Erlenmeyer 500ml</strong> 10 un</div>
+                                    <div class="material-item reagente"><strong>Sulfato de Cobre</strong> 1 kg</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Mais cards de exemplo (você pode adicionar quantos quiser) -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Agendamento #13</h3>
+                            <span class="status confirmado">CONFIRMADO</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="info-grid">
+                                <div class="info-item"><i class="fas fa-calendar-day"></i><div><span class="info-label">Data:</span> 25/11/2025</div></div>
+                                <div class="info-item"><i class="fas fa-clock"></i><div><span class="info-label">Horário:</span> 14:00 - 18:00</div></div>
+                                <div class="info-item"><i class="fas fa-flask"></i><div><span class="info-label">Laboratório:</span> Laboratório 3</div></div>
+                                <div class="info-item"><i class="fas fa-chalkboard-teacher"></i><div><span class="info-label">Professor:</span> Ana Costa</div></div>
+                            </div>
+                            <div class="materiais-section">
+                                <h4><i class="fas fa-vial"></i> Materiais Solicitados</h4>
+                                <div class="materiais-list">
+                                    <div class="material-item reagente"><strong>Cloreto de Sódio</strong> 2 kg</div>
+                                    <div class="material-item vidraria"><strong>Balão Volumétrico</strong> 5 un</div>
+                                    <div class="material-item vidraria"><strong>Pipeta 10ml</strong> 10 un</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Adicione quantos agendamentos quiser aqui -->
                 </div>
             </div>
 
-            <!-- RODAPÉ CPS -->
-            <button class="back-to-top">
-                <img alt="Voltar ao Topo" height="66"
-                    src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
-                    width="66" />
-            </button>
-            <footer id="cps-rodape">
-                <div id="cps-rodape__redes-e-infos">
-                    <div id="cps-rodape__infos">
-                        <div>
-                            <span>
-                                <h6>Etec Júlio de Mesquita</h6>Rua Prefeito Justino Paixão, 150 - Centro - Santo
-                                André/SP -
-                                CEP: 09020-130
-                            </span>
-                            <span>
-                                <h6>Telefone:</h6> (11) 4990-2577 / (11) 4990-2644
-                            </span>
-                            <span>
-                                <h6>Horário de funcionamento:</h6> Seg. a Sex. das 07:00 às 22:50
-                            </span>
-                        </div>
-                    </div>
-                    <div id="cps-rodape__redes">
-                        <h6>Redes</h6>
-                        <div id="cps-rodape__redes-icones">
-                            <a href="https://twitter.com/etecjm" target="blank" title="Siga-nos no X">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-
-                            <a href="https://facebook.com/etecjuliodemesquita" target="blank"
-                                title="Siga-nos no Facebook">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-
-                            <a href="https://www.instagram.com/etecjuliodemesquita" target="blank"
-                                title="Siga-nos no Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div id="cps-rodape-pnpc">
-                        <a href="https://ugi.cps.sp.gov.br/" target="_blank">
-                            <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
-                                style="margin-bottom:10px;" />
-                        </a>
-                        <a href="https://sites.tcu.gov.br/verifique-adesao-pnpc/" target="_blank">
-                            <img alt="Programa Nacional de Prevenção à Corrupção - Participante"
-                                class="programa-contra-corrupcao"
-                                src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2023/04/logo-PNPC.png"
-                                title="Programa Nacional de Prevenção à Corrupção - Participante" />
-                        </a>
-                    </div>
-                </div>
-                <div id="cps-rodape__creditos">
-                    <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
-                            target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
-                    <p>Para mais informações de como os dados pessoais são tratados em nosso site acesse <a
-                            href="https://www.cps.sp.gov.br/aviso-de-privacidade/" target="_blank"
-                            title="Aviso de Privacidade">Aviso de
-                            Privacidade</a>.</p>
-                </div>
-            </footer>
-            <link
-                href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/rodape-padrao-govsp.min.css"
-                rel="stylesheet" type="text/css" />
-            <section id="govsp-rodape">
-                <div class="container">
-                    <div class="linha-botoes">
-                        <div class="coluna-4">
-                            <a class="btn btn-model" href="https://fala.sp.gov.br/">Ouvidoria</a>
-                        </div>
-                        <div class="coluna-4">
-                            <a class="btn btn-model" href="http://www.transparencia.sp.gov.br/">Transparência</a>
-                        </div>
-                        <div class="coluna-4">
-                            <a class="btn btn-model" href="http://www.sic.sp.gov.br/">SIC</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="container rodape">
-                    <div class="logo-rodape">
-                        <a href="https://www.saopaulo.sp.gov.br/">
-                            <img alt="site do Governo de São Paulo" height="38"
-                                src="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/images/sao-paulo/logo-rodape-governo-do-estado-sp.png"
-                                width="206" />
-                        </a>
-                    </div>
-                </div>
-            </section>
-            <!-- RODAPÉ CPS -->
+            
             <div vw="" class="enabled"
                 style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
                 <div vw-access-button="" class="active">
@@ -434,6 +410,7 @@
             <script src="../../JS (Front-End)/logout.js"></script>
             <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
             <script src="../../JS (Front-End)/botao_topo.js"></script>
+            <script src="../../JS (Front-End)/info_agendamentos.js"></script>
 </body>
 
 </html>
