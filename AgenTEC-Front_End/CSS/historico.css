@@ -50,7 +50,7 @@ html {
 .govsp-topo .govsp-navbar {
     display: flex;
     align-items: center;
-    gap: 10px;
+    padding: 10px;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -185,9 +185,9 @@ html {
 .page-title {
     font-size: 4rem;
     color: var(--hoverCian-color);
-    margin: 0; /* Margem removida para alinhar */
+    margin: 0;
     font-weight: 700;
-    white-space: nowrap; /* Evita quebra de linha */
+    white-space: nowrap;
 }
 
 /* HEADER DA PÁGINA (Título e Botão Sair) */
@@ -198,15 +198,13 @@ html {
     width: 100%;
 }
 
-/* Container dos botões */
 .button-container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 50px; /* Espaço entre os botões */
+    gap: 50px;
 }
 
-/* Estilo dos botões (Voltar e Sair) */
 .button-custom {
     display: flex;
     align-items: center;
@@ -332,75 +330,50 @@ html {
 }
 
 /* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
-
-/* Contêiner principal da navegação */
 .govsp-navbar {
     display: flex;
-    /* Alinha todos os itens na horizontal */
     align-items: center;
-    /* Centraliza os itens verticalmente */
     padding: 10px;
 }
 
-/* Estilo para todos os links (que servem como 'caixa' para os ícones) */
 .govsp-navbar a {
     display: inline-flex;
-    /* Permite centralizar o ícone dentro do link */
     align-items: center;
     justify-content: center;
     width: 28px;
-    /* Largura da caixa */
     height: 28px;
-    /* Altura da caixa */
     background-color: #ffffff;
-    /* Fundo cinza claro */
     margin: -3px;
-    /* Espaçamento entre os ícones */
     border-radius: 3px;
-    /* Bordas levemente arredondadas */
     text-decoration: none;
-    /* Remove o sublinhado do link */
 }
 
-/* Estilo para os ícones (<i>) dentro dos links */
 .govsp-navbar a i {
     color: #ffffff;
-    /* Cor cinza escura para o ícone */
     font-size: 1.2rem;
-    /* Tamanho do ícone */
 }
 
-/* Estilo para o texto "/governosp" */
 .govsp-text {
     font-size: 0.9rem;
     color: #555;
     margin: 0px;
-    /* Espaçamento antes e depois do texto */
 }
 
-/* Estilo para a linha separadora */
 .separator {
     height: 25px;
-    /* Altura da linha */
     border-left: 1px solid #ccc;
-    /* Cria a linha vertical */
     margin: 0 10px;
-    /* Espaçamento antes e depois da linha */
 }
 
-/* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
-
-/* Garante que o item principal do menu seja posicionado corretamente */
+/* --- Estilos para o Menu Dropdown --- */
 .menu li.dropdown {
     position: relative;
 }
 
-/* Esconde o submenu por padrão */
 .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
-    /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
     left: 0;
     background-color: #f9f9f9;
     min-width: 200px;
@@ -408,7 +381,6 @@ html {
     z-index: 1;
     list-style: none;
     padding: 0;
-    /* margin-top: 10px; FOI REMOVIDO PARA CORRIGIR O PROBLEMA DE FECHAMENTO */
     border-top: 3px solid #b20000;
 }
 
@@ -460,17 +432,12 @@ html {
 .uwy-userway-trigger,
 .uai-trigger-container,
 div[data-account="3eFXoC4I4A"] {
-    /* Força a posição fixa */
     position: fixed !important;
-    /* Zera a posição do topo padrão e define a nova */
     bottom: auto !important;
-    /* Alinha à direita */
     right: 0 !important;
-    /* Colado na direita */
     left: auto !important;
-    /* Remove margens que o script possa adicionar */
     margin-top: 230px !important;
-}   
+}
 
 
 /* NOVO ESTILO PARA CENTRALIZAR O BOTÃO INFERIOR */
@@ -478,14 +445,10 @@ div[data-account="3eFXoC4I4A"] {
     display: flex;
     justify-content: center;
     width: 100%;
-    /* Garante que o contêiner ocupe toda a largura */
     margin-top: 40px;
-    /* Espaçamento acima */
     margin-bottom: 40px;
-    /* Espaçamento abaixo para não encostar no rodapé */
 }
 
-/* ESTILO DO BOTÃO: Largura ajustada e texto centralizado (Mantido e garantido que está no arquivo) */
 .action-btn {
     padding: 15px 30px;
     border-radius: 50px;
@@ -495,16 +458,11 @@ div[data-account="3eFXoC4I4A"] {
     font-weight: 500;
     text-transform: uppercase;
     transition: background-color 0.3s, transform 0.2s;
-
-    /* NOVO - Centraliza o texto e/ou ícones dentro do botão */
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* NOVO - Largura ajustada para ser esticado, mas não demais */
     width: 35%;
     max-width: 300px;
-    /* Limita o tamanho máximo para que não fique gigante em telas muito largas */
 }
 
 .action-btn:hover {
@@ -525,11 +483,314 @@ div[data-account="3eFXoC4I4A"] {
     background-color: var(--hoverCian-color);
 }
 
-/* Media Query para telas menores: o botão ocupa toda a largura */
 @media (max-width: 768px) {
-
-    /* Ocupa a largura total em mobile */
     .action-btn {
         width: 90%;
     }
+}
+
+/* --- ESTILOS PARA BARRA DE PESQUISA --- */
+
+.search-container {
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 20px auto 40px auto;
+    border: 1px solid var(--light-gray);
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.input-pesquisa-historico {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    background-color: transparent;
+}
+
+.input-pesquisa-historico::placeholder {
+    color: var(--secondaryLight-gray);
+}
+
+.btn-pesquisa-historico {
+    border: none;
+    background-color: transparent;
+    padding: 10px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.btn-pesquisa-historico .fa-search {
+    color: var(--hoverCian-color);
+    font-size: 1.2rem;
+}
+
+.btn-pesquisa-historico:hover {
+    background-color: #f5f5f5;
+}
+
+
+/* --- ESTILOS PARA ACCORDIONS --- */
+
+.accordion-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.accordion-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-header {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    padding: 15px 20px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: var(--hoverCian-color);
+}
+
+.accordion-header .header-email {
+    font-weight: 700;
+    margin-right: 20px;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.accordion-header .header-data {
+    font-weight: 400;
+    min-width: 100px;
+    text-align: right;
+}
+
+.accordion-icon {
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Estado Expandido */
+.accordion-header[aria-expanded="true"] .accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* 💡 AJUSTE DE VISUALIZAÇÃO DO ACCORDION FECHADO (RESUMO) */
+.accordion-summary {
+    padding: 10px 20px 15px 20px;
+    background-color: #f7f7f7;
+    
+    border-top: 1px solid #eee; 
+    border-bottom: 1px solid #eee; 
+
+    font-size: 1rem;
+    color: var(--dark-gray);
+    transition: opacity 0.3s ease;
+}
+
+.accordion-summary p {
+    margin: 0; 
+    line-height: 1.5;
+    display: flex; 
+    align-items: center;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.accordion-summary strong {
+    color: var(--primary-color);
+}
+
+/* 🎯 Esconde o resumo quando o accordion estiver expandido */
+.accordion-content.show + .accordion-summary {
+    display: none;
+}
+
+/* --- Melhorias no Conteúdo Expandido do ACCORDION (CORRIGIDO) --- */
+.accordion-content {
+    /* **CORREÇÃO CRÍTICA:** Padding vertical zero (0 20px) para não vazar. */
+    padding: 0 20px; 
+    
+    /* Oculta o conteúdo verticalmente */
+    max-height: 0; 
+    overflow: hidden; 
+
+    /* FORÇA OCULTAÇÃO VISUAL: Torna o conteúdo transparente quando fechado */
+    opacity: 0; 
+    pointer-events: none; /* Desabilita interações no conteúdo invisível */
+    
+    background-color: #fcfcfc;
+    border-top: none; 
+    
+    /* Ajuste na transição para incluir opacidade */
+    transition: max-height 0.5s ease-out, opacity 0.3s ease 0.2s; 
+}
+
+/* Classe a ser adicionada via JS para expandir */
+.accordion-content.show {
+    max-height: 1000px; 
+    
+    /* RESTAURA O PADDING COMPLETO */
+    padding: 20px; 
+
+    /* Torna o conteúdo totalmente visível */
+    opacity: 1;
+    pointer-events: auto; /* Habilita interações */
+    
+    border-top: none; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    /* A opacidade deve começar a transicionar LIGEIRAMENTE APÓS a altura */
+    transition: max-height 0.5s ease-out, opacity 0.3s ease 0.2s;
+}
+
+/* 1. Detalhes (E-mail, Data, Lab, Aula) - Coluna da esquerda */
+.accordion-details {
+    flex: 1 1 45%;
+    min-width: 250px;
+    padding-right: 20px;
+    border-right: 1px solid #eee;
+}
+
+.accordion-details p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.accordion-details strong {
+    color: var(--hoverCian-color);
+    font-weight: 500;
+}
+
+/* 2. Listas de Vidrarias e Reagentes - Coluna da direita */
+.list-group-container {
+    flex: 1 1 45%;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 20px;
+}
+
+/* Estilos do Conteúdo Interno (mantidos) */
+.accordion-content .list-group h4 {
+    color: var(--hoverCian-color);
+    margin: 10px 0 5px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.accordion-content .list-group ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 10px;
+}
+
+.accordion-content .list-group ul li {
+    background-color: #f0f8ff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    border-left: 3px solid var(--low-hoverCian);
+}
+
+/* Media Query para responsividade nos Accordions */
+@media (max-width: 768px) {
+    .accordion-header {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 1.1rem;
+    }
+
+    .accordion-header .header-email {
+        margin-right: 0;
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+    }
+
+    .accordion-header .header-data {
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .accordion-icon {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        margin-left: 0;
+    }
+
+    .search-container {
+        width: 100%;
+        max-width: none;
+    }
+
+    .input-pesquisa-historico {
+        padding: 12px 15px;
+    }
+
+    /* Correção para colunas virarem linhas em telas pequenas */
+    .accordion-content.show {
+        flex-direction: column;
+    }
+
+    .accordion-details {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px dashed #ccc;
+        padding-bottom: 15px;
+    }
+
+    .list-group-container {
+        padding-left: 0;
+        padding-top: 15px;
+    }
+}
+
+/* --- CORREÇÃO DO RODAPÉ (FOOTER) --- */
+
+#cps-rodape {
+    width: 100%;
+    margin: 0;
+    padding: 40px 0;
+    background-color: var(--primary-color);
+}
+
+#cps-rodape__redes-e-infos,
+#cps-rodape__creditos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#govsp-rodape {
+    width: 100%;
+    margin: 0;
 }

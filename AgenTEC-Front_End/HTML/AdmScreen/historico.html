@@ -264,26 +264,236 @@
         <div id="breadcrumb">
             <div class="breadcrumb-container">
                 <span><a href="#">Home</a> <a href="../login.html">/ Agendamentos </a>/
-                    <a href="administradores.html"> Administradores </a> / Histórico de Materiais </span>
+                    <a href="administradores.html"> Administradores </a> / Histórico de Requisição </span>
             </div>
         </div>
 
         <main class="main-content">
-            <div class="page-header">
-                <h1 class="page-title">Histórico de Materiais</h1>
-                <div class="button-container">
-                    <button id="btn-logout" class="button-custom">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Sair</span>
-                    </button>
+    <div class="page-header">
+        <h1 class="page-title">Histórico de Requisição</h1>
+        <div class="button-container">
+            <button id="btn-logout" class="button-custom">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+    </div>
+    <div class="title-underline"></div>
+
+    <div class="search-container">
+        <input type="search" id="input-pesquisa-historico" class="input-pesquisa-historico"
+            placeholder="Pesquisar por E-mail ou Data..." />
+        <button class="btn-pesquisa-historico"><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="accordion-list-container">
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+                <span class="header-email">tecnico1@tec.com</span>
+                <span class="header-data">24/11/2025</span>
+                <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-summary">
+                <p>Laboratório: Lab 1 | Aula: 1º Aula | Período: Manhã</p>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-details">
+                    <div class="details-column">
+                        <p><strong>E-mail do Solicitante:</strong> tecnico1@tec.com</p>
+                        <p><strong>Data da Solicitação:</strong> 24/11/2025</p>
+                        <p><strong>Laboratório:</strong> Lab 1</p>
+                        <p><strong>Aula e Período:</strong> 1º Aula - Manhã</p>
+                    </div>
+                </div>
+                <div class="list-group-container">
+                    <div class="list-group">
+                        <h4>Lista de Vidrarias:</h4>
+                        <ul>
+                            <li>Béquer (250ml) - 2 unidades</li>
+                            <li>Pipeta Graduada (10ml) - 1 unidade</li>
+                        </ul>
+                    </div>
+                    <div class="list-group">
+                        <h4>Lista de Reagentes:</h4>
+                        <ul>
+                            <li>Ácido Clorídrico (HCl) - 100 ml</li>
+                            <li>Hidróxido de Sódio (NaOH) - 50 g</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="title-underline"></div>
-            
-            <div class="centered-button-container-full">
-                <a id="btn-voltar-inferior" href="administradores.html" class="action-btn btn-primary">Voltar</a>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+                <span class="header-email">professor.silva@prof.com</span>
+                <span class="header-data">20/11/2025</span>
+                <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-summary">
+                <p>Laboratório: Lab 2 | Aula: 3º Aula | Período: Tarde</p>
             </div>
-        </main>
+            <div class="accordion-content">
+                <div class="accordion-details">
+                    <div class="details-column">
+                        <p><strong>E-mail do Solicitante:</strong> professor.silva@prof.com</p>
+                        <p><strong>Data da Solicitação:</strong> 20/11/2025</p>
+                        <p><strong>Laboratório:</strong> Lab 2</p>
+                        <p><strong>Aula e Período:</strong> 3º Aula - Tarde</p>
+                    </div>
+                </div>
+                <div class="list-group-container">
+                    <div class="list-group">
+                        <h4>Lista de Vidrarias:</h4>
+                        <p>Nenhuma vidraria solicitada.</p>
+                    </div>
+                    <div class="list-group">
+                        <h4>Lista de Reagentes:</h4>
+                        <p>Nenhum reagente solicitado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+                <span class="header-email">administrador@adm.com</span>
+                <span class="header-data">15/11/2025</span>
+                <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-summary">
+                <p>Laboratório: Lab 3 | Aula: 6º Aula | Período: Tarde</p>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-details">
+                    <div class="details-column">
+                        <p><strong>E-mail do Solicitante:</strong> administrador@adm.com</p>
+                        <p><strong>Data da Solicitação:</strong> 15/11/2025</p>
+                        <p><strong>Laboratório:</strong> Lab 3</p>
+                        <p><strong>Aula e Período:</strong> 6º Aula - Tarde</p>
+                    </div>
+                </div>
+                <div class="list-group-container">
+                    <div class="list-group">
+                        <h4>Lista de Vidrarias:</h4>
+                        <ul>
+                            <li>Lâmina e Lamínula - 10 conjuntos</li>
+                        </ul>
+                    </div>
+                    <div class="list-group">
+                        <h4>Lista de Reagentes:</h4>
+                        <ul>
+                            <li>Água Destilada - 500 ml</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+                <span class="header-email">professor.souza@prof.com</span>
+                <span class="header-data">10/11/2025</span>
+                <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-summary">
+                <p>Laboratório: Lab 1 | Aula: 2º Aula | Período: Manhã</p>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-details">
+                    <div class="details-column">
+                        <p><strong>E-mail do Solicitante:</strong> professor.souza@prof.com</p>
+                        <p><strong>Data da Solicitação:</strong> 10/11/2025</p>
+                        <p><strong>Laboratório:</strong> Lab 1</p>
+                        <p><strong>Aula e Período:</strong> 2º Aula - Manhã</p>
+                    </div>
+                </div>
+                <div class="list-group-container">
+                    <div class="list-group">
+                        <h4>Lista de Vidrarias:</h4>
+                        <p>Nenhuma vidraria solicitada.</p>
+                    </div>
+                    <div class="list-group">
+                        <h4>Lista de Reagentes:</h4>
+                        <p>Nenhum reagente solicitado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+                <span class="header-email">tecnico2@tec.com</span>
+                <span class="header-data">05/11/2025</span>
+                <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-summary">
+                <p>Laboratório: Lab 3 | Aula: 4º Aula | Período: Noite</p>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-details">
+                    <div class="details-column">
+                        <p><strong>E-mail do Solicitante:</strong> tecnico2@tec.com</p>
+                        <p><strong>Data da Solicitação:</strong> 05/11/2025</p>
+                        <p><strong>Laboratório:</strong> Lab 3</p>
+                        <p><strong>Aula e Período:</strong> 4º Aula - Noite</p>
+                    </div>
+                </div>
+                <div class="list-group-container">
+                    <div class="list-group">
+                        <h4>Lista de Vidrarias:</h4>
+                        <ul>
+                            <li>Erlenmeyer (500ml) - 4 unidades</li>
+                        </ul>
+                    </div>
+                    <div class="list-group">
+                        <h4>Lista de Reagentes:</h4>
+                        <ul>
+                            <li>Sulfato de Cobre (CuSO4) - 20 g</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+                <span class="header-email">professor.almeida@prof.com</span>
+                <span class="header-data">01/11/2025</span>
+                <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-summary">
+                <p>Laboratório: Lab 2 | Aula: 5º Aula | Período: Manhã</p>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-details">
+                    <div class="details-column">
+                        <p><strong>E-mail do Solicitante:</strong> professor.almeida@prof.com</p>
+                        <p><strong>Data da Solicitação:</strong> 01/11/2025</p>
+                        <p><strong>Laboratório:</strong> Lab 2</p>
+                        <p><strong>Aula e Período:</strong> 5º Aula - Manhã</p>
+                    </div>
+                </div>
+                <div class="list-group-container">
+                    <div class="list-group">
+                        <h4>Lista de Vidrarias:</h4>
+                        <p>Nenhuma vidraria solicitada.</p>
+                    </div>
+                    <div class="list-group">
+                        <h4>Lista de Reagentes:</h4>
+                        <p>Nenhum reagente solicitado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="centered-button-container-full">
+        <a id="btn-voltar-inferior" href="administradores.html" class="action-btn btn-primary">Voltar</a>
+    </div>
+
+</main>
         <button class="back-to-top">
             <img alt="Voltar ao Topo" height="66"
                 src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
@@ -392,6 +602,7 @@
         <script src="../../JS (Front-End)/logout.js"></script>
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
         <script src="../../JS (Front-End)/botao_topo.js"></script>
+        <script src="../../JS (Front-End)/historico.js"></script> 
 </body>
 
 </html>
