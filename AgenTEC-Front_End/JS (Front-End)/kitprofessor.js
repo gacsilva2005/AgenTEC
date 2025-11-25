@@ -736,6 +736,7 @@ document.addEventListener('DOMContentLoaded', function () {
     `;
     document.head.appendChild(style);
 
+    
     // Adicionar botão de limpar kit se não existir
     function adicionarBotoesAdicionais() {
         const actionButtons = document.querySelector('.action-buttons');
@@ -743,7 +744,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const btnLimparKit = document.createElement('button');
             btnLimparKit.id = 'btnLimparKit';
             btnLimparKit.className = 'btn-global btn-danger';
-            btnLimparKit.innerHTML = '<i class="fas fa-trash"></i> Limpar Kit Completo';
+            btnLimparKit.innerHTML = '</i> Limpar Kit Completo';
             btnLimparKit.onclick = limparKitCompleto;
 
             actionButtons.insertBefore(btnLimparKit, actionButtons.firstChild);
