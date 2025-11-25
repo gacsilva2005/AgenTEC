@@ -1224,7 +1224,6 @@ class Server {
     // =========================================================================
 
     // Rota para salvar materiais selecionados no banco
-    // Rota para salvar materiais selecionados no banco - VERSÃO CORRIGIDA
     this.#app.post('/api/materiais-selecionados/salvar', async (req, res) => {
       try {
         const { professor_id, agendamento_id, reagentes, vidrarias } = req.body;
