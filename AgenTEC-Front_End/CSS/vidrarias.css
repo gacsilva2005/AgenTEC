@@ -178,12 +178,56 @@ html {
     font-weight: bold;
 }
 
+/* HEADER DA PÁGINA (Título e Botões) - NOVO */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.botao-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 50px; /* Espaço entre os botões */
+}
+
+/* Estilo dos botões (Voltar e Sair) */
+.botao-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: #005C6D;
+    padding: 0;
+    font-size: 1.60rem;
+    font-weight: 300;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-weight: 510;
+}
+
+.botao-custom:hover {
+    color: var(--primary-color);
+}
+
+.botao-custom:active {
+    color: var(--primary-color);
+}
+
+/* Estilos para o container de botões INFERIOR (Confirmar Pedido / Montar Kit) */
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 100px;
+    gap: 50px;
     margin-top: 5rem;
     padding: 20px;
     margin-bottom: 150px;
@@ -193,16 +237,15 @@ html {
     flex-direction: column;
     text-align: center;
     display: flex;
-    /* max-width: 200px; <--- REMOVIDO para permitir que o botão cresça */
     background-color: var(--primary-color);
-    padding: 20px 40px; /* AJUSTADO para padronizar o espaçamento horizontal */
+    padding: 20px 40px;
     text-decoration: none;
     color: white;
     border-radius: 50px;
-    font-size: 2rem; /* PADRONIZADO E CONFIRMADO */
+    font-size: 2rem;
     transition: all 0.3s ease;
     cursor: pointer;
-    white-space: nowrap; /* GARANTE O TEXTO EM UMA LINHA */
+    white-space: nowrap;
 }
 
 .button-custom:hover {
@@ -216,41 +259,6 @@ html {
 
 .container {
     color: var(--text-white);
-}
-
-.page-header .botao-container {
-    margin: 0;
-    padding: 0;
-}
-
-/* --- ALTERADO AQUI: Posicionamento absoluto para o botão do título --- */
-.botao-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: absolute; /* Remove do fluxo normal */
-    top: 0; /* Alinha ao topo do main-content */
-    right: 20px; /* Alinha à direita (considerando padding do container) */
-    height: 4rem; /* Altura para centralizar verticalmente com o título */
-    width: auto;
-}
-
-.botao-custom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex-direction: row-reverse;
-    background-color: transparent;
-    color: #005C6D;
-    padding: 0;
-    font-size: 1.6rem;
-    font-weight: 510;
-    border-radius: 0;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: none;
 }
 
 .card-wrapper {
@@ -756,7 +764,7 @@ html {
 .page-title {
     font-size: 4rem;
     color: var(--hoverCian-color);
-    margin-bottom: 10px;
+    margin: 0; /* Remove margem para alinhar com o botão */
     font-weight: 700;
 }
 
@@ -777,7 +785,7 @@ html {
     line-height: 2.5rem;
     overflow-wrap: break-word;
     word-break: break-word;
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0;
     box-sizing: inherit;
     display: inline-block;
@@ -815,57 +823,42 @@ html {
 
 /* Contêiner principal da navegação */
 .govsp-navbar {
-    display: flex;
-    /* Alinha todos os itens na horizontal */
-    align-items: center;
-    /* Centraliza os itens verticalmente */
+    display: flex; /* Alinha todos os itens na horizontal */
+    align-items: center; /* Centraliza os itens verticalmente */
     padding: 10px;
 }
 
 /* Estilo para todos os links (que servem como 'caixa' para os ícones) */
 .govsp-navbar a {
-    display: inline-flex;
-    /* Permite centralizar o ícone dentro do link */
+    display: inline-flex; /* Permite centralizar o ícone dentro do link */
     align-items: center;
     justify-content: center;
-    width: 28px;
-    /* Largura da caixa */
-    height: 28px;
-    /* Altura da caixa */
-    background-color: #ffffff;
-    /* Fundo cinza claro */
-    margin: -3px;
-    /* Espaçamento entre os ícones */
-    border-radius: 3px;
-    /* Bordas levemente arredondadas */
-    text-decoration: none;
-    /* Remove o sublinhado do link */
+    width: 28px; /* Largura da caixa */
+    height: 28px; /* Altura da caixa */
+    background-color: #ffffff; /* Fundo cinza claro */
+    margin: -3px; /* Espaçamento entre os ícones */
+    border-radius: 3px; /* Bordas levemente arredondadas */
+    text-decoration: none; /* Remove o sublinhado do link */
 }
 
 /* Estilo para os ícones (<i>) dentro dos links */
 .govsp-navbar a i {
-    color: #ffffff;
-    /* Cor cinza escura para o ícone */
-    font-size: 1.2rem;
-    /* Tamanho do ícone */
+    color: #ffffff; /* Cor cinza escura para o ícone */
+    font-size: 1.2rem; /* Tamanho do ícone */
 }
 
 /* Estilo para o texto "/governosp" */
 .govsp-text {
     font-size: 0.9rem;
     color: #555;
-    margin: 0px;
-    /* Espaçamento antes e depois do texto */
+    margin: 0px; /* Espaçamento antes e depois do texto */
 }
 
 /* Estilo para a linha separadora */
 .separator {
-    height: 25px;
-    /* Altura da linha */
-    border-left: 1px solid #ccc;
-    /* Cria a linha vertical */
-    margin: 0 10px;
-    /* Espaçamento antes e depois da linha */
+    height: 25px; /* Altura da linha */
+    border-left: 1px solid #ccc; /* Cria a linha vertical */
+    margin: 0 10px; /* Espaçamento antes e depois da linha */
 }
 
 /* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
@@ -879,12 +872,11 @@ html {
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
-    /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
+    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
     left: 0;
     background-color: #f9f9f9;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     list-style: none;
     padding: 0;
@@ -895,14 +887,12 @@ html {
 /* Estilo dos links dentro do submenu */
 /* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
 .main-menu-container .menu .dropdown-content li a {
-    color: #555;
-    /* Define a cor escura para o texto */
-    font-weight: normal;
-    /* Garante que o texto não fique em negrito como o menu principal */
+    color: #555; /* Define a cor escura para o texto */
+    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
     padding: 12px 16px;
     text-align: left;
     /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
-    background-color: transparent;
+    background-color: transparent; 
 }
 
 /* Efeito de hover nos links do submenu */
@@ -1007,4 +997,40 @@ div[data-account="3eFXoC4I4A"] {
     left: auto !important;
     /* Remove margens que o script possa adicionar */
     margin-top: 230px !important;
+}
+
+/* === NOTIFICAÇÃO DE SUCESSO E ERRO === */
+.notification {
+    position: fixed; /* Fica fixo na tela mesmo com scroll */
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; /* Verde para sucesso */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    
+    visibility: hidden; 
+    opacity: 0;
+    
+    transition: opacity 0.4s ease-in-out, visibility 0.4s; 
+    z-index: 1000; 
+    
+    display: flex; 
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+}
+
+.notification.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.notification i {
+    font-size: 1.4rem;
+}
+
+/* Cor vermelha para erro */
+.notification.error {
+    background-color: #dc3545; 
 }

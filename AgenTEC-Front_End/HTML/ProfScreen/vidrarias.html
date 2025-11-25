@@ -55,26 +55,19 @@
     <link
         href="https://etecjuliodemesquita.cps.sp.gov.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fetecjuliodemesquita.cps.sp.gov.br%2F&amp;format=xml"
         rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" />
-    <!-- Previas de Posts nas redes Sociais -->
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-    <!-- Google Fontes -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;700&amp;family=Roboto:wght@300;400;500&amp;family=Pixelify+Sans&amp;display=swap"
         rel="stylesheet" />
 
-    <!-- Link SwiperJS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 </head>
 
 <body>
-    <!-- DAUTONISMO -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <!-- DAUTONISMO -->
-    <!-- FACEBOOK -->
     <div class="fb_reset" id="fb-root">
         <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
             <div></div>
@@ -82,10 +75,7 @@
     </div>
     <script async="" crossorigin="anonymous" defer=""
         src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&amp;version=v5.0"></script>
-    <!-- FACEBOOK -->
-    <!-- PRINCIPAL -->
     <div class="site" id="page">
-        <!-- BARRA GOVERNO -->
         <section class="govsp-topo">
             <link
                 href="https://etecjuliodemesquita.cps.sp.gov.br/wp-content/themes/tema-cps/css/sao-paulo/topo-padrao-govsp.min.css"
@@ -286,15 +276,16 @@
         </div>
 
         <main class="main-content">
-            <h1 class="page-title">Lista de Vidrarias</h1>
-            <div class="botao-container">
-                <button id="btn-logout" class="botao-custom">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Sair</span>
-                </button>
+            <div class="page-header">
+                <h1 class="page-title">Lista de Vidrarias</h1>
+                <div class="botao-container">
+                    <button id="btn-logout" class="botao-custom">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </button>
+                </div>
             </div>
             <div class="title-underline"></div>
-
     </div>
 
     <div class="main-container">
@@ -349,17 +340,25 @@
             <a class="button-custom" href="kitprofessor.html">Montar Kit</a>
         </div>
     </div>
+    
+    <div class="notification" id="notification-success">
+        <i class="fas fa-check-circle"></i>
+        <span>Item adicionado com sucesso!</span>
+    </div>
+
+    <div class="notification error" id="notification-error">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>Você deve adicionar algo antes de confirmar!</span>
+    </div>
+
     </main>
-    <!-- RODAPÉ CPS -->
     <button class="back-to-top">
         <img alt="Voltar ao Topo" height="66"
-            src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png" width="66" />
+            src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
+            width="66" />
     </button>
     <footer id="cps-rodape">
         <div id="cps-rodape__redes-e-infos">
-            <!-- SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-            <!-- /SE WIDGET "DESTAQUES" TIVER CONTEÚDO -->
-            <!-- SE FOR SITE DE ETEC/FATEC -->
             <div id="cps-rodape__infos">
                 <div>
                     <span>
@@ -389,11 +388,7 @@
                         title="Siga-nos no Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                </div> <!-- #cps-rodape__redes-icones -->
-            </div> <!-- #cps-rodape__redes -->
-            <!-- SE FOR SITE CPS PRINCIPAL -->
-            <!-- SELO PNPC -->
-            <div id="cps-rodape-pnpc">
+                </div> </div> <div id="cps-rodape-pnpc">
                 <a href="https://ugi.cps.sp.gov.br/" target="_blank">
                     <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2024/03/radar-anticorrupcao.png"
                         style="margin-bottom:10px;" />
@@ -405,11 +400,7 @@
                         title="Programa Nacional de Prevenção à Corrupção - Participante" />
                 </a>
             </div>
-            <!-- /SELO PNPC -->
-        </div>
-        <!-- SE NÃO FOR SITE CPS PRINCIPAL -->
-        <!-- #cps-rodape__redes-e-infos -->
-        <!-- COPYRIGHT -->
+            </div>
         <div id="cps-rodape__creditos">
             <p>© 2002/2025 - Centro Paula Souza - Desenvolvido por <a href="https://www.cps.sp.gov.br/asscom/"
                     target="_blank">AssCom/WEB</a> - Todos os direitos reservados.</p>
@@ -446,7 +437,6 @@
             </div>
         </div>
     </section>
-    <!-- RODAPÉ CPS -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
@@ -460,10 +450,37 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="../../JS (Front-End)/swiperVidrarias.js"></script>
     <script src="../../JS (Front-End)/logout.js"></script>
-    <script>
-    </script>
     <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
     <script src="../../JS (Front-End)/botao_topo.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnConfirm = document.getElementById('buttom-confirm');
+            const errorNotification = document.getElementById('notification-error');
+            
+            if (btnConfirm) {
+                btnConfirm.addEventListener('click', function(e) {
+                    // Tenta verificar se há itens salvos no localStorage
+                    // Ajuste a chave 'vidrariasSelecionadas' conforme o que é usado no swiperVidrarias.js
+                    const vidrarias = JSON.parse(localStorage.getItem('vidrariasSelecionadas') || '[]');
+                    
+                    // Se a lista estiver vazia
+                    if (vidrarias.length === 0) {
+                        // Impede a navegação
+                        e.preventDefault();
+                        
+                        // Mostra o erro
+                        errorNotification.classList.add('show');
+                        
+                        // Esconde após 4 segundos
+                        setTimeout(() => {
+                            errorNotification.classList.remove('show');
+                        }, 4000);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
