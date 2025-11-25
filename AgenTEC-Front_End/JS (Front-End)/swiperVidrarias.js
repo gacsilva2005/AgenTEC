@@ -174,18 +174,20 @@ document.addEventListener('DOMContentLoaded', async function () {
         }, 3000);
     }
 
-    // Função para adicionar vidraria ao servidor
-    async function adicionarVidrariaSelecionada(vidrariaData) {
+    // Função para adicionar vidraria ao array de KITS no servidor
+    async function adicionarVidrariaParaKits(vidrariaData) {
         try {
-            console.log('📤 Enviando vidraria para o servidor:', vidrariaData);
+            console.log('🧪 Enviando vidraria para array de KITS:', vidrariaData);
 
-            const response = await fetch('http://localhost:3000/api/vidrarias-selecionadas', {
+            const response = await fetch('http://localhost:3000/api/vidrarias-kits/adicionar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(vidrariaData)
             });
+
+            console.log('📥 Resposta do servidor (KITS) - Status:', response.status);
 
             if (!response.ok) {
                 throw new Error(`Erro HTTP: ${response.status}`);
@@ -194,21 +196,21 @@ document.addEventListener('DOMContentLoaded', async function () {
             const result = await response.json();
 
             if (result.success) {
-                showNotification('Vidraria adicionada com sucesso!', true);
-                console.log('✅ Vidraria adicionada:', result.vidraria);
+                showNotification('Vidraria adicionada ao kit com sucesso!', true);
+                console.log('✅ Vidraria adicionada ao array de KITS:', result.data);
                 return true;
             } else {
-                throw new Error(result.message || 'Erro ao adicionar vidraria');
+                throw new Error(result.message || 'Erro ao adicionar vidraria ao kit');
             }
 
         } catch (error) {
-            console.error('❌ Erro ao adicionar vidraria:', error);
-            showNotification('Erro ao adicionar vidraria. Tente novamente.', false);
+            console.error('❌ Erro ao adicionar vidraria ao array de kits:', error);
+            showNotification('Erro ao adicionar vidraria ao kit. Tente novamente.', false);
             return false;
         }
     }
 
-    // Função para confirmar adição - ATUALIZADA
+    // Função para confirmar adição - MODIFICADA PARA ENVIAR PARA KITS
     window.confirmarAdicao = async () => {
         const capacidade = quantidadeSelect.value;
         if (!capacidade) {
@@ -216,22 +218,24 @@ document.addEventListener('DOMContentLoaded', async function () {
             return;
         }
 
-        // Prepara os dados da vidraria CORRETAMENTE
+        // Prepara os dados da vidraria para o KIT
         const vidrariaData = {
+            id: Date.now().toString(), // ID único
             nome: vidrariaAtual.nome,
             capacidade: capacidade,
             tipo: 'Vidraria',
-            unidade: vidrariaAtual.unidade || 'un'
+            unidade: vidrariaAtual.unidade || 'un',
+            data_adicao: new Date().toISOString()
         };
 
-        // Envia para o servidor
-        const sucesso = await adicionarVidrariaSelecionada(vidrariaData);
+        // Envia para o array de KITS no servidor
+        const sucesso = await adicionarVidrariaParaKits(vidrariaData);
 
         if (sucesso) {
             fecharModal();
         }
     };
-    
+
     window.abrirModal = abrirModal;
     window.fecharModal = () => modal.classList.remove('show');
 

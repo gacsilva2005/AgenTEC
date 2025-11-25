@@ -23,6 +23,8 @@ class Server {
   #agendamentosTemporarios;
   #reagentesSelecionados;
   #vidrariasSelecionadas;
+  #reagentesParaKits;
+  #vidrariasParaKits;
 
   constructor(port = 3000) {
     this.#app = express();
@@ -31,7 +33,9 @@ class Server {
     this.#app.use(bodyParser.urlencoded({ extended: true }));
     this.#agendamentosTemporarios = new Map();
     this.#reagentesSelecionados = [];
-    this.#vidrariasSelecionadas = []; // Inicializando o array para vidrarias
+    this.#vidrariasSelecionadas = [];
+    this.#reagentesParaKits = [];
+    this.#vidrariasParaKits = [];
 
     this.#db = new Database({
       host: 'localhost',
@@ -237,7 +241,7 @@ class Server {
     });
 
     // -----------------------------
-    // ARMAZENAR AGENDAMENTO (SEM INSERIR NO BANCO)
+    // ARMAZENAR AGENDAMENTO (LOCALMENTE)
     // -----------------------------
     this.#app.post('/api/agendamentos', async (req, res) => {
       try {
@@ -583,6 +587,266 @@ class Server {
 
       } catch (error) {
         console.error('❌ Erro ao limpar array de reagentes:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor'
+        });
+      }
+    });
+
+    // =========================================================================
+    // ROTAS PARA REAGENTES DE KITS (ARRAY SEPARADO) - VERSÃO CORRIGIDA
+    // =========================================================================
+
+    // Rota para adicionar reagente ao array de kits
+    this.#app.post('/api/reagentes-kits/adicionar', async (req, res) => {
+      try {
+        const reagenteData = req.body;
+
+        console.log('🧪 Recebendo reagente para array de KITS:', reagenteData);
+
+        // Verifica se o reagente já existe no array de kits
+        const indexExistente = this.#reagentesParaKits.findIndex(r => r.id === reagenteData.id);
+
+        if (indexExistente !== -1) {
+          // Atualiza a quantidade se já existir
+          this.#reagentesParaKits[indexExistente].quantidade_escolhida = reagenteData.quantidade_escolhida;
+          this.#reagentesParaKits[indexExistente].data_selecao = reagenteData.data_selecao;
+
+          console.log('🔄 Reagente atualizado no array de kits:', this.#reagentesParaKits[indexExistente]);
+        } else {
+          // Adiciona novo reagente ao array de kits
+          this.#reagentesParaKits.push(reagenteData);
+          console.log('✅ Novo reagente adicionado ao array de kits:', reagenteData);
+        }
+
+        res.json({
+          success: true,
+          message: 'Reagente adicionado ao array de kits com sucesso',
+          data: reagenteData,
+          totalReagentesKits: this.#reagentesParaKits.length
+        });
+
+      } catch (error) {
+        console.error('❌ Erro ao adicionar reagente ao array de kits:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor'
+        });
+      }
+    });
+
+    // Rota para obter todos os reagentes do array de kits
+    this.#app.get('/api/reagentes-kits', async (req, res) => {
+      try {
+        console.log('📋 Buscando reagentes para kits do servidor...');
+        console.log('Retornando array de reagentes para kits:', this.#reagentesParaKits);
+
+        res.json({
+          success: true,
+          reagentes: this.#reagentesParaKits,
+          total: this.#reagentesParaKits.length
+        });
+      } catch (error) {
+        console.error('Erro ao buscar reagentes do array de kits:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor'
+        });
+      }
+    });
+
+    // Rota para remover um reagente do array de kits
+    this.#app.delete('/api/reagentes-kits/remover/:id', async (req, res) => {
+      try {
+        const id = req.params.id;
+
+        console.log('🗑️ Removendo reagente do array de kits, ID:', id);
+
+        const index = this.#reagentesParaKits.findIndex(r => r.id == id);
+
+        if (index !== -1) {
+          const removido = this.#reagentesParaKits.splice(index, 1);
+          console.log('✅ Reagente removido do array de kits:', removido[0]);
+
+          res.json({
+            success: true,
+            message: 'Reagente removido do array de kits com sucesso',
+            reagenteRemovido: removido[0],
+            totalReagentesKits: this.#reagentesParaKits.length
+          });
+        } else {
+          res.status(404).json({
+            success: false,
+            message: 'Reagente não encontrado no array de kits'
+          });
+        }
+
+      } catch (error) {
+        console.error('❌ Erro ao remover reagente do array de kits:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor'
+        });
+      }
+    });
+
+    // Rota para limpar todo o array de kits - VERSÃO CORRIGIDA
+    this.#app.delete('/api/reagentes-kits/limpar', async (req, res) => {
+      try {
+        console.log('🧹 Limpando array de reagentes para kits');
+
+        const arrayAntigo = [...this.#reagentesParaKits];
+        this.#reagentesParaKits = [];
+
+        res.json({
+          success: true,
+          message: 'Array de reagentes para kits limpo com sucesso',
+          reagentesRemovidos: arrayAntigo,
+          totalReagentesKits: this.#reagentesParaKits.length
+        });
+
+      } catch (error) {
+        console.error('❌ Erro ao limpar array de reagentes para kits:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor'
+        });
+      }
+    });
+
+    // =========================================================================
+    // ROTAS PARA VIDRARIAS DE KITS (ARRAY SEPARADO)
+    // =========================================================================
+
+    // Rota para adicionar vidraria ao array de kits
+    this.#app.post('/api/vidrarias-kits/adicionar', async (req, res) => {
+      try {
+        const vidrariaData = req.body;
+
+        console.log('🔬📨 Rota /api/vidrarias-kits/adicionar FOI CHAMADA');
+        console.log('📦 Dados recebidos:', vidrariaData);
+
+        // Validação dos dados
+        if (!vidrariaData) {
+          return res.status(400).json({
+            success: false,
+            message: 'Dados da vidraria são obrigatórios'
+          });
+        }
+
+        if (!vidrariaData.nome) {
+          return res.status(400).json({
+            success: false,
+            message: 'Nome da vidraria é obrigatório'
+          });
+        }
+
+        // Verifica se a vidraria já existe no array de kits
+        const indexExistente = this.#vidrariasParaKits.findIndex(v => v.id === vidrariaData.id);
+
+        if (indexExistente !== -1) {
+          // Atualiza se já existir
+          this.#vidrariasParaKits[indexExistente] = {
+            ...this.#vidrariasParaKits[indexExistente],
+            ...vidrariaData
+          };
+          console.log('🔄 Vidraria atualizada no array de kits:', this.#vidrariasParaKits[indexExistente]);
+        } else {
+          // Adiciona nova vidraria ao array de kits
+          this.#vidrariasParaKits.push(vidrariaData);
+          console.log('✅ Nova vidraria adicionada ao array de kits:', vidrariaData);
+        }
+
+        console.log('📊 Total de vidrarias no array de kits:', this.#vidrariasParaKits.length);
+
+        res.json({
+          success: true,
+          message: 'Vidraria adicionada ao array de kits com sucesso',
+          data: vidrariaData,
+          totalVidrariasKits: this.#vidrariasParaKits.length
+        });
+
+      } catch (error) {
+        console.error('❌ Erro ao adicionar vidraria ao array de kits:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor: ' + error.message
+        });
+      }
+    });
+
+    // Rota para obter todas as vidrarias do array de kits
+    this.#app.get('/api/vidrarias-kits', async (req, res) => {
+      try {
+        console.log('📋 Buscando vidrarias para kits do servidor...');
+
+        res.json({
+          success: true,
+          vidrarias: this.#vidrariasParaKits,
+          total: this.#vidrariasParaKits.length
+        });
+      } catch (error) {
+        console.error('Erro ao buscar vidrarias do array de kits:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor'
+        });
+      }
+    });
+
+    // Rota para remover uma vidraria do array de kits
+    this.#app.delete('/api/vidrarias-kits/remover/:id', async (req, res) => {
+      try {
+        const id = req.params.id;
+
+        console.log('🗑️ Removendo vidraria do array de kits, ID:', id);
+
+        const index = this.#vidrariasParaKits.findIndex(v => v.id == id);
+
+        if (index !== -1) {
+          const removido = this.#vidrariasParaKits.splice(index, 1);
+          console.log('✅ Vidraria removida do array de kits:', removido[0]);
+
+          res.json({
+            success: true,
+            message: 'Vidraria removida do array de kits com sucesso',
+            vidrariaRemovida: removido[0],
+            totalVidrariasKits: this.#vidrariasParaKits.length
+          });
+        } else {
+          res.status(404).json({
+            success: false,
+            message: 'Vidraria não encontrada no array de kits'
+          });
+        }
+
+      } catch (error) {
+        console.error('❌ Erro ao remover vidraria do array de kits:', error);
+        res.status(500).json({
+          success: false,
+          message: 'Erro interno do servidor'
+        });
+      }
+    });
+
+    // Rota para limpar todo o array de kits de vidrarias
+    this.#app.delete('/api/vidrarias-kits/limpar', async (req, res) => {
+      try {
+        console.log('🧹 Limpando array de vidrarias para kits');
+
+        const arrayAntigo = [...this.#vidrariasParaKits];
+        this.#vidrariasParaKits = [];
+
+        res.json({
+          success: true,
+          message: 'Array de vidrarias para kits limpo com sucesso',
+          vidrariasRemovidas: arrayAntigo,
+          totalVidrariasKits: this.#vidrariasParaKits.length
+        });
+
+      } catch (error) {
+        console.error('❌ Erro ao limpar array de vidrarias para kits:', error);
         res.status(500).json({
           success: false,
           message: 'Erro interno do servidor'

@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     async function enviarReagenteParaArray(reagenteData) {
         try {
             console.log('📤 Enviando reagente para array no servidor:', reagenteData);
-            
+
             const response = await fetch('http://localhost:3000/api/reagentes-selecionados/adicionar', {
                 method: 'POST',
                 headers: {
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             animation: slideIn 0.3s ease-out;
         `;
-        
+
         notification.textContent = message;
         document.body.appendChild(notification);
 
@@ -163,9 +163,52 @@ document.addEventListener('DOMContentLoaded', async function () {
     `;
     document.head.appendChild(style);
 
+    // Função para enviar reagente para o array de kits no servidor - VERSÃO COM DEBUG
+    async function enviarReagenteParaKits(reagenteData) {
+        try {
+            console.log('🧪 Enviando reagente para array de KITS:', reagenteData);
+
+            const response = await fetch('http://localhost:3000/api/reagentes-kits/adicionar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(reagenteData)
+            });
+
+            console.log('📥 Resposta do servidor (KITS) - Status:', response.status);
+            console.log('📥 Resposta do servidor (KITS) - OK:', response.ok);
+
+            // Se a resposta não for OK, tente ler a mensagem de erro
+            if (!response.ok) {
+                let errorMessage = `Erro HTTP: ${response.status}`;
+                try {
+                    const errorData = await response.json();
+                    errorMessage = errorData.message || errorMessage;
+                    console.log('📥 Detalhes do erro:', errorData);
+                } catch (e) {
+                    // Se não conseguir parsear como JSON, usa o texto da resposta
+                    const textError = await response.text();
+                    errorMessage = textError || errorMessage;
+                    console.log('📥 Erro como texto:', textError);
+                }
+                throw new Error(errorMessage);
+            }
+
+            const result = await response.json();
+            console.log('✅ Reagente adicionado ao array de KITS com sucesso:', result);
+            return result;
+
+        } catch (error) {
+            console.error('❌ Erro detalhado ao enviar reagente para o array de kits:', error);
+            console.error('❌ Stack trace:', error.stack);
+            throw error;
+        }
+    }
+
     window.confirmarAdicao = async function () {
         const quantidade = parseFloat(quantidadeInput.value);
-        
+
         if (!quantidade || quantidade <= 0) {
             showNotification('Por favor, insira uma quantidade válida.', false);
             return;
@@ -188,22 +231,22 @@ document.addEventListener('DOMContentLoaded', async function () {
                 data_selecao: new Date().toISOString()
             };
 
-            console.log('🔄 Enviando reagente para array no servidor...', reagenteData);
+            console.log('🔄 Enviando reagente para array de KITS...', reagenteData);
 
-            // Envia para o servidor para adicionar ao array
-            await enviarReagenteParaArray(reagenteData);
+            // ENVIA PARA O ARRAY DE KITS (separado)
+            await enviarReagenteParaKits(reagenteData);
 
             // Feedback visual de sucesso
-            showNotification(`${currentReagente.nome} adicionado com sucesso!`);
+            showNotification(`${currentReagente.nome} adicionado ao kit com sucesso!`);
 
-            console.log(`✅ Adicionado ao array: ${currentReagente.nome} - ${quantidade}${currentReagente.unidade}`);
-            
+            console.log(`✅ Adicionado ao array de KITS: ${currentReagente.nome} - ${quantidade}${currentReagente.unidade}`);
+
             // Fecha o modal
             fecharModal();
 
         } catch (error) {
-            console.error('❌ Erro ao adicionar reagente ao array:', error);
-            showNotification('Erro ao adicionar reagente. Tente novamente.', false);
+            console.error('❌ Erro ao adicionar reagente ao array de kits:', error);
+            showNotification('Erro ao adicionar reagente ao kit. Tente novamente.', false);
         }
     };
 
