@@ -36,14 +36,6 @@ class Professor {
             return { success: false, message: 'Erro ao autenticar' };
         }
     }
-    
-    //Métodos getter e setter
-    getItemAvulso() {}
-    getKit() {}
-    getVidraria() {}
-    getReagente() {}
-    setKit() {}
-    setItemAvulso() {}
 
     //Exemplo dnv do get id privado
     getId() {

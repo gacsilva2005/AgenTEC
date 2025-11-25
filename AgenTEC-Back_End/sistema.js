@@ -49,14 +49,6 @@ class Sistema {
         return await this.enviarEmail();
     }
 
-    salvarCodigo() { }
-    validarCodigo() { }
-    removerCodigo() { }
-    validarDados() { }
-    verificarCodigo() { }
-    gerarArmazenarCodigo() { }
-    novaSenha() { }
-
 
     // Getters e Setters
     getEmailRecuperacao() {
@@ -75,8 +67,6 @@ class Sistema {
         this.#usuarioLogado = idUsuario;
     }
 
-    setSala() { }
-    getSala() { }
 }
 
 export default Sistema;

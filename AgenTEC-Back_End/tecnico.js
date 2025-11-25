@@ -9,11 +9,6 @@ class Tecnico {
         this.#db = db;
     }
 
-    //Métodos
-    atualizarEstoque() {}
-    registrarFalta() {}
-    registrarQuebra() {}
-
     async autenticarUsuario(email, senha) { 
         try {
             const query = 'SELECT * FROM tecnico WHERE email_tecnico = ? LIMIT 1';
@@ -40,9 +35,6 @@ class Tecnico {
             return { success: false, message: 'Erro ao autenticar' };
         }
     }
-
-    visualizarKits() {}
-    consultarAgendamentos() {}
 
     //Exemplo dnv do get id privado
     getId() {

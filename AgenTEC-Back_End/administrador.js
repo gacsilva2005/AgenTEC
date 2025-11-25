@@ -86,12 +86,6 @@ class Administrador {
         }
     }
 
-    // Métodos de lista e histórico (placeholders)
-    adicionarItemLista() { }
-    removerItemLista() { }
-    alterarItemLista() { }
-    consultarHistorico() { }
-
     // Retorna ID do administrador logado
     getId() {
         return this.#id;

@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`administrador` (
   PRIMARY KEY (`id_administrador`),
   UNIQUE INDEX `email_administrador` (`email_administrador` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`professor` (
     FOREIGN KEY (`administrador_id_administrador`)
     REFERENCES `laboratorio_agendamentos`.`administrador` (`id_administrador`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`laboratorios` (
   `localizacao` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`id_laboratorio`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`agendamentos` (
     FOREIGN KEY (`id_laboratorio`)
     REFERENCES `laboratorio_agendamentos`.`laboratorios` (`id_laboratorio`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 14
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`reagente` (
     FOREIGN KEY (`professor_id_professor`)
     REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`vidraria` (
     FOREIGN KEY (`professor_id_professor`)
     REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 256
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -262,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `laboratorio_agendamentos`.`materiaisselecionados` (
     FOREIGN KEY (`professor_id_professor`)
     REFERENCES `laboratorio_agendamentos`.`professor` (`id_professor`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 8
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
