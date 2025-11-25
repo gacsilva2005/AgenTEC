@@ -289,6 +289,242 @@ body, html {
     min-height: 50px;
 }
 
+/* =============== MODAIS CORRIGIDOS =============== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.modal-item-name {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--dark-gray);
+    margin-bottom: 15px;
+}
+
+.modal-info p {
+    font-size: 1.4rem;
+    color: var(--light-gray);
+    margin: 5px 0;
+    margin-bottom: 12px; 
+}
+
+.modal-info span {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin: 20px 0;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--dark-gray);
+}
+
+#new-quantity {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.6rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+#new-quantity:focus {
+    border-color: var(--hoverCian-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 193, 207, 0.1);
+}
+
+#new-quantity.error {
+    border-color: var(--primary-red);
+    background-color: #fff5f5;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-primary {
+    background-color: var(--hoverCian-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+}
+
+.btn-cancel {
+    background-color: #e0e0e0;
+    color: var(--dark-gray);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #ccc;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Botão de fechar (X) */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Garante que o body não scroll quando modal aberto */
+body.modal-open-noscroll, 
+html.modal-open-noscroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* NOTIFICAÇÃO TOAST - Correções */
+.custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+    border-left: 4px solid #28a745;
+}
+
+.custom-notification.show {
+    transform: translateX(0);
+}
+
+.custom-notification.error {
+    border-left-color: var(--primary-red);
+}
+
+.custom-notification i {
+    font-size: 1.8rem;
+}
+
+.custom-notification.success i {
+    color: #28a745;
+}
+
+.custom-notification.error i {
+    color: var(--primary-red);
+}
+
+/* Remove estilos conflitantes */
+.custom-modal {
+    display: none;
+}
+
+/* Responsividade básica para o modal */
+@media (max-width: 500px) {
+    .modal-content {
+        margin: 10% auto;
+        padding: 20px;
+    }
+    .modal-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn-primary, .btn-cancel, .btn-success {
+        width: 100%;
+    }
+}
 
 @media (max-width: 768px) {
     .cps-header__container {
@@ -384,7 +620,6 @@ body, html {
 }
 
 /* Estilo dos links dentro do submenu */
-/* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
 .main-menu-container .menu .dropdown-content li a {
     color: #555; /* Define a cor escura para o texto */
     font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
@@ -416,8 +651,6 @@ body, html {
 .menu li.dropdown:hover a .fa-chevron-down {
     transform: rotate(180deg);
 }
-
-/* --- ESTILOS DE LISTA DE ITENS (INSPIRAÇÃO: MS.HTML / IMAGEM) --- */
 
 /* Barra de Pesquisa (Centralizada) */
 .search-container {
@@ -722,6 +955,7 @@ body, html {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
+
 
 /* --- ESTILOS DO COMPONENTE ACCORDION (PARA AGRUPAR POR TIPO) --- */
 

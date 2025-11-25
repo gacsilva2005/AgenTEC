@@ -1,0 +1,1283 @@
+/* CSS Reset e Estilos Globais */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+:root{
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
+    --hoverLight-color: #00C1CF;
+    --primary-red: #970000;
+    --secondary-red: #c70000;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
+    --text-white: #ffffff;
+    --dark: #000000;
+    --secondaryLight-gray: #7c7c7c;
+}
+
+.govsp-topo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd; 
+}
+
+.govsp-portal img {
+    height: 30px;  
+    width: auto;   
+    display: block; 
+}
+
+.govsp-portal {
+    background-color: #000; 
+    padding: 8px 25px 8px 15px; 
+    border-radius: 0 50px 50px 0; 
+}
+
+.govsp-topo .govsp-portal img {
+    height: 38px;
+}
+
+.govsp-topo .govsp-navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.govsp-navbar :hover {
+    transform: translate(0.2px, 0.2px);
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}       
+
+
+.govsp-topo .govsp-navbar img {
+    height: 23px;;
+}
+
+.govsp-topo .govsp-social {
+    display: inline-block;
+}
+
+#cps-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+.cps-header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cps-header__logo img {
+    max-height: 50px;
+}
+
+.form-pesquisa {
+    display: flex; 
+    align-items: center; 
+    border: 1px solid #ccc; 
+    border-radius: 50px; 
+    overflow: hidden; 
+    max-width: 400px; 
+    background-color: white;
+}
+
+.campo-de-busca {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    padding: 15px 50px; 
+    font-size: 1rem; 
+    background-color: transparent; 
+}
+
+.campo-de-busca::placeholder {
+    color: #999; 
+}
+
+.busca-submit {
+    border: none; 
+    border-left: 1px solid #ccc; 
+    background-color: transparent; 
+    padding: 10px 18px; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.busca-submit .fa-search {
+    color: #b20000; 
+    font-size: 1.1rem; 
+}
+
+.busca-submit:hover {
+    background-color: #f5f5f5; 
+}
+
+.main-menu-container {
+    background-color: #c41e15; 
+    padding: 0 20px;
+}
+.main-menu-container .menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0 0 0 65px; 
+    display: flex;
+    flex-wrap: wrap;
+}
+.main-menu-container .menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.main-menu-container .menu li a:hover {
+    background-color: #831c16ef; 
+}
+
+#breadcrumb {
+    background-color: var(--light-gray);
+    padding: 12px 20px 12px 90px; 
+    border-bottom: 1px solid #e9ecef;
+}
+.breadcrumb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #ffffff;
+}
+.breadcrumb-container a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* HEADER DA PÁGINA (Título e Botão Sair) - NOVO */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 4rem;
+    color: var(--hoverCian-color);
+    margin: 0; /* Remove margem para alinhar com o botão */
+    font-weight: 700;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 50px;
+}
+
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: var(--hoverCian-color);
+    padding: 0;
+    font-size: 1.60rem;
+    font-weight: 300;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button-custom:hover {
+    color: var(--primary-color);
+}
+
+.button-custom:active {
+    color: var(--primary-color);
+}
+
+.title-underline {
+    --wp--preset--font-size--normal: 16px;
+    --wp--preset--font-size--huge: 42px;
+    --progress-bar-width: 200px;
+    --progress-bar-height: 200px;
+    --font-size: 25px;
+    --fa-style-family-brands: "Font Awesome 6 Brands";
+    --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+    --fa-style-family-classic: "Font Awesome 6 Free";
+    --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+    font-family: Roboto, Arial, sans-sreif;
+    color: #333;
+    font-weight: 300;
+    line-height: 2.5rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin: 10px 0 0 0;
+    padding: 0;
+    box-sizing: inherit;
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 230px;
+    padding: 40px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+    font-size: 7rem;
+    color: #008B8B; 
+    margin-bottom: 25px;
+}
+
+.card-text {
+    font-size: 2rem;
+    font-weight: 500;
+    min-height: 50px;
+}
+
+* Contêiner principal, esconde o modal por padrão */
+.custom-modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fixado na tela */
+    z-index: 100; /* Acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6); /* Fundo escuro semi-transparente */
+    backdrop-filter: blur(3px); /* Efeito de desfoque (opcional, moderno) */
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Animação simples de fade in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Conteúdo do Modal (Centralização Horizontal e Vertical Corrigida) */
+.modal-content {
+    background-color: #fefefe;
+    /* Centralização Mágica: Remove a margin-top e usa transform */
+    margin: auto; /* Permite centralização horizontal automática */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%; 
+    /* ⚠️ AJUSTE FINAL: Largura máxima aumentada de 350px para 450px */
+    max-width: 450px; 
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    animation: slideDown 0.3s ease-out;
+
+    /* Mantém a centralização perfeita */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.modal-item-name {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--dark-gray);
+    margin-bottom: 15px;
+}
+.modal-info p {
+    font-size: 1.4rem;
+    color: var(--light-gray);
+    margin: 5px 0;
+    margin-bottom: 12px; 
+}
+
+.modal-info span {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.modal-input-group {
+    margin: 20px 0;
+}
+
+.modal-input-group label {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--dark-gray);
+}
+
+#new-quantity {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+#new-quantity:focus {
+    border-color: var(--hoverCian-color);
+    outline: none;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center; 
+    gap: 15px;
+    margin-top: 25px;   
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-confirm {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-confirm:hover {
+    background-color: var(--hoverCian-color);
+}
+
+.btn-cancel {
+    background-color: #e0e0e0;
+    color: var(--dark-gray);
+}
+
+.btn-cancel:hover {
+    background-color: #ccc;
+}
+
+/* Botão de fechar (X) */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Responsividade básica para o modal */
+@media (max-width: 500px) {
+    .modal-content {
+        margin: 10% auto;
+        padding: 20px;
+    }
+    .modal-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn-modal {
+        width: 100%;
+    }
+}
+
+/* CLASSE PARA BLOQUEAR O SCROLL DA PÁGINA QUANDO O MODAL ESTIVER ABERTO */
+.modal-open-noscroll {
+    overflow: hidden;
+}
+
+
+@media (max-width: 768px) {
+    .cps-header__container {
+        flex-direction: column;
+    }
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+    }
+}
+
+.logo-container {
+    display: flex;          
+    align-items: center;    
+    gap: 40 px;              
+}
+
+.logo-container img {
+    height: 80px; 
+    width: auto;     
+}
+
+.logo-cps {
+    height: 70px; 
+}
+
+/* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
+
+/* Contêiner principal da navegação */
+.govsp-navbar {
+    display: flex; /* Alinha todos os itens na horizontal */
+    align-items: center; /* Centraliza os itens verticalmente */
+    padding: 10px;
+}
+
+/* Estilo para todos os links (que servem como 'caixa' para os ícones) */
+.govsp-navbar a {
+    display: inline-flex; /* Permite centralizar o ícone dentro do link */
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Largura da caixa */
+    height: 28px; /* Altura da caixa */
+    background-color: #ffffff; /* Fundo cinza claro */
+    margin: -3px; /* Espaçamento entre os ícones */
+    border-radius: 3px; /* Bordas levemente arredondadas */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+/* Estilo para os ícones (<i>) dentro dos links */
+.govsp-navbar a i {
+    color: #ffffff; /* Cor cinza escura para o ícone */
+    font-size: 1.2rem; /* Tamanho do ícone */
+}
+
+/* Estilo para o texto "/governosp" */
+.govsp-text {
+    font-size: 1.3rem;
+    color: #555;
+    margin: 0px; /* Espaçamento antes e depois do texto */
+}
+
+/* Estilo para a linha separadora */
+.separator {
+    height: 25px; /* Altura da linha */
+    border-left: 1px solid #ccc; /* Cria a linha vertical */
+    margin: 0 10px; /* Espaçamento antes e depois da linha */
+}
+
+/* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
+
+/* Garante que o item principal do menu seja posicionado corretamente */
+.menu li.dropdown {
+    position: relative;
+}
+
+/* Esconde o submenu por padrão */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    /* margin-top: 10px; FOI REMOVIDO PARA CORRIGIR O PROBLEMA DE FECHAMENTO */
+    border-top: 3px solid #b20000;
+}
+
+/* Estilo dos links dentro do submenu */
+/* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
+.main-menu-container .menu .dropdown-content li a {
+    color: #555; /* Define a cor escura para o texto */
+    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
+    padding: 12px 16px;
+    text-align: left;
+    /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
+    background-color: transparent; 
+}
+
+/* Efeito de hover nos links do submenu */
+.main-menu-container .menu .dropdown-content li a:hover {
+    background-color: #f1f1f1;
+    color: #b20000;
+}
+
+/* Mostra o submenu quando o mouse passa por cima do item principal */
+.menu li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para a setinha */
+.dropdown a .fa-chevron-down {
+    font-size: 0.7em;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Gira a setinha para cima quando o menu está aberto */
+.menu li.dropdown:hover a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* --- ESTILOS DE LISTA DE ITENS (INSPIRAÇÃO: MS.HTML / IMAGEM) --- */
+
+/* Barra de Pesquisa (Centralizada) */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.form-pesquisa.search-page {
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-area {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 25px; 
+    font-size: 1.5rem; 
+    background-color: transparent; 
+}
+
+.search-submit {
+    border: none; 
+    border-left: 1px solid #eee; 
+    background-color: transparent; 
+    padding: 10px 18px; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-submit .fa-search {
+    color: var(--primary-color); /* Usando a cor azul marinho */
+    font-size: 1.5rem; 
+}
+
+/* Contêiner da lista de cards */
+.items-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Card/Tabela de Item Individual (Similar ao MS.html) */
+.item-card {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 350px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.item-card .table-title {
+    background-color: #f7f7f7;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    border-radius: 8px 8px 0 0;
+}
+
+.item-card .table-title h3 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--primary-color); /* Azul marinho */
+}
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.4rem;
+}
+
+.item-row:last-child {
+    border-bottom: none;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-action {
+    cursor: pointer;
+    color: var(--hoverCian-color); /* Ciano/azul */
+    font-size: 2rem;
+    transition: color 0.2s;
+}
+
+.item-action:hover {
+    color: var(--primary-color); 
+}
+
+/* Estilos para as variações de vidrarias */
+
+.main-item {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--primary-color);
+}
+
+.item-total {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin: 5px 0 0 0;
+}
+
+.variations-container {
+    background-color: #fafafa;
+    border-left: 8px solid #e9ecef;
+    padding: 10px 0;
+}
+
+.variation-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px 12px 40px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+
+.variation-row:hover {
+    background-color: #f0f0f0;
+}
+
+.variation-row:last-child {
+    border-bottom: none;
+}
+
+.variation-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.variation-desc {
+    font-size: 1.5rem;
+    color: var(--dark-gray);
+    font-weight: 400;
+}
+
+.variation-qty {
+    font-size: 1.4rem;
+    color: var(--light-gray);
+    font-weight: 500;
+    background: #e9ecef;
+    padding: 4px 12px;
+    border-radius: 15px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.variation-actions {
+    margin-left: 20px;
+}
+
+.btn-edit {
+    background-color: var(--hoverCian-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-edit:hover {
+    background-color: var(--primary-color);
+}
+
+.toggle-variations {
+    color: var(--hoverCian-color);
+    cursor: pointer;
+    font-size: 1.6rem;
+    transition: transform 0.3s ease;
+}
+
+.toggle-variations:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Estados de expansão */
+.variations-container[style*="display: block"] + .item-row .toggle-variations {
+    transform: rotate(180deg);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .variation-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .variation-actions {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+    
+    .variation-row {
+        padding: 12px 15px 12px 25px;
+    }
+}
+
+/* --- ESTILOS DOS BOTÕES DE AÇÃO INFERIORES (MS.HTML / IMAGEM) --- */
+
+.action-buttons-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px; /* Espaçamento entre os botões na linha */
+    margin-top: 80px;
+    margin-bottom: 40px;
+    margin-bottom: 150px;
+}
+
+.btn-global {
+    background-color: var(--primary-color); /* Azul Marinho Escuro */
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 180px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.btn-global:hover {
+    background-color: var(--hoverCian-color); /* Ciano/azul mais claro para hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+    .action-buttons-list {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .btn-global {
+        width: 90%;
+        min-width: unset;
+        max-width: 300px;
+    }
+
+    .item-card {
+        max-width: 90%;
+    }
+}
+
+#cps-rodape__redes-icones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+#cps-rodape__redes-icones a i {
+    color: #2ddae0d7;
+    font-size: 3.5rem ;
+    line-height: 1;
+}
+
+#cps-rodape__redes-icones a:hover i{
+    color: #ffffff;
+    scale: 1.2;
+    transition: 0.7s;
+}
+
+#cps-rodape__redes h6 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+/* ============================================================= */
+/*                  NOTIFICAÇÃO TOAST (CUSTOM)                   */
+/* ============================================================= */
+#custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    color: #333;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    min-width: 320px;
+    max-width: 420px;
+    transform: translateX(150%);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease;
+    opacity: 0;
+    border-left: 5px solid var(--primary-color);
+}
+
+#custom-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+#custom-notification.error {
+    background: #fef2f2;
+    border-left-color: var(--primary-red);
+    color: var(--primary-red);
+}
+
+#custom-notification i {
+    font-size: 1.6rem;
+}
+
+#custom-notification.success i {
+    color: #10b981;
+}
+
+#custom-notification.error i {
+    color: var(--primary-red);
+}
+
+/* ============================================================= */
+/*                        MODAIS GERAIS                          */
+/* ============================================================= */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 460px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    transform: scale(0.9) translateY(30px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+}
+
+.modal.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+/* Botão X no canto */
+.close-button {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 2rem;
+    color: #aaa;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.close-button:hover {
+    background: #f1f1f1;
+    color: #555;
+}
+
+/* Títulos dos modais */
+.modal h2 {
+    margin: 0 0 20px 0;
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* Informações no modal de edição */
+.modal p {
+    margin: 12px 0;
+    font-size: 1.15rem;
+    color: #444;
+}
+
+.modal p strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Input de quantidade */
+#new-quantity {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1.4rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 16px 0;
+    transition: border-color 0.3s;
+    text-align: center;
+}
+
+#new-quantity:focus {
+    outline: none;
+    border-color: var(--hoverCian-color);
+    box-shadow: 0 0 0 4px rgba(0, 92, 109, 0.15);
+}
+
+#new-quantity.error {
+    border-color: var(--primary-red);
+    background-color: #fff5f5;
+}
+
+/* Botões dos modais */
+.modal-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.btn-modal {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.btn-cancel:hover {
+    background: #d1d5db;
+}
+
+.btn-primary,
+#modal-confirm-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover,
+#modal-confirm-btn:hover {
+    background: var(--hoverCian-color);
+    transform: translateY(-2px);
+}
+
+.btn-success,
+#apply-confirm-btn,
+#success-ok-btn {
+    background: #10b981;
+    color: white;
+}
+
+.btn-success:hover,
+#apply-confirm-btn:hover,
+#success-ok-btn:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+/* Modal de Sucesso */
+#success-modal .modal-content {
+    text-align: center;
+    padding: 40px 32px;
+}
+
+#success-modal h2 {
+    color: #10b981;
+    font-size: 2.4rem;
+}
+
+.success-message {
+    font-size: 1.3rem;
+    color: #444;
+    margin: 16px 0 24px;
+    line-height: 1.6;
+}
+
+/* ============================================================= */
+/*                  TRAVAR SCROLL QUANDO MODAL ABERTO           */
+/* ============================================================= */
+body.modal-open-noscroll,
+html.modal-open-noscroll {
+    overflow: hidden;
+    height: 100%;
+}
+
+/* ============================================================= */
+/*                     RESPONSIVIDADE                           */
+/* ============================================================= */
+@media (max-width: 640px) {
+    #custom-notification {
+        min-width: 280px;
+        max-width: 90%;
+        top: 10px;
+        right: 10px;
+        font-size: 1rem;
+        padding: 14px 18px;
+    }
+
+    .modal-content {
+        padding: 24px;
+        margin: 20px;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+    }
+
+    .btn-modal {
+        width: 100%;
+    }
+
+    #new-quantity {
+        font-size: 1.3rem;
+    }
+}
+
+
+/* --- ESTILOS DO COMPONENTE ACCORDION (PARA AGRUPAR POR TIPO) --- */
+
+/* Ajusta o container principal para empilhar os grupos */
+.items-list-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 20px;
+    max-width: 900px; /* Limita a largura do accordion principal */
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: nowrap;
+}
+
+/* NOVO: Estilo para cada Grupo de Tipos de Vidrarias (o "Card" principal) */
+.accordion-group-vidraria {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden; 
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 900px;
+}
+
+/* NOVO: Cabeçalho Clicável (Visível, onde fica o TIPO: Beakers) */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--primary-color); /* Azul Marinho Escuro */
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+    background-color: var(--hoverCian-color);
+}
+
+/* NOVO: Ícone de Seta (>) */
+.accordion-icon {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+    color: white;
+}
+
+/* Gira o ícone para baixo quando ativo/aberto */
+.accordion-header.active .accordion-icon {
+    transform: rotate(90deg);
+}
+
+/* NOVO: Corpo do Accordion (Contém os itens da lista) */
+.accordion-content {
+    /* O display: none é forçado pelo JS ao carregar para garantir o estado inicial */
+    border-top: 1px solid #eee;
+}
+
+/* AJUSTE DE CONFLITO: Desativa o estilo do card antigo para que não mascare o novo */
+.item-card {
+    /* Garante que o item-card antigo não seja exibido no layout do accordion */
+    display: none; 
+}
+.item-card .table-title {
+    /* Desativa o título antigo */
+    display: none; 
+}
+
+
+/* AJUSTES PARA OS ITENS INTERNOS DENTRO DO ACCORDION */
+
+.item-card-inner {
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    margin: 10px 20px; /* Espaçamento dentro do conteúdo do Accordion */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.item-row.main-item {
+    /* Mantém a barra principal dentro da nova estrutura */
+    border-left: 4px solid var(--primary-color);
+    padding: 12px 20px;
+}
+
+.item-actions .toggle-variations {
+    /* Ajusta a seta de variações para ser um ícone */
+    font-size: 2rem;
+    color: var(--hoverCian-color);
+}
+
+#userwayAccessibilityIcon,
+.uwy-userway-trigger,
+.uai-trigger-container,
+div[data-account="3eFXoC4I4A"] {
+    /* Força a posição fixa */
+    position: fixed !important;
+    /* Zera a posição do topo padrão e define a nova */
+    bottom: auto !important;
+    /* Alinha à direita */
+    right: 0 !important;
+    /* Colado na direita */
+    left: auto !important;
+    /* Remove margens que o script possa adicionar */
+    margin-top: 300px !important;
+}
+#userwayAccessibilityIcon,
+.uwy-userway-trigger,
+.uai-trigger-container,
+div[data-account="3eFXoC4I4A"] {
+    position: fixed !important;
+    bottom: auto !important;
+    right: 0 !important;
+    left: auto !important;
+    margin-top: 230px !important;
+}

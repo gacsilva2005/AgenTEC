@@ -1,6 +1,5 @@
 /* CSS Reset e Estilos Globais */
-body,
-html {
+body, html {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -8,16 +7,16 @@ html {
     color: #333;
 }
 
-:root {
-    --primary-color: #243E63;
-    --hoverCian-color: #005C6D;
-    --low-hoverCian: #005d6d5b;
+:root{
+    --primary-color: #243E63; 
+    --hoverCian-color: #005C6D; 
+    --low-hoverCian: #005d6d5b; 
     --hoverLight-color: #00C1CF;
     --primary-red: #970000;
     --secondary-red: #c70000;
-    --hoverRed-color: #5d0500ef;
-    --light-gray: #636e72;
-    --dark-gray: #333333;
+    --hoverRed-color: #5d0500ef; 
+    --light-gray: #636e72; 
+    --dark-gray: #333333; 
     --text-white: #ffffff;
     --dark: #000000;
     --secondaryLight-gray: #7c7c7c;
@@ -25,22 +24,22 @@ html {
 
 .govsp-topo {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; 
+    align-items: center; 
     background-color: #ffffff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; 
 }
 
 .govsp-portal img {
-    height: 40px;
-    width: 200px;
-    display: block;
+    height: 30px;  
+    width: auto;   
+    display: block; 
 }
 
 .govsp-portal {
-    background-color: #000;
-    padding: 8px 25px 8px 15px;
-    border-radius: 0 50px 50px 0;
+    background-color: #000; 
+    padding: 8px 25px 8px 15px; 
+    border-radius: 0 50px 50px 0; 
 }
 
 .govsp-topo .govsp-portal img {
@@ -57,12 +56,11 @@ html {
 .govsp-navbar :hover {
     transform: translate(0.2px, 0.2px);
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
-}
+}       
 
 
 .govsp-topo .govsp-navbar img {
-    height: 23px;
-    ;
+    height: 23px;;
 }
 
 .govsp-topo .govsp-social {
@@ -73,7 +71,6 @@ html {
     padding: 20px;
     border-bottom: 1px solid #eee;
 }
-
 .cps-header__container {
     max-width: 1200px;
     margin: 0 auto;
@@ -83,59 +80,57 @@ html {
     gap: 20px;
     flex-wrap: wrap;
 }
-
 .cps-header__logo img {
     max-height: 50px;
 }
 
 .form-pesquisa {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    overflow: hidden;
-    max-width: 400px;
+    display: flex; 
+    align-items: center; 
+    border: 1px solid #ccc; 
+    border-radius: 50px; 
+    overflow: hidden; 
+    max-width: 400px; 
     background-color: white;
 }
 
 .campo-de-busca {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 15px 50px;
-    font-size: 1rem;
-    background-color: transparent;
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    padding: 15px 50px; 
+    font-size: 1rem; 
+    background-color: transparent; 
 }
 
 .campo-de-busca::placeholder {
-    color: #999;
+    color: #999; 
 }
 
 .busca-submit {
-    border: none;
-    border-left: 1px solid #ccc;
-    background-color: transparent;
-    padding: 10px 18px;
-    cursor: pointer;
+    border: none; 
+    border-left: 1px solid #ccc; 
+    background-color: transparent; 
+    padding: 10px 18px; 
+    cursor: pointer; 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .busca-submit .fa-search {
-    color: #b20000;
-    font-size: 1.1rem;
+    color: #b20000; 
+    font-size: 1.1rem; 
 }
 
 .busca-submit:hover {
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; 
 }
 
 .main-menu-container {
-    background-color: #c41e15;
+    background-color: #c41e15; 
     padding: 0 20px;
 }
-
 .main-menu-container .menu {
     max-width: 1200px;
     margin: 0 auto;
@@ -144,7 +139,6 @@ html {
     display: flex;
     flex-wrap: wrap;
 }
-
 .main-menu-container .menu li a {
     display: block;
     padding: 15px 20px;
@@ -155,7 +149,7 @@ html {
 }
 
 .main-menu-container .menu li a:hover {
-    background-color: #831c16ef;
+    background-color: #831c16ef; 
 }
 
 #breadcrumb {
@@ -163,19 +157,16 @@ html {
     padding: 12px 20px 12px 90px; 
     border-bottom: 1px solid #e9ecef;
 }
-
 .breadcrumb-container {
     max-width: 1200px;
     margin: 0 auto;
     font-size: 14px;
-    color: var(--text-white);
+    color: #ffffff;
 }
-
 .breadcrumb-container a {
-    color: var(--text-white);
+    color: #ffffff;
     text-decoration: none;
-    font-style: bold;
-    font-weight: 500;
+    font-weight: bold;
 }
 
 /* Conteúdo Principal */
@@ -185,11 +176,52 @@ html {
     padding: 0 20px;
 }
 
+/* HEADER DA PÁGINA (Título e Botão Sair) - NOVO */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .page-title {
     font-size: 4rem;
     color: var(--hoverCian-color);
-    margin-bottom: 10px;
+    margin: 0; /* Remove margem para alinhar com o botão */
     font-weight: 700;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 50px;
+}
+
+.button-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    background-color: transparent;
+    color: var(--hoverCian-color);
+    padding: 0;
+    font-size: 1.60rem;
+    font-weight: 300;
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button-custom:hover {
+    color: var(--primary-color);
+}
+
+.button-custom:active {
+    color: var(--primary-color);
 }
 
 .title-underline {
@@ -209,7 +241,7 @@ html {
     line-height: 2.5rem;
     overflow-wrap: break-word;
     word-break: break-word;
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0;
     box-sizing: inherit;
     display: inline-block;
@@ -217,7 +249,7 @@ html {
     height: 15px;
     background: url("https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/09/divisor.svg") left no-repeat;
     font-size: 1.6rem;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 }
 
 .cards-container {
@@ -228,12 +260,11 @@ html {
     margin-top: 20px;
 }
 
-/* Card com funções das telas*/
 .card {
     background-color: #f7f7f7;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    width: 280px;
+    width: 230px;
     padding: 40px 20px;
     text-align: center;
     text-decoration: none;
@@ -246,7 +277,11 @@ html {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-
+.card-icon {
+    font-size: 4rem;
+    color: #008B8B; 
+    margin-bottom: 25px;
+}
 
 .card-text {
     font-size: 2rem;
@@ -259,87 +294,70 @@ html {
     .cps-header__container {
         flex-direction: column;
     }
-
     .cards-container {
         flex-direction: column;
         align-items: center;
     }
-
     .card {
         width: 90%;
     }
 }
 
 .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 40 px;
+    display: flex;          
+    align-items: center;    
+    gap: 40 px;              
 }
 
 .logo-container img {
-    height: 80px;
-    width: auto;
+    height: 80px; 
+    width: auto;     
 }
 
 .logo-cps {
-    height: 70px;
+    height: 70px; 
 }
 
 /* --- Estilização da Navegação Superior (Redes Sociais e Acessibilidade) --- */
 
 /* Contêiner principal da navegação */
 .govsp-navbar {
-    display: flex;
-    /* Alinha todos os itens na horizontal */
-    align-items: center;
-    /* Centraliza os itens verticalmente */
+    display: flex; /* Alinha todos os itens na horizontal */
+    align-items: center; /* Centraliza os itens verticalmente */
     padding: 10px;
 }
 
 /* Estilo para todos os links (que servem como 'caixa' para os ícones) */
 .govsp-navbar a {
-    display: inline-flex;
-    /* Permite centralizar o ícone dentro do link */
+    display: inline-flex; /* Permite centralizar o ícone dentro do link */
     align-items: center;
     justify-content: center;
-    width: 28px;
-    /* Largura da caixa */
-    height: 28px;
-    /* Altura da caixa */
-    background-color: #ffffff;
-    /* Fundo cinza claro */
-    margin: -3px;
-    /* Espaçamento entre os ícones */
-    border-radius: 3px;
-    /* Bordas levemente arredondadas */
-    text-decoration: none;
-    /* Remove o sublinhado do link */
+    width: 28px; /* Largura da caixa */
+    height: 28px; /* Altura da caixa */
+    background-color: #ffffff; /* Fundo cinza claro */
+    margin: -3px; /* Espaçamento entre os ícones */
+    border-radius: 3px; /* Bordas levemente arredondadas */
+    text-decoration: none; /* Remove o sublinhado do link */
 }
 
 /* Estilo para os ícones (<i>) dentro dos links */
 .govsp-navbar a i {
-    color: #ffffff;
-    /* Cor cinza escura para o ícone */
-    font-size: 2rem;
-    /* Tamanho do ícone */
+    color: #ffffff; /* Cor cinza escura para o ícone */
+    font-size: 1.2rem; /* Tamanho do ícone */
 }
 
 /* Estilo para o texto "/governosp" */
 .govsp-text {
-    font-size: 1.4rem;
+    font-size: 0.9rem;
     color: #555;
-    margin: 0px;
-    /* Espaçamento antes e depois do texto */
+    margin: 0px; /* Espaçamento antes e depois do texto */
 }
 
 /* Estilo para a linha separadora */
 .separator {
-    height: 25px;
-    /* Altura da linha */
-    border-left: 1px solid #ccc;
-    /* Cria a linha vertical */
-    margin: 0 10px;
-    /* Espaçamento antes e depois da linha */
+    height: 25px; /* Altura da linha */
+    border-left: 1px solid #ccc; /* Cria a linha vertical */
+    margin: 0 10px; /* Espaçamento antes e depois da linha */
 }
 
 /* --- Estilos para o Menu Dropdown (BLOCO NOVO E CORRIGIDO) --- */
@@ -353,12 +371,11 @@ html {
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
-    /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
+    top: 100%; /* << CORREÇÃO 1: Posiciona logo abaixo do item pai, sem espaço */
     left: 0;
     background-color: #f9f9f9;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     list-style: none;
     padding: 0;
@@ -369,14 +386,12 @@ html {
 /* Estilo dos links dentro do submenu */
 /* << CORREÇÃO 2: Seletor ficou mais específico para sobrescrever a cor branca */
 .main-menu-container .menu .dropdown-content li a {
-    color: #555;
-    /* Define a cor escura para o texto */
-    font-weight: normal;
-    /* Garante que o texto não fique em negrito como o menu principal */
+    color: #555; /* Define a cor escura para o texto */
+    font-weight: normal; /* Garante que o texto não fique em negrito como o menu principal */
     padding: 12px 16px;
     text-align: left;
     /* Importante: Garante que o fundo branco do menu não seja herdado ao passar o mouse */
-    background-color: transparent;
+    background-color: transparent; 
 }
 
 /* Efeito de hover nos links do submenu */
@@ -402,290 +417,162 @@ html {
     transform: rotate(180deg);
 }
 
-@media (min-width: 375px) and (max-width: 767px) {}
+/* --- ESTILOS DE LISTA DE ITENS (INSPIRAÇÃO: MS.HTML / IMAGEM) --- */
 
-/* --- ESTILOS PARA A SEÇÃO DE SELEÇÃO DE VIDRARIAS --- */
-
-/* Container da barra de pesquisa de itens */
-/* Bloco Corrigido */
+/* Barra de Pesquisa (Centralizada) */
 .search-container {
     display: flex;
-    align-items: center;
-    position: relative;
-    max-width: 700px;
-    width: 90%;
-    margin: 40px auto 50px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.form-pesquisa.search-page {
+    width: 100%;
+    max-width: 500px;
     border: 1px solid #ccc;
     border-radius: 50px;
-    padding: 0 20px;
-    transition: border-color 0.3s;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.search-container:hover {
-    border-color: #b20000;
-}
-
-.item-search-input {
+.search-area {
     flex: 1;
-    width: 100%;
-    padding: 15px 10px 15px 0;
-    border: none !important;
-    outline: none !important;
-    background-color: transparent;
-    border-radius: 0;
-    font-size: 2rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    border: none;
+    outline: none;
+    padding: 15px 25px; 
+    font-size: 2rem; 
+    background-color: transparent; 
 }
 
-.item-search-input:hover {
-    border-color: #b20000;
-}
-
-.search-icon {
-    color: #888;
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-/* Grid principal que divide os cards de itens e os itens selecionados */
-.selection-grid {
-    justify-items: center;
-    gap: 30px;
+.search-submit {
+    border: none; 
+    border-left: 1px solid #eee; 
+    background-color: transparent; 
+    padding: 10px 18px; 
+    cursor: pointer; 
+    display: flex;
     align-items: center;
-
+    justify-content: center;
 }
 
-/* Container para os cards de seleção de itens */
-/* Bloco Corrigido */
-.item-cards-container {
+.search-submit .fa-search {
+    color: var(--primary-color); /* Usando a cor azul marinho */
+    font-size: 2rem; 
+}
+
+/* Contêiner da lista de cards */
+.items-list-container {
     display: flex;
     flex-wrap: wrap;
-    /* ESSENCIAL: Permite que os cards quebrem a linha */
     justify-content: center;
-    align-items: stretch;
     gap: 30px;
-    width: 100%;
     margin-top: 20px;
 }
 
-/* Bloco Opcional, mas Recomendado */
+/* Card/Tabela de Item Individual (Similar ao MS.html) */
 .item-card {
-    border: 1px solid #ddd;
+    background-color: white;
+    border: 1px solid #eee;
     border-radius: 8px;
-    padding: 20px;
-    background-color: #fdfdfd;
-    flex-grow: 1;
-    flex-basis: 350px;
-    min-width: 300px;
-    max-width: 450px;
+    width: 100%;
+    max-width: 350px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-
-/* Estilo individual do card de item e do card de itens selecionados */
-.item-card,
-.selected-items-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fdfdfd;
-    transition: all 0.3s;
-    align-items: center;
-
-}
-
-.item-card:hover {
-    border-color: #b20000;
-}
-
-.item-card-title {
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--hoverCian-color);
-    padding-bottom: 10px;
+.item-card .table-title {
+    background-color: #f7f7f7;
+    padding: 15px 20px;
     border-bottom: 1px solid #eee;
-    margin-top: 0;
-    margin-bottom: 20px;
+    border-radius: 8px 8px 0 0;
 }
 
-/* Linha de um item dentro do card (MODIFICADO) */
+.item-card .table-title h3 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--primary-color); /* Azul marinho */
+}
+
 .item-row {
     display: flex;
     justify-content: space-between;
-    /* Empurra o nome/unidade para a esquerda e os ícones para a direita */
     align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    /* Adiciona uma linha sutil como na imagem */
-    border-bottom: 1px solid #eee;
-    /* Linha sutil */
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.4rem;
 }
 
 .item-row:last-child {
-    margin-bottom: 0;
     border-bottom: none;
-    /* Remove a linha do último item */
 }
 
-/* (Regra antiga .item-row span foi removida) */
-
-/* NOVO: Wrapper para nome e unidade */
-.item-info {
+.item-details {
     display: flex;
-    align-items: baseline;
-    gap: 0;
+    align-items: center;
+    gap: 15px;
 }
 
-.item-info .item-name {
+.item-action {
+    cursor: pointer;
+    color: var(--hoverCian-color); /* Ciano/azul */
     font-size: 2rem;
-    font-weight: 400;
-    color: #333;
+    transition: color 0.2s;
 }
 
-.item-info .item-unit {
-    color: #666;
-    font-size: 1.4rem;
-    margin-left: 20px;
-    padding-left: 20px;
-    border-left: 1px solid #ddd;
+.item-action:hover {
+    color: var(--primary-color); 
 }
 
-/* --- NOVO CSS PARA ÍCONES --- */
-.item-actions {
+/* --- ESTILOS DOS BOTÕES DE AÇÃO INFERIORES (MS.HTML / IMAGEM) --- */
+
+.action-buttons-list {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    /* Espaço entre os ícones */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px; /* Espaçamento entre os botões na linha */
+    margin-top: 40px;
+    margin-bottom: 150px;
 }
 
-.item-actions i {
-    font-size: 1.6rem;
-    /* Tamanho dos ícones */
-    color: var(--dark-gray);
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.item-actions i:hover {
-    color: var(--dark-gray);
-    /* Cor do hover */
-    transform: scale(1.1);
-}
-
-/* Card de vidrarias selecionadas */
-.selected-items-card {
-    position: sticky;
-    /* Fica fixo ao rolar a página */
-    top: 20px;
-}
-
-.selected-items-list p {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 0 0 10px 0;
-    font-size: 1.4em;
-    display: none;
-}
-
-/* Container dos botões de ação na parte inferior */
-.action-buttons-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-    margin-bottom: 180px;
-}
-
-.action-btn {
-    padding: 15px 30px;
-    border-radius: 50px;
+.btn-global {
+    background-color: var(--primary-color); /* Azul Marinho Escuro */
+    color: white;
     border: none;
-    cursor: pointer;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 50px;
     font-size: 1.5rem;
     font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 180px;
+    text-align: center;
     text-transform: uppercase;
-    transition: background-color 0.3s, transform 0.2s;
 }
 
-.action-btn:hover {
+.btn-global:hover {
+    background-color: var(--hoverCian-color); /* Ciano/azul mais claro para hover */
     transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
-.action-btn:active {
-    transform: translateY(2px);
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: -6px 5px 15px rgba(0, 0, 0, 0.399);
-}
-
-.btn-primary:hover {
-    background-color: var(--hoverCian-color);
-}
-
-/* Media queries para responsividade */
-@media (max-width: 992px) {
-    .selection-grid {
-        grid-template-columns: 1fr;
-        /* Coloca os itens selecionados abaixo */
-    }
-
-    .item-cards-container {
-        grid-template-columns: 1fr;
-        /* Um card por linha */
-    }
-
-    .action-buttons-container {
+@media (max-width: 768px) {
+    .action-buttons-list {
         flex-direction: column;
-        gap: 15px;
+        gap: 20px;
+        align-items: center;
     }
 
-    .action-btn {
-        width: 100%;
+    .btn-global {
+        width: 90%;
+        min-width: unset;
+        max-width: 300px;
     }
-}
 
-/* --- ESTILO DA NOTIFICAÇÃO DE SUCESSO --- */
-
-.notification {
-    position: fixed;
-    /* Fica fixo na tela mesmo com scroll */
-    top: 20px;
-    right: 20px;
-    background-color: #28a745;
-    /* Verde para sucesso */
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    /* Espaço entre o ícone e o texto */
-    z-index: 1000;
-    /* Garante que fique por cima de outros elementos */
-
-    /* Animação */
-    transform: translateX(120%);
-    /* Começa fora da tela */
-    opacity: 0;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-/* Classe que será adicionada via JS para mostrar a notificação */
-.notification.show {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.notification i {
-    font-size: 1.4rem;
+    .item-card {
+        max-width: 90%;
+    }
 }
 
 #cps-rodape__redes-icones a {
@@ -700,11 +587,11 @@ html {
 
 #cps-rodape__redes-icones a i {
     color: #2ddae0d7;
-    font-size: 3.5rem;
+    font-size: 3.5rem ;
     line-height: 1;
 }
 
-#cps-rodape__redes-icones a:hover i {
+#cps-rodape__redes-icones a:hover i{
     color: #ffffff;
     scale: 1.2;
     transition: 0.7s;
@@ -716,21 +603,191 @@ html {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
+/* --- ESTILOS ADICIONAIS PARA O COMPONENTE ACCORDION (Ajustes de Layout Interno) --- */
 
-#userwayAccessibilityIcon,
-.uwy-userway-trigger,
-.uai-trigger-container,
-div[data-account="3eFXoC4I4A"] {
-    /* Força a posição fixa */
-    position: fixed !important;
-    /* Zera a posição do topo padrão e define a nova */
-    bottom: auto !important;
-    /* Alinha à direita */
-    right: 0 !important;
-    /* Colado na direita */
-    left: auto !important;
-    /* Remove margens que o script possa adicionar */
-    margin-top: 500px !important;
+/* Contêiner principal, ajustado para centralizar e dar espaçamento entre os grupos */
+.items-list-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Novo: Estilo para cada Grupo de Reagentes (o "Card" principal) */
+.accordion-group {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden; 
+    background-color: #fcfcfc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Novo: Cabeçalho Clicável (Visível, onde fica o TIPO) */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    /* REVERSÃO: Fundo Azul Marinho Escuro (var(--primary-color)) */
+    background-color: var(--primary-color);
+    color: white; /* Texto Branco */
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.accordion-header:hover {
+    /* Hover Azul Claro */
+    background-color: var(--hoverCian-color);
+}
+
+/* Novo: Ícone de Seta (>) */
+.accordion-icon {
+    font-size: 1.5rem;
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+    /* Cor Branca (porque o fundo é escuro) */
+    color: white;
+}
+
+/* Novo: Gira o ícone para baixo quando ativo/aberto */
+.accordion-header.active .accordion-icon {
+    transform: rotate(90deg);
+}
+
+/* Novo: Corpo do Accordion (Contém os itens da lista) - Começa ESCONDIDO */
+.accordion-content {
+    /* display: none;  ESSENCIAL: Oculta o conteúdo no início (Comentado porque será controlado pelo JS)*/
+    border-top: 1px solid #eee;
+    padding: 10px 0; /* Adicionado padding para separar os cards internos */
+}
+
+/* MODIFICAÇÃO CHAVE AQUI: Layout interno limpo (estilo Vidrarias) */
+.item-card-inner {
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    margin: 10px 20px; /* Espaçamento dentro do conteúdo do Accordion */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.item-row.main-item {
+    /* Mantém a barra principal dentro da nova estrutura */
+    border-left: 4px solid var(--primary-color);
+    padding: 12px 20px;
+}
+
+.item-actions .toggle-variations {
+    /* Ajusta a seta de variações para ser um ícone */
+    font-size: 2rem;
+    color: var(--hoverCian-color);
+}
+
+/* --- ESTILOS DOS ITENS INTERNOS (Linha Principal) --- */
+
+/* CÓDIGO ATUALIZADO (IGUAL A VIDRARIAS) */
+.item-info .item-name {
+    margin: 0;
+    /* ⚠️ Definido peso 400 para garantir que não fique negrito (como em vidrarias) */
+    color: var(--dark-gray);
+    font-weight: 400; 
+    font-size: 1.5rem; 
+}
+
+/* Estilo para a QUANTIDADE TOTAL (Total: 29 g) */
+.item-total {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: 500; 
+    margin: 5px 0 0 0;
+}
+
+/* --- ESTILOS DA SUB-LISTA (BLOCO EXPANDIDO) --- */
+
+/* Estilo da seta de expansão na linha principal */
+.item-actions .toggle-details { 
+    color: var(--hoverCian-color);
+    cursor: pointer;
+    font-size: 2rem; 
+    transition: transform 0.3s ease;
+}
+.item-actions .toggle-details:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Estilos da Sub-lista (Bloco expandido) */
+
+.variations-container {
+    background-color: #fafafa;
+    border-left: 8px solid #e9ecef; /* Barra lateral de indentação */
+    padding: 10px 0;
+}
+
+.variation-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px 12px 40px; /* Padding ajustado para alinhamento */
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+
+.variation-row:hover {
+    background-color: #f0f0f0;
+}
+
+.variation-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+/* Estilo do resultado da conversão (Apenas o número em mg/ml/un, o primeiro texto) */
+/* CÓDIGO ATUALIZADO (IGUAL A VIDRARIAS) */
+.variation-desc {
+    /* ⚠️ Garantindo que não tenha negrito e use a cor padrão dark-gray */
+    font-size: 1.5rem;
+    color: var(--dark-gray); 
+    font-weight: 400; 
+}
+
+/* Estilo para a Quantidade em Gramas (na sub-linha) */
+.variation-qty {
+    font-size: 1.4rem;
+    color: var(--light-gray);
+    font-weight: 500;
+    background: #e9ecef;
+    padding: 4px 12px;
+    border-radius: 15px;
+    min-width: 60px;
+    text-align: center;
+    margin-right: 20px; 
+}
+
+/* Estilo do botão Editar (igual ao de vidrarias) */
+.btn-edit {
+    background-color: var(--hoverCian-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-edit:hover {
+    background-color: var(--primary-color);
 }
 
 /* --- ESTILOS DO MODAL CUSTOMIZADO --- */
@@ -765,6 +822,7 @@ div[data-account="3eFXoC4I4A"] {
     padding: 30px;
     border: 1px solid #888;
     width: 90%; 
+    /* ⚠️ AJUSTE FINAL: Largura máxima aumentada de 350px para 450px */
     max-width: 450px; 
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);

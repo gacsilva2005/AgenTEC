@@ -193,15 +193,16 @@ html {
     flex-direction: column;
     text-align: center;
     display: flex;
-    max-width: 200px;
+    /* max-width: 200px; <--- REMOVIDO para permitir que o botão cresça */
     background-color: var(--primary-color);
-    padding: 20px 60px;
+    padding: 20px 40px; /* AJUSTADO para padronizar o espaçamento horizontal */
     text-decoration: none;
     color: white;
     border-radius: 50px;
-    font-size: 2rem;
+    font-size: 2rem; /* PADRONIZADO E CONFIRMADO */
     transition: all 0.3s ease;
-    cursor: pointer
+    cursor: pointer;
+    white-space: nowrap; /* GARANTE O TEXTO EM UMA LINHA */
 }
 
 .button-custom:hover {
