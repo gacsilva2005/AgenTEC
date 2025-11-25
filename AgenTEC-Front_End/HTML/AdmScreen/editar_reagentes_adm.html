@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar reagentes</title>
+    <title>Controle de Reagentes</title>
     <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
-    <link rel="stylesheet" href="/AgenTEC-Front_End/CSS/editar_reagentes_adm.css">
+    <link rel="stylesheet" href="../../CSS/controle_reagentes.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,9 +261,8 @@
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="administradores.html">
-                        Administrador <a href="atualizar_reagentes_adm.html">/ Atualizar Reagentes </a>
-                    </a> / Editar Reagentes</span>
+                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="tecnicos.html"> Técnico
+                    </a> / Lista de Reagentes</span>
             </div>
         </div>
 
@@ -291,9 +290,8 @@
             </section>
 
             <section class="action-buttons-list">
-                <a href="atualizar_reagentes_adm.html" class="btn-global">voltar</a>
-                <a id="global-apply-btn" href="#" class="btn-global">aplicar</a>
-
+                <a href="administradores.html" class="btn-global">voltar</a>
+                <a id="global-apply-btn" href="" class="btn-global">aplicar</a>
             </section>
 
         </main>
@@ -384,9 +382,12 @@
                 </div>
             </div>
         </section>
-        <script src="../../JS (Front-End)/controle_reagentes.js"></script>
-        <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
-
+        
+        <div id="custom-notification" class="custom-notification">
+            <i id="notification-icon" class="fas"></i>
+            <span id="notification-message">Mensagem aqui</span>
+        </div>
+        
         <div id="edit-modal" class="custom-modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
@@ -409,7 +410,29 @@
                 </div>
             </div>
         </div>
-        <script src="/AgenTEC-Front_End/JS (Front-End)/editar_reagentes_adm.js"></script>
+        
+        <div id="success-modal" class="custom-modal success-modal">
+            <div class="modal-content success-content">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h3 class="modal-title success-title">Sucesso!</h3>
+                <p class="success-message"></p>
+                <div class="modal-actions">
+                    <button id="success-ok-btn" class="btn-modal btn-confirm">OK</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="apply-confirm-modal" class="custom-modal confirm-modal">
+            <div class="modal-content confirm-content">
+                <h3 class="modal-title">Confirmar Aplicação</h3>
+                <p class="confirm-message">Tem certeza que deseja aplicar as alterações e sair desta página?</p>
+                <div class="modal-actions">
+                    <button id="apply-confirm-btn" class="btn-modal btn-confirm">Aplicar e Sair</button>
+                    <button id="apply-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        <script src="../../JS (Front-End)/editar_reagentes_adm.js"></script>
         <script src="../../JS (Front-End)/botao_topo.js"></script>
         <div vw="" class="enabled"
             style="left: initial; right: 0px; top: 50%; bottom: initial; transform: translateY(calc(-50% - 10px));">
@@ -431,26 +454,6 @@
             new window.VLibras.Widget('https://vlibras.gov.br/app');
         </script>
         <script src="../../JS (Front-End)/logout.js"></script>
-        <div id="success-modal" class="custom-modal success-modal">
-            <div class="modal-content success-content">
-                <i class="fas fa-check-circle success-icon"></i>
-                <h3 class="modal-title success-title">Sucesso!</h3>
-                <p class="success-message"></p>
-                <div class="modal-actions">
-                    <button id="success-ok-btn" class="btn-modal btn-confirm">OK</button>
-                </div>
-            </div>
-        </div>
-        <div id="apply-confirm-modal" class="custom-modal confirm-modal">
-            <div class="modal-content confirm-content">
-                <h3 class="modal-title">Confirmar Aplicação</h3>
-                <p class="confirm-message">Tem certeza que deseja aplicar as alterações e sair desta página?</p>
-                <div class="modal-actions">
-                    <button id="apply-confirm-btn" class="btn-modal btn-confirm">Aplicar e Sair</button>
-                    <button id="apply-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
-                </div>
-            </div>
-        </div>
 </body>
 
 </html>

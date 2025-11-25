@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar vidrarias</title>
+    <title>Editar Vidrarias</title>
     <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
-    <link rel="stylesheet" href="../../CSS/editar_vidrarias_adm.css">
+    <link rel="stylesheet" href="../../CSS/lista_vidrarias.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -261,8 +261,8 @@
 
         <div id="breadcrumb">
             <div class="breadcrumb-container">
-                <span><a href="#">Home</a> <a href="login.html">/ Agendamentos </a>/ <a href="administradores.html"> Administrador <a href="atualizar_vidrarias_adm.html">/ Atualizar Vidrarias </a>
-                    </a> / Editar Vidraria</span> 
+                <span><a href="#">Home</a> <a href="/AgenTEC-Front_End/HTML/login.html">/ Agendamentos </a>/ <a href="administradores.html"> Administrador <a href="atualizar_vidrarias_adm.html">/ Atualizar Vidrarias </a> 
+                    </a> / Editar Vidrarias </span>
             </div>
         </div>
 
@@ -287,9 +287,9 @@
             </section>
     
             <section class="action-buttons-list">
-                <a href="atualizar_vidrarias_adm.html" class="btn-global">Voltar</a>
+                <a href="administradores.html" class="btn-global">Voltar</a>
                 <button id="global-apply-btn" class="btn-global">
-                    Aplicar Alterações
+                    Aplicar
                 </button>
             </section>
         </main>
@@ -322,27 +322,28 @@
         </div>
     
         <!-- MODAL DE SUCESSO -->
-        <div id="success-modal" class="modal">
-            <div class="modal-content">
-                <h2 style="color:var(--success);">Sucesso!</h2>
-                <p class="success-message"></p>
-                <div class="modal-buttons">
-                    <button id="success-ok-btn" class="btn-success">OK</button>
-                </div>
-            </div>
+       <div id="success-modal" class="custom-modal success-modal">
+    <div class="modal-content success-content">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h3 class="modal-title success-title">Sucesso!</h3>
+        <p class="success-message"></p>
+        <div class="modal-actions">
+            <button id="success-ok-btn" class="btn-modal btn-confirm">OK</button>
         </div>
+    </div>
+</div>
     
         <!-- MODAL DE CONFIRMAÇÃO (APLICAR) -->
-        <div id="apply-confirm-modal" class="modal">
-            <div class="modal-content">
-                <h2>Confirmar alterações</h2>
-                <p>Tem certeza que deseja aplicar todas as alterações realizadas?</p>
-                <div class="modal-buttons">
-                    <button id="apply-cancel-btn" class="btn-cancel">Cancelar</button>
-                    <button id="apply-confirm-btn" class="btn-success">Sim, aplicar</button>
-                </div>
-            </div>
+        <div id="apply-confirm-modal" class="custom-modal confirm-modal">
+    <div class="modal-content confirm-content">
+        <h3 class="modal-title">Confirmar Aplicação</h3>
+        <p class="confirm-message">Tem certeza que deseja aplicar as alterações e sair desta página?</p>
+        <div class="modal-actions">
+            <button id="apply-confirm-btn" class="btn-modal btn-confirm">Aplicar e Sair</button>
+            <button id="apply-cancel-btn" class="btn-modal btn-cancel">Cancelar</button>
         </div>
+    </div>
+</div>
         <button class="back-to-top">
             <img alt="Voltar ao Topo" height="66"
                 src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/04/top-button.png"
@@ -430,7 +431,7 @@
                 </div>
             </div>
         </section>
-        <script src="../../JS (Front-End)/controle_vidrarias.js"></script>
+        <script src="../../JS (Front-End)/editar_vidrarias.js"></script>
         <script src="https://cdn.userway.org/widget.js" data-account="3eFXoC4I4A"></script>
         <script src="../../JS (Front-End)/botao_topo.js"></script>
         <div vw="" class="enabled"

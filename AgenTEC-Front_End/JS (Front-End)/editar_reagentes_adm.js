@@ -179,9 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. Oculta a modal de confirmação
         hideModal(applyConfirmModal); 
         
-        // 3. Redireciona para tecnicos.html após 1 segundo
+        // 3. Redireciona para administradores.html após 1 segundo
         setTimeout(() => {
-            window.location.href = 'atualizar_reagentes.html';
+            window.location.href = 'administradores.html';
         }, 1000); 
     });
 
