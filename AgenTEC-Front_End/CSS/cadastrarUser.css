@@ -265,24 +265,15 @@ body, html {
 }
 
 
+/* CORREÇÃO DE ESPAÇAMENTO: Margin reduzida para 10px */
 .input-group {
     position: relative;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px; 
 }
 
-.input-group label {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    padding: 0 5px;
-    color: #666;
-    font-size: 1.6rem;
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
+/* Regras antigas para .input-group label e animação de label foram removidas */
+/* pois o label foi movido para dentro de .password-toggle no HTML para a correção do floating label. */
 
 :root{
     --primary-color: #243E63; 
@@ -319,15 +310,6 @@ body, html {
 .input-group input::-ms-reveal,
 .input-group input::-ms-clear {
     filter: invert(100%); 
-}
-
-.input-group input:focus ~ label,
-.input-group input:not(:placeholder-shown) ~ label {
-    top: 0;
-    transform: translateY(-50%) scale(0.9);
-    background-color: #f9f9f9;
-    color: #b20000;
-    font-size: 1.3rem;
 }
 
 .input-group input:hover {
@@ -634,4 +616,122 @@ div[data-account="3eFXoC4I4A"] {
     left: auto !important;
     /* Remove margens que o script possa adicionar */
     margin-top: 230px !important;
+}
+
+/* --- Correção de Largura para o Campo Senha (para resolver o problema de esticar) --- */
+.input-group #senha {
+    width: 100% !important;
+    box-sizing: border-box !important; 
+}
+
+/* --- ESTILOS PARA MOSTRAR/OCULTAR SENHA (ÍCONE DE OLHO) --- */
+
+/* Contêiner que alinha input, ícone e label */
+.input-group .password-toggle {
+    position: relative; /* Essencial para posicionar o ícone e o label de forma absoluta dentro dele */
+    width: 100%; 
+}
+
+/* Garante que o input preencha 100% da largura do contêiner .password-toggle */
+.input-group .password-toggle input {
+    width: 100%;
+    padding-right: 45px; /* Adiciona padding à direita para o ícone não cobrir o texto */
+}
+
+/* --- CORREÇÃO DO FLOATING LABEL (Label dentro de .password-toggle) --- */
+
+/* Posição inicial do label (dentro do .password-toggle) */
+.password-toggle label {
+    position: absolute;
+    left: 15px;
+    top: 50%; /* Mantém a posição vertical centralizada */
+    transform: translateY(-50%);
+    background-color: transparent;
+    padding: 0 5px;
+    color: #666;
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 1; /* Garante que o label esteja em cima do input, mas abaixo do ícone */
+}
+
+/* Animação do label quando o input está ativo ou preenchido */
+.password-toggle input:focus ~ label,
+.password-toggle input:not(:placeholder-shown) ~ label {
+    top: 0;
+    transform: translateY(-50%) scale(0.9);
+    background-color: #f9f9f9; /* Cor de fundo do .form-container */
+    color: #b20000;
+    font-size: 1.3rem;
+}
+
+
+/* Estilização e posicionamento do ícone de olho */
+.toggle-senha {
+    position: absolute;
+    top: 50%;
+    right: 15px; /* Distância da borda direita do input */
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--light-gray); /* Cor para o olho */
+    font-size: 1.4rem;
+    z-index: 10; /* Garante que o ícone fique por cima do input */
+    transition: color 0.2s ease;
+}
+
+.toggle-senha:hover {
+    color: var(--primary-color);
+}
+
+/* Ajusta a cor do ícone quando o input está em foco */
+.input-group input:focus + .toggle-senha {
+    color: var(--primary-color);
+}
+
+
+/* --- Estilo para Mensagens de Erro Específicas (DINÂMICAS) --- */
+.error-message {
+    color: var(--primary-red, #b20000); /* Vermelho forte para erros */
+    font-size: 1.2rem;
+    padding-left: 15px;
+    
+    /* Oculta o espaço quando não há erro */
+    margin-top: 0; 
+    max-height: 0; 
+    opacity: 0; 
+    overflow: hidden; 
+    
+    /* Adiciona transição para animação suave */
+    transition: max-height 0.4s ease-in-out, margin-top 0.4s ease-in-out, opacity 0.4s ease;
+}
+
+/* CLASSE QUE SÓ É APLICADA VIA JAVASCRIPT QUANDO HÁ UM ERRO */
+.error-message.show-error {
+    margin-top: 5px; /* Adiciona o espaço APENAS quando o erro é visível */
+    max-height: 50px; /* Altura suficiente para mostrar a mensagem */
+    opacity: 1; 
+}
+
+/* Opcional: Adicionar borda vermelha ao input com erro */
+.input-group input.error {
+    border-color: var(--primary-red, #b20000) !important;
+}
+
+/* Posição inicial do label (dentro do .password-toggle) */
+.password-toggle label {
+    position: absolute;
+    left: 15px;
+    top: 50%; /* Ponto de partida */
+    transform: translateY(-50%);
+    /* ... outros estilos ... */
+    z-index: 1; 
+}
+
+/* Animação do label quando o input está ativo ou preenchido */
+.password-toggle input:focus ~ label,
+.password-toggle input:not(:placeholder-shown) ~ label {
+    top: 0; /* Sobe para o topo */
+    transform: translateY(-50%) scale(0.9);
+    background-color: #f9f9f9; 
+
 }
