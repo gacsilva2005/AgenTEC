@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnConfirmar = document.getElementById('btnConfirmarAgendamento');
     const btnAbrirModal = document.getElementById('btnAbrirModal');
 
+    let ultimaQuantidadeReagentes = 0;
+    let ultimaQuantidadeVidrarias = 0;
+
     console.log('Elementos encontrados:', {
         modal: !!modal,
         closeBtn: !!closeBtn,
@@ -512,7 +515,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // =========================================================================
 
     // Função para salvar materiais no banco
-    // Função para salvar materiais no banco (APENAS QUANDO CONFIRMAR)
     async function salvarMateriaisNoBanco(professor_id, agendamento_id = null) {
         try {
             console.log('💾 Iniciando processo de salvamento no banco...');
@@ -617,7 +619,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Função para confirmar o agendamento E SALVAR NO BANCO
-    // Função para confirmar o agendamento E SALVAR NO BANCO
     async function confirmarAgendamento() {
         try {
             if (!window.agendamentoAtual) {
@@ -707,7 +708,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 return true;
             } else {
                 console.warn('⚠️ Dados de agendamento incompletos ou não encontrados no servidor');
-                // AGORA USA O POPUP PERSONALIZADO EM VEZ DA MENSAGEM DE ERRO
                 showCustomPopup('Ainda não foi realizado um agendamento, por gentileza, retorne e escolha uma data', false);
                 return false;
             }
@@ -734,7 +734,6 @@ document.addEventListener('DOMContentLoaded', function () {
             showMessage('Dados carregados com sucesso!', true);
             console.log('✅ Modal aberto com dados reais do servidor');
         } else {
-            // Não precisa mais mostrar mensagem aqui, pois o popup já foi mostrado em carregarDadosAgendamento()
             console.error('❌ Falha ao carregar dados do servidor para o modal');
         }
     }
@@ -910,4 +909,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log('🔄 Carregando vidrarias selecionadas...');
     carregarVidrariasSelecionadas();
+
+
+    async function atualizarMateriaisAutomaticamente() {
+        try {
+            const [respReagentes, respVidrarias] = await Promise.all([
+                fetch('http://localhost:3000/api/reagentes-selecionados'),
+                fetch('http://localhost:3000/api/vidrarias-selecionadas')
+            ]);
+
+            if (!respReagentes.ok || !respVidrarias.ok) return;
+
+            const dadosReagentes = await respReagentes.json();
+            const dadosVidrarias = await respVidrarias.json();
+
+            const totalReagentes = dadosReagentes.reagentes?.length || 0;
+            const totalVidrarias = dadosVidrarias.vidrarias?.length || 0;
+
+            // Só atualiza se mudou
+            if (totalReagentes !== ultimaQuantidadeReagentes || totalVidrarias !== ultimaQuantidadeVidrarias) {
+                console.log('Atualização detectada! Recarregando listas...');
+                await carregarReagentesSelecionados();
+                await carregarVidrariasSelecionadas();
+
+                ultimaQuantidadeReagentes = totalReagentes;
+                ultimaQuantidadeVidrarias = totalVidrarias;
+            }
+
+        } catch (error) {
+            // Silencia erros de rede (não trava o intervalo)
+            console.warn('Erro no polling automático:', error.message);
+        }
+    }
+
+    // Inicia o polling a cada 2 segundos
+    setInterval(atualizarMateriaisAutomaticamente, 2000);
+
+    // Executa uma vez imediatamente
+    atualizarMateriaisAutomaticamente();
 });

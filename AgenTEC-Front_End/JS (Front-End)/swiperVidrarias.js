@@ -175,11 +175,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     // Função para adicionar vidraria ao array de KITS no servidor
-    async function adicionarVidrariaParaKits(vidrariaData) {
+    async function adicionarVidrariaParaArray(vidrariaData) {
         try {
             console.log('🧪 Enviando vidraria para array de KITS:', vidrariaData);
 
-            const response = await fetch('http://localhost:3000/api/vidrarias-kits/adicionar', {
+            const response = await fetch('http://localhost:3000/api/vidrarias-selecionadas/adicionar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         };
 
         // Envia para o array de KITS no servidor
-        const sucesso = await adicionarVidrariaParaKits(vidrariaData);
+        const sucesso = await adicionarVidrariaParaArray(vidrariaData);
 
         if (sucesso) {
             fecharModal();

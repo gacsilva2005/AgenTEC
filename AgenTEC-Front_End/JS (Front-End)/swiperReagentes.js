@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             console.log('🔄 Enviando reagente para array de KITS...', reagenteData);
 
             // ENVIA PARA O ARRAY DE KITS (separado)
-            await enviarReagenteParaKits(reagenteData);
+            await enviarReagenteParaArray(reagenteData);
 
             // Feedback visual de sucesso
             showNotification(`${currentReagente.nome} adicionado ao kit com sucesso!`);

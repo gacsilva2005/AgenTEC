@@ -357,7 +357,7 @@ body, html {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto;
+    margin: 20% auto;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -459,12 +459,18 @@ body, html {
     padding: 12px 24px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     transition: background-color 0.3s;
 }
 
 .btn-cancelar:hover {
     background-color: #7f8c8d;
+}
+
+.modal-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
 }
 
 .btn-confirmar {
@@ -474,7 +480,7 @@ body, html {
     padding: 12px 24px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     transition: background-color 0.3s;
 }
 
