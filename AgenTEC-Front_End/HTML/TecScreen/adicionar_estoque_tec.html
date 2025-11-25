@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualizar reagentes</title>
+    <title>Adicionar Materiais</title>
     <link rel="icon" href="/AgenTEC-Front_End/Assets/logo-cps.ico">
 
-    <link rel="stylesheet" href="../../CSS/atualizar_reagentes_adm.css">
+    <link rel="stylesheet" href="../../CSS/adicionar_estoque_tec.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -266,44 +266,46 @@
                 <span>
                     <a href="#">Home</a> 
                     <a href="../login.html">/ Agendamentos</a> 
-                    <a href="administradores.html">/ Administrador</a>
-                    / Atualizar reagentes
+                    <a href="tecnicos.html">/ Técnico </a> 
+                    / Adicionar Materiais
                 </span>
             </div>
         </div>
 
         <main class="main-content">
-            <div class="page-header">
-                <h1 class="page-title">Atualizar reagentes</h1>
-                <div class="button-container">
-                    <a class="button-custom" href="tecnicos.html">
+    <div class="page-header">
+        <h1 class="page-title">Adicionar Materiais</h1>
+        <div class="button-container">
+            <a class="button-custom" href="tecnicos.html">
                         <span class="material-symbols-outlined">redo</span>
                         <span>Voltar</span>
                     </a>
-                    <button id="btn-logout" class="button-custom">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Sair</span>
-                    </button>
-                </div>
-            </div>
-            <div class="title-underline"></div>
+            <button id="btn-logout" class="button-custom">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+    </div>
+    <div class="title-underline"></div>
 
-            <div class="cards-container">
-                <a href="/AgenTEC-Front_End/HTML/AdmScreen/editar_reagentes_adm.html" class="card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-rotate
-                        "></i>
-                    </div>
-                    <p class="card-text">Editar reagentes</p>
-                </a>
-                <a href="adicionar_reagentes_adm.html" class="card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                    <p class="card-text">Adicionar reagentes</p>
-                </a>
-                </div>
-            
+    <div class="cards-container">
+        <a href="adicionar_reagentes_tec.html" class="card">
+            <div class="card-icon">
+                <i class="fa-solid fa-vial"></i> 
+            </div>
+            <p class="card-text">Adicionar Reagentes</p>
+        </a>
+        <a href="adicionar_vidrarias_tec.html" class="card">
+            <div class="card-icon">
+                <i class="fa-solid fa-flask"></i>
+            </div>
+            <p class="card-text">Adicionar Vidrarias</p>
+        </a>
+    </div>
+
+
+</main>
+
         </main>
         <button class="back-to-top">
             <img alt="Voltar ao Topo" height="66"
@@ -449,10 +451,6 @@
                 // Se o nome da sua chave for outro (ex: 'usuario_logado'), troque abaixo.
                 localStorage.removeItem('loggedInUserType');
 
-                // Se você usar sessionStorage, descomente a linha abaixo:
-                // sessionStorage.clear(); 
-
-                // 4. Redireciona o usuário para a tela inicial (index.html)
                 window.location.href = '../login.html';
             } 
         </script>
