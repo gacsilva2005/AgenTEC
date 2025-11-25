@@ -24,19 +24,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const globalApplyBtn = document.getElementById('global-apply-btn');
     const logoutBtn = document.getElementById('btn-logout');
 
-    let currentItemName = '';
-    let currentItemUnit = '';
+    let currentItemName = '';      // Ex: "Béquer - 100 ml" (Nome + Descrição)
+    let currentItemDescription = ''; // Ex: "100 ml" (Descrição da variação)
+    let currentItemUnit = '';      // Ex: "un."
     let openModalCount = 0;
     const body = document.body;
     const html = document.documentElement;
 
+    // 💡 GARANTE O ESTADO INICIAL: Oculta as modais no carregamento da página 
+    editModal.style.display = 'none';
+    successModal.style.display = 'none';
+    applyConfirmModal.style.display = 'none';
+
+
     // ================== FUNÇÕES DE NOTIFICAÇÃO E MODAL ==================
+    
+    /**
+     * Exibe uma notificação 'toast'.
+     */
     const showNotification = (message, type = 'success', duration = 3000) => {
         notificationElement.classList.remove('error');
         notificationIcon.className = 'fas';
 
         if (type === 'success') {
             notificationIcon.classList.add('fa-check-circle');
+            notificationElement.classList.remove('error'); // Garante que a borda seja azul/ciano
         } else if (type === 'error') {
             notificationElement.classList.add('error');
             notificationIcon.classList.add('fa-times-circle');
@@ -48,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => notificationElement.classList.remove('show'), duration);
     };
 
+    /**
+     * Controla o bloqueio de scroll da página baseado no número de modais abertos.
+     */
     const checkAndReleaseScroll = () => {
         if (openModalCount <= 0) {
             openModalCount = 0;
@@ -59,11 +74,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const showModal = (itemNome, unidade, quantidadeAtual) => {
-        currentItemName = itemNome;
+    /**
+     * Exibe o modal de edição (chamado ao clicar em "Editar").
+     * @param {string} itemNome - Nome principal do item (ex: Béquer).
+     * @param {string} itemDesc - Descrição da variação (ex: 100 ml).
+     * @param {string} unidade - Unidade de medida (ex: un.).
+     * @param {number} quantidadeAtual - Quantidade atual em estoque.
+     */
+    const showModal = (itemNome, itemDesc, unidade, quantidadeAtual) => {
+        // Armazena o contexto da edição, usando a descrição completa
+        currentItemName = `${itemNome} - ${itemDesc}`; 
+        currentItemDescription = itemDesc; 
         currentItemUnit = unidade;
 
-        document.querySelector('.modal-item-name').textContent = itemNome;
+        document.querySelector('.modal-item-name').textContent = `${itemNome} - ${itemDesc}`;
         document.getElementById('modal-unit').textContent = unidade;
         document.getElementById('modal-current-qty').textContent = quantidadeAtual;
         newQuantityInput.value = quantidadeAtual;
@@ -74,6 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
         checkAndReleaseScroll();
     };
 
+    /**
+     * Oculta um modal e atualiza o contador de modais.
+     */
     const hideModal = (modal = editModal) => {
         if (modal.style.display !== 'none') openModalCount--;
         modal.style.display = 'none';
@@ -81,7 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
         checkAndReleaseScroll();
     };
 
+    /**
+     * Exibe a modal de sucesso após a atualização.
+     */
     const showSuccessModal = (itemName, newQty, unit) => {
+        // Usa o nome completo da variação
         successMessage.textContent = `Quantidade de ${itemName} atualizada para: ${newQty} ${unit}`;
         successModal.style.display = 'flex';
         openModalCount++;
@@ -89,6 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
         showNotification(`Alteração de ${itemName} registrada.`, 'success');
     };
 
+    /**
+     * Exibe a modal de confirmação para o botão "Aplicar Global".
+     */
     const showApplyConfirmModal = () => {
         applyConfirmModal.style.display = 'flex';
         openModalCount++;
@@ -102,14 +136,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     successOkBtn.onclick = () => hideModal(successModal);
+    
     applyCancelBtn.onclick = () => {
         hideModal(applyConfirmModal);
         showNotification('Aplicação cancelada.', 'error', 2500);
     };
 
     applyConfirmBtn.onclick = () => {
+        console.log("Alterações aplicadas e salvando...");
         showNotification('Alterações aplicadas com sucesso!', 'success', 3000);
         hideModal(applyConfirmModal);
+        // Simula o salvamento e redireciona
         setTimeout(() => window.location.href = 'tecnicos.html', 1000);
     };
 
@@ -124,27 +161,43 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => window.location.href = 'login.html', 1500);
     });
 
+    // Fechar modal ao clicar fora
     window.addEventListener('click', (e) => {
         if (e.target === editModal) { hideModal(editModal); showNotification('Edição cancelada.', 'error', 2500); }
         else if (e.target === successModal) hideModal(successModal);
         else if (e.target === applyConfirmModal) { hideModal(applyConfirmModal); showNotification('Aplicação cancelada.', 'error', 2500); }
     });
 
+    /**
+     * Lógica acionada pelo botão "Confirmar" no modal de edição.
+     */
     confirmBtn.onclick = () => {
-        const novaQuantidade = parseFloat(newQuantityInput.value);
+        const novaQuantidade = parseInt(newQuantityInput.value);
+        
         if (!isNaN(novaQuantidade) && novaQuantidade >= 0) {
-            updateVariationTotal(currentItemName, novaQuantidade, currentItemUnit);
+            
+            // ATUALIZAÇÃO DA VARIACÃO NO DOM E DO TOTAL GERAL
+            updateVariationTotal(currentItemName, currentItemDescription, novaQuantidade, currentItemUnit);
+            
             hideModal(editModal);
+            
+            // CHAMA A MODAL DE SUCESSO COM O CONTEXTO COMPLETO
             showSuccessModal(currentItemName, novaQuantidade, currentItemUnit);
+            
         } else {
-            showNotification('Insira um número válido.', 'error', 3500);
+            showNotification('Erro: Por favor, insira um número inteiro válido (>= 0).', 'error', 3500);
             newQuantityInput.classList.add('error');
             newQuantityInput.focus();
         }
     };
 
     // ================== LÓGICA DE VIDRARIAS COM VARIAÇÕES ==================
+    
+    /**
+     * Renderiza as sub-linhas de variações dentro de um item principal.
+     */
     const renderizarVariacoes = (variacoes, itemNome) => {
+        // Usamos o nome principal e a descrição da variação para identificar
         return variacoes.map(v => `
             <div class="variation-row">
                 <div class="variation-info">
@@ -153,52 +206,106 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="variation-actions">
                     <button class="btn-edit edit-variation"
-                            data-item="${itemNome}"
+                            data-item-name="${itemNome}"
                             data-desc="${v.descricao}"
-                            data-qty="${v.quantidade}">
-                        Editar
+                            data-qty="${v.quantidade}"
+                            data-unit="un.">
+                        <i class="fas fa-pencil-alt"></i> Editar
                     </button>
                 </div>
             </div>
         `).join('');
     };
 
-    const updateVariationTotal = (itemNome, novaQty, unidade) => {
-        const buttons = document.querySelectorAll(`.edit-variation[data-item="${itemNome}"]`);
-        let total = 0;
-
-        buttons.forEach(btn => {
-            if (btn.dataset.desc === document.querySelector(`button[data-item="${itemNome}"][data-qty]`)?.closest('.variation-row')?.querySelector('.variation-desc')?.textContent.trim()) {
-                if (parseInt(btn.dataset.qty) === parseInt(document.querySelector(`button[data-qty="${btn.dataset.qty}"]`)?.dataset.qty)) {
-                    btn.dataset.qty = novaQty;
-                    btn.closest('.variation-row').querySelector('.variation-qty').textContent = `${novaQty} un.`;
-                }
+    /**
+     * ATUALIZAÇÃO REVISADA: Encontra a variação correta no DOM e o total geral.
+     * @param {string} fullItemName - Nome completo do item no modal (ex: "Béquer - 100 ml").
+     * @param {string} variationDesc - Descrição da variação (ex: "100 ml").
+     * @param {number} novaQty - Nova quantidade.
+     * @param {string} unidade - Unidade.
+     */
+    const updateVariationTotal = (fullItemName, variationDesc, novaQty, unidade) => {
+        // 1. Encontra e atualiza o elemento de quantidade da variação
+        const targetButton = document.querySelector(`.edit-variation[data-item-name="${fullItemName.split(' - ')[0]}"][data-desc="${variationDesc}"]`);
+        
+        if (targetButton) {
+            // Acha o elemento <span> que mostra a quantidade
+            const qtyElement = targetButton.closest('.variation-row').querySelector('.variation-qty');
+            
+            // Atualiza o data-attribute do botão
+            targetButton.dataset.qty = novaQty;
+            
+            // Atualiza o texto na tela
+            if (qtyElement) {
+                 qtyElement.textContent = `${novaQty} ${unidade}`;
             }
-            total += parseInt(btn.dataset.qty);
-        });
 
-        const totalSpan = document.querySelector(`.main-item[data-search*="${itemNome.toLowerCase()}"] .item-total`);
-        if (totalSpan) totalSpan.textContent = `Total: ${total} unidades`;
+            // 2. Recalcula o total do item principal
+            const mainItemName = targetButton.dataset.itemName;
+            const allVariationButtons = document.querySelectorAll(`.edit-variation[data-item-name="${mainItemName}"]`);
+            let total = 0;
+
+            allVariationButtons.forEach(btn => {
+                total += parseInt(btn.dataset.qty || 0);
+            });
+
+            // 3. Atualiza o elemento total na linha principal
+            const totalSpan = document.querySelector(`.main-item[data-search*="${mainItemName.toLowerCase()}"] .item-total`);
+            if (totalSpan) {
+                totalSpan.textContent = `Total: ${total} ${unidade}s`; // Adiciona 's' para plural de "unidade"
+            }
+            
+            showNotification(`Estoque de ${fullItemName} atualizado para ${novaQty} ${unidade}.`, 'success');
+
+        } else {
+             console.error(`Variação não encontrada para atualização: ${fullItemName}`);
+             showNotification('Erro interno: Variação não pôde ser encontrada.', 'error', 4000);
+        }
     };
 
+
+    /**
+     * Simula a busca e carregamento dos dados das vidrarias.
+     */
     const fetchVidrarias = async () => {
         try {
             itemsListContainer.innerHTML = '<p style="text-align:center; font-size:1.6rem; color:#666;">Carregando vidrarias...</p>';
+            // Tentativa de buscar os dados.
             const res = await fetch('http://localhost:3000/api/vidrarias');
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            
+            // Simulação de dados se o backend não estiver rodando (fallback)
+            if (!res.ok) {
+                console.warn('Backend indisponível. Usando dados de simulação.');
+                const simData = {
+                    success: true,
+                    itens: [
+                        { nome: "Béquer", tipo: "Vidraria Volumétrica", variacoes: [{ descricao: "100 ml", quantidade: 15 }, { descricao: "250 ml", quantidade: 20 }, { descricao: "500 ml", quantidade: 10 }] },
+                        { nome: "Erlenmeyer", tipo: "Vidraria Volumétrica", variacoes: [{ descricao: "125 ml", quantidade: 30 }, { descricao: "250 ml", quantidade: 25 }] },
+                        { nome: "Proveta", tipo: "Vidraria Graduada", variacoes: [{ descricao: "10 ml", quantidade: 8 }, { descricao: "100 ml", quantidade: 12 }] },
+                        { nome: "Pipeta Graduada", tipo: "Vidraria Graduada", variacoes: [{ descricao: "1 ml", quantidade: 18 }, { descricao: "10 ml", quantidade: 15 }] },
+                    ]
+                };
+                renderizarCards(simData.itens);
+                return;
+            }
 
             const data = await res.json();
-            if (!data.success || !Array.isArray(data.itens)) throw new Error('Dados inválidos');
+            if (!data.success || !Array.isArray(data.itens)) throw new Error('Dados inválidos do servidor.');
 
             renderizarCards(data.itens);
         } catch (err) {
-            console.error(err);
+            console.error('Erro ao carregar vidrarias:', err);
             itemsListContainer.innerHTML = `<div class="error-message"><h3>Erro ao carregar vidrarias</h3><p>${err.message}</p></div>`;
         }
     };
 
+    /**
+     * Constrói e insere os cards de vidrarias agrupados por tipo (Accordion).
+     */
     const renderizarCards = (vidrarias) => {
         itemsListContainer.innerHTML = '';
+        
+        // Agrupa os itens por tipo
         const agrupados = vidrarias.reduce((acc, i) => {
             const t = i.tipo || 'Outros';
             acc[t] ??= [];
@@ -248,7 +355,9 @@ document.addEventListener('DOMContentLoaded', () => {
             itemsListContainer.appendChild(group);
         }
 
-        // Accordion de tipo
+        // --- Configuração dos Eventos ---
+
+        // Accordion de tipo (expande/colapsa o grupo)
         document.querySelectorAll('.accordion-header').forEach(h => {
             h.onclick = () => {
                 const content = h.nextElementSibling;
@@ -257,9 +366,10 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         });
 
-        // Toggle variações
+        // Toggle variações (expande/colapsa as variações de um item)
         document.querySelectorAll('.toggle-variations').forEach(icon => {
-            icon.onclick = () => {
+            icon.onclick = (e) => {
+                e.stopPropagation(); // Evita que o evento se propague se a linha principal fosse clicável
                 const id = `variations-${icon.dataset.item}`;
                 const container = document.getElementById(id);
                 const isOpen = container.style.display === 'block';
@@ -272,10 +382,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Botões de editar variação → abre modal
         document.querySelectorAll('.edit-variation').forEach(btn => {
             btn.onclick = () => {
-                const nome = btn.dataset.item;
+                const nome = btn.dataset.itemName;
                 const desc = btn.dataset.desc;
                 const qty = btn.dataset.qty;
-                showModal(`${nome} - ${desc}`, 'un.', qty);
+                const unit = btn.dataset.unit;
+                
+                // Passa o nome principal, a descrição, a unidade e a quantidade atual para o modal
+                showModal(nome, desc, unit, parseInt(qty));
             };
         });
     };
@@ -283,19 +396,63 @@ document.addEventListener('DOMContentLoaded', () => {
     // ================== BUSCA ==================
     searchArea?.addEventListener('input', () => {
         const termo = searchArea.value.toLowerCase().trim();
-        document.querySelectorAll('.accordion-group-vidraria').forEach(group => {
+        const allGroups = document.querySelectorAll('.accordion-group-vidraria');
+
+        allGroups.forEach(group => {
             const header = group.querySelector('.accordion-header');
             const content = group.querySelector('.accordion-content');
             let temMatch = false;
 
-            group.querySelectorAll('.main-item, .variation-desc').forEach(el => {
-                const texto = el.getAttribute('data-search') || el.textContent.toLowerCase();
-                const visivel = texto.includes(termo);
-                if (visivel) temMatch = true;
-                el.closest('.item-card-inner, .variation-row')?.style.setProperty('display', visivel || termo === '' ? 'block' : 'none');
+            const innerCards = group.querySelectorAll('.item-card-inner');
+
+            innerCards.forEach(innerCard => {
+                const mainItemRow = innerCard.querySelector('.main-item');
+                const variationsContainer = innerCard.querySelector('.variations-container');
+                const toggleIcon = innerCard.querySelector('.toggle-variations');
+                
+                const itemText = mainItemRow.dataset.search; 
+                let itemMatch = false;
+
+                // 1. Verifica se o item principal corresponde
+                if (itemText && itemText.includes(termo)) {
+                    itemMatch = true;
+                }
+
+                // 2. Verifica se alguma variação corresponde (pelo texto de descrição)
+                const variationRows = variationsContainer.querySelectorAll('.variation-row');
+                variationRows.forEach(row => {
+                    const descText = row.querySelector('.variation-desc').textContent.toLowerCase();
+                    const descMatch = descText.includes(termo);
+                    if (descMatch) {
+                        itemMatch = true;
+                    }
+                    row.style.display = descMatch || itemMatch || termo === '' ? 'flex' : 'none';
+                });
+
+
+                if (itemMatch || termo === '') {
+                    innerCard.style.display = 'block';
+                    temMatch = true;
+                    // Se estiver buscando, expande as variações do item que deu match
+                    if (termo !== '') {
+                        variationsContainer.style.display = 'block'; 
+                        toggleIcon.classList.remove('fa-chevron-down');
+                        toggleIcon.classList.add('fa-chevron-up');
+                    } else {
+                         // Se a busca estiver limpa, volta ao estado colapsado
+                        variationsContainer.style.display = 'none';
+                        toggleIcon.classList.remove('fa-chevron-up');
+                        toggleIcon.classList.add('fa-chevron-down');
+                    }
+                } else {
+                    innerCard.style.display = 'none';
+                }
             });
 
+            // Controla a visibilidade do grupo inteiro
             group.style.display = temMatch || termo === '' ? 'block' : 'none';
+            
+            // Se houver match ou se a busca estiver limpa, ajusta o accordion do grupo
             if (temMatch && termo !== '') {
                 content.style.display = 'block';
                 header.classList.add('active');

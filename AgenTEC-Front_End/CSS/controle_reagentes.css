@@ -945,21 +945,6 @@ body, html {
     text-decoration: none;
 }
 
-/* Responsividade básica para o modal */
-@media (max-width: 500px) {
-    .modal-content {
-        margin: 10% auto;
-        padding: 20px;
-    }
-    .modal-actions {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .btn-modal {
-        width: 100%;
-    }
-}
-
 /* CLASSE PARA BLOQUEAR O SCROLL DA PÁGINA QUANDO O MODAL ESTIVER ABERTO */
 .modal-open-noscroll {
     overflow: hidden;
@@ -1028,4 +1013,44 @@ div[data-account="3eFXoC4I4A"] {
     right: 0 !important;
     left: auto !important;
     margin-top: 230px !important;
+}
+
+/* --- ESTILOS DA NOTIFICAÇÃO TOAST (AGORA COMPLETO E CONSISTENTE) --- */
+.custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+    border-left: 4px solid var(--hoverCian-color); /* Borda azul/ciano */
+}
+
+.custom-notification.show {
+    transform: translateX(0);
+}
+
+.custom-notification.error {
+    border-left-color: var(--primary-red); /* Borda vermelha para erro */
+}
+
+.custom-notification i {
+    font-size: 1.8rem;
+    color: var(--hoverCian-color); /* Ícone azul/ciano para sucesso */
+}
+
+.custom-notification.error i {
+    color: var(--primary-red); /* Ícone vermelho para erro */
+}
+
+.custom-notification span {
+    font-size: 1.4rem;
+    color: var(--dark-gray);
 }

@@ -1078,3 +1078,214 @@ div[data-account="3eFXoC4I4A"] {
     left: auto !important;
     margin-top: 230px !important;
 }
+
+/* ----------------------------------------------------------------
+   --- ESTILOS DO MODAL DE SUCESSO (DESIGN DA IMAGEM 0f77b5.png) ---
+   ---------------------------------------------------------------- */
+
+.custom-success-modal .modal-content.success-content-custom {
+    /* Centraliza e torna o modal de sucesso menor */
+    max-width: 380px; 
+    text-align: center;
+    padding: 30px 40px; /* Aumenta o padding lateral para o visual da imagem */
+}
+
+/* Esconde o X de fechar, já que ele não aparece na imagem */
+.custom-success-modal .close-button {
+    display: none;
+}
+
+/* Ícone de check */
+.success-icon-custom {
+    font-size: 5rem;
+    /* Use uma cor escura, próxima ao Primary ou HoverCian */
+    color: var(--hoverCian-color); 
+    margin-bottom: 5px;
+}
+
+/* Título "Sucesso!" */
+.success-title-custom {
+    font-size: 2.5rem;
+    color: var(--dark-gray); /* Cor escura para o título */
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-bottom: none; /* Remove a linha */
+    padding-bottom: 0;
+}
+
+/* Mensagem da quantidade */
+.success-content-custom .success-message {
+    font-size: 1.6rem;
+    color: var(--dark-gray);
+    margin: 15px 0 35px 0; /* Espaçamento mais visível */
+    line-height: 1.5;
+}
+
+/* Botão "OK" */
+.btn-success-custom {
+    background-color: #38a169; /* Verde (Similar ao verde usado na imagem) */
+    color: white;
+    border: none;
+    padding: 12px 35px; /* Padding ajustado para o tamanho da imagem */
+    border-radius: 5px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    min-width: 120px;
+}
+
+.btn-success-custom:hover {
+    background-color: #2f855a; /* Verde um pouco mais escuro para hover */
+}
+
+/* Ajuste nos botões do modal de sucesso para ficarem centralizados */
+.success-content-custom .modal-buttons {
+    justify-content: center;
+    margin-top: 0;
+}
+
+/* ----------------------------------------------------------------
+   --- MODAL DE SUCESSO (CÓPIA EXATA DO DESIGN DE REAGENTES) ---
+   ---------------------------------------------------------------- */
+
+/* Sobrescreve a definição .modal padrão para usar o estilo de fundo de reagentes */
+.custom-modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fixado na tela */
+    z-index: 9999; /* Acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6); /* Fundo escuro semi-transparente */
+    backdrop-filter: blur(3px); /* Efeito de desfoque */
+    animation: fadeIn 0.3s ease-out;
+    /* Adiciona flexbox para centralização */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+/* Garante que o conteúdo do modal de sucesso seja centralizado e formatado */
+.success-modal .modal-content.success-content {
+    /* Centraliza e torna o modal de sucesso menor */
+    max-width: 320px; 
+    text-align: center;
+    /* Ajusta para a posição fixa/absoluta do .modal-content principal */
+    position: relative; 
+    transform: none; /* Remove a transformação de centralização do .modal-content */
+    margin: auto; /* Centraliza na horizontal e vertical (já que o pai é flex) */
+}
+
+.success-modal .modal-content.success-content .close-button {
+    display: none; /* Esconde o X */
+}
+
+.success-icon {
+    font-size: 5rem;
+    color: var(--hoverCian-color); /* Ciano/Azul para indicar sucesso (como em Reagentes) */
+    margin-bottom: 15px;
+}
+
+.success-title {
+    font-size: 2.5rem;
+    color: var(--hoverCian-color);
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.success-message {
+    font-size: 1.4rem;
+    color: var(--dark-gray);
+    margin: 15px 0 30px 0;
+}
+
+/* Estilo do botão OK (usa btn-confirm, que é o azul/marinho) */
+.success-content .modal-actions {
+    justify-content: center;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-confirm {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-confirm:hover {
+    background-color: var(--hoverCian-color);
+}
+
+
+/* ----------------------------------------------------------------
+   --- AJUSTE DO TOAST DE NOTIFICAÇÃO (PARA CONSISTÊNCIA) ---
+   ---------------------------------------------------------------- */
+
+/* Garante que o Toast use a cor Azul/Ciano para sucesso, como na página de Reagentes */
+.custom-notification {
+    border-left: 4px solid var(--hoverCian-color); /* Usa o Ciano/Azul */
+}
+
+.custom-notification.success i {
+    color: var(--hoverCian-color); /* Usa o Ciano/Azul no ícone */
+}
+
+/* --- AJUSTE NO TOAST DE NOTIFICAÇÃO (PARA FICAR AZUL/CIANO) --- */
+
+.custom-notification {
+    /* Define a borda lateral como azul/ciano */
+    border-left: 4px solid var(--hoverCian-color); 
+}
+
+.custom-notification i {
+    /* Garante que o ícone base seja azul/ciano para sucesso */
+    color: var(--hoverCian-color); 
+    font-size: 1.8rem;
+}
+
+/* ----------------------------------------------------------------
+   --- MODAL DE CONFIRMAÇÃO DE APLICAÇÃO (CÓPIA DE REAGENTES) ---
+   ---------------------------------------------------------------- */
+
+.confirm-modal .modal-content.confirm-content {
+    /* Torna este modal ligeiramente menor e centralizado */
+    max-width: 380px;
+    text-align: center;
+    position: relative; 
+    transform: none;
+    margin: auto;
+}
+
+.confirm-content .modal-title {
+    /* Define o título como o principal (azul/ciano) */
+    color: var(--primary-color);
+    border-bottom: 2px solid #eee;
+    font-size: 2rem;
+    padding-bottom: 10px;
+}
+
+.confirm-message {
+    font-size: 1.4rem;
+    color: var(--dark-gray);
+    margin: 20px 0 30px 0;
+}
+
+.confirm-content .modal-actions {
+    /* Garante a centralização dos botões */
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Os estilos para .btn-modal, .btn-confirm e .btn-cancel já foram adicionados
+   para a modal de sucesso e serão reutilizados aqui. */

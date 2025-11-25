@@ -1,4 +1,4 @@
-// controle_reagentes.js (Versão Final com Conversão Inteligente g/mL e Notificações)
+// controle_reagentes.js (Versão Final com Lógica de Fechar, Notificações e Redirecionamento)
 
 const BACKEND_URL = 'http://localhost:3000/api';
 
@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Botão Global "Aplicar" no final da página (CORRIGIDO PARA USAR O ID)
     const globalApplyBtn = document.getElementById('global-apply-btn');
     
+    // Botão Sair (Logout)
+    const logoutBtn = document.getElementById('btn-logout');
+    
     // Variáveis para guardar o contexto de edição
     let currentItemName = '';
     let currentItemUnit = '';
@@ -43,7 +46,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const html = document.documentElement; // Referência ao elemento <html>
     
+    // 💡 GARANTE O ESTADO INICIAL: Oculta as modais no carregamento da página (Prevenção)
+    if (editModal) editModal.style.display = 'none';
+    if (successModal) successModal.style.display = 'none';
+    if (applyConfirmModal) applyConfirmModal.style.display = 'none';
+    
+    
     // --- FUNÇÃO: EXIBE A NOTIFICAÇÃO (TOAST) ---
+    /**
+     * Exibe a notificação Toast no canto superior direito.
+     * @param {string} message - Mensagem a ser exibida.
+     * @param {string} type - Tipo de notificação ('success' ou 'error').
+     * @param {number} duration - Duração em milissegundos.
+     */
     const showNotification = (message, type = 'success', duration = 3000) => {
         notificationElement.classList.remove('error');
         notificationIcon.className = 'fas'; 
@@ -95,6 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
         checkAndReleaseScroll();
     };
 
+    /**
+     * Oculta o modal e atualiza o contador.
+     * @param {HTMLElement} modalToHide - O elemento modal a ser escondido.
+     */
     const hideModal = (modalToHide = editModal) => {
         if (modalToHide.style.display !== 'none') {
              openModalCount--;
@@ -127,14 +146,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- EVENT LISTENERS E INTEGRAÇÃO DE NOTIFICAÇÃO ---
 
-    editCloseBtn.addEventListener('click', () => {
-        hideModal(editModal);
-        showNotification('Edição cancelada.', 'error', 2500);
-    });
-    cancelBtn.addEventListener('click', () => {
-        hideModal(editModal);
-        showNotification('Edição cancelada.', 'error', 2500);
-    });
+    // Lógica de fechar a modal de edição pelo "X"
+    if (editCloseBtn) {
+        editCloseBtn.addEventListener('click', () => {
+            hideModal(editModal);
+            showNotification('Edição cancelada.', 'error', 2500);
+        });
+    }
+
+    // Lógica de fechar a modal de edição pelo "Cancelar"
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => {
+            hideModal(editModal);
+            showNotification('Edição cancelada.', 'error', 2500);
+        });
+    }
     
     successOkBtn.addEventListener('click', () => hideModal(successModal));
     
@@ -143,13 +169,17 @@ document.addEventListener('DOMContentLoaded', () => {
         showNotification('Aplicação cancelada.', 'error', 2500);
     });
 
+    // 🚨 LÓGICA DE FECHAMENTO APÓS APLICAR E SAIR
     applyConfirmBtn.addEventListener('click', () => {
         console.log("Alterações aplicadas e salvando...");
         
+        // 1. Exibe a notificação de sucesso
         showNotification('Alterações aplicadas com sucesso!', 'success', 3000);
 
+        // 2. Oculta a modal de confirmação
         hideModal(applyConfirmModal); 
         
+        // 3. Redireciona para tecnicos.html após 1 segundo
         setTimeout(() => {
             window.location.href = 'tecnicos.html';
         }, 1000); 
@@ -176,11 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isNaN(novaQuantidade) && novaQuantidade >= 0) {
             updateItemTotal(currentItemName, novaQuantidade, currentItemUnit);
             
+            // Esconde o modal de edição
             hideModal(editModal);
             
+            // Mostra o modal de sucesso
             showSuccessModal(currentItemName, novaQuantidade, currentItemUnit);
 
         } else {
+            // Mostra a notificação de erro
             showNotification('Erro: Por favor, insira um número válido.', 'error', 3500);
             newQuantityInput.classList.add('error'); 
             newQuantityInput.focus();
@@ -188,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Botão Sair (Logout)
-    const logoutBtn = document.getElementById('btn-logout');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', (e) => {
             e.preventDefault(); 
@@ -228,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
-    // FUNÇÃO ATUALIZADA COM LÓGICA INTELIGENTE DE CONVERSÃO g/mL
     const updateItemTotal = (itemNome, novaQuantidade, unidade) => {
         console.log(`Recalculando total para: ${itemNome}. Nova Quantidade: ${novaQuantidade}`);
         
@@ -300,7 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error(`Erro HTTP: ${response.status}`);
                 }
                 const data = await fallbackResponse.json();
-                renderizarCards(data);
+                const reagentes = Array.isArray(data) ? data : data.reagentes || data.items || data.itens || [];
+                renderizarCards(reagentes);
                 return;
             }
 
@@ -320,7 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // FUNÇÃO ATUALIZADA COM LÓGICA INTELIGENTE DE CONVERSÃO g/mL (Para o carregamento inicial)
     const renderizarCards = (reagentes) => {
         const itemsListContainer = document.getElementById('reagent-accordion') || document.querySelector('.items-list-container');
         itemsListContainer.innerHTML = '';
