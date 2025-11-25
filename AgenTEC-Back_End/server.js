@@ -346,12 +346,67 @@ class Server {
       }
     });
 
-    this.#app.use((req, res, next) => {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
-      res.header('Access-Control-Allow-Headers', 'Content-Type');
-      next();
+        // =========================================================================
+    // ROTAS PARA VIDRARIAS SELECIONADAS (nome que você quer)
+    // =========================================================================
+
+    this.#app.post('/api/vidrarias-selecionadas/adicionar', async (req, res) => {
+      try {
+        const vidrariaData = req.body;
+
+        console.log('Rota /api/vidrarias-selecionadas/adicionar chamada');
+        console.log('Dados recebidos:', vidrariaData);
+
+        if (!vidrariaData || !vidrariaData.nome) {
+          return res.status(400).json({ success: false, message: 'Nome da vidraria é obrigatório' });
+        }
+
+        const indexExistente = this.#vidrariasSelecionadas.findIndex(v => v.id === vidrariaData.id);
+
+        if (indexExistente !== -1) {
+          this.#vidrariasSelecionadas[indexExistente] = { ...this.#vidrariasSelecionadas[indexExistente], ...vidrariaData };
+          console.log('Vidraria atualizada:', this.#vidrariasSelecionadas[indexExistente]);
+        } else {
+          vidrariaData.id = Date.now().toString();
+          this.#vidrariasSelecionadas.push(vidrariaData);
+          console.log('Nova vidraria adicionada:', vidrariaData);
+        }
+
+        res.json({
+          success: true,
+          message: 'Vidraria adicionada com sucesso!',
+          data: vidrariaData,
+          total: this.#vidrariasSelecionadas.length
+        });
+
+      } catch (error) {
+        console.error('Erro na rota vidrarias-selecionadas/adicionar:', error);
+        res.status(500).json({ success: false, message: 'Erro interno' });
+      }
     });
+
+    this.#app.get('/api/vidrarias-selecionadas', (req, res) => {
+      res.json({
+        success: true,
+        vidrarias: this.#vidrariasSelecionadas,
+        total: this.#vidrariasSelecionadas.length
+      });
+    });
+
+    this.#app.delete('/api/vidrarias-selecionadas/remover/:id', (req, res) => {
+      const index = this.#vidrariasSelecionadas.findIndex(v => v.id == req.params.id);
+      if (index !== -1) {
+        const removida = this.#vidrariasSelecionadas.splice(index, 1);
+        return res.json({ success: true, removida: removida[0], total: this.#vidrariasSelecionadas.length });
+      }
+      res.status(404).json({ success: false, message: 'Não encontrada' });
+    });
+
+    this.#app.delete('/api/vidrarias-selecionadas/limpar', (req, res) => {
+      this.#vidrariasSelecionadas = [];
+      res.json({ success: true, message: 'Lista limpa!' });
+    });
+
 
     this.#app.get('/api/agendamentos/completos', async (req, res) => {
       const { data, laboratorio, status } = req.query;
